@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>rhythmbox经常崩溃或者自动关闭 - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="linux下毕竟没有像foobar2K这样的音乐播放器，又不想用wine,对比了下linux下的播放器，最终还是选择了rhythmbox，banshee虽然看起来不错，但小狼试用了一下，发现音质确实悲剧，有同学可能会说，rhythmbox和banshee用的都是gstream输出，音质是一样的， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/05/29/rhythmbox-jing-chang-beng-kui-huo-zhe-zi-dong-guan-bi/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rhythmbox经常崩溃或者自动关闭</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-29T00:00:00+08:00" pubdate data-updated="true">May 29<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>linux下毕竟没有像foobar2K这样的音乐播放器，又不想用wine,对比了下linux下的播放器，最终还是选择了rhythmbox，banshee虽然看起来不错，但小狼试用了一下，发现音质确实悲剧，有同学可能会说，rhythmbox和banshee用的都是gstream输出，音质是一样的，但实际不一样～小狼也不知道为什么，banshee确实会出现破声,声音不清晰等等问题。但是用了一段时间的rhythmbox后，发现只要先切换到rhythmbox然后按alt+tab切换，rhythmbox就会崩溃掉，同样在左侧菜单栏随便点点某些选项也会自动关闭，真是太坑爹了。。。</p>
+
+<p>翻了一下google,发现是配置文件惹的祸，只要删掉对应配置文件就可以了，不用怕，下次导入音乐的时候，配置文件会自动重新创建的～</p>
+
+<p>rhythmbox的配置文件在以下几个地方，即在用户主目录下按ctrl+h,显示隐藏文件就可以看见了。</p>
+
+<p>~/.gconf/apps/rhythmbox<br style="padding: 0px; margin: 0px;">~/.cache/rhythmbox<br style="padding: 0px; margin: 0px;">~/.local/share/rhythmbox<br style="padding: 0px; margin: 0px;">~/.gnome2/accels/rhythmbox</p>
+
+<p>然后就把他们都删掉就可以了！</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-29T00:00:00+08:00" pubdate data-updated="true">May 29<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/05/28/fedora15-xia-qi-dong-iceplayer-chu-xian-duan-cuo-wu-de-jie-jue-ban-fa/" title="Previous Post: fedora15下启动iceplayer出现段错误的解决办法">&laquo; fedora15下启动iceplayer出现段错误的解决办法</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/06/16/install-kde4-6-2-in-fedora15/" title="Next Post: fedora15下安装kde4.6.2">fedora15下安装kde4.6.2 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

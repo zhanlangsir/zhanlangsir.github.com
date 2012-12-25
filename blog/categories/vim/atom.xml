@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Vim | 挨踢人生]]></title>
+  <link href="http://zhanlangsir.github.com/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://zhanlangsir.github.com/"/>
+  <updated>2012-12-25T13:45:11+08:00</updated>
+  <id>http://zhanlangsir.github.com/</id>
+  <author>
+    <name><![CDATA[zhanlang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[vim auto-pairs插件]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2012/07/28/vim-auto-pairs-plugin/"/>
+    <updated>2012-07-28T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2012/07/28/vim-auto-pairs-plugin</id>
+    <content type="html"><![CDATA[<p>vs装了va之后,输入{,[这些符号时，都会自动完成配对的},],虽然工作量非常小，但是实际使用起来的时候还是赶紧方便了不少，因为不需要输入{,然后输入},最后再定位到{}之间。在vim下，auto pairs这一插件正好提供了这个功能。</p>
+
+<p>插件主页：<a href="http://www.vim.org/scripts/script.php?script_id=3599">http://www.vim.org/scripts/script.php?script_id=3599</a></p>
+
+<p>他功能有：</p>
+
+<p>1.补全对称的 {, [, ', "等符号</p>
+
+<p> </p>
+
+<p>2.自动补空格，当输入{时，你会得到{|},这样的符号，中间的|代表光标所在位置（下同，|都代表光标所在位置，不再提醒）,</p>
+
+<p>然后按空格的时候，会自动在光标两边各加入一个空格，结果就是{ | },而不是{ |}.</p>
+
+<p> </p>
+
+<!--more-->
+
+
+<p>3.自动插入新行，输入{|}时，按回车，会自动插入新行，结果会是这样</p>
+
+<p>{</p>
+
+<p>|</p>
+
+<p>}</p>
+
+<p>新行是带正确缩进的。</p>
+
+<p> </p>
+
+<p>4.输入时跳过',},]等符号，例如:</p>
+
+<p>在</p>
+
+<p>{ |}这种情况下，你输入}的时候，会跳过后面的那个},而不是输入多一个}</p>
+
+<p> </p>
+
+<p>5.定位},],例如在</p>
+
+<p>{</p>
+
+<p>|</p>
+
+<p>}</p>
+
+<p>或者</p>
+
+<p>[ | ]这种情况下,输入}或],会跳到匹配的}或]符号后面。</p>
+
+<p> </p>
+
+<p>6.快速包装一个单词，如果你已经输入了一个单词word，现在想在外面加入一层括号,就可以在word前先输入一个括号,结果是这样(|)word,然后按alt+e,那么结果就是(word).</p>
+
+<p>这写都是比较常用的功能，其他更详细的介绍可以查看help。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ubuntu12.04下交换ctrl和caps lock键]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2012/05/01/swap-ctrl-and-caps-lock-in-ubuntu12-04/"/>
+    <updated>2012-05-01T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2012/05/01/swap-ctrl-and-caps-lock-in-ubuntu12-04</id>
+    <content type="html"><![CDATA[<p>最近开始学习emacs，据说常用小指去按ctrl键对小指不好，一般的方法就是交换ctrl和caps lock键位置。</p>
+
+<p>在ubuntu下交换这两个键灰常方便，赞一个。</p>
+
+<p>1.点击右上角的<span style="color: #ff0000;">最右边的图标</span>，然后选择<span style="color: #ff0000;">键盘</span>一项</p>
+
+<p>2.点击下方的<span style="color: #ff0000;">布局设置</span></p>
+
+<p>3.点击右下角的<span style="color: #ff0000;">选项</span></p>
+
+<p>4.选择Ctrl键位置选项卡中的交换ctrl和大写锁定</p>
+
+<p>刚换过来还不是很习惯，切换输入法的时候老是会按ctrl，结果变成了大写锁定，看来还要点时间去适应啊。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[learning-gnu-emacspdf中文版]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/05/20/learning-gnu-emacs-pdf-zh-cn/"/>
+    <updated>2011-05-20T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/05/20/learning-gnu-emacs-pdf-zh-cn</id>
+    <content type="html"><![CDATA[<p>vim和emacs是编辑器中的两大神奇，但是学习周期，上手难度自然比其他编辑稍难，但是只要熟系了，就会发现，这两个编辑器真的可以大大提高工作效率，最重要的是，它们还是可跨平台使用的。虽然win下还有其他都很不错的编辑器，例如notepad++,ue等等，但是它们无法在其他平台使用，虽然小狼还是果断放弃。</p>
+
+<p>关于vim的学习资料，本博客已经有一些入门的教程了，所以这次带来得是emacs的入门资料,pdf格式，虽然不是很清晰，但还是可以看D，而且介绍的内容比较基础，适合初学者学习~</p>
+
+<p><a href="http://www.aitilife.com/images/uploads/2011/05/emacs_thumb.png"><img class="alignnone size-full wp-image-1463" title="emacs_thumb" src="http://www.aitilife.com/images/uploads/2011/05/emacs_thumb.png" alt="" width="177" height="244"></a></p>
+
+<!--more-->
+
+
+<p>下载地址:<a href="http://www.gokuai.com/f/Q0R32A7kLt3qzDb0" target="_blank">够快下载</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[gvim主题在线生成]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/19/gvim-theme-generation-online/"/>
+    <updated>2011-04-19T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/19/gvim-theme-generation-online</id>
+    <content type="html"><![CDATA[<p>点击顶部的</p>
+
+<p>Generate bright就自动生成亮色系列主题</p>
+
+<p>Generate Dark 自动生成暗色系列主题</p>
+
+<p>生成主题后，再右击下角的Vim Scheme,另存为主题名(自订.例如:aitilife).vim,然后把这个文件放到vim根目录的color目录下,打开gvim,输入colo aitilife，就可以应用刚才生成的主题了，当然这样只可以在当前打开的gvim中应用主题,要持久选择这个主题就必须在配置文件中应用主题。具体方法为：</p>
+
+<p><strong>linux：</strong></p>
+
+<p>修改~/.vimrc文件,没有可以自己创建一个,在里面添加</p>
+
+<p>colo aitilife</p>
+
+<p>一行就可以了.<!--more--></p>
+
+<p><strong>windows:</strong></p>
+
+<p><span style="line-height: 19px;">修改vim安装目录下的_vimrc文件,同样</span>没有可以自己创建一个,在里面添加</p>
+
+<p>colo aitilife</p>
+
+<p>一行就可以了.</p>
+
+<p><a href="http://www.aitilife.com/images/uploads/2011/04/inspiration.png"><img class="alignnone size-thumbnail wp-image-1475" title="inspiration" src="http://www.aitilife.com/images/uploads/2011/04/inspiration-150x150.png" alt="" width="150" height="150"></a></p>
+
+<p>官网：<a style="cursor: pointer; color: #336699; text-decoration: none;" href="http://inspiration.sweyla.com/code/" rel="nofollow" target="_blank">http://inspiration.sweyla.com/code/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim主题包]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/13/vim-zhu-ti-bao/"/>
+    <updated>2011-04-13T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/13/vim-zhu-ti-bao</id>
+    <content type="html"><![CDATA[<p>演示地址：<a href="http://www.vi-improved.org/color_sampler_pack/">http://www.vi-improved.org/color_sampler_pack/</a></p>
+
+<p>下载地址：<a href="http://www.gokuai.com/f/Sa04ok22364UplH2">够快下载</a></p>
+
+<p><strong>安装指南：</strong></p>
+
+<p>直接解压到vim根目录就可以了!</p>
+
+<p>linux:~/.vim</p>
+
+<p><span style="line-height: 28px;">windows:</span>vim安装目录</p>
+]]></content>
+  </entry>
+  
+</feed>

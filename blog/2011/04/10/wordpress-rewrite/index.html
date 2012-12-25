@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>WordPress的Rewrite问题 - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="昨天配置完php的环境,今天当然是要动手本地整一下wordpress啦,所以老是睡懒觉的小狼今天早早就起了床,着手把aitilife整站转移到本机上进行调试,一切有条有理的进行。但是…在本地导入数据库,修改网站url,转移主题和插件，什么都完成后,事情的高潮来了…
+本地的wordpress表面, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/10/wordpress-rewrite/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">WordPress的Rewrite问题</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><span style="font-size: 14px; text-align: justify;">昨天配置完php的环境,今天当然是要动手本地整一下</span><span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">wordpress</span></span><span style="font-size: 14px; text-align: justify;">啦,所以老是睡懒觉的小狼今天早早就起了床,着手把aitilife整站转移到本机上进行调试,一切有条有理的进行。但是…在本地导入数据库,修改网站url,转移主题和插件，什么都完成后,事情的高潮来了…</span>
+本地的<span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">wordpress</span></span>表面,后台看起来一切正常,但是一点击任何文章的链接或者分类目录,标签之类的就出事了,提示说无法找到这个网页。小狼就纳闷了,这是肿么回事呢？数据库方面没有任何问题啊,难道环境搭建错了?也不应该啊,昨天已经测试好的了。
+(注：点击查看<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="环境搭建" href="http://www.aitilife.com/?tag=/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA" target="_blank">环境搭建</a>相关文章)
+百思不得其解的时候，突然很嗨地发现IIS还没有装上urlrewrite，而站点的url都是经过优化的,所以会出现这样的问题,发现问题之后,马上就要消灭他。过程如下：
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">1</strong>.下载iis的url rewrite module，32位下第一个,64位下第二个
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://go.microsoft.com/?linkid=9722533">Download the x86 version of the URL Rewrite module</a>
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://go.microsoft.com/?linkid=9722532">Download the x64 version of the URL Rewrite module</a>
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">2</strong>.下完后,开始->运行->服务,打开服务列表,找到[more]
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Windows" href="http://www.aitilife.com/category/operating-system/windows">Windows</a> Process Activation Service</span>和<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">World Wide Web Publishing Service</span>
+右键点击它们，停止掉，然后开始安装url rewrite module
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">3</strong>.安装完重启后,打开iis管理器,找到你的网站,这时候中间哪会多出一个url rewrite出来，双击他,进入url rewrite页面,点右上的<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">Add Rule(s)…</span>
+然后选择Blank rule,确定,然后会出现规则填写页面:
+<a href="http://www.aitilife.com/images/uploads/2011/04/rewrite.png"><img class="alignnone size-medium wp-image-1556" title="rewrite" src="http://www.aitilife.com/images/uploads/2011/04/rewrite-300x142.png" alt="" width="300" height="142"></a>
+name一栏随便写，最好写点有意义的,例如Main Rule。
+然后Pattern一栏也随便写,因为这里写的是网站根目录的，而我们需要的是根目录下的wordpress博客的 ,其他情况就别乱写了
+拉到下面的Rewrite URL，也可以随便写，写完就点右边的应用.关掉IIS管理器.
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">注意:</span></strong>文章后面有web.config文件下载,如果是下载了web.config的话,直接复制到你的wordpress博客根目录下就可以了,那第四步就可以直接跳过！
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">4</strong>.进入你的网站根目录,看看是不是多了一个web.config文件,把他复制到你的wordpress博客的根目录下,然后添加下面的规则到 <tt style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">system.webServer</tt>节点，现在先不用管这些是什么意思,有空的话小狼会写一篇文章详细介绍rewrite规则的编写的!
+<rewrite>
+<rules>
+<rule name=”Main Rule” stopProcessing=”true”>
+<match url=”.*” />
+<conditions logicalGrouping=”MatchAll”>
+<add input=”{REQUEST_FILENAME}” matchType=”IsFile” negate=”true” />
+<add input=”{REQUEST_FILENAME}” matchType=”IsDirectory” negate=”true” />
+</conditions>
+<action type=”Rewrite” url=”index.php/{R:0}” />
+</rule>
+</rules>
+</rewrite>
+最后的结果应该像这样的:
+<a href="http://www.aitilife.com/images/uploads/2011/04/webconfig.png"><img class="alignnone size-medium wp-image-1557" title="webconfig" src="http://www.aitilife.com/images/uploads/2011/04/webconfig-300x145.png" alt="" width="300" height="145"></a>
+好了,再打开你的本地wordpress博客看看,现在是不是全部正常了。
+web.config下载地址:<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="web.config下载地址" href="http://www.gokuai.com/f/T06l8q8B1b686X51" target="_blank">http://www.gokuai.com/f/T06l8q8B1b686X51</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/其他/'>其他</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/10/wordpress-error/" title="Previous Post: 要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录XXXX完美解决方法">&laquo; 要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录XXXX完美解决方法</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/10/wordpress-zhong-de-__-han-shu-he-_e-han-shu-de-zuo-yong-he-qu-bie/" title="Next Post: WordPress中的__()函数和_e()函数的作用和区别">WordPress中的__()函数和_e()函数的作用和区别 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

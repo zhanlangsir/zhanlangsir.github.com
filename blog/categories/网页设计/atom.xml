@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 网页设计 | 挨踢人生]]></title>
+  <link href="http://zhanlangsir.github.com/blog/categories/网页设计/atom.xml" rel="self"/>
+  <link href="http://zhanlangsir.github.com/"/>
+  <updated>2012-12-25T13:45:11+08:00</updated>
+  <id>http://zhanlangsir.github.com/</id>
+  <author>
+    <name><![CDATA[zhanlang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[如何快速给图片添加水印]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/13/ru-he-kuai-su-gei-tu-pian-tian-jia-shui-yin/"/>
+    <updated>2011-04-13T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/13/ru-he-kuai-su-gei-tu-pian-tian-jia-shui-yin</id>
+    <content type="html"><![CDATA[<p><span style="white-space: pre;"> </span>很多站在可能都很烦恼自己的文章被随意转载，而且转载的时候还不标明出处，同时转载的图片链接是直接引用源站点的，这样更是会大量消耗源站点的流量。为了防止这种情况，很多站点采取了防图片盗链措施，例如：TX，途牛等等大型网站都有防图片盗链措施。但是其实盗链有得也有失，具体分析可以查看这篇文章： <a href="http://www.chinaz.com/Webmaster/Club/05101142P2010.html">防止图片外链 得到了什么，失去了什么</a>，所以，小狼认为，在流量足够的情况下，可以给图片打上水印，这样会带来一些潜在的流量~</p>
+
+<p><span style="white-space: pre;"> </span>好了，废话不多少，下面就介绍如何快速给图片添加水印。</p>
+
+<p> </p>
+
+<p><strong>1.在线打水印:</strong></p>
+
+<p><a href="http://picmarkr.com/">PicMarkr</a></p>
+
+<p><span style="line-height: 19px;"><a href="http://www.watermarktool.com/">WaterMarkTool</a></span></p>
+
+<p><span style="line-height: 19px;"><!--more--></span></p>
+
+<p><strong><span style="line-height: 19px;">2.服务器端自动生成水印：</span> </strong>
+使用服务器端自动为图片添加水印，是件省心的事情。只是需要一些脚本知识。
+下面是一些相关的各种脚本语言的示例方案：
+Asido： PHP Image Processing Library（http://asido.info/）
+Asido 是一个PHP图像处理库，可以运行于 GD2， Magick Wand 和 Image Magick.
+这里 是 Asido 为图片添加水印的详细说明。
+ 
+<strong>其它PHP 解决方案：</strong>
+Put watermark on images using PHP（http://www.phpjabbers.com/put-watermark-on-images-using-php-php20.html）
+Watermark your images with PHP 5 and GD（http://www.litewebsite.com/?c=19）
+Watermark images on the fly in PHP（http://www.sitepoint.com/article/watermark-images-php/）
+ 
+<strong>ASP.NET 解决方案：</strong>
+Thumbnail and watermark images on the fly with ASP.NET（http://www.dmxzone.com/ShowDetail.asp?NewsId=10287）
+Watermarking Images in ASP.NET with an HttpHandler（http://blog.donnfelker.com/post/Watermarking-Images-in-ASPNET-with-an-HttpHandler.aspx）
+CoolWatermark （paid）（http://www.imagecomponent.net/products/coolwatermark.aspx）
+ 
+<strong>Ruby 解决方案：</strong>
+RMagick（http://rmagick.rubyforge.org/）
+Watermarking your images with RMagick（http://snippets.dzone.com/posts/show/6014）
+ </p>
+
+<p><strong>3.软件打水印</strong></p>
+
+<p><span style="line-height: 19px;">1.ps</span></p>
+
+<p><span style="line-height: 19px;">2.</span>iRoundPic（<a href="http://www.iplaysoft.com/iroundpic.html">详细介绍</a>）</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[网站开发人员应该知道的62件事]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/wang-zhan-kai-fa-ren-yuan-ying-gai-zhi-dao-de-62-jian-shi/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/wang-zhan-kai-fa-ren-yuan-ying-gai-zhi-dao-de-62-jian-shi</id>
+    <content type="html"><![CDATA[<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">近日，有人在</strong><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://stackoverflow.com/questions/72394" target="_blank"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Stack Overflow</span></strong></a><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">上发表提问“动手开发网站之前，需要知道哪些事情？”，众多人给出了不同的答案，同时所有人根据Stack Overflow问题下面的wiki区对众多答案进行了编辑，总结出62条网站开发人员应该知道的事。Web技术开发者<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #015fb6; padding: 0px; margin: 0px; border: 0px initial initial;">阮一峰</span>把这62条答案进行了<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #015fb6; padding: 0px; margin: 0px; border: 0px initial initial;">翻译</span>，现转载于此，全文如下：</strong>
+有人在<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://stackoverflow.com/questions/72394" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Stack Overflow</span></a>上发问，动手开发网站之前，需要知道哪些事情？不出意料地，他得到了一大堆回答。
+通常情况下，你需要把所有人的发言从头到尾读一遍。但是，Stack Overflow有一个很贴心的设计，它允许在问题下方开设一个wiki区，让所有人共同编辑一个最佳答案。于是，就有了下面这篇文章，一共总结出六个方面共计62条“网站开发须知”。
+我发现，这种概述性的问题，最适合这种集合群智、头脑风暴式的回答方式了。这也是我第一次觉得，Stack Overflow做到了Wikipedia做不到的事。（难怪它最近挤进了全美前400大网站。）
+在我的印象中，关于网站开发，这样全面的概述性文章非常少见，因此也就非常有用。大家不妨看看，62件事情中你做到了多少？</p>
+
+<!--more-->
+
+
+<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span id="more-945" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"> </span>界面和用户体验（Interface and User Experience）</strong></p>
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;"> ● 知道各大浏览器执行Web标准的情况，保证你的站点在主要浏览器上都能正常运行。你至少要测试以下引擎：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://en.wikipedia.org/wiki/Gecko_%28layout_engine%29" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Gecko</span></a>（用于<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://firefox.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;"> </span></a><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Firefox" href="http://www.aitilife.com/tag/firefox">Firefox</a>）、Webkit（用于<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.apple.com/safari/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Safari</span></a>、<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.google.com/chrome" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;"> </span></a><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Chrome" href="http://www.aitilife.com/tag/chrome">Chrome</a>和一些手机浏览器）、IE（你可以利用微软发布的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.microsoft.com/Downloads/details.aspx?FamilyID=21eabb90-958f-4b64-b5f1-73d0a413c8ef&displaylang=en" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Application Compatibility VPC Images</span></a>进行测试）和<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.opera.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Opera</span></a>。同时，不同的操作系统，可能也会影响浏览器如何<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.browsershots.org/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">呈现</span></a>你的网站。● 除了浏览器，网站还有其他使用方式：手机、屏幕朗读器、搜索引擎等等。你应该知道在这些情况下，你的网站的运行状况。<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://mobiforge.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">MobiForge</span></a>提供了手机网站开发的一些相关知识。 
+ 
+● 知道如何在基本不影响用户使用的情况下升级网站。通常来说，你必须有版本控制系统（CVS、Subversion、Git等等）和数据备份机制（backup）。
+● 不要让用户看到那些不友好的出错提示。
+● 不要直接显示用户的Email地址，至少不要用纯文本显示。
+● 为你的网站设置一些<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.codinghorror.com/blog/archives/001228.html" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">合理的使用限制</span></a>，一旦超过门槛值，就自动停止服务。（这也与网站安全相关。）
+● 知道如何实现网页的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://en.wikipedia.org/wiki/Progressive_enhancement" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">渐进式增强</span></a>（progressive enhancement）。
+● 用户发出POST请求后，总是将其<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://en.wikipedia.org/wiki/Post/Redirect/Get" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">重导向</span></a>（redirect）至另外一个网页。
+● 不要忘记网站的可访问性（accessibility，即残疾人如何使用网站）。对于美国网站来说，有时这是<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.section508.gov/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">法定要求</span></a>。<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.w3.org/WAI/intro/aria" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">WAI-ARIA</span></a>有一些这方面很好的参考资料。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">安全性（Security</strong>）
+</ul>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;"> ● 阅读<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.owasp.org/index.php/Category%3aOWASP_Guide_Project" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">《OWASP开发指南》</span></a>，它提供了全面的网站安全指导。● 了解<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://en.wikipedia.org/wiki/SQL_injection" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">SQL注入</span></a>（SQL injection）及其预防方法。 
+ 
+● 永远不要信任用户提交的数据（cookie也是用户端提交的！）。
+● 不要明文（plain-text）储存用户的密码，要hash处理后再储存。
+● 不要对你的用户认证系统太自信，它可能很容易就被攻破，而你事先根本没意识到存在相关漏洞。
+● 了解如何<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="https://www.pcisecuritystandards.org/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">处理信用卡</span></a>。
+● 在登录页面及其他处理敏感信息的页面，使用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.mozilla.org/projects/security/pki/nss/ssl/draft302.txt" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">SSL</span></a>/<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://en.wikipedia.org/wiki/Https" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">HTTPS</span></a>。
+● 知道如何对付session劫持（session hijacking）。
+● 避免”<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://en.wikipedia.org/wiki/Cross-site_.ing" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">跨站点执行</span></a>“（cross site scripting，XSS）。
+● 避免”<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">跨域伪造请求</span></a>“（cross site request forgeries，XSRF）。
+● 及时打上补丁，让你的系统始终跟上最新版本。
+● 确认你的数据库连接信息的安全性。
+● 跟踪攻击技术的最新发展，以及你使用的平台的最新安全漏洞。
+● 阅读<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Google" href="http://www.aitilife.com/tag/google">Google</a>的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://code.google.com/p/browsersec/wiki/Main" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">《浏览器安全手册》</span></a>（Browser Security Handbook）。
+● 阅读<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://amzn.com/0470170778" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">《网络软件的黑客手册》</span></a>（The Web Application Hackers Handbook）。
+</ul>
+
+
+<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">性能（Performance）</strong></p>
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;"> ● 只要有可能，就使用缓存（caching）。正确理解和使用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.mnot.net/cache_docs/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">HTTP caching</span></a>与<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.w3.org/TR/html5/offline.html" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">HTML5离线储存</span></a>。● 优化图片。不要把一个20KB的图片文件，作为重复出现的网页背景图案。 
+ 
+● 学习如何用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://developer.yahoo.com/performance/rules.html#gzip" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">gzip/deflate压缩</span></a>内容（<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://stackoverflow.com/questions/1574168/gzip-vs-deflate-zlib-revisited" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">deflate方式更可取</span></a>）。
+● 将多个样式表文件或脚本文件，合为一个文件，这样可以减少浏览器的http请求数，以及减小gzip压缩后的文件总体积。
+● 浏览Yahoo的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://developer.yahoo.com/performance/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Exceptional Performance</span></a>网站，里面有大量提升前端性能的优秀建议，还有他们的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://developer.yahoo.com/yslow/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">YSlow</span></a>工具。Google的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://code.google.com/speed/page-speed/docs/rules_intro.html" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">page speed</span></a>则是另一个用来分析网页性能的工具。两者都要求安装<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://getfirebug.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Firebug</span></a>。
+● 如果你的网页用到大量的小体积图片（比如工具栏），就应该使用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://alistapart.com/articles/sprites" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">CSS Image Sprite</span></a>，目的是减少http请求数。
+● 大流量的网站应该考虑将<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://developer.yahoo.com/performance/rules.html#split" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">网页对象分散在多个域名</span></a>（split components across domains）。
+● 静态内容（比如图片、CSS、JavaScript、以及其他cookie无关的网页内容）都应该放在一个<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://blog.stackoverflow.com/2009/08/a-few-speed-improvements/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">不需要使用cookie</span></a>的独立域名之上。因为域名之下如果有cookie，那么客户端向该域名发出的每次http请求，都会附上cookie内容。这里的一个好方法就是使用”内容分发网络”（Content Delivery Network，CDN）。
+● 将浏览器完成网页渲染所需要的http请求数最小化。
+● 使用Google的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://code.google.com/closure/compiler/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Closure Compiler</span></a>压缩JavaScript文件，<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://developer.yahoo.com/yui/compressor/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">YUI Compressor</span></a>亦可。
+● 确保网站根目录下有favicon.ico文件，因为即使网页中根本不包括这个文件，浏览器也会<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://mathiasbynens.be/notes/rel-shortcut-icon" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">自动发出对它的请求</span></a>。所以如果这个文件不存在，就会产生大量的404错误，消耗光你的服务器的带宽。
+</ul>
+
+
+<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">搜索引擎优化（Search Engine Optimization，SEO）</strong></p>
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;"> ● 使用”搜索引擎友好”的URL形式，比如example.com/pages/45-article-title，而不是example.com/index.php?page=45。● 不要使用”点击这里”之类的超级链接，因为这样等于浪费了一个SEO机会，而且降低了”屏幕朗读器”（screen reader）的使用效果。● 创建一个<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.sitemaps.org/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">XML sitemap</span></a>文件，它的缺省位置一般是/sitemap.xml（即放在网站根目录下）。 
+ 
+● 当你有多个URL指向同一个内容时，在网页代码中使用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://googlewebmastercentral.blogspot.com/2009/02/specify-your-canonical.html" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;"><link rel=”canonical” … /></span></a>。
+● 使用Google的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.google.com/webmasters/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Webmaster Tools</span></a>和Yahoo的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://siteexplorer.search.yahoo.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Site Explorer</span></a>。
+● 从一开始就使用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.google.com/analytics/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Google Analytics</span></a>（或者开源的访问量分析工具<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://piwik.org/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Piwik</span></a>）。
+● 知道<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://en.wikipedia.org/wiki/Robots_exclusion_standard" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">robots.txt</span></a>的作用，以及搜索引擎蜘蛛的工作原理。
+● 将www.example.com的访问请求导向example.com（使用301 Moved Permanently重定向），或者采用相反的做法，目的是防止Google把它们当做两个网站，分开计算排名。
+● 知道存在着恶意或行为不正当的网络蜘蛛。
+● 如果你的网站有非文本的内容（比如视频、音频等等），你应该参考Google的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.google.com/support/webmasters/bin/answer.py?hl=en&answer=40318" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">sitemap扩展协议</span></a>。
+</ul>
+
+
+<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">技术（Technology）</strong></p>
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;"> ● 理解<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.ietf.org/rfc/rfc2616.txt" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">HTTP协议</span></a>，以及诸如GET、POST、sessions、cookies之类的概念，包括”无状态”（stateless）是什么意思。● 确保你的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.w3.org/TR/xhtml1/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">XHTML</span></a>/<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.w3.org/TR/REC-html40/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">HTML</span></a>和<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.w3.org/TR/CSS2/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">CSS</span></a>符合<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.w3.org/TR/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">W3C标准</span></a>，使得它们能够通过<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://validator.w3.org/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">检验</span></a>。这可以使你的网页避免触发浏览器的古怪行为（quirk），而且使它在”屏幕朗读器”和手机上也能正常工作。 
+ 
+● 理解浏览器如何处理JavaScript脚本。
+● 理解网页上的JavaScript文件、样式表文件和其他资源是如何装载及运行的，考虑它们对页面性能有何影响。在某些情况下，可能应该将脚本文件<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://developer.yahoo.net/blog/archives/2007/07/high_performanc_5.html" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">放置在网页的尾部</span></a>。
+● 理解JavaScript沙箱（Javascript sandbox）的工作原理，尤其是如果你打算使用iframe。
+● 知道JavaScript可能无法使用或被禁用，以及Ajax并不是一定会运行。记住，”不允许脚本运行”（NoScript）正在某些用户中变得流行，手机浏览器对脚本的支持千差万别，而Google索引网页时不运行大部分的脚本文件。
+● 了解301重定向和302重定向之间的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.bigoakinc.com/blog/when-to-use-a-301-vs-302-redirect/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">区别</span></a>（这也是一个SEO相关问题）。
+● 尽可能多得了解你的部署平台（deployment platform）。
+● 考虑使用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://stackoverflow.com/questions/167531/is-it-ok-to-use-a-css-reset-stylesheet" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">样式表重置</span></a>（Reset Style Sheet）。
+● 考虑使用JavaScript框架（比如<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://jquery.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">jQuery</span></a>、<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://mootools.net/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">MooTools</span></a>、<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.prototypejs.org/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Prototype</span></a>），它们可以使你不用考虑浏览器之间的差异。
+</ul>
+
+
+<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">解决bug</strong></p>
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;"> ● 理解程序员20%的时间用于编码，80%的时间用于维护，根据这一点相应安排时间。● 建立一个有效的错误报告机制。 
+ 
+● 建立某些途径或系统，让用户可以与你接触，向你提出建议和批评。
+● 为将来的维护和客服人员撰写文档，解释清楚系统是怎么运行的。
+● 经常备份！（并且确保这些备份是有效的。）除了备份机制，你还必须有一个恢复机制。
+● 使用某种版本控制系统储存你的文件，比如<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://subversion.apache.org/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Subversion</span></a>或<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://git-scm.org/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Git</span></a>。
+● 不要忘记做单元测试（Unit Testing），<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://seleniumhq.org/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #556677; padding: 0px; margin: 0px; border: 0px initial initial;">Selenium</span></a>之类的框架会对你有用。
+</ul>
+
+
+<p> 
+原文链接：<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #015fb6; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://stackoverflow.com/questions/72394" target="_blank">http://stackoverflow.com/questions/72394</a></span>
+ </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[网页头部Head的profile=“http://gmpg.org/xfn/11”的意思]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/wang-ye-tou-bu-head-de-profilehttpgmpg-orgxfn11-de-yi-si/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/wang-ye-tou-bu-head-de-profilehttpgmpg-orgxfn11-de-yi-si</id>
+    <content type="html"><![CDATA[<p>今天修改别人的主题时发现了这么一句
+ </p>
+
+<table style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border-collapse: collapse; padding: 0px; margin: 0px; border: 0px initial initial;"><tbody style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><tr style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<td class="line_numbers" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; text-align: right; background-color: #ddeeff; color: gray; overflow-x: visible; overflow-y: visible; margin: 0px; border: 0px initial initial;">
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+<td class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+</tr></tbody></table>
+
+
+<p>
+不懂什么原因，所以网查了一下，原来Profile属性还是有点用处的，主要用途就是阐述大家的关系网。例如：当我们在wp后台添加一个友情链接，并且设置了关系之后，会输出类似这样的链接：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" rel="friend" href="http://www.aitilife.com/" target="_blank">挨踢人生</a>
+rel=”friend”这个是对这个链接的关系声明，声明我与该链接的主人是朋友关系，当然除朋友外还有很多其他关系，具体就要查看这里<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="xfn" href="http://gmpg.org/xfn/11">XFN1.1</a>。
+浏览器们可以根据自己设定的默认样式来呈现网页，比如你把朋友定义成“friend”，而我要按照拼音来定义成“pengyou”，彼此之间无法统一，该功能就变得没有丝毫的意义。所以我们在<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="HTML" href="http://www.aitilife.com/tag/html">HTML</a>文档的标签中使用“profile”属性引入一个声明，声明在这个HTML文档中使用了 XML Friends Network (XFN) 微格式，然后按照这份XFN微格式中约定的方式来描述关系网络，于是即使是不同用户代理器访问这些数据只要其遵循XFN的约定即可正确的读取出其中的关系数据。
+当然，这其中的微格式数据对于平常通过浏览器来阅读HTML文档的用户来说，没有什么实际性的意义，可是对于某些用户代理器来说，通过读取这份XFN微格式数据再加上其它的诸如hCard等微格式数据，那么即可在互联网上呈现出人与人之间的关系网络。
+对于不同的数据声明需要为其指定描述的位置，而profile的值即是对这个数据的描述的位置，或者可以简单的理解成是为不同的用户代理器指定相同的约定规则。  对于一个页面中引用的多份数据声明，只需要在profile的值中将其用空格隔开即可：
+ </p>
+
+<table style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border-collapse: collapse; padding: 0px; margin: 0px; border: 0px initial initial;"><tbody style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><tr style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<td class="line_numbers" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; text-align: right; background-color: #ddeeff; color: gray; overflow-x: visible; overflow-y: visible; margin: 0px; border: 0px initial initial;">
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+<td class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+</tr></tbody></table>
+
+
+<p>
+即类似：
+ </p>
+
+<table style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border-collapse: collapse; padding: 0px; margin: 0px; border: 0px initial initial;"><tbody style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><tr style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<td class="line_numbers" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; text-align: right; background-color: #ddeeff; color: gray; overflow-x: visible; overflow-y: visible; margin: 0px; border: 0px initial initial;">
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+<td class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+</tr></tbody></table>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[推荐8个 jQuery 学习网站]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/tui-jian-8-ge--jquery--xue-xi-wang-zhan/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/tui-jian-8-ge--jquery--xue-xi-wang-zhan</id>
+    <content type="html"><![CDATA[<p>根据国外科技网站 W3Techs 一项调查了近100万个网站数据显示，<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="jQuery" href="http://www.aitilife.com/tag/jquery">jQuery</a>是目前最流行的 JavaScript 库。对于初学者来说，有的时候很难找到一个好的学习jQuery的网站，所以本文收集了8个很棒的 jQuery 学习网站推荐给大家。
+1. <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.learningjquery.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">Learning jQuery</span></a>
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="推荐8个 jQuery 学习网站" src="http://www.chinaz.com/upimg/allimg/110331/1348590.jpg" border="0" alt="1348590 推荐8个 jQuery 学习网站" width="575"><!--more-->
+最好的 jQuery 资源博客之一，从 jQuery 高手那里获得宝贵的经验。
+2. <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://jquery-mix.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">jQuery Mix</span></a>
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="推荐8个 jQuery 学习网站" src="http://www.chinaz.com/upimg/allimg/110331/1348591.jpg" border="0" alt="1348591 推荐8个 jQuery 学习网站" width="575">
+一个内容非常丰富的网站，有关 jQuery 的各种各样的信息。
+3. <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://jqueryfordesigners.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">jQuery for Designers</span></a>
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="推荐8个 jQuery 学习网站" src="http://www.chinaz.com/upimg/allimg/110331/1348592.jpg" border="0" alt="1348592 推荐8个 jQuery 学习网站" width="575">
+非常棒的一个 jQuery 资源和教程网站，帮助你成长为 jQuery 高手。
+4. <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://15daysofjquery.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">15 Days of jQuery</span></a>
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="推荐8个 jQuery 学习网站" src="http://www.chinaz.com/upimg/allimg/110331/1348593.jpg" border="0" alt="1348593 推荐8个 jQuery 学习网站" width="575">
+这个网站虽然更新不定时，你仍然可以从他们的文章中学到很多东西。
+5.<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.jquery4u.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;"> jQuery4u</span></a>
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="推荐8个 jQuery 学习网站" src="http://www.chinaz.com/upimg/allimg/110331/1348594.jpg" border="0" alt="1348594 推荐8个 jQuery 学习网站" width="575">
+jQuery4U 是另外一个有关 jQuery 资源、技巧和发展趋势的博客。
+6. <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.jqueryking.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">jQuery King</span></a>
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="推荐8个 jQuery 学习网站" src="http://www.chinaz.com/upimg/allimg/110331/1348595.jpg" border="0" alt="1348595 推荐8个 jQuery 学习网站" width="575">
+jQuery King 让你学习 jQuery 更容易、更有趣。
+7. <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://jqfundamentals.com/book/index.html" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">jQFundamentals</span></a>
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="推荐8个 jQuery 学习网站" src="http://www.chinaz.com/upimg/allimg/110331/1348596.jpg" border="0" alt="1348596 推荐8个 jQuery 学习网站" width="575">
+这是一本在线书籍，介绍 jQuery 库的基本内容。
+8. <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://jquery-howto.blogspot.com/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">jQuery How To</span></a>
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="推荐8个 jQuery 学习网站" src="http://www.chinaz.com/upimg/allimg/110331/1348597.jpg" border="0" alt="1348597 推荐8个 jQuery 学习网站" width="575">
+这个网站不是每天都更新，不过你可以从他们的教程中学到很多有用的技巧。
+（编译来源：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.cnblogs.com/lhb25/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">梦想天空</span></a> 原文来自：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://webdesigneraid.com/8-great-websites-to-learn-step-by-step-jquery/" target="_blank"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">8 Great Websites to Learn Step-by-Step jQuery</span></a>）
+ </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript 学习资源推荐]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/javascript--xue-xi-zi-yuan-tui-jian/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/javascript--xue-xi-zi-yuan-tui-jian</id>
+    <content type="html"><![CDATA[<p>最近 reddit 有讨论：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.reddit.com/r/javascript/comments/fqht8/references_for_javascript_mastery/">References for JavaScript Mastery</a>. 去年 Rey Bango 博客上也有一篇文章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://blog.reybango.com/2010/12/15/what-to-read-to-get-up-to-speed-in-javascript/">What to Read to Get Up to Speed in JavaScript</a>. 下面是我的整理，希望能对你有所帮助。<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://lifesinger.wordpress.com/">岁月如歌</a>
+<span id="more-839" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"> </span></p>
+
+<h3 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">登堂入门</h3>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.amazon.com/DOM-Scripting-Design-JavaScript-Document/dp/1430233893/">DOM Scripting: Web Design with JavaScript and the Document Object Model</a> – 2005 年，这本书的第一版是我最喜爱的前端书籍之一。知识点的讲解轻松有趣，例子由浅入深，引人入胜。去年发现这本书有第二版了，增加了 HTML5 章节，原有内容也与时俱进。我相信无论新人还是老手，都会发现这是一本好书。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://eloquentjavascript.net/">Eloquent JavaScript</a> – 这是一本在线书籍，里面的例子都可调试。作者缓缓道来，内容翔实丰富。从 2007 年始，这本书历经四年，直到今年一月份才正式出版。建议国内有志人士翻译成中文，在保证翻译质量的基础上，造福国内前端。<!--more-->
+</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://jqfundamentals.com/book/index.html">jQuery Fundamentals</a> – Rebecca Murphey 在 github 上维护的这本书，个人觉得是最好的 <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="jQuery" href="http://www.aitilife.com/tag/jquery">jQuery</a> 入门教程，没有之一。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742">JavaScript: The Good Parts</a> – Douglas Crockford 的这本书薄而精，在不同阶段阅读，会有不一样的收获。建议通读一遍，日常可随意翻翻。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">我阅读过的还有几本：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://http//www.amazon.com/gp/product/047022780X">Professional JavaScript for Web Developers</a>, <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.amazon.com/gp/product/0321423305">ppk on JavaScript, 1/e</a>, <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.amazon.com/Object-Oriented-JavaScript-high-quality-applications-libraries/dp/1847194141">Object-Oriented JavaScript</a>. 都挺不错的，如果时间精力充沛，不妨读读。特别是 Stoyan Stefanov 的 Object-Oriented <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="标签 javascript 下的日志" rel="tag" href="http://ooxxab.cn/tag/javascript">JavaScript</a>, 个人觉得是非常好的一本教程式书籍，特别适合已有 OO 编程经验、同时想学习 <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="标签 javascript 下的日志" rel="tag" href="http://ooxxab.cn/tag/javascript">JavaScript</a> 的开发人员。</li>
+</ul>
+
+
+<p> </p>
+
+<h3 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">更上层楼</h3>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.davidflanagan.com/2011/02/javascript-the.html">JavaScript: The Definitive Guide</a> – 学 JavaScript 的如果没读过这本犀牛书，就好像基督教徒没读过圣经一样。此书前面的章节很耐读，后面的语言参考，则方便查阅。这是 JavaScript 语言学习和参考查阅的首选书籍。该书第六版已完成，期待电子版和纸质书早日面世。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.amazon.com/gp/product/1590597273">Pro JavaScript Techniques</a> – John Resig 的这本书，展现了 JavaScript 的专业开发技巧。如果想深入了解 jQuery 源码，这本书会非常有帮助。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://jsninja.com/">Secrets of the JavaScript Ninja</a> – 这本书汇集了前端开发所需掌握的 JavaScript 知识的方方面面，是今年最值得期待的专业书籍之一。目前前 14 章已有电子版，最后 3 章 John Resig 还在编写中。中文版我和沉鱼已经在翻译，敬请期待。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.amazon.com/gp/product/059680279X">High Performance JavaScript</a> – 如果你关注 JavaScript 的性能，那 Nicholas C.Zakas 的这本书是绝对值得一读的。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.amazon.com/gp/product/0596806752">JavaScript Patterns</a> – 偷懒是程序员的优良品质，模式则是先人们总结的偷懒招式。Stoyan Stefanov 的这本书，从 JavaScript 的实际使用场景出发，提炼了不少可以让前端们偷懒的实用招式。模式的探索、创新，将永远是程序员自我提升的一条修炼之道。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://javascript.crockford.com/">Douglas Crockford’s JavaScript</a> – Crockford 大牛在 JavaScript 方面的总结，有不少经典文章，值得研读。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://bonsaiden.github.com/JavaScript-Garden/">JavaScript Garden</a> – 这里汇集了 JavaScript 的一些经典话题，很值得花时间研读。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">我阅读过的还有：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.amazon.com/High-Performance-Web-Sites-Essential/dp/0596529309/">High Performance Web Sites</a>, <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.amazon.com/Even-Faster-Web-Sites-Performance/dp/0596522304">Even Faster Web Sites</a>, <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.amazon.com/HTML5-Up-Running-Mark-Pilgrim/dp/0596806027/">HTML5 Up and Running</a>.</li>
+</ul>
+
+
+<h3 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">参考查阅</h3>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="https://developer.mozilla.org/en-US/docs">Mozilla Developer Network</a> – 这是 Web 开发人员的宝藏，遇到问题建议优先到这里查查，闲时没事也可以到这里逛逛。我相信，作为 Web 开发人员，你会喜欢这里的。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://msdn.microsoft.com/en-us/library/aa155073.aspx">MSDN Web Development</a> – 遇到 IE 的兼容性问题时，如果 <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Google" href="http://www.aitilife.com/tag/google">Google</a> 不能解决，请马上到这里搜索。对前端来说，最经常查阅的是 <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="HTML" href="http://www.aitilife.com/tag/html">HTML</a> and CSS 与 Scripting 两部分。不要恨 IE, 一旦你了解了她，你会爱上这个敌人。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">ECMA-262 系列：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://bclary.com/2004/11/07/">ECMA-262 3rd Edition</a> 和 <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://people.mozilla.org/~jorendorff/es5.html">ECMA-262 5th Edition</a>, 这两个链接都是在线版本，查阅方便。此外非常推荐注释版：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://es5.github.com/">Annotated ECMAScript 5.1</a>, 有阅读笔记和关联链接，适合研读。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">还有 W3C 等站点，就不细说了。</li>
+</ul>
+
+
+<h3 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">订阅关注</h3>
+
+
+<p>这个有很多，列举太耗时费力。可以 follow 我的推荐：</p>
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://twitter.com/lifesinger">lifesinger@twitter</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.google.com/reader/public/atom/user%2F05422701936444684249%2Fstate%2Fcom.google%2Fbroadcast">lifesinger’s shared items in Google Reader</a></li>
+</ul>
+
+
+<p>Google Reader 里，我的 Shared Items 很谨慎，读过且觉得值得一读或有查阅价值的文章我才会 share. Twitter, 最近用得比较少，有时会推荐一些资源，大家可酌情订阅。在我的 following 里，有一些国内外著名的前端开发人员，推荐大家根据兴趣，选择性 follow.
+再推荐一个站点：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://jsmentors.com/">JSMentors.com</a>, 这里收集了不少全世界范围内有影响力的前端导师们，建议选择性订阅。</p>
+
+<h3 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">写在最后</h3>
+
+
+<p>这里只推荐了 JavaScript 相关的学习资源。作为一名前端工程师，还得具备 HTML, CSS, 基本的后台开发知识，以及交互设计等用户体验相关知识。这些方面的学习资源，是另一个话题，以后有机会再和大家讨论分享。
+上面提到的书籍，是我读过的部分。提到的网站，是我经常光顾的。我相信还有非常多优秀的书籍和网站，期待大家的挖掘和分享了。
+书籍版本的选择，我的排序是：英文纸质版 > 英文电子版 > 中文高质量翻译版。这只是我个人的一个 taste, 建议根据实际情况，选择合适自己的即可。
+国内的原创前端书籍，我仔细看过的只有《悟透 JavaScript》和《JavaScript 语言精髓与编程实践》。翻译类书籍里，只抱着研究翻译的心态，看过部分译稿。如果有英语阅读能力，个人不是很推荐购买译本。目前国内前端译作，个人感觉质量较烂，甚至离及格还有距离。高质量的翻译，需要我们所有前端共同努力了。
+最后想提一点：<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">要让自己有效消费信息，而不要让信息消费你。</strong>比如书籍，一个阶段，读一两本就好，贪多嚼不烂。学习阶段容易产生焦虑，甚至自我否定，要调整好心态。要明白你花了一晚上可能都没弄明白的一篇博客，作者当初可能花了好几个月才研究整理出来。保持良好的心态，不断挖掘自己的真正兴趣点和擅长点，在自知的基础上自我弥补、自我提升，在自我提升的螺旋中进一步自我认识、自我坚持。这是一种修行，有苦有乐，冷暖自知。付出汗水，登上峰顶，才有可能见到满眼的精彩。
+ </p>
+]]></content>
+  </entry>
+  
+</feed>

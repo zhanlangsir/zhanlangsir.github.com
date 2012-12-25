@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>qt坐标系统见解 - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="看到Graphics View Framework的时候，被窗口，视口，场景坐标系，对象坐标系，世界坐标系，逻辑坐标，物理坐标等等概念彻底搞懵了。到底他们之间是什么关系呢？是怎样映射的呢？到现在小狼还没有搞懂，不过经过不断试验，有了一点点自己的理解。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2012/02/24/my-view-ofqt-coordinate-system/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Qt坐标系统见解</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-24T00:00:00+08:00" pubdate data-updated="true">Feb 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>看到Graphics View Framework的时候，被窗口，视口，场景坐标系，对象坐标系，世界坐标系，逻辑坐标，物理坐标等等概念彻底搞懵了。到底他们之间是什么关系呢？是怎样映射的呢？到现在小狼还没有搞懂，不过经过不断试验，有了一点点自己的理解。</p>
+
+<p><strong><span style="color: #ff0000;">QPainter的各种draw方法是基于窗口坐标系的。</span></strong></p>
+
+<p>窗口坐标为逻辑坐标，是基于视口坐标系的;视口坐标为物理坐标，是基于绘图设备坐标系的。没有做过改动的情况下，他们是一样的，都是以绘图设备(paint device,qwidget,qpixmap等都为绘图设备)大小为大小，左上角为原点(0,0)。</p>
+
+<!--more-->
+
+
+<h2><strong>窗口：</strong></h2>
+
+
+<p>窗口代表视口的区域，<strong><span style="color: #008000;">他始终以视口坐标为最终目标进行映射</span></strong>(这句话的意思到下面讲视口的时候会再讲)，他的大小和逻辑位置可以通过QPainter::setWindow()设置，但是无论大小和逻辑位置设置为什么数值，他始终代表着整个视口。</p>
+
+<p>例如你有一个实际大小为200x200像素的窗口,那么原始状态之下窗口大小也是200x200，视口大小也是200x200，,在0,0位置画一个大小为100x100的矩形的时候，他会占视口左上角的4分之一。</p>
+
+<p>painter.drawRect(0,0,100,100);</p>
+
+<p><a href="http://www.aitilife.com/images/uploads/2012/02/1.gif"><img class="alignnone size-full wp-image-1437" title="1" src="http://www.aitilife.com/images/uploads/2012/02/1.gif" alt=""></a></p>
+
+<p>如果这时候我们通过QPainter::setWindow修改了窗口位置和大小,例如setWindow(-50,-50,100,100)</p>
+
+<p>函数原型：</p>
+
+<p>void QPainter::setWindow ( int x, int y, int width, int height )</p>
+
+<p>参数：</p>
+
+<p>x:窗口左上角x坐标</p>
+
+<p>y:窗口左上角y坐标</p>
+
+<p>width:窗口长度</p>
+
+<p>height:窗口高度</p>
+
+<p>窗口代表的还是整个视口，但是映射的数值有所不同，这时候窗口的逻辑坐标(-50,-50)成为了视口坐标的(0,0)，而窗口的逻辑大小成为了100x100的单位长度(这里用单位长度是因为窗口大小的长度并不固定，受视口大小影响)，因为用100个单位长度代表原本物理大小的200像素，所以，每一个单位长度就是实际的2像素。因为QPainter是以窗口坐标为基础的，所以这时候画一个位置为(-50,-50),大小为 50,50的矩形。</p>
+
+<p>painter.drawRect(-50,-50,50,50);</p>
+
+<p>矩形还是占窗口的左上角的4分之一(下图左),而</p>
+
+<p>painter.drawRect(0,0,50,50);</p>
+
+<p>矩形占窗口右下角的4分之一。</p>
+
+<p><a href="http://www.aitilife.com/images/uploads/2012/02/2.gif"><img class="alignnone size-full wp-image-1431" title="2" src="http://www.aitilife.com/images/uploads/2012/02/2.gif" alt=""></a></p>
+
+<p>而视口对应的则是物理坐标,没有改动的情况下，视口大小与绘图区大小一样，上面的例子中，视口的属性一直没有改变过，所以视口的左上角还是在绘图区的物理位置(0,0),在窗口坐标的(-50,-50)。大小为物理大小的</p>
+
+<p>200x200像素，而为窗口坐标系下的100x100单位长度。</p>
+
+<p> </p>
+
+<h2><strong>视口：</strong></h2>
+
+
+<p>现在我们看看设置视口对绘图的影响，为了简单起见，先把上面的setWindow()一句注释掉，即现在窗口，视口是一样的。</p>
+
+<p>现在来改变视口的属性，先用</p>
+
+<p>painter.setViewPort(0,0,100,100);</p>
+
+<p>函数原型：</p>
+
+<p>void QPainter::setViewport ( int x, int y, int width, int height )</p>
+
+<p>参数:</p>
+
+<p>x:设置视口左上角x坐标</p>
+
+<p>y::设置视口左上角y坐标</p>
+
+<p>width:设置视口长度</p>
+
+<p>height:设置视口宽度</p>
+
+<p>所以上面语句的作业就是把视口的的原点位置设置为绘图设备(这里是QDialog)的原点,大小改变为100,100。</p>
+
+<p>那么现在是个什么情况呢？</p>
+
+<p>现在我们把视口的坐标设置为绘图区的左上角(0,0)位置,大小设置为绘图区的一半，因为绘图区是(200x200)，而我们把视口设置为（100x100）。即现在实际的绘图区为绘图设备的左上角的4分之一。</p>
+
+<p>那么这时候我们再用</p>
+
+<p>painter.drawRect(0,0,100,100);画一个矩形，实际显示是怎么样的呢？看下图：</p>
+
+<p><img class="alignnone size-full wp-image-1432" style="line-height: 19px;" title="3" src="http://www.aitilife.com/images/uploads/2012/02/3.gif" alt=""></p>
+
+<p>绘制出来的是dialog的16分之一了，为什么会这样呢？</p>
+
+<p>前面我们讲过<strong>窗口坐标始终以视口坐标为最终目标进行映射，</strong></p>
+
+<p>而原来没有经过修改的窗口的属性为以左上角为原点，大小为200x200单位长度，我们修改视口大小为100x100像素后，窗口的200单位长度就映射到100像素的视口长度上,即每一单位长度为0.5像素，所以绘制出来的结果就是100x0.5=50像素，所以长和高都是dialog的4分之一，面积就是16分之一了。</p>
+
+<p>这时候如果我们拖动dialog边界改变dialog的大小会怎么样呢？小狼原本的想法是画出来的矩形应该还是占总大小的16分之一，实际上这是错的。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>void Lang::paintEvent(QPaintEvent *)
+</span><span class='line'>{
+</span><span class='line'>    QPainter painter(this);
+</span><span class='line'>
+</span><span class='line'>    qDebug()&lt;&lt;"after drag:"&lt;&lt;endl;
+</span><span class='line'>    qDebug()&lt;&lt;painter.viewport().width();
+</span><span class='line'>    qDebug()&lt;&lt;painter.viewport().height();
+</span><span class='line'>    painter.setViewport(0, 0, 100 ,100 );
+</span><span class='line'>    //painter.setWindow(-50,-50,100,100);
+</span><span class='line'>    painter.drawRect(0,0, 100, 100);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>先通过painter.viewport().width()和heigth()获取当前实际视口大小(paintEvent之前，视口会被重置为绘图设备实际大小)。如下图，当我们把dialog拖动为400x400大小时，矩形框变得更小了。<img class="alignnone size-full wp-image-1433" title="4" src="http://www.aitilife.com/images/uploads/2012/02/4.gif" alt=""></p>
+
+<p>其实这很简单。因为在paintEvent之前窗口值也会重置为dialog(绘图设备)大小，所以这时候窗口大小为400x400单位长度,而视口我们还是再设定为100x100像素，所以这时候窗口大小的一单位长度为实际的100/400=0.25像素，所以画一个100x100单位长度的矩形时，实际大小时25x25像素，所以变得更小。</p>
+
+<p><img class="alignnone size-full wp-image-1434" title="5" src="http://www.aitilife.com/images/uploads/2012/02/5.gif" alt=""></p>
+
+<p>上图中我是用qq的截图功能进行测量，qq截图会给出当前截取图形的大小，正是25x25（圈的时候有所偏差).</p>
+
+<p> </p>
+
+<p>最后再来看一个窗口和视口一起设置的例子.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>void Lang::paintEvent(QPaintEvent *)
+</span><span class='line'>{
+</span><span class='line'>    QPainter painter(this);
+</span><span class='line'>
+</span><span class='line'>    qDebug()&lt;&lt;"after drag:"&lt;&lt;endl;
+</span><span class='line'>    qDebug()&lt;&lt;painter.viewport().width();
+</span><span class='line'>    qDebug()&lt;&lt;painter.viewport().height();
+</span><span class='line'>    painter.setViewport(0, 0, 100 ,100 );
+</span><span class='line'>    //painter.setWindow(-50,-50,100,100);
+</span><span class='line'>    painter.drawRect(0,0, 100, 100);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这里设置窗口坐标(-50,-50)映射为视口的原点,把窗口100x100单位长度映射为视口的100x100像素大小，
+这时候窗口逻辑坐标-50,-50就是视口的坐标(0,0)，也就是绘图设备的50,50坐标，所以窗口坐标(0,0)位置即绘图设备坐标的(100,100),
+因为窗口坐标100单位长度映射到视口坐标的100像素，所以上图的
+painter.drawRect(0,0, 50, 50);
+一句绘制出了的结果就是在绘图设备的(100,100)位置绘制一个50x50像素的矩形。
+<a href="http://www.aitilife.com/images/uploads/2012/02/6.gif"><img class="alignnone size-full wp-image-1435" title="6" src="http://www.aitilife.com/images/uploads/2012/02/6.gif" alt=""></a><a href="http://www.aitilife.com/images/uploads/2012/02/7.gif"><img class="alignnone size-full wp-image-1436" title="7" src="http://www.aitilife.com/images/uploads/2012/02/7.gif" alt=""></a></p>
+
+<h2><strong>总结：</strong></h2>
+
+
+<p>要得到QPainter绘图的真正位置，要经过两步</p>
+
+<p>第一步：</p>
+
+<p>窗口坐标转换为视口坐标，转换公式为：</p>
+
+<p>vp_width / win_width * (draw_x - win_x)</p>
+
+<p>其中vp_width为视口长度,win_width为窗口长度，draw_x为实际要绘制的x左上坐标,win_x为窗口的x左上坐标,y坐标同理</p>
+
+<p>窗口大小转换为视口大小，转换公式为：</p>
+
+<p>draw_width * vp_width / win_width</p>
+
+<p>draw_width为要绘制的窗口长度,vp_width为视口长度，win_width为窗口长度</p>
+
+<p>height同理</p>
+
+<p> </p>
+
+<p>第二步：</p>
+
+<p>视口坐标转换为绘图设备坐标，这一步就简单的进行相加就好了，</p>
+
+<p>实际坐标x=上一步转换来的视口坐标+vp_x</p>
+
+<p>vp_x为视口的左上x坐标</p>
+
+<p>实际坐标y同理</p>
+
+<p> </p>
+
+<p>这里只介绍了视口和窗口坐标，其他的迟点有空再写了~</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-24T00:00:00+08:00" pubdate data-updated="true">Feb 24<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/qt/'>Qt</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/02/22/develop-qt-use-vs2010/" title="Previous Post: 使用vs2010进行qt开发">&laquo; 使用vs2010进行qt开发</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/03/17/update-qtreeview/" title="Next Post: qtreeview的刷新问题">qtreeview的刷新问题 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

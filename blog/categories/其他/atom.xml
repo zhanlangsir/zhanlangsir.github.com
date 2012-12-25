@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 其他 | 挨踢人生]]></title>
+  <link href="http://zhanlangsir.github.com/blog/categories/其他/atom.xml" rel="self"/>
+  <link href="http://zhanlangsir.github.com/"/>
+  <updated>2012-12-25T13:45:11+08:00</updated>
+  <id>http://zhanlangsir.github.com/</id>
+  <author>
+    <name><![CDATA[zhanlang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[各种密钥-序列号]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/10/25/key-and-serial-number/"/>
+    <updated>2011-10-25T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/10/25/key-and-serial-number</id>
+    <content type="html"><![CDATA[<h2><strong>SQLServer2008:</strong></h2>
+
+
+<p>Developer: PTTFM-X467G-P7RH2-3Q6CG-4DMYB
+Enterprise:
+JD8Y6-HQG69-P9H84-XDTPG-34MBB</p>
+
+<p> </p>
+
+<h2>Vs2010:</h2>
+
+
+<p>YCFHQ-9DWCY-DKV88-T2TMH-G7BHP</p>
+
+<p> </p>
+
+<h2><strong>Blend:</strong></h2>
+
+
+<p>6WDDQ-K7D4F-GQGF4-2VYBJ-8K6MB</p>
+
+<h2></h2>
+
+
+<h2><strong>PhotoShop Cs5:</strong></h2>
+
+
+<p>1330-1343-1830-9875-8192-3098</p>
+
+<p>1330-1650-7442-9032-3879-0986</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[从BlogEngine把数据转到WordPress]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/06/23/from-blogenging-to-wordpress/"/>
+    <updated>2011-06-23T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/06/23/from-blogenging-to-wordpress</id>
+    <content type="html"><![CDATA[<p>从BlogEngine转到WordPress，可以按照以下步骤转换。</p>
+
+<p>1.导出BlogML.xml文件</p>
+
+<p>2.更改BlogML.xml里面的文件路径（例如image.axd?…之类的）</p>
+
+<p>3.更改BlogML.xml里的分类的GUID，更改为名称即可（记得全局匹配）</p>
+
+<p>4.用<a href="http://www.kavinda.net/content/other/BlogML-WordPress-Import.zip">BlogML插件</a>(也可以直接插件页面搜索一下就能找到)导入BlogML（上传到/wp-admin/import/然后导入->blogml）</p>
+
+<p>5.如果导入有错误，可以用Bulk Delete删掉。</p>
+
+<p>6.如果导入超时，可以在BlogML那个php头文件的require_once(‘XPath.class.php’);之后加入如下代码。</p>
+
+<p>ini_set(“memory_limit”,”146M”);
+ini_set(“max_execution_time”, “300″);
+ini_set(“max_input_time”, “300″);</p>
+
+<p>OK，反复操作吧，直到成功。</p>
+
+<p>但是郁闷的是～竟然没有导出标签～难道要自己手动修改嘛～有没有同学有好的办法呢？</p>
+
+<p>转自：<a href="http://www.jguoer.com/blog/index.php/archives/448">http://www.jguoer.com/blog/index.php/archives/448</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[nginx服务器下修改wordpress固定链接后出现404错误]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/06/23/404-error-with-nginx-webserver-when-alter-wordpress-permalink/"/>
+    <updated>2011-06-23T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/06/23/404-error-with-nginx-webserver-when-alter-wordpress-permalink</id>
+    <content type="html"><![CDATA[<p>在修改了一个网站的wordpress固定链接后，突然发现页面以前的文章都打不开了。报404错误。</p>
+
+<p>网站的信息如下：
+操作系统：CentOS5.4 64bit
+www服务器：Nginx 0.8.54
+wp版本：wordpress 3.0.5</p>
+
+<p>在参考网络上的解决方式后，发现是未配置配置文件造成～
+操作方式如下：
+01、打开nginx的配置文件【vi /your_nginx_path/conf/nginx.conf】
+02、找如下部分，然后按代码里面添加相应的配置</p>
+
+<!--more-->
+
+
+<div>
+<table><tbody><tr>
+<td>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>3
+</span><span class='line'>4
+</span><span class='line'>5
+</span><span class='line'>6
+</span><span class='line'>7
+</span><span class='line'>8
+</span><span class='line'>9
+</span><span class='line'>10
+</span><span class='line'>11
+</span><span class='line'>12
+</span><span class='line'>13
+</span><span class='line'>14
+</span><span class='line'>15
+</span><span class='line'>16
+</span><span class='line'>17
+</span><span class='line'>18
+</span><span class='line'>19
+</span><span class='line'>20
+</span><span class='line'>21
+</span><span class='line'>22
+</span><span class='line'>23</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+<td>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>3
+</span><span class='line'>4
+</span><span class='line'>5
+</span><span class='line'>6
+</span><span class='line'>7
+</span><span class='line'>8
+</span><span class='line'>9
+</span><span class='line'>10
+</span><span class='line'>11
+</span><span class='line'>12
+</span><span class='line'>13
+</span><span class='line'>14
+</span><span class='line'>15
+</span><span class='line'>16
+</span><span class='line'>17
+</span><span class='line'>18
+</span><span class='line'>19
+</span><span class='line'>20
+</span><span class='line'>21
+</span><span class='line'>22
+</span><span class='line'>23</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+</tr></tbody></table>
+</div>
+
+
+<p>03、重启nginx服务
+04、到网站上面去看看吧，不出意外的话，应该已经可以正常打开变更后的静态链接了！</p>
+
+<p>转自：<a href="http://www.ms2006.com/archives/63">http://www.ms2006.com/archives/63</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gravatar全面解析]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/05/14/gravatar-comprehensive-analysis/"/>
+    <updated>2011-05-14T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/05/14/gravatar-comprehensive-analysis</id>
+    <content type="html"><![CDATA[<p>今天写一些博客的代码时候想调用像Wordpress一样的头像,而wordpress的头像是基于gravatar的，所以就到官网看了一下API和说明，成功调用了gravatar，现在就把过程记录下来，方便用户或者站长或者XXX等有需要的童鞋使用吧~</p>
+
+<p>1.什么是Gravatar?</p>
+
+<p>Gravatar 的概念首先是在国外的独立WordPress 博客中雄起的，当你到任何一个支持 Gravatar 的网站留言时，提供你的 Email 地址即可为你显示出匹配的头像。当然，这个头像，是需要你事先到 Gravatar 的网站注册并上传的，否则，在这个网站上，就只会显示成一个默认的头像。另外注册与使用 Gravatar 均是完全免费的，而站长可以通过调用Gravatar的API实现根据浏览者的邮箱调用gravatar上的头像，而无需本地存储对应头像。</p>
+
+<p>2.网站的浏览者如何设置一个通用的头像?(当然，需要浏览的网站支持gravatar)</p>
+
+<p>这个问题已经有很多网站介绍过，这里就不赘述，想了解<a href="http://www.fanshuwo.com.cn/post/Gravatar.html" target="_blank">点击这里</a></p>
+
+<p>3.如何在自己的网站上调用Gravatar的头像?</p>
+
+<!--more-->
+
+
+<p>3.1 Gravatar调用链接介绍</p>
+
+<p>首先如果浏览者在Gravatar官网上注册过并且上传了头像，那么他的头像的逻辑链接就会是这样的：</p>
+
+<p>http://www.gravatar.com/avatar/HASH</p>
+
+<p>其中HASH是根据注册所用邮箱进行散列计算后得出来的，而前面的部分就不用更改。</p>
+
+<p>就是说你通过</p>
+
+<p><img src="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /></p>
+
+<p>这样一句html就可以调用gravatar上的头像，当然后面的205e460b479e2e5b48aec07710c08d50就是根据邮箱散列出来的结果。</p>
+
+<p>NOTE:</p>
+
+<p>如果有需要,在散列值后加上.jpg会得到相同的调用结果。如：</p>
+
+<p><img src=”http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50.jpg “/></p>
+
+<p> </p>
+
+<p>3.2 定制大小</p>
+
+<p>如果没有在请求url上使用大小设定参数的话,调用的结果为默认的80X80像素的图片,大小如下：</p>
+
+<p><a href="http://www.aitilife.com/images/uploads/2011/05/gravatar1_thumb.jpg"><img class="alignnone size-full wp-image-1458" title="gravatar1_thumb" src="http://www.aitilife.com/images/uploads/2011/05/gravatar1_thumb.jpg" alt="" width="84" height="84"></a></p>
+
+<p>如果想自定义图像大小，可以在url上添加查询字符串s=大小,或者size=大小,其中大小是以像素为单位的。例如：</p>
+
+<p><img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200 />或者</p>
+
+<p><img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?size=200 /></p>
+
+<p>就会调用大小为200X200像素的图像,大小的可设范围为:1-512像素,但是注意尽量不要设置的太大，因为用户上传的图像可能不会太大，会引起分辨率过低而造成模糊的效果。</p>
+
+<p>3.3默认头像</p>
+
+<p>如果用户没有在gravatar上注册过，或者没有在gravatar上传过头像，那么散列出来的结果也是没有对应图像的，那么就会返回默认的头像：</p>
+
+<p><a href="http://www.aitilife.com/images/uploads/2011/05/gravatar_default_thumb.jpg"><img class="alignnone size-full wp-image-1459" title="gravatar_default_thumb" src="http://www.aitilife.com/images/uploads/2011/05/gravatar_default_thumb.jpg" alt="" width="84" height="84"></a></p>
+
+<p>看起来不是很美观，不过不用担心，你完全可以自己设定另外的默认头像，这可以通过添加查询字符串d=默认图片url,default=默认图片url,例如:</p>
+
+<p><img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&d=http%3A%2F%2Fexample.com%2Fimages%2Favatar.jpg />或者</p>
+
+<p><img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&default=http%3A%2F%2Fexample.com%2Fimages%2Favatar.jpg /></p>
+
+<p>其中的默认图片url必须是经过url编码后的url。如果你不想使用自己的默认头像，gravatar内建了一些默认头像，如下：</p>
+
+<p><a href="http://www.aitilife.com/images/uploads/2011/05/gravatar2_thumb.png"><img class="alignnone size-full wp-image-1460" title="gravatar2_thumb" src="http://www.aitilife.com/images/uploads/2011/05/gravatar2_thumb.png" alt="" width="244" height="49"></a></p>
+
+<p>你可以通过d或者default查询字符串调用它们,对应的值分别为404,mm,identicon,monsterid,wavatar,retro。举其中一个例子：</p>
+
+<p><img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&default=mm/></p>
+
+<p>那么当205e460b479e2e5b48aec07710c08d50对应的用户不存在或者没有上传过头像的时候，就会得到上图中第一幅头像,其他的可以自行试一下,只需在浏览器地址栏输入<a href="http://www.gravatar.com/avatar/sdsfsdf?d=mm">http://www.gravatar.com/avatar/sdsfsdf?d=mm</a>就可以看到对应的默认头像了。</p>
+
+<p>3.4强制使用默认头像</p>
+
+<p>如果你需要强制所以浏览者都使用你设定的默认头像，那么只需要添加查询字符串f=y或者forcedefault=y，那么无论浏览者有没有在garvatar上传过头像，结果都是你设定的头像,一般都不需要设定此选项</p>
+
+<p>3.5 图片等级</p>
+
+<p>gravatar允许用户对自己上传的头像评定等级,其中有g,pg,r,x从低到高的四个等级，他们的意思是：</p>
+
+<ul>
+<li>
+<strong>g</strong>: 适合所有观众浏览</li>
+    <li>
+<strong>pg</strong>:包含粗鲁、挑逗的动作，或者轻微的暴力成分</li>
+    <li>
+<strong>r</strong>: 包含激烈的暴力，裸体成分</li>
+    <li>
+<strong>x</strong>: 出现性行为和强烈暴力成分</li>
+</ul>
+
+
+<p>你可以通过添加r=等级或者rating=等级设定自己网站上运行显示的等级的图像，比如，如果有某个用户在gravatar上传了包含色情成分的头像，并且他很自觉的把头像设定为x级，而他跑到你的网站上去留言了，那么他的头像就会出现在你的网站上(当然，前提是你的网站支持gravatar)，这时候你就要小心被和谐掉了，所以为了让他的头像不会显示，你就可以在url中添加查询字符串r=g来排除掉pg,r,x等级的头像的显示,即你的网站上只会显示g等级的头像，其他的都会显示为gravatar默认头像或者你设置的默认头像。</p>
+
+<p>Note:</p>
+
+<p>如果设置r=r,那么g,pg,r等级的都可以显示，低于设定等级的头像都可以显示。另外，这还需要一个很重要的条件，就是用户把自己的头像设定为正确的等级，如果他上传的头像含有暴力、色情成分，但是他把头像设定为g等级，那么还是会显示的。</p>
+
+<p>3.6 联合参数</p>
+
+<p>你可以把所以查询字符串通过&amp;符号连接在一起，例如：</p>
+
+<p><a href="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&r=pg&d=404">http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&amp;r=pg&amp;d=404</a></p>
+
+<p> </p>
+
+<p>3.7 安全方面</p>
+
+<p>如果你的网站使用了ssl，例如以https开头的网站，那么对gravatar头像的请求链接也需要改变一下,以</p>
+
+<p><a href="https://secure.gravatar.com/">https://secure.gravatar.com/</a>...开头，其他方面和上面说的一样</p>
+
+<p> </p>
+
+<p>暂时就说这么多了~</p>
+
+<p>更详细的介绍请看官网介绍：<a href="http://en.gravatar.com/site/implement/">http://en.gravatar.com/site/implement/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[借助Windows Live 25G免费空间实现WordPress零附件“裸奔”]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/30/jie-zhu-windows-live-25g-mian-fei-kong-jian-shi-xian-wordpress-ling-fu-jian-luo-ben/"/>
+    <updated>2011-04-30T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/30/jie-zhu-windows-live-25g-mian-fei-kong-jian-shi-xian-wordpress-ling-fu-jian-luo-ben</id>
+    <content type="html"><![CDATA[<p><span class="c_hbrnd"><strong>Windows Live<span class="c_tm">™</span>﻿</strong>为注册用户提供了<strong><span style="color: #00ff00;"><span style="color: #ff00ff;">25G</span>的免费附件空间</span></strong>，可以用来上传照片、建立相册、保存附件，并可根据文件夹设置隐私权限，如果隐私权限为“所有人（开放）”就可以将其中的相册、附件添加到我们的wordpress文章中，让wordpress实现零附件，节约了空间，也节省了流量，让wordpress轻松瘦身。</span>
+<span class="c_hbrnd">
+<span style="color: #808080;">闲话：小D的博客刚建立了几天，内容相对比较少，我将之前的全部附件都转移到了Windows Live﻿空间，也许大家会担心，微软会不会在哪天不让图片外链啊，我倒是没有这种顾虑，主要是这样分析的：a、微软大量的用户在使用此空间，如果屏蔽外链，用户反映会很不好，这么大的公司会很顾及用户体验的；b、微软提供的软件Writer,如果你通过Writer远程发布日志，那么你添加的相册会被默认上传至Windows Live﻿空间，也就是说微软在鼓励这样的做法；所以我比较放心将附件全部放在这25G的免费大空间中，也不用担心微软服务的稳定性，享受这优质的免费相册空间、附件空间。[more]</span></span>
+<span style="color: #808080;"><span style="color: #ff00ff;">原创使用教程分享：<span id="more-432"> </span></span>
+</span>
+<strong>1、如何使用Windows Live﻿空间？</strong>
+如果你已经有MSN账号，那就请直接登录Windows Live﻿，<a style="color: #2970a6; text-decoration: none;" title="Windows Live 登录" href="http://login.live.com/" target="_blank">点此新页面进入登陆页面>></a> 如果没有，那就自己想办法注册，嘿嘿~
+<strong>2、如何上传图片？</strong>
+登录成功后，点击Windows Live﻿页头的<strong><span style="color: #ff00ff;">照片</span></strong>，创建相册，输入相册名称，例如“wordpress相册”，共享者一定要选择<strong><span style="color: #ff00ff;">所有人（公开）</span></strong>，否则附件不能外链出去。
+相册创建成功就会进入图片上传界面了，此时，先别上传图片，根据wordpress的附件储存习惯，将附件按年月分文件夹储存，那么，在这我们也这样储存，有利于文件打包备份等操作；
+这样操作：a、在图片上传界面，找到上传图片上面的“XXX ► 照片 ► wordpress 相册 ► 添加照片”，点击wordpress相册，如果你创建时用其他名字，那就点相应的名就可以，进入该相册页面后，找到“创建文件夹”，创建“2010”，然后再在2010文件夹下创建“04”文件夹，这样，就能将图片按月整理你，以后可以使用其自带的.zip文件下载进行备份。
+文件夹创建成功后，先在本月的文件夹下随意上传几张试试，一次可选5张，超过5张需要分次上传，上传图片是，建议选择<strong>原始大小</strong>，图片质量不会改变。（如果你需要同时上传很多的图片，你可以试试微软的软件“照片库”，但其缺点是不能上传至子文件夹）
+<strong>3、如何上传其他文件类型？</strong>
+也许你发现了，在相册中不能上传其他文件类型，你可以这样操作：点击页头的照片，进入页面后，左侧有一个<strong><span style="color: #00ff00;">相关位置>>Windows Live SkyDrive</span></strong>,点击进入后能看到你创建的相册以及其他文件夹，<a style="color: #2970a6; text-decoration: none;" title="SkyDrive " href="http://skydrive.live.com/" target="_blank">找不到的朋友点此给你传送过去</a>，可以将其他文件类型的附件通过“添加文件”上传至“公共”文件夹内，这个文件夹默认是开放的，你也可以自己创建文件夹。
+<strong>4、如何在wordpress文章中引用Windows Live﻿图片？</strong>
+将图片上传至相册后，<strong>点击要引用的图片</strong>，会进入一个图片的页面，可以评论图片，这是，<strong>再点击图片</strong>，就能查看图片了（只显示图片，没有其他东西的页面），此时浏览器地址栏中的地址是图片绝对地址，将此地址复制出来，在WordPress中添加即可。
+<strong>5、如何在WordPress文章中添加Windows Live﻿附件下载链接？</strong>
+将非图片文件上传至空间后即可看到该文件，<strong>点击进入该文件的评论页面</strong>，此时再点击会直接下载，不方便获取绝对地址来引用，这里有点不方便，但也能获取到，这样操作：IE8和Firefox(需先安装Firebug附加组件)用户，按F12键，如下图1、2、3步点击，然后复制第3步点击选中的内容（http://public........?download），就可以引用了，为保证地址正确新，可以先复制到浏览器地址栏实验一下能否弹出下载窗口。
+<a style="color: #2970a6; text-decoration: none;" href="http://upts5a.blu.livefilestore.com/y1pWEgihSf4PxN7JMO81gAslQho6x40UoLVy9gnYelSgoov79duSRHZG-GrSAEiXUxssa-EzVwkC8gaVOMqb7nfReZwGt16wCRh/%E8%8E%B7%E5%8F%96URL.png"><img class="alignnone" style="max-width: 600px; border: 0px initial initial;" title="查看大图" src="http://upts5a.blu.livefilestore.com/y1pyidbqBTpuAUy3r2-fx3XFjeRPaCAqdbtsMHmDRD_iM8qyXnRxokWQ7ZUNiJ_iNhZ2XvtyiLPDUYTs9tAcw3R26MbVjyYRxxk/%E8%8E%B7%E5%8F%96URL_300.png" alt="" width="300" height="169"></a>点击可看大图
+PS:如果你闲这样的操作麻烦，或者难于获取，那么建议你复制文件页面右下方的嵌入代码，然后进入wordpress文章的HTML编辑，粘贴到合适的位置，这样会嵌入一个比较好看的文件图片，但用户点击首先会进入Windows Live，再点文件进行下载；如果还有困难，那么，你直接复制文件地址，添加到一个文字链接上面即可。
+<strong>6、如何替代Wordpress的图片缩略图功能？</strong>
+如果你需要实现在文章中添加一个缩略图，以加快载入速度，点击打开原图的效果，你可以这样操作：1、使用系统自带的图片编辑软件，将你的图片调整尺寸为想要的缩略图打小，另存为其他名字；2、将缩略图和原图一起上传至免费空间相册；3、获取2个图片的绝对地址；4、在wordpress中点插入图片，选从“URL”,将2个图片地址如下图操作即可实现缩略图功能；
+<a style="color: #2970a6; text-decoration: none;" href="http://upts5a.blu.livefilestore.com/y1pD1lXCrcNk_fkvW1kY2Ay1OZpZEHT1N45_ul2vpljwWekA4Mpj-CihTKJiVyXUHCQ3SE6AdFcMxZfxMJyM1ibcU-LexJfxysk/%E7%BC%A9%E7%95%A5%E5%9B%BE.png"><img class="alignnone" style="max-width: 600px; border: 0px initial initial;" title="查看大图" src="http://upts5a.blu.livefilestore.com/y1pD1lXCrcNk_ci8kV_FCYU5ka9KFJFAbTXwHYVW0UyDlibvhldztekwmTcRvDYBAeLrZf-TG4djMyUFNH89SrUev4YebYXvdqz/%E7%BC%A9%E7%95%A5%E5%9B%BE_300.png" alt="" width="300" height="228"></a>点击可看大图
+将缩略图地址填入图像URL,将原图地址填入图像连接到
+OK，基本就是这些了，大家遇到什么问题欢迎留言，有空多来小D的空间看看，嘿嘿~
+ 
+转自：<a href="http://www.dboy365.com/archives/432">http://www.dboy365.com/archives/432</a>
+ </p>
+]]></content>
+  </entry>
+  
+</feed>

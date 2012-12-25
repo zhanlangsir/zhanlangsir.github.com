@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>数组与指针的艺术-前言 - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="此文是笔者2005年所作《再再论指针》的修订版，与前文相比，本文主要的不同点有如下几点：
+一、引用C/C++标准的条款去阐述原理。C与C++标准共有四个已发行的正式版本，分别是C89/C90、C99、C++98和C++2003，为了避免重复的条款引用，在文字或语义相同的情况下， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/10/art-of-array-and-point-introduction/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">数组与指针的艺术-前言</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>此文是笔者2005年所作《再再论指针》的修订版，与前文相比，本文主要的不同点有如下几点：
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">一、引用C/C++标准的条款去阐述原理。C与C++标准共有四个已发行的正式版本，分别是C89/C90、C99、C++98和C++2003，为了避免重复的条款引用，在文字或语义相同的情况下，笔者只引用C99的条款，遇到不同的情况时再分别引用。</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">二、加入了C++的内容。</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">三、增加或者合并了一些章节，同时修正了一些行文错误。</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">指针是C/C++的灵魂！它是C/C++众多引人入胜的特性中的一朵奇葩。与底层操作的亲密接触是指针与生俱来的优点，利用指针可以写出许多短小精悍、效率极高的代码。它是C/C++一把无可替代的利器，凭着这把利器，C/C++与其它高级语言相比至少在效率方面胜人一筹。<!--more--></span> 
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">但是，由于数组与指针的原理与使用方式跟人们通常的思维习惯有较大差别，需要花较多的时间进行消化，这使得对数组与指针的偏见和误解成为了普遍存在的现象，更出现了避免使用指针的思潮，笔者认为这是非常不可取的。指针是如此犀利，正是它才使得C/C++语言威猛无比。如果就这样把它放弃了，那么C/C++就算是白学了。我们应当让指针成为你手中那把砍掉索伦手指上魔戒的举世无双的纳西尔圣剑，而不是你心中永远的魔戒。</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">与众多初学者一样，笔者对数组与指针的理解也经历了漫长的过程。初学C的时候，笔者作为谭书的受害者之一，与其它初学者一样脑袋中充满了对数组与指针各种各样的误解。后来随着对C/C++理解的深入，逐渐发现谭书中存在大量的谬误与漏洞，从此开始了纠偏的历程。这是一段痛并快乐着的过程，痛是由于愤恨被谋杀了一段宝贵的时光，快乐是因为重新找到了方向，相信不少朋友也曾有过跟笔者相似的体会。在这段时间里，笔者查阅了大量的资料，也耗费了大量的时间进行深刻的思考，还跟同事、朋友、网友进行了大量的辩论，特别是2005年，几乎整整一年的时间都是在激烈的辩论中渡过的，当年这些辩论的激烈程度到现在还记忆犹新，如果当时手里有把枪的话，我想我会开枪的！经过不断的思考、辩论、印证，再思考、再辩论、再印证，数组与指针的迷雾终于逐渐清晰了起来。</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">
+本文的目的，是希望通过跟各位朋友一起讨论关于数组与指针的几个关键概念及常见问题，加深对数组与指针的理解。笔者不敢奢望能够完全解开你心中的魔结，但如果通过阅读本文，能够让你在日后的数组与指针使用过程中减少失误，笔者就心满意足了。</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">当你阅读本文后：</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">如果你有不同的意见，欢迎你在评论里留下自己的见解，笔者很乐意跟你一起讨论，共同进步。</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">如果你觉得我说的全都是废话，那么恭喜你，你的指针已经毕业了。</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">如果你有太多不明白的地方，那么我介绍你先找一些关于数组与指针的读物看看，笔者推荐你阅读一本叫《<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;">C和指针</span></span>》的书，看完后再回来继续思考你的问题。</span>
+ </p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-c-/'>c/c++</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/10/art-of-array-and-point/" title="Previous Post: 数组与指针的艺术-深入探索c/c++数组与指针的奥秘(转)">&laquo; 数组与指针的艺术-深入探索c/c++数组与指针的奥秘(转)</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/10/art-of-array-and-point-part-eight/" title="Next Post: 数组与指针的艺术-第八章">数组与指针的艺术-第八章 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

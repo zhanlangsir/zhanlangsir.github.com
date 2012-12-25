@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>fedora15+win7双系统重装win7后恢复fedora15引导 - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="之前写过一篇恢复ubuntu引导的文章,本来以为fedora15可以跟ubuntu一样恢复引导，但是实际上还是遇到了一些问题，现在记录下来以防以后忘记了！ 想了解如何恢复ubuntu引导可以点这里： ubuntu10.10+win7双系统重装win7后恢复ubuntu引导方法 恢复引导方法： 1. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/07/03/resume-fedora15-grub/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Fedora15+win7双系统重装win7后恢复fedora15引导</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-03T00:00:00+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>之前写过一篇恢复ubuntu引导的文章,本来以为fedora15可以跟ubuntu一样恢复引导，但是实际上还是遇到了一些问题，现在记录下来以防以后忘记了！</p>
+
+<p>想了解如何恢复ubuntu引导可以点这里：</p>
+
+<p><a href="resume-ubuntu-grub">ubuntu10.10+win7双系统重装win7后恢复ubuntu引导方法</a></p>
+
+<p><strong>恢复引导方法：</strong></p>
+
+<p>1.放进liveCD,重启,看到有界面出来的时候,选择试用,不要点安装。</p>
+
+<p>2.进入fedora15试用版后,打开终端</p>
+
+<p>3.输入以下命令:</p>
+
+<p>su</p>
+
+<p>fdisk -l //得到的结果类似下面。查看fedora的根目录在那,这里没办法直接看出来,只能靠你自己识别,可以从分区的大小判断是不是根分区，就是在装fedora时，挂载点为 / 的那个分区<!--more--></p>
+
+<p><a href="http://www.aitilife.com/images/uploads/2011/07/fdisk.png"><img class="alignnone size-medium wp-image-1445" title="fdisk" src="http://www.aitilife.com/images/uploads/2011/07/fdisk-300x127.png" alt="" width="300" height="127"></a></p>
+
+<p>从图中的结果看出来，根分区在sda12.因为小狼记得分/分区的时候是分了20G的大小，并且当时是先分了/分区，然后再分了一个20G的/home分区的。所以判断出sda12是/分区，而不是sda13，虽然它也是20G.把sda12记住。</p>
+
+<p> </p>
+
+<p><strong>注意：如果分区的时候，你单独把boot分区分出来了，</strong><strong>还要多一步工作，就是找出boot分区:</strong></p>
+
+<p>从上图可以看出,boot分区在sda8，因为它是最小的，只有200M.（你装ubuntu的时候分了多少就是多少）</p>
+
+<p>记住sda8。</p>
+
+<p>mount /dev/你的/根分区所在位置 /mnt</p>
+
+<p>5.输入</p>
+
+<p>grub-install –root-directory=/mnt /dev/sda</p>
+
+<p>这里应该不会有什么问题，因为如果位置不对，无法安装，你可以一直输这个命令直到位置对了为止.</p>
+
+<p>6.如果出现了no error report。那你就差不多成功了.然后sudo init 6.重启。</p>
+
+<p>7.重启之后你会无奈地发现……windows也无法启动了，进入的是grub的命令行…..不要怕。进到这里你已经离成功不远了.</p>
+
+<p>输入:</p>
+
+<p>root (hdX,Y） //x为硬盘位置，如果你只有一快硬盘,X=0,如果有多块，相应设置x。Y为boot分区所在位置,这里是8.如果没有单独分boot分区,y就是你的/分区所在位置</p>
+
+<p>kenrel /vmlinuz-2.xxxxx-generic root=/dev/sda12(无论你有没有把boot分区单独分出来,这里都要写/根分区的位置，否则无法完成启动,这里可以按tab完成填写)</p>
+
+<p> </p>
+
+<p><strong style="padding: 0px; margin: 0px;"><span style="color: #ff0000;">注意：</span></strong>
+这里就跟ubuntu的不一样，没有linux命令,要用kenrel
+如果没有单独把boot分区分出来，就是</p>
+
+<p>kenrel/boot/vmlinuz-2.xxxxx-generic root=/dev/sda12</p>
+
+<p>然后输入：</p>
+
+<p>initrd /initrd.img-2.xxxxx-generic</p>
+
+<p>或</p>
+
+<p>initrd /boot/initrd.img-2.xxxxx-generic(无单独boot分区的情况)</p>
+
+<p>最后</p>
+
+<p>boot</p>
+
+<p>就可以进入fedora15桌面了。</p>
+
+<p>接下来就是更新grub版本,fedora15自带的grub竟然是0.98版本的,可以在终端中输入grub-install -v就能看见，虽然老版本也可以，但是为了方便还是升级到grub2吧</p>
+
+<p>升级方法:</p>
+
+<p><strong>su</strong></p>
+
+<p><strong>yum install grub2</strong></p>
+
+<p><strong>安装完后输入</strong></p>
+
+<p><strong>grub2-install /dev/sda</strong></p>
+
+<p><strong>grub-mkconfig -o /boot/grub/grub.cfg</strong></p>
+
+<p>这时候工作就完成的一部分了，这时候重启已经可以看到引导菜单，但是只有fedora的引导菜单，grub探针发现不了win7的引导，</p>
+
+<p>所以小狼就只能手动引导win7了,打开终端，获取root权限,然后输入</p>
+
+<p>vi /boot/grub2/grub.cfg</p>
+
+<p>找到类似下面语句的部分</p>
+
+<p>menuentry &#8220;Fedora&#8221; {</p>
+
+<p>set root=(hd0,1)</p>
+
+<p>search &#8211;no-floppy &#8211;fs-uuid &#8211;set cb201140-52f8-4449-9a95-749b27b58ce8</p>
+
+<p>linux /boot/vmlinuz-2.6.31-11-generic root=UUID=cb201140-52f8-4449-9a95-749b27b58ce8 ro quiet splash</p>
+
+<p>initrd /boot/initrd.img-2.6.31-11-generic</p>
+
+<p>}</p>
+
+<p>在所有menuentry之后，END####之前输入</p>
+
+<p>menuentry &#8220;Win7&#8221; {</p>
+
+<p>set root=(hd0,1)</p>
+
+<p>chainloader +1</p>
+
+<p>}</p>
+
+<p>其中的Win7是你将看到的win7引导菜单名，可以随便写,而第二行的set root(hd0,1)中的1,一般就是你的win7C盘所在的分区,而大部分电脑都会按照在第一个分区，如果你的是特例，可以用fdisk -l确认一下你的win7系统盘所在分区，把1修改为对应分区号。</p>
+
+<p>然后保持重启，大功告成！</p>
+
+<p><strong>注意：</strong></p>
+
+<p>除了添加上面一段语句，其他的就别修改了，除非你很熟系。官方文档中也多次强调不应该直接修改grub.cfg文件，官方文档中说明应该在/etc/default/grub文件中添加其他引导实体，即上面的3句语句，然后运行grub2-mkconfig -o /boot/grub2/grub.cfg命令，效果是一样的，但是会更安全，因为不需要直接修改引导配置文件。但是小狼图个方便就直接修改grub.cfg了，原谅俺吧。。。。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-03T00:00:00+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/06/28/dotnet-reflector/" title="Previous Post: .NET Reflector 7.1.0.143 破解">&laquo; .NET Reflector 7.1.0.143 破解</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/07/05/wpf-thread-model/" title="Next Post: WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型">WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 软件工具 | 挨踢人生]]></title>
+  <link href="http://zhanlangsir.github.com/blog/categories/软件工具/atom.xml" rel="self"/>
+  <link href="http://zhanlangsir.github.com/"/>
+  <updated>2012-12-25T13:45:11+08:00</updated>
+  <id>http://zhanlangsir.github.com/</id>
+  <author>
+    <name><![CDATA[zhanlang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[linux可视化差异比较工具 meld]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2012/09/20/linux-visual-diff-tool/"/>
+    <updated>2012-09-20T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2012/09/20/linux-visual-diff-tool</id>
+    <content type="html"><![CDATA[<p><a title="meld官网" href="http://meld.sourceforge.net/">meld</a>是一个linux下的可视化差异比较工具,他可以对目录或者文件可视化比较,并且支持git,svn等流行的版本控制系统.</p>
+
+<p>可以看到可以进行文件,目录,版本控制系统的比较</p>
+
+<p><a href="http://aitilife-wordpress.stor.sinaapp.com/uploads/2012/08/meld1.png"><img class="alignnone size-medium wp-image-1706" title="meld1" src="http://aitilife-wordpress.stor.sinaapp.com/uploads/2012/08/meld1-300x123.png" alt="" width="300" height="123"></a></p>
+
+<!--more-->
+
+
+<p>现在是作为git的diff工具,可以看到修改过的文件都已经被扫描出来</p>
+
+<p><a href="http://aitilife-wordpress.stor.sinaapp.com/uploads/2012/08/meld2.png"><img class="alignnone size-medium wp-image-1707" title="meld2" src="http://aitilife-wordpress.stor.sinaapp.com/uploads/2012/08/meld2-300x105.png" alt="" width="300" height="105"></a></p>
+
+<p>双击上面的文件后,会进行比较,可以看到,非常形象的比较,让人一目了然,右边的滚动条上还有修改过的地方的记录,并且还可以直接在meld中对文件进行修改.</p>
+
+<p><a href="http://aitilife-wordpress.stor.sinaapp.com/uploads/2012/08/meld3.png"><img class="alignnone size-medium wp-image-1708" title="meld3" src="http://aitilife-wordpress.stor.sinaapp.com/uploads/2012/08/meld3-300x189.png" alt="" width="300" height="189"></a></p>
+
+<p>看腻console窗口的童鞋可以试试~</p>
+
+<p>官网:<a href="http://meld.sourceforge.net/">http://meld.sourceforge.net/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vs插件--Resharper]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/09/30/vs-cha-jian--resharper/"/>
+    <updated>2011-09-30T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/09/30/vs-cha-jian--resharper</id>
+    <content type="html"><![CDATA[<p>resharpre官网:</p>
+
+<p>http://www.jetbrains.com/resharper/</p>
+
+<p>resharpre快捷键pdf版：</p>
+
+<p><a href="http://www.jetbrains.com/resharper/docs/ReSharper60DefaultKeymap_VS_scheme.pdf">http://www.jetbrains.com/resharper/docs/ReSharper60DefaultKeymap_VS_scheme.pdf</a></p>
+
+<p>resharpre在线帮助：</p>
+
+<p><a href="http://www.jetbrains.com/resharper/webhelp/Introduction__Help_on_Help.html">http://www.jetbrains.com/resharper/webhelp/Introduction__Help_on_Help.html</a></p>
+
+<p>resharper注册机:
+<a href="http://www.cnblogs.com/Chinasf/archive/2011/07/05/2098222.html">http://www.cnblogs.com/Chinasf/archive/2011/07/05/2098222.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[.NET Reflector 7.1.0.143 破解]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/06/28/dotnet-reflector/"/>
+    <updated>2011-06-28T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/06/28/dotnet-reflector</id>
+    <content type="html"><![CDATA[<h1><strong>什么是.NET Reflector?</strong></h1>
+
+
+<p>一般会去查找它的破解版的同学肯定知道它是干什么用的~不过这里还是简单说明一下吧~</p>
+
+<p>.NET Reflector是一个类浏览器和反编译器，可以分析程序集并向你展示它的所有秘密。.NET 框架向全世界引入了可用来分析任何基于 .NET 的代码（无论它是单个类还是完整的程序集）的反射概念。反射还可以用来检索有关特定程序集中包含的各种类、方法和属性的信息。使用 .NET Reflector，你可以浏览程序集的类和方法，可以分析由这些类和方法生成的 Microsoft 中间语言 (MSIL)，并且可以反编译这些类和方法并查看 C# 或 Visual Basic .NET 中的等价类和方法。</p>
+
+<p>在 .NET Reflector 内部，有各种可用来进一步分析该程序集的工具。要查看构成某个方法的 MSIL，请单击该方法并从菜单中选择 Disassembler。</p>
+
+<p>.NET 框架提供了许多执行类似操作的不同方法。例如，如果你需要从 XML 中读取一组数据，则存在多种使用 XmlDocument、XPathNavigator 或 XmlReader 完成该工作的不同方法。通过使用 .NET Reflector， 你可以查看 Microsoft 在编写数据集的 ReadXml 方法时使用了什么，或者查看他们在从配置文件读取数据时做了哪些工作。.NET Reflector 还是一个了解以下最佳实施策略的优秀方法：创建诸如 HttpHandlers 或配置处理程序之类的对象，因为你可以了解到 Microsoft 工作组实际上是如何在框架中生成这些对象的。</p>
+
+<p>官网：<a href="http://www.reflector.net/">http://www.reflector.net/</a></p>
+
+<p>破解版下载：</p>
+
+<p><a href="http://www.everbox.com/f/zVeY5svNz5i19tIyUVdCDQfErH">盛大网盘下载</a></p>
+
+<p> </p>
+
+<p><a title="reflector够快下载" href="http://www.gokuai.com/f/OTAD09a0bHq7q9Oy" target="_blank">够快下载</a></p>
+
+<p>说明：</p>
+
+<p>下载文件里有两个压缩包，一个就是Reflector软件,是最新得7.1.0.143版,刚才官网下下来的，如果你不相信小狼的RP的话，可以到上面给出的官网下载。然后Patch压缩包里的就是破解文件，把他解压到Reflector所在目录中，运行Patch.exe,点第一个按钮就OK了。</p>
+
+<p>如果你喜欢这个软件，小狼建议你支持正版~</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[用Windows Live Writer写Wordpress]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/write-wordpress-use-windows-live-writer/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/write-wordpress-use-windows-live-writer</id>
+    <content type="html"><![CDATA[<p> 
+用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Wordpress" href="http://www.aitilife.com/category/anything-about-wordpress">WordPress</a>自带的编辑器有很多缺点，比如速度很慢，修改的时候会自动产生很多个副本，占用很大的数据库空间，发布的图片需要一张一张上传等等，而使用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Windows" href="http://www.aitilife.com/category/operating-system/windows">Windows</a> Live Writer这些问题就解决了，
+这里就跟大家分享一下Windows Live Writer写Wordpress博客的设置方法和一些Wordpress自带编辑器没有的一些功能。
+Windows Live Writer下载地址:<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://explore.live.com/windows-live-writer?os=other">猛击这里进入下载页面</a></p>
+
+<h3 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">设置方法：</h3>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">WordPress设置：</h4>
+
+
+<p>在Wordpress后台，选择“设置”中的“撰写”，激活“远程发布”中的“XML-RPC”（启用 WordPress，Movable Type，MetaWeblog和Blogger 的 XML-RPC发布协议。）<!--more--></p>
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">Windows Live Writer设置：</h4>
+
+
+<p>安装后运行Windows Live Writer，会自动进入帐户设置页面。
+选择其他日志服务
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="Windows Live Writer写wordpress 详解" src="http://img.laogeng.org/2010/02/image_thumb36.png" alt="image thumb36 用Windows Live Writer写Wordpress" width="254" border="0"><img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="Windows Live Writer写wordpress 详解" src="http://img.laogeng.org/2010/02/image_thumb37.png" alt="image thumb37 用Windows Live Writer写Wordpress" width="254" border="0">
+出现无法自动检测，没关系，选择Wordpress，再更改一下，重新设置一下xmlrpc.php的路径。
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="Windows Live Writer写wordpress 详解" src="http://img.laogeng.org/2010/02/image_thumb38.png" alt="image thumb38 用Windows Live Writer写Wordpress" width="254" border="0"><img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="Windows Live Writer写wordpress 详解" src="http://img.laogeng.org/2010/02/image_thumb39.png" alt="image thumb39 用Windows Live Writer写Wordpress" width="254" border="0">
+下载日志编辑主题、完成。
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="Windows Live Writer写wordpress 详解" src="http://img.laogeng.org/2010/02/image_thumb40.png" alt="image thumb40 用Windows Live Writer写Wordpress" width="254" border="0"><img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="Windows Live Writer写wordpress 详解" src="http://img.laogeng.org/2010/02/image_thumb41.png" alt="image thumb41 用Windows Live Writer写Wordpress" width="254" border="0">
+设置完以后就可以用Windows Live Writer写博客了，相比Wordpress自带的编辑器有很多优势。
+个人感觉最方便的就是发图片，不用保存以后一张张去上传了，直接截图到剪贴板之后，ctrl+v就可以了。
+还可以添加相册，直接引用Windows Live Space的相册效果，因为我使用了jQuery lazy load，目前跟图片插件有冲突，本地相册效果不是很好，所以直接调用了Windows Live Space的相册。
+还有比如插入表格功能也是Wordpress自带的编辑器没有的功能，还可以插入地图，由于Windows Live Writer是微软的产品，所以插入的地图是Bing地图，但相比我还是更喜欢Google地图。
+Writer的预览功能比Wordpress要更加完善，点击预览按钮，可以直接预览发布后的效果。
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="Windows Live Writer写wordpress 详解" src="http://img.laogeng.org/2010/02/image_thumb42.png" alt="image thumb42 用Windows Live Writer写Wordpress" width="504" border="0">
+Windows Live Writer还可以设置日志类别、Ping设置、作者、摘要、发布日期、标签、数据域（永久链接）等几乎所有Wordpress编辑器自带的功能，但我用习惯的Simple Tags的一键标签（Click tags）功能，如果一定要用到的话可以使用Windows Live Writer发布完了再去Wordpress编辑器上再编辑一下。
+如果博客使用了SEO All in one 插件的话，Writer还有专门的插件可以使用，下载地址和使用说明在<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://techie-buzz.com/wordpress-plugins/all-in-one-seo-wlw-bridge-plugin.html">这里</a>。
+此外Windows Live Writer还包括一些比如字数统计等小功能等待大家自己去挖掘了，有好用的插件和心得欢迎交流。</p>
+
+<hr style="margin-bottom: 1.5em; border: 1px dotted #666666;">windowslivewrite已经是一个很好的wordpress离线写博工具了。不过如果你还想尝试其他的客户端写博工具的话，可以看一下小狼以前发表的文章，其中包含mac,<span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">linux</span></span>,移动设备各种不同平台下的客户端工具:<span style="font-size: 12px;"><a href="http://www.aitilife.com/post/2011/04/10/wordpress-post-tools.aspx">http://www.aitilife.com/post/2011/04/10/wordpress-post-tools.aspx</a></span>
+
+
+<p> </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WordPress的客户端发博工具]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/wordpress-de-ke-hu-duan-fa-bo-gong-ju/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/wordpress-de-ke-hu-duan-fa-bo-gong-ju</id>
+    <content type="html"><![CDATA[<h3 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; padding: 0px; margin: 0px; border: 0px initial initial;">先看看计算机客户端：</strong></h3>
+
+
+<p>经常写博客，当然需要找一些工具了，这不，本站长给你们推荐以下东东，赶快下载试试吧。
+特别注意：对于独立博客，使用时请务必将<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">博客后台-Settings-Writing-XML-RPC</strong>这一项勾选，否则会显示无权访问编辑。</p>
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">1.Windows:</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.zoundry.com/" target="_blank">Zoundry</a> (<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" name="go">支持很广，有中文版</a>，强烈推荐)</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://windowslivewriter.spaces.live.com/blog/cns%21D85741BB5E0BE8AA%211272.entry" target="_blank">Windows Live Writer</a> (<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" name="go">微软的东西，会自动安装.net2.0</a>，强烈推荐)</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.zoundryraven.com/" target="_blank">Zoundry Raven</a> (它继承了<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Zoundry</strong>的许多优点，同时弥补了<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Zoundry</strong>的许多不足，终于使之成为一个全功能的离线发布博客工具)</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.blogdesk.org/" target="_blank">BlogDesk</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.blogjet.com/" target="_blank">BlogJet</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://webstory.my/" target="_blank">Chrysanth WebStory</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.bingobangosoftware.com/" target="_blank">Elicit</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.lipidr.com/" target="_blank">LIPIDr Blog Client</a> (只适用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Wordpress" href="http://www.aitilife.com/category/anything-about-wordpress">WordPress</a>的免费软件)</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://bytescout.com/post2blog.html" target="_blank">Post2Blog</a> – <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://bytescout.com/post2blog_start_with_wordpress.html" target="_blank">detailed WordPress instructions</a>
+</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.wbloggar.com/" target="_blank">w.bloggar</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.wbeditor.com/" target="_blank">WB Editor</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.wiz.cn/">WizKnowledge</a></li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">2.Mac (OS X):</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://journler.com/" target="_blank">Journler</a> (Mac下很棒的日记软件，支持将写作的日记发到<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Wordpress" href="http://www.aitilife.com/tag/wordpress">WordPress</a>等Blog空间上)</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.marinersoftware.com/sitepage.php?page=85" target="_blank">MacJournal</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.red-sweater.com/marsedit/" target="_blank">MarsEdit</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://macromates.com/" target="_blank">TextMate<!--more--></a></li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">3.Both Windows & Mac (OS X):</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://ecto.kung-foo.tv/" target="_blank">Ecto</a> (号称Mac平台上最优秀的Blog离线编辑软件)</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.flock.com/" target="_blank">Flock</a> (基于Mozilla <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Firefox" href="http://www.aitilife.com/tag/firefox">Firefox</a>的网页浏览器)</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.jblogeditor.com/" target="_blank">JBlogEditor</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://qtm.blogistan.co.uk/" target="_blank">QTM</a> (支持Blogger、WordPress、Movable Type等)</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://lycos.qumana.com/download.htm" target="_blank">Qumana</a></li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">4.Mac OS X Dashboard Widgets</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://dashblog.theonelab.com/" target="_blank">DashBlog</a> – <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://wordpress.org/support/topic/34382#post-197102" target="_blank">detailed WordPress instructions</a>
+</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://staff.cofa.unsw.edu.au/blojsom/blog/nigelkersten/scripts/2005/05/01/RapidMetaBlog_Dashboard_Widget.html" target="_blank">RapidMetaBlog</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.paniris.com/wordpressdash/" target="_blank">WordPressDash</a></li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">5.Linux:</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://blogtk.sourceforge.net/" target="_blank">BloGTK</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.dropline.net/drivel/" target="_blank">Drivel</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.flock.com/" target="_blank">Flock</a> (基于Mozilla Firefox的网页浏览器)</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.gnome.org/~seth/gnome-blog/" target="_blank">Gnome Blog</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.jblogeditor.com/" target="_blank">JBlogEditor</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://qtm.blogistan.co.uk/" target="_blank">QTM</a> (支持Blogger、WordPress、Movable Type等)</li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">6.Web:</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://writetomyblog.com/" target="_blank">WriteToMyBlog</a></li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">7.Firefox Extension:</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://deepestsender.mozdev.org/" target="_blank">Deepest Sender</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.scribefire.com/" target="_blank">ScribeFire</a></li>
+</ul>
+
+
+<hr style="margin-bottom: 1.5em; border: 1px dotted #666666;">
+
+
+<h2 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 25px; color: #333333; line-height: 1.1em; font-weight: normal; padding: 0px; border: 0px initial initial;">现在看一下移动设备上的 wordpress客户端：</h2>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">J2ME Phones:</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.danais.it/web/demo/mopress.html" target="_blank">MoPress</a> – 开源</li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">BlackBerry:</h4>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>从 1.3 版本开始官方不再开发 for BlackBerry 4.2 OS 的版本，最低设备需求安装  BlackBerry 4.5 OS，4.2 OS 用户可以下载我们之前更新的 1.2.1 版。&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://blackberry.wordpress.org/">WordPress for Blackberry</a> – 开源</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">支持4.2 os 的 1.2.1最高版本下载：</li>
+</ul>
+
+
+<h3 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; padding: 0px; margin: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; text-decoration: none; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://codeex.cn/images/uploads/2011/01/BerryCN.com_WordPress_v1.2.1_4.2OS.zip">BerryCN.com_WordPress_v1.2.1_4.2OS</a></strong></strong></h3>
+
+
+<p>OTA wordpress下载链接：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://blackberry.svn.wordpress.org/nightly/ota/WordPress.jad" target="_blank">http://blackberry.svn.wordpress.org/nightly/ota/WordPress.jad</a>
+或是： <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://blackberry.wordpress.org/install" target="_blank">http://blackberry.wordpress.org/install</a></p>
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">Android:</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://android.wordpress.org/">wordpress fo android</a> – 官方</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://danroundhill.com/wptogo/" target="_blank">wpToGo</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://code.google.com/p/postbot/" target="_blank">PostBot</a></li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">win phone7:</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://windowsphone.wordpress.org/" target="_blank">WP for win phone7</a> – 开源</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://wlw.codeplex.com/" target="_blank">Writer for Windows Mobile</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://sampath.wordpress.com/moblog/" target="_blank">moBlog</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://mobiblogr.en.softonic.com/pocketpc" target="_blank">MobiBlogr</a></li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">PalmOS:</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://plogit.sourceforge.net/" target="_blank">Plogit</a> – 开源</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.tektonica.com/moblog/" target="_blank">Mo:blog</a> – 商业</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.thisismobility.com/blog/?page_id=7" target="_blank">Vagablog</a> – 开源</li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">iPhone:</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://iphone.wordpress.org/" target="_blank">WordPress for iPhone</a> – 官方</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://ios.wordpress.org/">ios</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://illuminex.com/iblogger/" target="_blank">iBlogger</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://blogpress.coollittlethings.com/" target="_blank">BlogPress</a></li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">Siemens Phones:</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.benqmobile.com/cds/frontdoor/0,2241,hq_en_0_116696_rArNrNrNrN,00.html" target="_blank">blog2go</a></li>
+</ul>
+
+
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">Nokia Phones (Symbian S60 based):</h4>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.telewaving.com/" target="_blank">Wavelog</a> – 商业</li>
+</ul>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://code.google.com/p/wordmobi/" target="_blank">Wordmobi</a>
+</strong><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"> </strong>
+</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://scribe.na.nu/" target="_blank">Scribe</a></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.telewaving.com/" target="_blank">Wavelog</a></li>
+</ul>
+
+
+<p> </p>
+]]></content>
+  </entry>
+  
+</feed>

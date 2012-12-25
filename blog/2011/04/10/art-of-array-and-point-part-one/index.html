@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>数组与指针的艺术-第一章 - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content=" 
+数组与指针概念剖析
+数组与指针生来就是双胞胎，多数人就是从数组的学习开始指针的旅程的。在学习的过程中，很自然就会经常听到或见到关于数组与指针的各种各样的看法，下面我节选一些在各种论坛和文章里经常见到的文字：
+“一维数组是一级指针”
+“二维数组是二级指针”
+“数组名是一个常量指针”
+“ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/10/art-of-array-and-point-part-one/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">数组与指针的艺术-第一章</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p> 
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: large; padding: 0px; margin: 0px; border: 0px initial initial;">数组与指针概念剖析</span></strong>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">数组与指针生来就是双胞胎，多数人就是从数组的学习开始指针的旅程的。在学习的过程中，很自然就会经常听到或见到关于数组与指针的各种各样的看法，下面我节选一些在各种论坛和文章里经常见到的文字：</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">“一维数组是一级指针”</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">“二维数组是二级指针”</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">“数组名是一个常量指针”</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">“数组名是一个指针常量”</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">……………………</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">这些文字看起来非常熟悉吧？类似的文字还有许多。不过非常遗憾，这些文字都是错误的，实际上数组名永远都不是指针！这个结论也许会让你震惊，但它的确是事实。但是，在论述这个问题之前，首先需要解决两个问题：什么是指针？什么是数组？这是本章的主要内容，数组名是否指针这个问题留在第二章进行讨论。看到这里，也许有人心里就会嘀咕了，这么简单的问题还需要说吗？int *p, a[10];不就是指针和数组吗？但是，笔者在过往的讨论过程中，还真的发现有不少人对这两个概念远非清晰，这会妨碍对后面内容的理解，所以还是有必要先讨论一下。</span></p>
+
+<!--more-->
+
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">什么是指针？一种普遍存在的理解是，把指针变量理解成就是指针，这种理解是片面的，指针变量只是指针的其中一种形态，但指针并不仅仅只有指针变量。一个指针，包含了两方面的涵义：实体（entity）和类型。标准是这样描述指针类型的：</span>
+<span id="more-1160" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"> </span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;">6.2.5</strong><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;"> Types</strong></span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">A pointer type may be derived from a function type, an object type, or an incomplete type, called the referenced type. A pointer type describes an object whose value provides a reference to an entity of the referenced type. A pointer type derived from the referenced type T is sometimes called ‘‘pointer to T’’. The construction of a pointer type from a referenced type is called ‘‘pointer type derivation’’.</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">请留意第二句所说的内容：指针类型描述了这样一个对象，其值为对某种类型实体的引用。标准在这里所用的措词是指针类型描述了一个对象。</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">再来看看标准关于取址运算符&amp;的规定：</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;">6.5.3</strong><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;">.2 Address and indirection operators</strong></span>
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">Semantics</span></strong>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">The unary &amp; operator returns the address of its operand. If the operand has type “type”, the result has type “pointer to type”……. Otherwise, the result is a pointer to the object or function designated by its operand.</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">这个条款规定，&amp;运算符的结果是一个指针。但问题是，&amp;表达式的结果不是对象！标准自相矛盾了吗？当然不是，这说明的是，指针的实体有对象与非对象两种形态。</span>
+我们常说的指针变量只是指针实体的对象形态，但对象与非对象两种形态合起来，才是指针的完整涵义，就是说，无论是否对象，只要是一个具有指针类型的实体，都可以称之为指针，换言之，指针不一定是对象，也不一定是变量。后一种情况，指的是当需要产生一个指针类型的临时对象时，例如函数的传值返回或者表达式计算产生的中间结果，由于是一个无名临时对象，因此不是变量。
+在C++中，由于引入了OOP，增加了一种也称为“指针”的实体：类非静态成员指针，虽然也叫指针，但它却不是一般意义上的指针。C++标准是这样说的：</p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;">3.9.2</strong><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;"> Compound types</strong></span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">……. Except for pointers to static members, text referring to “pointers” does not apply to pointers to members……….</span>
+接下来，该谈谈数组了。数组是一种对象，其对象类型就叫数组类型。但笔者发现有个现象很奇怪，有些人根本没有数组类型的意识，不过也的确有些书并没有将数组作为一个类型去阐述，也许原因就在于此吧。数组类型跟指针类型都属于派生类型，标准的条款：
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;">6.2.5</strong><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;"> Types</strong></span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">An array type describes a contiguously allocated nonempty set of objects with a particular member object type, called the element type. Array types are characterized by their element type and by the number of elements in the array. An array type is said to be derived from its element type, and if its element type is T, the array type is sometimes called “array of T”. The construction of an array type from an element type is called “array type derivation”.</span>
+数组类型描述了某种对象的非空集合，不允许0个元素，我们有时候看见某个结构定义内部定义了一个大小为0的数组成员，这是柔性数组成员的非标准形式，这个留在第八章讲述。数组类型的语法（注意不是数组对象的声明语法）是element type[interger constant]，例如对于
+int a[10];
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">a的数组类型描述就是int[10]。</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">数组名作为数组对象的标识符，是一个经过“隐式特例化”处理的特殊标识符。整数对象的标识符、浮点数的标识符等等虽然也是标识符，但数组名与之相比却有重大的区别。计算机语言存在的目的，是为了将人类的自然语言翻译为计算机能够理解的机器语言,让人类更加容易地利用和管理各种计算机资源，易用是思想，抽象是方法，语言将计算机资源抽象成各色各样的语言符号和语言规则，数组、指针、整数、浮点数等等这些东西本质上就是对内存操作的不同抽象。作为抽象的方法，可以归纳为两种实现，一是名字代表一段有限空间，其内容称为值；二是名字是一段有限空间的引用，同时规定空间的长度。第一种方法被各种计算机语言普遍使用，在C/C++中称为从左值到右值的转换。但数组不同于一般的整数、浮点数对象，它是一个聚集，无法将一个聚集看作一个值，从一个聚集中取值，在C/C++的对象模型看来缺乏合理性，是没有意义的。在表达式计算的大多数情况中，第一种方法并不适合数组，使用第二种方法将数组名转换为某段内存空间的引用更适合。</span>
+因此，与一般标识符相比，数组名既有一般性，也有特殊性。一般性表现在其对象性质与一般标识符是一样的，这种情况下的数组名，代表数组对象，同时由于符合C/C++的左值模型，它是一个左值，只不过是不可修改的，不可修改的原因与上一段中叙述的内容相同，通过一个名字试图修改整个聚集是没有意义的；而特殊性则反映在表达式的计算中，也就是C/C++标准中所描述的数组与指针转换条款，在这个条款中，数组名不被转换为对象的值，而是一个符号地址。
+现在来看看标准是如何规定数组与指针的转换的：</p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">C89/90的内容：</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;">6.2.2</strong><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;">.1 Lvalues and function designators</strong></span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">Except when it is the operand of the sizeof operator or the unary &amp; operator, or is a character string literal used to initialize an array of character type. or is a wide string literal used to initialize an array with element type compatible with wchar-t, an lvalue that has type “array of type” is converted to an expression that has type “pointer to type” that points to the initial element of the array object and is not an lvalue.</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">C99的内容：</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;">6.3.2</strong><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 16px; padding: 0px; margin: 0px; border: 0px initial initial;">.1 Lvalues, arrays, and function designators</strong></span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">Except when it is the operand of the sizeof operator or the unary &amp; operator, or is a string literal used to initialize an array, an expression that has type “array of type” is converted to an expression with type “pointer to type” that points to the initial element of the array object and is not an lvalue. If the array object has register storage class, the behavior is undefined.</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">数组类型到指针类型转换的结果，是一个指向数组首元素的类型为pointer to type的指针，并且从一个左值转换成一个右值。经过转换后，数组名不再代表数组对象，而是一个代表数组首地址的符号地址，并且不是对象。特别指出的是，数组到指针的转换规则只适用于表达式，只在这种条件下数组名才作为转换的结果代表数组的首地址，而当数组名作为数组对象定义的标识符、初始化器及作为sizeof、&amp;的操作数时，它才代表数组对象本身，并不是地址。</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">这种转换带来一个好处，对于数组内部的指针运算非常有利。我们可以用a + 1这种精炼的形式表示a[1]的地址，无须用&amp;a[1]这种丑陋的代码，实际上，&amp;a[1]是一种代码冗余，是对代码的浪费，因为&amp;a[1]等价于&amp;<em>( a + 1 )，&amp;与</em>由于作用相反被抵消，实际上就是a + 1，既然这样我们何不直接使用a + 1呢？撇开为了照顾人类阅读习惯而产生的可读性而言，&amp;a[1]就是垃圾。</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">但是，另一方面，这种异于一般标识符左值转换的特例化大大增加了数组与指针的复杂性，困扰初学者无数个日日夜夜的思维风暴从此拉开了帷幕！</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">在两个版本的转换条款中，有一点需要留意的是，两个版本关于具有数组类型的表达式有不同的描述。</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">C89/90规定：</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">an lvalue that has type “array of type” is……</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">但C99却规定：</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">an expression that has type “array of tye” is…….</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">C99中去掉了lvalue的词藻，为什么？我们知道，数组名是一个不可修改的左值，但实际上，也存在右值数组。在C中，一个左值是具有对象类型或非void不完整类型的表达式，C的左值表达式排除了函数和函数调用，而C++因为增加了引用类型，因此返回引用的函数调用也属于左值表达式，就是说，非引用返回的函数调用都是右值，如果函数非引用返回中包含数组，情况会怎样？考虑下面的代码：</span></p>
+
+<div style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<div id="code0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<ol style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; list-style-type: decimal; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">#include <stdio.h></li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">struct Test</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">{</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">int a[10];</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">};</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">struct Test fun( struct Test* );</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">int main( void )</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">{</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">struct Test T;</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">int *p = fun( &T ).a;                         /* A */</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">int (*q)[10] = &fun( &T ).a;                  /* B */</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">printf( “%d”, sizeof( fun( &T ).a ) );       /* C*/</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">return 0;</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">}</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">struct Test fun( struct Test *T )</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">{</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">return *T;</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">}</li>
+</ol>
+</div>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+</em>
+
+</div>
+
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">在这个例子里，fun( &amp;T )的返回值是一个右值，fun( &amp;T ).a就是一个右值数组，是一个右值表达式，但a本身是一个左值表达式，要注意这个区别。在C89/90中，由于规定左值数组才能进行数组到指针的转换，因此A中的fun( &amp;T ).a不能在表达式中进行从数组类型到指针类型的转换，A中的fun( &amp;T ).a是非法的，但C99在上述条款中不再限定左值表达式，即对这个转换不再区分左值还是右值数组，因此都是合法的；C中的fun( &amp;T ).a是sizeof运算符的操作数，这种情况下fun( &amp;T ).a并不进行数组到指针的转换，因此C在所有C/C++标准中都是合法的；B初看上去仍然有点诡异，&amp;运算符不是已经作为例外排除了数组与指针的转换吗？为什么还是非法？其实B违反了另一条规定，&amp;的操作数要求是左值，而fun( &amp;T ).a是右值。C++继承了C99的观点，也允许右值数组的转换，其条款非常简单：</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">An lvalue or rvalue of type “array of N T” or “array of unknown bound of T” can be converted to an rvalue of type “pointer to T.” The result is a pointer to the first element of the array.</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">数组类型到指针类型的转换与左值到右值的转换、函数类型到指针类型的转换一起是C/C++三条非常重要的转换规则。C++由于重载解析的需要，把这三条规则概念化了，统称为左值转换，但C由于无此需要，只提出了规则。符号是语言对计算机的高级抽象，但计算机并不认识符号，它只认识数值，因此一个符号要参加表达式计算必须先对其进行数值化，三条转换规则就是为了这个目的而存在的。</span></p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">看到这里，大概有些初学者已经被上述那些左值右值、对象非对象搞得稀里糊涂了。的确，数组与指针的复杂性让人望而生畏，不是一朝一夕就能完全掌握的，需要一段较长的时间慢慢消化。因此笔者才将数组与指针称为一门艺术，是的，它就是艺术！</span>
+ </p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-c-/'>c/c++</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/10/art-of-array-and-point-part-nine/" title="Previous Post: 数组与指针的艺术-第九章">&laquo; 数组与指针的艺术-第九章</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/10/art-of-array-and-point-part-seven/" title="Next Post: 数组与指针的艺术-第七章">数组与指针的艺术-第七章 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

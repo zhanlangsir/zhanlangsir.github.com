@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: c/c++ | 挨踢人生]]></title>
+  <link href="http://zhanlangsir.github.com/blog/categories/c-c-/atom.xml" rel="self"/>
+  <link href="http://zhanlangsir.github.com/"/>
+  <updated>2012-12-25T13:45:11+08:00</updated>
+  <id>http://zhanlangsir.github.com/</id>
+  <author>
+    <name><![CDATA[zhanlang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[cmake "install Library TARGETS given no DESTINATION" 错误]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2012/09/20/cmake-install-library-targets-given-no-destination-error/"/>
+    <updated>2012-09-20T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2012/09/20/cmake-install-library-targets-given-no-destination-error</id>
+    <content type="html"><![CDATA[<p>在linux下没问题的cmake文件到了win下却出现"install Library TARGETS given no DESTINATION"错误，这不科学啊。又翻了一遍发现win下包括cygwin都属于dll平台，</p>
+
+<p>动态库文件应该属于RUNTIME目标,所以把install中的Library改为RUNTIME就OK了。
+add_library(libname
+SHARED
+files
+)
+install(TARGETS libname RUNTIME DESTINATION ${libdir})
+参考：
+<a title="LIBRARY_OUTPUT_DIRECTORY" href="http://www.cmake.org/cmake/help/v2.8.8/cmake.html#prop_tgt:LIBRARY_OUTPUT_DIRECTORY">LIBRARY_OUTPUT_DIRECTORY</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA['uicc.exe' 不是内部或外部命令，也不是可运行的程序]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/11/12/uicc-exe-not-internal-error-when-complier-wtl/"/>
+    <updated>2011-11-12T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/11/12/uicc-exe-not-internal-error-when-complier-wtl</id>
+    <content type="html"><![CDATA[<p>使用wtl编译时出现一些警告：</p>
+
+<p><span style="color: #ff0000;">warning MSB8004: Intermediate 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。</span></p>
+
+<p><span style="color: #ff0000;">warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。</span></p>
+
+<p>其实这个警告没什么关系，要去掉只须在项目属性的常规设置中为两个目录添加一个斜杠结尾就OK了。</p>
+
+<p>添加Ribbon特性的时候出现以下错误：</p>
+
+<p><span style="color: #ff0000;">'uicc.exe' 不是内部或外部命令，也不是可运行的程序</span></p>
+
+<p>原因是没有这个工具，可以到以下地址下载最新的window sdk。安装之后就可以了</p>
+
+<p><a href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=18950">http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=18950</a></p>
+
+<p>上面的链接有三个版本的sdk
+GRMSDK_EN_DVD.iso
+GRMSDKIAI_EN_DVD.iso
+GRMSDKX_EN_DVD.iso
+其中第一个是x86体系的，第二个是amd64体系，最后一个则是Itanium体系的，自己选择下那个。</p>
+
+<p>安装完毕就可以在C:Program FilesMicrosoft SDKsWindowsv7.1Bin 这个目录下看到有uicc这个工具了。</p>
+
+<p>但是到这里还是不能成功编译的，因为这个目录还没有添加到Path环境变量中，所以还是无法找到uicc工具，所以还要把uicc工具所在目录添加到Path环境变量中。具体步骤如下：
+1.右键我的电脑(或者计算机)->属性->高级系统设置->环境变量，在系统变量中找到Path,拖到最后，在最后一项后加个"<span style="color: #ff0000;">;</span>"号，然后把uicc所在目录添加到后面。</p>
+
+<p>重启一下vs，重新编译</p>
+
+<p>PS:</p>
+
+<p>如果安装sdk时出现错误，可以看一下这里的解决办法，希望能帮到各位：</p>
+
+<p><a href="http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/">http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在线c++编译器]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/zai-xian-c-bian-yi-qi/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/zai-xian-c-bian-yi-qi</id>
+    <content type="html"><![CDATA[<p> 
+如果你在网吧或者一个没有C++编译器的地方，正好想试验一下你的代码，那么可以试试在线C++编译器。
+第一个要推荐的是dinkumware用于测试C++代码的地方：
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.dinkumware.com/exam/default.aspx">http://www.dinkumware.com/exam/default.aspx</a>
+它提供了多种编译器的选择，不过貌似不能提供编译结果的下载。
+第二个是Test Drive Comeau C++ Online
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.comeaucomputing.com/tryitout/">http://www.comeaucomputing.com/tryitout/</a>
+据说是他们自己开发的编译器。</p>
+
+<p> </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Google C++ 代码风格规范]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/google-c--dai-ma-feng-ge-gui-fan/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/google-c--dai-ma-feng-ge-gui-fan</id>
+    <content type="html"><![CDATA[<p><span style="font-size: 14px; text-align: justify;">好的代码风格规范是衡量一个优秀的程序员必要条件，如果代码有比较好的风格规范，那么阅读者能够一目了然，反之，则需要花费大量的时间去读懂代码。</span>
+所以，相当程序员的童鞋就有必要养成良好的代码风格习惯，这样才能在以后的团队项目开发中发挥更大的作用。
+下面是<span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">Google</span></span>使用的C++代码规范，童鞋们可以参考一下，但是也不必全部照做，因为代码风格并没有一个统一的标准。例如微软也有自己的一套标准，所以应该是饱着“取其精华,弃其糟粕”的心态去学习~
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml</a>
+ </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[c++XML库]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/cpp-xml-library/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/cpp-xml-library</id>
+    <content type="html"><![CDATA[<p><span style="font-size: 14px; text-align: justify;">在C++中，库的地位是非常高的，各种各样的库极大的扩展了C++的功能，一个设计的好的库，让你对C++的使用更加得心应手，现在我们介绍的就是xml操作的库~请看接下来的介绍！</span>
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">C++各大有名库的介绍——XML</strong>
+１、Xerces
+参考网站：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://xml.apache.org/xerces-c/" target="_blank">http://xml.apache.org/xerces-c/</a>
+Xerces-C++ 是一个非常健壮的XML解析器，它提供了验证，以及SAX和DOM API。XML验证在文档类型定义(Document Type Definition，DTD)方面有很好的支持，并且在2001年12月增加了支持W3C XMLSchema 的基本完整的开放标准。
+２、XMLBooster
+参考网站：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.xmlbooster.com/" target="_blank">http://www.xmlbooster.com/</a>
+这个库通过产生特制的parser的办法极大的提高了XML解析的速度，并且能够产生相应的GUI程序来修改这个parser。在DOM和SAX两大主流XML解析办法之外提供了另外一个可行的解决方案。
+３、Pull Parser
+参考网站：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.extreme.indiana.edu/xgws/xsoap/xpp" target="_blank">http://www.extreme.indiana.edu/xgws/xsoap/xpp</a>
+这个库采用pull方法的parser。在每个SAX的parser底层都有一个pull的parser，这个xpp把这层暴露出来直接给大家使用。在要充分考虑速度的时候值得尝试。
+４、Xalan
+参考网站：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://xml.apache.org/xalan-c/" target="_blank">http://xml.apache.org/xalan-c/</a>
+Xalan是一个用于把XML文档转换为<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="HTML" href="http://www.aitilife.com/tag/html">HTML</a>，纯文本或者其他XML类型文档的XSLT处理器。
+５、CMarkup
+参考网站：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.firstobject.com/xml.htm" target="_blank">http://www.firstobject.com/xml.htm</a>
+这是一种使用EDOM的XML解析器。在很多思路上面非常灵活实用。值得大家在DOM和SAX之外寻求一点灵感。
+６、libxml++
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://libxmlplusplus.sourceforge.net/" target="_blank">http://libxmlplusplus.sourceforge.net/</a>
+libxml++是对著名的libxml XML解析器的C++封装版本。</p>
+
+<address style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">7</strong>、<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; font-style: normal; padding: 0px; margin: 0px; border: 0px initial initial;">TinyXml</span>
+</address>
+
+
+<address style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; font-style: normal; padding: 0px; margin: 0px; border: 0px initial initial;">TinyXML是目前非常流行的一款基于DOM模型的XML解析器，简单易用且小巧玲珑，非常适合存储简单数据，配置文件，对象序列化等数据量不是很大的操作</span></address>
+
+
+<address style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; font-style: normal; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.grinninglizard.com/tinyxml/">http://www.grinninglizard.com/tinyxml/</a></address>
+
+
+<p> </p>
+]]></content>
+  </entry>
+  
+</feed>

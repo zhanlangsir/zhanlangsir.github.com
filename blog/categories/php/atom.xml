@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: php | 挨踢人生]]></title>
+  <link href="http://zhanlangsir.github.com/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://zhanlangsir.github.com/"/>
+  <updated>2012-12-25T13:45:11+08:00</updated>
+  <id>http://zhanlangsir.github.com/</id>
+  <author>
+    <name><![CDATA[zhanlang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[typecho rewrite 规则]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2012/09/20/typecho-rewrite-rule/"/>
+    <updated>2012-09-20T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2012/09/20/typecho-rewrite-rule</id>
+    <content type="html"><![CDATA[<p>后台永久链接配置:
+是否使用地址重写功能：启用
+自定义文章路径： 个性化定义 /{year}/{month}/{day}/{slug}
+独立页面后缀名： html</p>
+
+<p>这个文件你可以到sae后台的appconfig中填写
+appconfig规则:</p>
+
+<p>name: your app name</p>
+
+<p>version: 1</p>
+
+<p>cron:</p>
+
+<p>handle:<!--more--></p>
+
+<ul>
+<li><p>rewrite: if( in_header["Host"] == "aitiblog.sinaapp.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"</p></li>
+<li><p>rewrite: if( in_header["Host"] == "1.aitiblog.sinaapp.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"</p></li>
+<li><p>rewrite: if( in_header["Host"] == "aitilife.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"</p></li>
+<li><p>rewrite: if( in_header["Host"] == "aitilife.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"</p></li>
+</ul>
+
+
+<p>第一二个rewrite把sina的域名重定向到www开头的独立域名。
+第三个rewrite把独立顶级域名重定向到www开头的独立域名。
+最后一个rewrite到正确的地址。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[sae wordpress 转 typecho]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2012/09/20/sae-wordpress--zhuan--typecho/"/>
+    <updated>2012-09-20T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2012/09/20/sae-wordpress--zhuan--typecho</id>
+    <content type="html"><![CDATA[<p>wordpress用久了就感觉不新鲜了。。并且随着wordpress的不断更新，它也变的越来越庞大(我不说痈肿)...太多东西是我不需要的，后来无意中发现了typecho这个博客程序,它最大的特点就是简洁，轻便，所以就打算把博客转为typecho试试水先。</p>
+
+<p>这篇文章适用范围是：
+1.sae上的wordpress应用数据转移到另外一个sae typecho应用上，而不是原地把wordpress程序直接转换为typecho，如果你原来的wordpress程序不是在sae上的话，那就可以跳过了，因为你可以直接使用插件把数据转过来。
+所以不符合你的需求的同学可以不用往下看了~当然你如果对我的折腾过程有兴趣也可以继续。。</p>
+
+<p>因为sae上是无法得到数据库用户名和密码的，所以没办法通过插件进行数据转换，那就只能手动折腾了。
+经过测试，发现直接在sae mysql上导出的数据是不完整的，必须通过Deferred Jobs才能导出完整的数据。
+Deferred Jobs在sae应用管理后台的服务管理一栏中，先从Deferred Jobs中把数据库中的数据导出来，如果数据大于4M，再通过Deferred Jobs把数据导入你的typecho应用中,导入方法可以从文档中找到.
+导入完成后，你的typecho数据库中会有typecho<em>和wp</em>前缀的n张表,然后进入typecho数据库中，把typecho_comments ，typecho_contents， typecho_metas表中的唯一条数据删除(新装的typecho中会有一篇文章和一条评论).然后数据转换正式开始。</p>
+
+<!--more-->
+
+
+<p>1.转换评论，在PHPMyAdmin中点击sql一栏，输入下面的sql语句然后点执行,把wordpress中的评论转换过来
+[sql]insert into typecho_comments (coid, cid,created, author, authorId, ownerId, mail, url, ip, agent, text, type, status, parent)
+select
+wp_comments.comment_ID,
+wp_comments.comment_post_ID,
+unix_timestamp(wp_comments.comment_date_gmt),
+wp_comments.comment_author,
+wp_comments.user_id,
+1,
+wp_comments.comment_author_email,
+wp_comments.comment_author_url,
+wp_comments.comment_author_IP,
+wp_comments.comment_agent,
+wp_comments.comment_content,
+wp_comments.comment_type,
+wp_comments.comment_approved,
+wp_comments.comment_parent
+from wp_comments[/sql]</p>
+
+<p>上面的语句执行完后再输入下面语句把wp的评论类型转换过来
+[sql]update typecho_comments set type = 'comment' where isnull(type) or length(trim(type))&lt;1; //把评论类型为空的评论的类型设置为'comment'[/sql]</p>
+
+<p>然后把垃圾评论和回收站中的评论删掉再设置好评论的状态
+[sql]delete from typecho_comments where status = 'spam'; //删除垃圾评论
+delete from typecho_comments where status = 'trash'; //删除回收站中的评论</p>
+
+<p>update typecho_comments set status = 'approved' where status = '1'; //设置wp中的批准的评论的状态为1
+update typecho_comments set status = 'waiting' where status = '0'; //设置wp中的等待审核的评论的状态为0[/sql]</p>
+
+<p>现在你打开typecho博客，已经可以看到就算一篇文章的没有，但是却有一堆的评论。。。
+2.分类，tag转换,先把默认分类删掉(可以进博客后台删,也可以从数据库的typecho_metas中删)，删完分别输入下面的语句
+[sql]//转换tag
+insert into typecho_metas (mid, name, slug, type, description, count)
+select
+term_taxonomy_id,
+name,
+slug,
+'tag',
+description,
+count
+from wp_term_taxonomy
+join wp_terms
+on wp_terms.term_id = wp_term_taxonomy.term_id
+where taxonomy = 'post_tag';</p>
+
+<p>//转换分类
+insert into typecho_metas (mid, name, slug, type, description, count)
+select
+term_taxonomy_id,
+name,
+slug,
+'category',
+description,
+count
+from wp_term_taxonomy
+join wp_terms
+on wp_terms.term_id = wp_term_taxonomy.term_id
+where taxonomy = 'category'
+[/sql]</p>
+
+<p>3.转换分类,tag，文章关系表
+[sql]insert into typecho_relationships (cid, mid)
+SELECT
+object_id,
+wp_term_relationships.term_taxonomy_id
+FROM
+wp_term_relationships
+join wp_term_taxonomy
+on wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id[/sql]</p>
+
+<p>4.转换文章表,typecho中使用slug作为文章链接,这里是把woredpress中的post_name子段转换为slug, 而wordpress的post_name子段允许重复,typecho的slug是不允许重复的，所以可能会转换失败，官方的转换插件中是把post_name和ID连接起来作为slug的，但是这样的结果就是你的文章的链接后面会加入一串无意义的数字，所以如果你文章中post_name重复的次数不多的话，建议你先手动把重复的修改一下，然后再继续下面的转换，如果重复的太多，而你又可以接收your_post_url12345,这样的链接的画，你可以把下面语句中的第6行从post_name改为CONCAT(post_name, ID),就可以了。
+[sql]insert into typecho_contents (cid,title,slug,created,modified, <code>text</code>, <code>order</code>,authorId,template,type,status,password,commentsNum,allowComment,allowFeed,allowPing)
+select
+ID,
+post_title,
+post_name,
+unix_timestamp(post_date_gmt),
+unix_timestamp(post_modified_gmt),
+post_content,
+menu_order,
+post_author,
+NULL,
+post_type,
+post_status,
+post_password,
+comment_count,
+comment_status,
+'1',
+ping_status
+from wp_posts
+where post_type = 'post' or post_type = 'page'[/sql]</p>
+
+<p>然后删除回收站中和自动保存的文章
+[sql]delete from <code>typecho_contents</code> WHERE status = 'trash' //删除回收站中文章
+delete from <code>typecho_contents</code> WHERE status = 'auto-draft' //删除自动保存文章
+update typecho_contents set allowComment = '1' //打开文章评论
+update typecho_contents set allowPing = '1' //打开文章pingback[/sql]</p>
+
+<p>转换到此结束。
+最后如果你有绑定独立域名的话，到mysql的typecho_options表中把siteUrl子段改为你的独立域名即可~</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[7款本地PHP环境搭建工具]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/13/seven-php-deleloper-environment-create-tool/"/>
+    <updated>2011-04-13T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/13/seven-php-deleloper-environment-create-tool</id>
+    <content type="html"><![CDATA[<p>平时调试php程序或者试用一下php的网站程序什么的都需要一个快速,方便的环境,每次都直接在远程虚拟主机上弄的话，就太麻烦了，也会把虚拟主机弄的一团糟，而手动本地搭建php环境需要安装mysql,php,apache2等等东西，有的童鞋可能嫌太麻烦了，所以下面介绍7款本地phhp环境搭建工具,可以快速搭建好本地php环境！
+<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://www.apachefriends.org/zh_cn/xampp.html">1. XAMPP</a></strong>
+XAMPP是一款比较强大的本地测试平台，它集成了必须的三个功能，还带有 FileZilla，软件带有一个控制面板，在里面可以把Apache、MySql和FileZilla三者注册为系统服务或者卸载服务，有服务启动的控 制按钮，而且在窗口下部还能看到服务的运行信息。虽说面板是英文的，但清楚易懂。注册为系统服务有个好处就是开机能够自动运行，但是会消耗一定的系统资 源，怎么取舍用户自己来定。安装成功，服务也启动成功后，就可以把浏览器打开输入http://localhost/，试试是否成功。在XAMPP的网页 选项里，有中文支持。[more]
+<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://www.wampserver.com/en/">2. Wamp Server</a></strong>
+它的官方网站没有中文，但是程序支持中文。启动安装程序后，它会提示你请先卸载旧版，不支持 覆盖式的升级，然后一路NEXT就能安装成功。它在任务托盘里有个图标，如果服务启动异常，它就是红色的；如果部分异常，它就变成黄色；如果是一切正常， 那么它就变成了白色。这些不同的颜色警示，你很容易判断当前你的localhost能不能打开。它还能切换在线和离线状态，选项中的文语言项中也有简体中 文可选，很不错。
+<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://vertrigo.sourceforge.net/">3. Vertrigo Server<!--more--></a></strong>
+这是一个轻量级的WAMP环境，但是你下载它的时候，迅雷自带的安全组件居然说它带有病毒。 经过我的扫描（ESS3.0）和使用来看，这完全是个误报，所以大家可以放心使用。安装一路NEXT就行，其中PhpMyAdmin中居然还有原始密码， 是vertrigo，感觉在本地测试的话，这种默认没有必要。它带有一个简单的控制面板，运行状态也一目了然。
+在它的localhost页面中带有常用链接，很方便。
+<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://phpnow.org/">4. PHPNow</a></strong>
+PHPNow真的很简单，简单到安装程序就是用RAR做的一个自解压程序。自释放后快捷方式 也没有，你必须自己找到那个文件存放的文件夹，然后运行Init.cmd这个程序来初始化。初始化过程中提示设置密码，因为是在CMD命令行中，只设计了 一次密码输入，没有密码确认项，所以请设置的时候千万小心，不要忘了。它也把式Apache和MySql注册为服务，开机自启动。
+在程序文件夹中，它也带有控制面板，只不过是CMD的，但很好用。
+卸载就更容易了，在软件自带的控制面板中卸载服务，然后关把整个文件夹删掉就行。这么方便，图简便的可以试试。
+<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://download.pchome.net/development/sever/php/detail-40373.html">5. PHPStudy</a></strong>
+PHPStudy不一样，它含有IIS+PHP和Apache+PHP，软件推荐设置是后者。在任务托盘里也有图标，可以打开面板来看服务运行状态，也很简洁。
+打开localhost，出现的是标准的PHP信息界面。
+<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://www.appservnetwork.com/">6. AppServ</a></strong>
+程序安装过程中它提示你可以改变默认的80端口为服务端口，这样可以避免端口共享产生的冲 突。可有密码设置提示，但是做得比PHPNow好多了，软件还可以设置字符集，默认为UTF-8。虽然软件没有控制面板，但一切操作都在开始菜单中加入了 快捷方式，使用当然很方便。软件还带有MySql命令行终端。
+<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://www.easyphp.org/">7. EasyPHP</a></strong>
+软件如其名，真的很EASY！安装一路NEXT，但是不会把Apache和MySql加载为服务，所以每次使用都要手工来启动。软件也带简单的控制面板，其他的没什么要说的了。
+注：以上介绍原文出自linxo.cn，不过该网站已不在，就不列出原文地址了。</p>
+
+<h2 style="margin-top: 10px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: Arial, Helvetica, Verdana, sans-serif; font-size: 16px; font-weight: bold; color: #222222; line-height: 19px; padding: 0px; border: 0px initial initial;">常见的两个问题</h2>
+
+
+<p>其实我只使用过XAMPP和EasyPHP，但一般都大同小异，最常碰到的两个问题就是由于端口问题无法启动Apache，和无法在本地实现Rewrite。
+<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;">1. 由于端口问题无法启动Apache</strong>
+如果是由于端口问题无法启动Apache, 那就关闭其它程序，一个一个的试，确定是哪个占用了80端口，最常见的就是迅雷。
+<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;">2. 本地开启Rewrite模块</strong>
+其它是否适用我不知道。XAMPP和EasyPHP, 找到httpd.conf这个文件，打开编辑，把所有的AllowOverride None换成AllowOverride All， 再把#LoadModule rewrite_module modules/mod_rewrite.so前面的”#”号去掉即可。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录XXXX完美解决方法]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/wordpress-error/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/wordpress-error</id>
+    <content type="html"><![CDATA[<p> 
+今天在<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">ubuntu</span></span>上搭建了lamp环境,想本地调试一下<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">wordpress</span></span>,本来一切都非常顺利，但是到了安装插件的时候却提示
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">要执行请求的操作，<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">WordPress</span></span> 需要访问您网页服务器的权限。 请输入您的 FTP 登录凭据以继续。 如果您忘记了您的登录凭据（如用户名、密码），请联系您的网站托管商。</span>
+这是肿么回事啊？难道是我的环境问题，还是别的问题呢？经过一段时间的测试终于确定，这是本地权限的问题，因为apache2的运行用户是www-data，而不是你的当前用户。意思就是就算你拥有网站根目录的全部权限也是不行的，因为在wordpress中新上传的插件的权限都是www-data用户的，而不是你的，然后你需要解压这个插件压缩包来进行安装，但是你却没有它的使用权限，所以出现”<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">WordPress 需要访问您网页服务器的权限</span>“问题。
+说了这么多，怎么解决呢？很简单:<!--more-->
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">方法一:</strong>
+如果不是自己编译的LAMP环境，那么网站的根目录都会是/var/www/,那么把wprdpress解压到此目录后，执行
+ </p>
+
+<table style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border-collapse: collapse; padding: 0px; margin: 0px; border: 0px initial initial;"><tbody style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><tr style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<td class="line_numbers" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; text-align: right; background-color: #ddeeff; color: gray; overflow-x: visible; overflow-y: visible; margin: 0px; border: 0px initial initial;">
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1
+</span><span class='line'>2</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+<td class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1
+</span><span class='line'>2</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+</tr></tbody></table>
+
+
+<p> 
+这样就完全解决问题了.注意了,不需要把/var/www/目录的所有者也设置为www-data,而只需要设置wordpress文件夹的所有者.
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">方法二:</strong>
+wp-config.php里加入下面代码:
+ </p>
+
+<table style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border-collapse: collapse; padding: 0px; margin: 0px; border: 0px initial initial;"><tbody style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><tr style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<td class="line_numbers" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; text-align: right; background-color: #ddeeff; color: gray; overflow-x: visible; overflow-y: visible; margin: 0px; border: 0px initial initial;">
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1
+</span><span class='line'>2</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+<td class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1
+</span><span class='line'>2</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</td>
+</tr></tbody></table>
+
+
+<p> 
+这个方法的原理也是和方法一的一样，它是直接在上传的时候把权限修改了，而方法一是在任何时候都拥有上传文件的权限。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">方法三:</strong>
+把apache2的运行用户改为你的当前用户
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">方法四:</strong>
+把你的当前用户添加到www-data用户组
+到这里应该可以解决了，实在解决不了的可以留言给小狼额～
+ </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WordPress中文视频教程]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/wordpress-chinese-video-tutorial/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/wordpress-chinese-video-tutorial</id>
+    <content type="html"><![CDATA[<p><span style="font-size: 14px; text-align: justify;">对新手来说，是不错的教程。看一下会有帮助的。</span></p>
+
+<h1 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 28px; color: #333333; line-height: 1.1em; font-weight: normal; padding: 0px; border: 0px initial initial;">目录：</h1>
+
+
+<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">WordPress</span></span> 下载安装
+</strong>1、关于 <span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">WordPress</span></span> 2、WordPress 下载
+3、WordPress 远程安装(一) 4、WordPress 远程安装(二)
+5、WordPress 远程安装(三) 6、WordPress 远程安装(四)
+7、WordPress 本地安装(一) 8、WordPress 本地安装(二)
+9、WorePress 多站点管理
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">WordPress 实战操作
+</strong>1、WordPress 控制面板 2、WordPress 如何升级
+3、WordPress 手动升级 4、WordPress 主题模板
+5、WordPress 的侧边栏 6、WordPress 友链管理
+7、WordPress 定时发布 8、WordPress 栏目管理
+9、WordPress 翻页导航 10、WordPress 永久链接(一)
+11、WordPress 永久链接(二) 12、WordPress 永久链接(三)
+13、WordPress 网站地图 14、WordPress 去掉CATEGORY
+15、WordPress 调节栏目 16、WordPress 快速跳转
+17、WordPress 演示设置 18、WordPress 页面模板
+19、WordPress 过滤评论 20、WordPress 扩展编辑器
+21、WordPress 屏蔽链接 22、WordPress GZIP设置
+23、WordPress 添加表单 24、WordPress 内部链接[more]
+25、WordPress 插件加速 26、WordPress 过滤垃圾评论
+27、WordPress 标签 28、WordPress 彩色标签
+29、WordPress 投稿功能 30、WordPress 找回密码
+31、WordPress 添加相册 32、WrodPress Robots设置
+33、WordPress SQL查询 34、WordPress 导入/导出
+35、WordPress 备份还原(一) 36、WordPress 备份还原(二)
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">WordPress 主题/资源</strong>
+1、WordPress 主题层次(一) 2、WordPress 主题层次(二)
+3、WordPress 最后跳转 4、WordPress 教程结语
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="thunder://QUFlZDJrOi8vfGZpbGV8d29yZHByZXNzJUU0JUI4JUFEJUU2JTk2JTg3JUU4JUE3JTg2JUU5JUEyJTkxJUU2JTk1JTk5JUU3JUE4JThCLnppcHwxMDEwMDgzNjA5fGUwMDNmZTQ4ZTViMzllYzg3NWVhY2Y0ZDcyM2EyMTA2fGg9Znhrc3pzZ2xtNnpyNm9iYnlhejVvZHphdXJsaGVhdnN8L1pa">迅雷下载</a>
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="ed2k://%7Cfile%7Cwordpress%E4%B8%AD%E6%96%87%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B.zip%7C1010083609%7Ce003fe48e5b39ec875eacf4d723a2106%7Ch=fxkszsglm6zr6obbyaz5odzaurlheavs%7C/">电驴下载</a>
+ </p>
+]]></content>
+  </entry>
+  
+</feed>

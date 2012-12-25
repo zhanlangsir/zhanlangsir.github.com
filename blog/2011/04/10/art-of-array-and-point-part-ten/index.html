@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>数组与指针的艺术-第十章(完) - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="当写下这个题目的时候，笔者心里其实非常犯难。因为从本质上来说，本章想阐述的内容与题目所宣示的概念，其实是不一样的。在编程中，我们常常要处理一段长度未知的数据，而且，运行过程中长度可能会发生变化，现行的C/C++标准没有提供在栈段和数据段内存中的实现，只提供堆中的实现， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/10/art-of-array-and-point-part-ten/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">数组与指针的艺术-第十章(完)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">当写下这个题目的时候，笔者心里其实非常犯难。因为从本质上来说，本章想阐述的内容与题目所宣示的概念，其实是不一样的。在编程中，我们常常要处理一段长度未知的数据，而且，运行过程中长度可能会发生变化，现行的C/C++标准没有提供在栈段和数据段内存中的实现，只提供堆中的实现，例如可以象下面代码那样在堆中分配一段内存，以处理一组长度不确定的整数：</span>
+int <em>p = ( int</em> )malloc( n * sizeof( int ) );
+现在我们常常将这段堆内存称为“动态数组”。这正确吗？数组是一个高层概念，是C/C++对象模型及类型系统的重要组成。一个对象欲成为一个数组，引用此对象的表达式或标识符必须具有高层的数组类型，但这段内存没有任何数组类型的引用，只有一个指向它的指针，因此，这段内存不是C/C++高层语义上的数组。虽然p可以使用下标运算符访问内存块中的数据，但其实只不过得益于下标运算符的指针性质（如第四章所述）而已。一个真正的动态数组，不仅长度在运行期内可变，还需要具备数组类型的抽象，这要求语言规则的支持，这些条件是p所不具备的。但是，真正的动态数组的实现也不容易，往往受到效率等多重因素的制约，即使实现了也可能需要付出很大的代价，得不偿失，正因如此，C/C++标准都没有提供对动态数组的支持。不过，这段堆内存被称为“动态数组”多年来已经习惯成自然了，笔者没有为其重新命名的技术能力和资历，也就只有随波逐流，暂且也称之为动态数组吧，重要的是明白两者本质的不同。<!--more-->
+鉴于动态数组不是真正的受C/C++规则支持的动态数组，因此需要通过指针对数组内部各维地址进行构造，整个数组才能使用下标运算符。这就使动态数组的内部构造分成两部分，一部分叫数据存储区，用来保存真正的数组元素，另一部分叫中间地址缓冲区，保存数组内部各维的中间地址。
+根据数据存储区的空间连续性，可以将动态数组分成两大类，一类是具有连续存储空间的动态数组，另一类是非连续存储空间的动态数组。笔者分别将它们称为连续动态数组和离散动态数组。
+离散动态数组是最简单的动态数组，因为无须考虑数据在哪里存储，只需要动态分配就行了，同时中间地址不需要或只需要简单计算就可以得出。例如一个二维离散动态数组可以这样构造：
+int <strong>p = ( int</strong> )malloc( m * sizeof( int<em> ) );
+for( i = 0; i &lt; m; ++i )
+p[i] = ( int</em> )malloc( n * sizeof( int ) );
+上述代码中，p指向中间地址缓冲区，保存第一维各元素的首地址，p[i]指向数据存储区，这个存储区是不连续的。释放空间时需要这样进行：
+for( i = 0; i &lt; m; ++i )
+free( p[i] );
+free( p );
+离散动态数组是先构造好中间地址缓冲区，再构造数据存储区，这是造成数据空间不连续的原因，虽然构造过程简单，但非连续性带来很多缺点。一是不利于数组内部的直接寻址，例如通过数据区首地址计算元素地址；二是当需要对数组长度进行改变时，过程复杂；三是空间的释放需要对中间地址缓冲区重新遍历。但其实，完全可以先构造数据存储区，再构造中间地址缓冲区，这种方法使连续数据存储空间有了可能，而且，连续动态数组不会带来离散动态数组那些缺点。下面是构造连续动态数组的示例：
+int <em>p = ( int</em> )malloc( m * n * sizeof( int ) );
+int <strong>q = ( int</strong> )malloc( m * sizeof( int<em> ) );
+for( i = 0; i &lt; m; ++i )
+q[i] = p + i * n;
+首先p分配m</em>n个int数据的存储区，再由q根据这段空间构造中间地址。现在，不仅可以通过q[m][n]使用这个数组，还可以直接通过p和下标运算符访问数组的元素。释放空间的时候直接释放p和q就行了，需要改变数组长度的话，只须重新分配p指向的空间，再重新构造一下中间地址缓冲区，例如将上述m<em>n个int元素的数组改为k</em>j个int元素，可以这样做：
+int <em>p = ( int</em> )realloc( p, k * j * sizeof( int ) );
+int <strong>q = ( int</strong> )realloc( q, k * sizeof( int<em> ) );
+for( i = 0; i &lt; k; ++i )
+q[i] = p + i * j;
+而离散动态数组就必须先动态分配好k</em>j个int的新空间，然后把旧数据都复制过去，再释放旧空间，整个过程比连续空间麻烦得多。
+连续动态数组不仅可以使用堆中的空间，还可以在栈段和数据段中构造，只要在栈或数据段的数组对象中重新构造中间地址即可，例如：
+double a[100];
+double <strong>p = ( double</strong> )malloc( 5 * sizeof( double<em> ) );
+for( i = 0; i &lt; 5; ++i )
+p[i] = a + i * 20;
+这样就把一维double数组a的空间重新在逻辑上改造成了一个二维数组p[5][20]，注意重新构造的动态数组的长度不能超出a的空间，否则结果是不确定的，是危险的。
+上述例子在一个一维数组上构造了一个二维数组，维度发生了变化，这说明连续动态数组不仅可以方便地改变长度，还可以方便地改变维度。当目标维度可变时，中间地址的构造需要使用递归算法。笔者的博客中就提供了一个维度可变的数组ADT的例子。
+要注意的是，动态数组的中间地址不具数组类型。例如上述动态数组q[m][n]的第一维q[m]类型依然是int</em>，而一个数组对象int a[m][n]的第一维a[m]的类型是数组类型int[n]。
+综合来看，由于连续动态数组的优点比离散动态数组多得多，在编程实践中应优先使用连续动态数组。
+ </p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-c-/'>c/c++</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/10/art-of-array-and-point-part-six/" title="Previous Post: 数组与指针的艺术-第六章">&laquo; 数组与指针的艺术-第六章</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/10/art-of-array-and-point-part-three/" title="Next Post: 数组与指针的艺术-第三章">数组与指针的艺术-第三章 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

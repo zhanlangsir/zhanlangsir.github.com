@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>windows下xdebug+vim调试php程序（亲测成功） - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content=" 
+今天想用vim调试php程序，就百度搜索了一些，还真发现了vim+xdebug这个方法，前提是php环境已经搭建完了。
+php环境搭建可以参考这里：
+http://www.aitilife.com/archieves/build-php-environment/
+现在就开始吧。。
+首先： &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/10/debug-php-program-use-xdebug-and-vim-on-windows/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Windows下xdebug+vim调试php程序（亲测成功）</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p> 
+今天想用vim调试php程序，就百度搜索了一些，还真发现了vim+<span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">xdebug</span></span>这个方法，前提是php环境已经搭建完了。
+php环境搭建可以参考这里：
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/archieves/build-php-environment/">http://www.aitilife.com/archieves/build-php-environment/</a>
+现在就开始吧。。
+首先：
+建立一个php文件，里面输入：[more]
+&lt;?php
+phpinfo();
+？>
+然后在浏览器访问这个php文件，把输出内容全部复制下来（Ctrl+A,Ctrl+C),接着进入这个页面<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://xdebug.org/find-binary.php">http://xdebug.org/find-binary.php</a>，把刚才复制的内容粘贴到文本域中，然后按下面的<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">Analyse my phpinfo() output</span>按钮。
+<a href="http://www.aitilife.com/images/uploads/2011/04/xdebug.png"><img class="alignnone size-medium wp-image-1526" title="xdebug" src="http://www.aitilife.com/images/uploads/2011/04/xdebug-300x292.png" alt="" width="300" height="292"></a>
+就会出现以下页面
+<span style="font-size: 12px;"><a href="http://www.aitilife.com/images/uploads/2011/04/21.png"><img class="alignnone size-medium wp-image-1527" title="21" src="http://www.aitilife.com/images/uploads/2011/04/21-296x300.png" alt="" width="296" height="300"></a></span>
+按给出的提示完成这些工作。
+在第三步的时候再加多以下语句：</p>
+
+<table style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border-collapse: collapse; padding: 0px; margin: 0px; border: 0px initial initial;"><tbody style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><tr style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<td class="line_numbers" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; text-align: right; background-color: #ddeeff; color: gray; overflow-x: visible; overflow-y: visible; margin: 0px; border: 0px initial initial;">
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>3
+</span><span class='line'>4
+</span><span class='line'>5
+</span><span class='line'>6
+</span><span class='line'>7
+</span><span class='line'>8
+</span><span class='line'>9
+</span><span class='line'>10
+</span><span class='line'>11
+</span><span class='line'>12
+</span><span class='line'>13
+</span><span class='line'>14
+</span><span class='line'>15
+</span><span class='line'>16
+</span><span class='line'>17
+</span><span class='line'>18</span></code></pre></td></tr></table></div></figure>
+
+
+</td>
+<td class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>3
+</span><span class='line'>4
+</span><span class='line'>5
+</span><span class='line'>6
+</span><span class='line'>7
+</span><span class='line'>8
+</span><span class='line'>9
+</span><span class='line'>10
+</span><span class='line'>11
+</span><span class='line'>12
+</span><span class='line'>13
+</span><span class='line'>14
+</span><span class='line'>15
+</span><span class='line'>16
+</span><span class='line'>17
+</span><span class='line'>18</span></code></pre></td></tr></table></div></figure>
+
+
+</td>
+</tr></tbody></table>
+
+
+<p> 
+上面语句有些不是必要的，想知道这些语句是什么意思就看这里：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://xdebug.org/docs/remote">http://xdebug.org/docs/remote</a>
+到这里的时候重启服务器,xdebug已经可以生效了，可以随便输点错误代码到文件中，然后在浏览器重访问，就可以看到效果，例如：
+&lt;?php
+require_once(‘asd.php’);
+?>
+如果发现没有错误信息输出的话，查看你的phpinfo();的输出，找到下面的变量，改成下面的值就可以了。在php.ini文件中可以改。</p>
+
+<table style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border-collapse: collapse; padding: 0px; margin: 0px; border: 0px initial initial;"><tbody style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><tr style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<td class="line_numbers" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; text-align: right; background-color: #ddeeff; color: gray; overflow-x: visible; overflow-y: visible; margin: 0px; border: 0px initial initial;">
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>3
+</span><span class='line'>4
+</span><span class='line'>5
+</span><span class='line'>6
+</span><span class='line'>7
+</span><span class='line'>8
+</span><span class='line'>9
+</span><span class='line'>10
+</span><span class='line'>11
+</span><span class='line'>12
+</span><span class='line'>13
+</span><span class='line'>14
+</span><span class='line'>15
+</span><span class='line'>16
+</span><span class='line'>17
+</span><span class='line'>18</span></code></pre></td></tr></table></div></figure>
+
+
+</td>
+<td class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>3
+</span><span class='line'>4
+</span><span class='line'>5
+</span><span class='line'>6
+</span><span class='line'>7
+</span><span class='line'>8
+</span><span class='line'>9
+</span><span class='line'>10
+</span><span class='line'>11
+</span><span class='line'>12
+</span><span class='line'>13
+</span><span class='line'>14
+</span><span class='line'>15
+</span><span class='line'>16
+</span><span class='line'>17
+</span><span class='line'>18</span></code></pre></td></tr></table></div></figure>
+
+
+</td>
+</tr></tbody></table>
+
+
+<p> 
+接下来下载xdebug的vim插件，下载地址：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.vim.org/scripts/script.php?script_id=1929">http://www.vim.org/scripts/script.php?script_id=1929</a>
+把下载好的插件解压到vim主目录的pulgin目录中，例如：F:/vim/vim73.
+下一步，下载python,下载地址：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.python.org/">http://www.python.org</a>，下载2.x.x版本，先别下3.x.x版本，有的地方可能不兼容。
+安装完python后，就剩下最后一步了。
+打开刚才解压到vim主目录的pulgin目录中的debugger.py文件，Ctrl+F查找self.sessfile，把后面的/tmp/debuger…..目录修改为
+（你自己选择目录，改目录必须存在，不存在你就新建一个，例如:E:temp）debugger_vim_saved_session.” + str(os.getpid()).
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; line-height: normal; padding: 0px; margin: 0px; border: 0px initial initial;">再查找</span>[&#8216;filename&#8217;][7:]，改成[&#8216;filename&#8217;][8:]（有两处），和[&#8216;fileuri&#8217;][7:]，改为[&#8216;fileuri&#8217;][8:]（一处）。
+到此就大功高成啦。</p>
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; line-height: normal; padding: 0px; margin: 0px; border: 0px initial initial;">来测试一下效果吧。</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; line-height: normal; padding: 0px; margin: 0px; border: 0px initial initial;">先打开一个浏览器，然后在php的工作目录新建一个php文本，用vim打开它，然后按</span>F5,就会出现Waiting for a new connect….语句，然后在浏览器中访问你新建的php文本，后面加?XDEBUG_SESSION_START=1,例如：
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; line-height: normal; padding: 0px; margin: 0px; border: 0px initial initial;">http://localhost/index.php?XDEBUG_SESSION_START=1.</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; line-height: normal; padding: 0px; margin: 0px; border: 0px initial initial;">然后看vim就会产生变化了。</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; line-height: normal; padding: 0px; margin: 0px; border: 0px initial initial;">关于xdebug的使用方法请查看</span><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://xdebug.org/docs/">http://xdebug.org/docs/</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/10/debainarchlinuxgentoo-deng-jiang-he-bing-wei-chao-ji-fa-xing-ban-canterbury/" title="Previous Post: Debain/ArchLinux/Gentoo等将合并为超级发行版Canterbury">&laquo; Debain/ArchLinux/Gentoo等将合并为超级发行版Canterbury</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/10/deploy-asp-dotnet-mvc-to-iis/" title="Next Post: ASP.NET4.0 MVC  部署到 IIS 7.5 总整理">ASP.NET4.0 MVC  部署到 IIS 7.5 总整理 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

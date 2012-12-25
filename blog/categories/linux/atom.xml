@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | 挨踢人生]]></title>
+  <link href="http://zhanlangsir.github.com/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://zhanlangsir.github.com/"/>
+  <updated>2012-12-25T13:45:11+08:00</updated>
+  <id>http://zhanlangsir.github.com/</id>
+  <author>
+    <name><![CDATA[zhanlang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[fedora16安装新字体]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2012/04/06/fedora16-install-font/"/>
+    <updated>2012-04-06T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2012/04/06/fedora16-install-font</id>
+    <content type="html"><![CDATA[<p>1.将windows字体拷贝到/usr/share/fonts/truetype下面，文件夹名字可以随便起
+cp /media/c/WINDOWS/Fonts/* /usr/share/fonts/truetype/
+默认字体权限应该是755，如果不是的话，手动更改下
+chmod 755 *
+2.在/usr/share/fonts/truetype下面运行
+mkfontscale
+mkfontdir
+3.运行fc-cache -fv，刷新字体缓存。
+现在就一切ok了</p>
+
+<p>当然，前提是先su获取root权限～</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fedora16装wmware workstation8详细过程]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/11/25/install-wmware-on-fedora16/"/>
+    <updated>2011-11-25T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/11/25/install-wmware-on-fedora16</id>
+    <content type="html"><![CDATA[<p>因课程需要，要装虚拟机学习minux操作系统，所以小狼就装了wmware workstation8,但是装完之后却运行不了，说找不到kernel header，如果有安装到kernel header的话，在/usr/src目录下可以找到,没有的话就用下面的命令安装:
+su
+yum install kernel-devel
+装完后/usr/src/kernels目录下就多出了一个3.1.1-2....i686文件夹，说明kernel header已经成功安装了，但是把虚拟机需要的kernel header定位到
+/usr/src/kernels/3.1.1-2.fc16.i686/include目录后，发现还是不行
+用
+uname -r名令看了一下当前内核版本</p>
+
+<p>[root@XXXX Downloads]# uname -r
+3.1.0-7.fc16.i686</p>
+
+<p>发现是3.1.0的，原来是版本不对，升级一下内核版本就好了，升级内核命令(同时升级所有能升级的东西)
+su
+yum update</p>
+
+<p>然后重启，登录的时候选择3.1.1-2版本的内核。</p>
+
+<p>重启后，再运行vmware的时候，确实没有再说找不到kernel-header了，但是要编译kernel供vmware使用，在点同意编译和输入root用户密码后，界面闪了一下，吓了小狼一跳，然后。。。。就木有然后了。。</p>
+
+<p>其实装很多大型的软件都有这种情况，比如IBM的Rational software architect,是因为没有root权限，无法对需要的文件进行访问。所以用root身份去运行就好了。具体步骤如下：</p>
+
+<p>su</p>
+
+<p>/usr/bin/wmware</p>
+
+<p>然后等待编译，编译完成之后就可以看到熟系的wmware界面出现了</p>
+
+<p>而升级内核后引导菜单会多出几项选择，去掉旧内核版本菜单的方法可以看这里：<a href="http://hi.baidu.com/knityster/blog/item/9cc58f0e8ca61ec67acbe12e.html">http://hi.baidu.com/knityster/blog/item/9cc58f0e8ca61ec67acbe12e.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[fedora玩三国杀显示乱码]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/11/15/fedora14-appear-garbled-when-play-sanguosh/"/>
+    <updated>2011-11-15T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/11/15/fedora14-appear-garbled-when-play-sanguosh</id>
+    <content type="html"><![CDATA[<p>在fedora玩三国杀的时候，发现界面上的字都可以正常显示，但是聊天发的消息全都是乱码，虽然不影响游戏，但就是不爽啊。。。。</p>
+
+<p>解决办法就是安装cjkuni-uming-fonts字体。</p>
+
+<p>具体步骤：</p>
+
+<p>打开终端，输入su获取管理员权限</p>
+
+<p>输入yum install cjkuni-uming-fonts 回车</p>
+
+<p>坐等安装完成就可以了～</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[fedora15+win7双系统重装win7后恢复fedora15引导]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/07/03/resume-fedora15-grub/"/>
+    <updated>2011-07-03T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/07/03/resume-fedora15-grub</id>
+    <content type="html"><![CDATA[<p>之前写过一篇恢复ubuntu引导的文章,本来以为fedora15可以跟ubuntu一样恢复引导，但是实际上还是遇到了一些问题，现在记录下来以防以后忘记了！</p>
+
+<p>想了解如何恢复ubuntu引导可以点这里：</p>
+
+<p><a href="resume-ubuntu-grub">ubuntu10.10+win7双系统重装win7后恢复ubuntu引导方法</a></p>
+
+<p><strong>恢复引导方法：</strong></p>
+
+<p>1.放进liveCD,重启,看到有界面出来的时候,选择试用,不要点安装。</p>
+
+<p>2.进入fedora15试用版后,打开终端</p>
+
+<p>3.输入以下命令:</p>
+
+<p>su</p>
+
+<p>fdisk -l //得到的结果类似下面。查看fedora的根目录在那,这里没办法直接看出来,只能靠你自己识别,可以从分区的大小判断是不是根分区，就是在装fedora时，挂载点为 / 的那个分区<!--more--></p>
+
+<p><a href="http://www.aitilife.com/images/uploads/2011/07/fdisk.png"><img class="alignnone size-medium wp-image-1445" title="fdisk" src="http://www.aitilife.com/images/uploads/2011/07/fdisk-300x127.png" alt="" width="300" height="127"></a></p>
+
+<p>从图中的结果看出来，根分区在sda12.因为小狼记得分/分区的时候是分了20G的大小，并且当时是先分了/分区，然后再分了一个20G的/home分区的。所以判断出sda12是/分区，而不是sda13，虽然它也是20G.把sda12记住。</p>
+
+<p> </p>
+
+<p><strong>注意：如果分区的时候，你单独把boot分区分出来了，</strong><strong>还要多一步工作，就是找出boot分区:</strong></p>
+
+<p>从上图可以看出,boot分区在sda8，因为它是最小的，只有200M.（你装ubuntu的时候分了多少就是多少）</p>
+
+<p>记住sda8。</p>
+
+<p>mount /dev/你的/根分区所在位置 /mnt</p>
+
+<p>5.输入</p>
+
+<p>grub-install –root-directory=/mnt /dev/sda</p>
+
+<p>这里应该不会有什么问题，因为如果位置不对，无法安装，你可以一直输这个命令直到位置对了为止.</p>
+
+<p>6.如果出现了no error report。那你就差不多成功了.然后sudo init 6.重启。</p>
+
+<p>7.重启之后你会无奈地发现……windows也无法启动了，进入的是grub的命令行…..不要怕。进到这里你已经离成功不远了.</p>
+
+<p>输入:</p>
+
+<p>root (hdX,Y） //x为硬盘位置，如果你只有一快硬盘,X=0,如果有多块，相应设置x。Y为boot分区所在位置,这里是8.如果没有单独分boot分区,y就是你的/分区所在位置</p>
+
+<p>kenrel /vmlinuz-2.xxxxx-generic root=/dev/sda12(无论你有没有把boot分区单独分出来,这里都要写/根分区的位置，否则无法完成启动,这里可以按tab完成填写)</p>
+
+<p> </p>
+
+<p><strong style="padding: 0px; margin: 0px;"><span style="color: #ff0000;">注意：</span></strong>
+这里就跟ubuntu的不一样，没有linux命令,要用kenrel
+如果没有单独把boot分区分出来，就是</p>
+
+<p>kenrel/boot/vmlinuz-2.xxxxx-generic root=/dev/sda12</p>
+
+<p>然后输入：</p>
+
+<p>initrd /initrd.img-2.xxxxx-generic</p>
+
+<p>或</p>
+
+<p>initrd /boot/initrd.img-2.xxxxx-generic(无单独boot分区的情况)</p>
+
+<p>最后</p>
+
+<p>boot</p>
+
+<p>就可以进入fedora15桌面了。</p>
+
+<p>接下来就是更新grub版本,fedora15自带的grub竟然是0.98版本的,可以在终端中输入grub-install -v就能看见，虽然老版本也可以，但是为了方便还是升级到grub2吧</p>
+
+<p>升级方法:</p>
+
+<p><strong>su</strong></p>
+
+<p><strong>yum install grub2</strong></p>
+
+<p><strong>安装完后输入</strong></p>
+
+<p><strong>grub2-install /dev/sda</strong></p>
+
+<p><strong>grub-mkconfig -o /boot/grub/grub.cfg</strong></p>
+
+<p>这时候工作就完成的一部分了，这时候重启已经可以看到引导菜单，但是只有fedora的引导菜单，grub探针发现不了win7的引导，</p>
+
+<p>所以小狼就只能手动引导win7了,打开终端，获取root权限,然后输入</p>
+
+<p>vi /boot/grub2/grub.cfg</p>
+
+<p>找到类似下面语句的部分</p>
+
+<p>menuentry "Fedora" {</p>
+
+<p>set root=(hd0,1)</p>
+
+<p>search --no-floppy --fs-uuid --set cb201140-52f8-4449-9a95-749b27b58ce8</p>
+
+<p>linux /boot/vmlinuz-2.6.31-11-generic root=UUID=cb201140-52f8-4449-9a95-749b27b58ce8 ro quiet splash</p>
+
+<p>initrd /boot/initrd.img-2.6.31-11-generic</p>
+
+<p>}</p>
+
+<p>在所有menuentry之后，END####之前输入</p>
+
+<p>menuentry "Win7" {</p>
+
+<p>set root=(hd0,1)</p>
+
+<p>chainloader +1</p>
+
+<p>}</p>
+
+<p>其中的Win7是你将看到的win7引导菜单名，可以随便写,而第二行的set root(hd0,1)中的1,一般就是你的win7C盘所在的分区,而大部分电脑都会按照在第一个分区，如果你的是特例，可以用fdisk -l确认一下你的win7系统盘所在分区，把1修改为对应分区号。</p>
+
+<p>然后保持重启，大功告成！</p>
+
+<p><strong>注意：</strong></p>
+
+<p>除了添加上面一段语句，其他的就别修改了，除非你很熟系。官方文档中也多次强调不应该直接修改grub.cfg文件，官方文档中说明应该在/etc/default/grub文件中添加其他引导实体，即上面的3句语句，然后运行grub2-mkconfig -o /boot/grub2/grub.cfg命令，效果是一样的，但是会更安全，因为不需要直接修改引导配置文件。但是小狼图个方便就直接修改grub.cfg了，原谅俺吧。。。。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[fedora15下安装kde4.6.2]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/06/16/install-kde4-6-2-in-fedora15/"/>
+    <updated>2011-06-16T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/06/16/install-kde4-6-2-in-fedora15</id>
+    <content type="html"><![CDATA[<p><span style="font-size: medium;">先发一下牢骚，gnome3真是逊毙了，完全颠覆了用户的使用习惯，这样就叫创新？这样就叫注重用户体验吗？用起来太不习惯了，没办法，只能换kde了。当然，我还是十分期待gnome3的下一次升级，希望真的以用户的使用习惯为重点，而不是为了界面效果。</span></p>
+
+<p><span style="font-size: medium;">牢骚发完就开始干正事了。</span></p>
+
+<p>1.先下载<a href="http://apt.kde-redhat.org/apt/kde-redhat/fedora/kde.repo">kde.repo</a>，下载完后把它放到/etc/yum.repos.d/目录下</p>
+
+<p>su</p>
+
+<p>mv ~/download/kde.repo /etc/yum.reops.d/ (第一个路径修改为你下载好的kde.repo所在路径)</p>
+
+<p>然后用</p>
+
+<p>yum groupupdate kde-desktop</p>
+
+<p>命令开始安装，要下载200多M的东西，慢慢等吧。<!--more--></p>
+
+<p>安装完后再yum update更新一下系统，OK～</p>
+
+<p>kde桌面已经成功安装。</p>
+
+<p>============华丽的分割线==================</p>
+
+<p>上面步骤如果在yum update时出现了错误，不用管它，那只是某些软件安装不上，可以以后再装。</p>
+
+<p>然后注销一下，再登录的时候，可以选择kde或者gnome桌面环境的～就是说，如果你觉得kde太卡或者不爽的话可以随时换回gnome桌面，但是小狼认为kde桌面比现在的gnome3好太多了，最重要的就是符合我们的使用习惯，不用切换来切换去，使用起来比较直观，当然桌面效果绝对不比gnome差～</p>
+
+<p>漏了图,现在补上</p>
+
+<p><a href="http://www.aitilife.com/images/uploads/2011/06/desktop.png"><img class="alignnone size-medium wp-image-1447" title="desktop" src="http://www.aitilife.com/images/uploads/2011/06/desktop-300x187.png" alt="" width="300" height="187"></a></p>
+
+<p>^_<sup>，怎么样，还不错吧，就是字体还有点问题，去调整一下先。</sup></p>
+]]></content>
+  </entry>
+  
+</feed>

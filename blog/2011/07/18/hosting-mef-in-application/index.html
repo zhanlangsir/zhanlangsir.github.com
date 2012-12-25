@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>MEF编程手册一：在应用中寄宿MEF - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="在应用中寄宿MEF涉及到创建一个CompositionContainer的实例，添加Composable Part到容器中,包含应用程序宿主然后组合在一起。 在应用中寄宿MEF涉及到以下步骤： 1.创建一个宿主类。在下面的例子中，我们会使用一个console程序，所以宿主会是Program类。 2 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/07/18/hosting-mef-in-application/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">MEF编程手册一：在应用中寄宿MEF</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-18T00:00:00+08:00" pubdate data-updated="true">Jul 18<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div>在应用中寄宿MEF涉及到创建一个CompositionContainer的实例，添加Composable Part到容器中,包含应用程序宿主然后组合在一起。</div>
+
+
+<div>在应用中寄宿MEF涉及到以下步骤：</div>
+
+
+<div>1.创建一个宿主类。在下面的例子中，我们会使用一个console程序，所以宿主会是Program类。</div>
+
+
+<div>2.添加System.ComponentModel.Composition装配件的引用</div>
+
+
+<div>3.添加using语句：using System.ComponentModel.Composition</div>
+
+
+<div>4.添加Compose()方法来创建容器的实例然后组合宿主应用</div>
+
+
+<div>5.添加Run()方法来调用Compose()</div>
+
+
+<div>6.在Main()方法中实例化宿主类</div>
+
+
+<div>注意：</div>
+
+
+<div>对于ASP.NET或者WPF应用程序，宿主类是在运行时实例化的，所以第6步不是必须的</div>
+
+
+<div>以下代码片段指示代码的大概:</div>
+
+
+<div>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
+</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
+</span><span class='line'>  using System.Reflection;
+</span><span class='line'>  using System;
+</span><span class='line'>
+</span><span class='line'>  public class Program
+</span><span class='line'>  {
+</span><span class='line'>    public static void Main(string[] args)
+</span><span class='line'>    {
+</span><span class='line'>      Program p = new Program();
+</span><span class='line'>      p.Run();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    public void Run()
+</span><span class='line'>    {
+</span><span class='line'>      Compose();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    private void Compose()
+</span><span class='line'>    {
+</span><span class='line'>      var container = new CompositionContainer();
+</span><span class='line'>      container.ComposeParts(this);
+</span><span class='line'>    }
+</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+
+
+<div>
+<!--more-->7.定义一个或者多个宿主将会导入的出口(exports)，在下面的代码中，我们定义一个IMessageSender接口和一个EmailSender Composable Part，EmailSender Composable Part导出一个IMessageSender,IMessageSender通过[System.ComponentModel.Composition.Export]属性声明它将会被导出。</div>
+
+
+<div>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
+</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
+</span><span class='line'>  using System.Reflection;
+</span><span class='line'>  using System;
+</span><span class='line'>
+</span><span class='line'>  public class Program
+</span><span class='line'>  {
+</span><span class='line'>    public static void Main(string[] args)
+</span><span class='line'>    {
+</span><span class='line'>      Program p = new Program();
+</span><span class='line'>      p.Run();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    public void Run()
+</span><span class='line'>    {
+</span><span class='line'>      Compose();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    private void Compose()
+</span><span class='line'>    {
+</span><span class='line'>      var container = new CompositionContainer();
+</span><span class='line'>      container.ComposeParts(this);
+</span><span class='line'>    }
+</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+
+
+<div>8.在宿主类中为每个入口添加属性，通过[System.ComponentModel.Composition.Import]属性装饰声明。例如</div>
+
+
+<div>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
+</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
+</span><span class='line'>  using System.Reflection;
+</span><span class='line'>  using System;
+</span><span class='line'>
+</span><span class='line'>  public class Program
+</span><span class='line'>  {
+</span><span class='line'>    public static void Main(string[] args)
+</span><span class='line'>    {
+</span><span class='line'>      Program p = new Program();
+</span><span class='line'>      p.Run();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    public void Run()
+</span><span class='line'>    {
+</span><span class='line'>      Compose();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    private void Compose()
+</span><span class='line'>    {
+</span><span class='line'>      var container = new CompositionContainer();
+</span><span class='line'>      container.ComposeParts(this);
+</span><span class='line'>    }
+</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+
+
+<div>9.添加组合部件到容器中，在MEF中，有几中方法可以完成这个任务，一种是直接添加存在的部件实例，而第二种方法是通过一个目录(这种方法更加常用，目录将会在后面的章节提到)</div>
+
+
+<div><strong>直接添加parts到容器中</strong></div>
+
+
+<div>在Compose()方法中手动添加每一个需要组合的部件，通过ComposeParts()扩展方法完成这个不知。在以下的例子中，EmailSender的实例将会和当前导入ImessageSender的宿主类一起添加到容器中</div>
+
+
+<div>
+<div>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
+</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
+</span><span class='line'>  using System.Reflection;
+</span><span class='line'>  using System;
+</span><span class='line'>
+</span><span class='line'>  public class Program
+</span><span class='line'>  {
+</span><span class='line'>    public static void Main(string[] args)
+</span><span class='line'>    {
+</span><span class='line'>      Program p = new Program();
+</span><span class='line'>      p.Run();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    public void Run()
+</span><span class='line'>    {
+</span><span class='line'>      Compose();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    private void Compose()
+</span><span class='line'>    {
+</span><span class='line'>      var container = new CompositionContainer();
+</span><span class='line'>      container.ComposeParts(this);
+</span><span class='line'>    }
+</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+</div>
+
+
+<div><strong>通过装配件目录添加parts</strong></div>
+
+
+<div>通过使用目录，容器自动创建parts而不必明确添加他们。为了完成这个步骤，在Compose()方法中创建一个目录,然后把它传递到容器的构造函数中</div>
+
+
+<div>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
+</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
+</span><span class='line'>  using System.Reflection;
+</span><span class='line'>  using System;
+</span><span class='line'>
+</span><span class='line'>  public class Program
+</span><span class='line'>  {
+</span><span class='line'>    public static void Main(string[] args)
+</span><span class='line'>    {
+</span><span class='line'>      Program p = new Program();
+</span><span class='line'>      p.Run();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    public void Run()
+</span><span class='line'>    {
+</span><span class='line'>      Compose();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    private void Compose()
+</span><span class='line'>    {
+</span><span class='line'>      var container = new CompositionContainer();
+</span><span class='line'>      container.ComposeParts(this);
+</span><span class='line'>    }
+</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+
+
+<div>做完以上所有步骤后，所有的代码应该像这样</div>
+
+
+<div>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
+</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
+</span><span class='line'>  using System.Reflection;
+</span><span class='line'>  using System;
+</span><span class='line'>
+</span><span class='line'>  public class Program
+</span><span class='line'>  {
+</span><span class='line'>    public static void Main(string[] args)
+</span><span class='line'>    {
+</span><span class='line'>      Program p = new Program();
+</span><span class='line'>      p.Run();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    public void Run()
+</span><span class='line'>    {
+</span><span class='line'>      Compose();
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    private void Compose()
+</span><span class='line'>    {
+</span><span class='line'>      var container = new CompositionContainer();
+</span><span class='line'>      container.ComposeParts(this);
+</span><span class='line'>    }
+</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+
+
+<p>当以上代码被编译和执行，应用程序将会和IMessageSender组合在一起.Send()方法会被调用然后输出&#8221;Message Sent&#8221;到console窗口中。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-18T00:00:00+08:00" pubdate data-updated="true">Jul 18<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/dotnet/'>DotNet</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/07/15/using-viewmode-to-simplify-treeview/" title="Previous Post: 【WPF】翻译：使用ViewModel模式来简化WPF的TreeView">&laquo; 【WPF】翻译：使用ViewModel模式来简化WPF的TreeView</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/07/21/wpf-demystify-download/" title="Next Post: wpf揭秘pdf+源代码下载">wpf揭秘pdf+源代码下载 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

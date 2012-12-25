@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content=" 
+安装环境：fedora14
+所需的软件包: jdk 1.6.0      mtj1.1.0(eclipseme的升级版本)     Wireless Toolkit 2.5.2    (都是当前最新版本)
+下载地址如下：
+eclipse:官方下载页面
+mtj1.1.0：官方下载页面（ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/page/16/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/building-j2me-dev-env-on-fedora14/">Fedora14下搭建j2me开发环境</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">安装环境</strong>：fedora14
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">所需的软件包</strong>: jdk 1.6.0      mtj1.1.0(eclipseme的升级版本)     Wireless Toolkit 2.5.2    (都是当前最新版本)
+下载地址如下：
+eclipse:<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=jdk-6u22-oth-JPR@CDS-CDS_Developer">官方下载页面</a>
+mtj1.1.0：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.eclipse.org/dsdp/mtj/">官方下载页面</a>（也可以安装eclipse后通过installnewsoftware安装,updatesite为：http://download.eclipse.org/dsdp/mtj/updates/1.1.1/stable/，添加到eclipse中即可，eclipse中已自带mtj的update site链接，但是不是最新版）
+Wireless Toolkit 2.5.2：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=sun_java_wireless_toolkit-2.5.2_01b-oth-JPR@CDS-CDS_Developer">官方下载页面</a>[more]
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">3. 安装步骤:</strong>
+a.安装jdk1.6.0
+在下载好的jdk所在的目录中，先给它可执行权限
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">$ chmod o+x jdk名</span>
+然后用
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #0000ff; padding: 0px; margin: 0px; border: 0px initial initial;">$sh jdk文件名</span> 命令安装
+安装时会让你同意什么版权之类的，YES就可以了，默认的安装路径是/usr/<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="java" href="http://www.aitilife.com/category/develop-technology/java">java</a>。安装完可以在这里找到它。
+jdk安装好后，但还需要设置java的路径，可以修改用户根目录下的.bash_profile文件，命令如下：
+$edit ~/.bash_profile
+然后在文件的最后面加入下面这段：
+export JAVA_HOME=/usr/jdk1.6XXX   (这是默认的安装目录，如果你安装在其他目录的话，选择你安装的目录，后面的是目录名，不是真的就是jdk1.6.0XXX,下同)
+export JRE_HOME=/usr/jdk1.6XXX/jre
+export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+保存(ctrl+w)，退出(ctrl+x)
+这样，java的环境变量就设置好了，</p>
+
+<h2 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 25px; color: #333333; line-height: 1.1em; font-weight: normal; padding: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 25px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 25px; padding: 0px; margin: 0px; border: 0px initial initial;">注意：</strong></span></h2>
+
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">这样添加环境变量需要重启才会生效，但是现在先别重启，等全部安装完成再重启，如果没设置上面的环境变量使用eclipse的j2me插件时候就会出现</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">An <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="error" href="http://www.aitilife.com/tag/error">error</a> (gnu.xml.dom.ls.DomLSException: duplicate attribute: “version”) occurred reading the device registry.Please consult the error log for more information.</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">这样的错误，因为这时候使用的是系统自带的gun java，而不是你下载的sun java。</span>
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">b. 安装eclipse</strong>
+eclipse其实不需要安装，解压后是直接可以用的
+从eclipse网站下载对应的<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">linux</span></span>版本，然后放到你想要放的目录，比如你的home目录
+你会看到在你的主目录下有一个eclipse文件夹
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">c. 安装wtk</strong>
+其实安装wtk和安装jdk很类似，因为它也是一个bin软件包
+先给它可执行权限
+$ chmod o+x wtk名
+然后运行
+$ sh ./wtk名(在wtk的bin文件所在目录下这样，不是的话可以用cd进入该目录，或者在sh命令后加上绝对路径)
+安装的时候会让你设置wtk安装目录，默认是/home/wtk2.5.2，你也可以自己选择安装目录，没关系的
+其他的根据它的提示选择好了。
+e. 安装mtj1.1.0，原来的eclipseme已经被mtj代替，用eclipseme的话会出现<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">Errors occurred during the build.Errors running builder ‘Preverification’ 。。。错误</span>
+地址上面已经给出，打开eclipse，然后点右上的help->install new software->Add, name随便写，例如mtj.
+locate就写http://download.eclipse.org/dsdp/mtj/updates/1.1.1/stable/。点OK 后下面会出现mtj的，安装就行。
+然后设定j2me的device
+打开eclipse,然后window–>preference
+选择左边中的【JAVA ME】，展开后选择Device Management
+然后点击【Manaul install】，把其中的路径指向wtk-2.5.2,点确定
+然后点【refresh】，eclipse自动搜索那个目录，然后把device添加进去
+到这里，j2me的开发环境就搭建好了～希望对新手有所帮助
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/bian-yi-shi-da-kai-le--enable-guignome2-xuan-xiang--que-mei-you-gvim/">编译时打开了&#8211;enable-gui=gnome2选项，却没有gvim</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+参考了易水博客的说明，
+他介绍的原因是conftest.c:16:27: <span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">error</span></span>: X11/Intrinsic.h: No such file or directory，即没有这个文件，解决办法是安装libxt-dev包，直接apt-get就可以。
+我看了一下我的原因，发现错误不一样，是没有X11/SM/sm_XXX.h,这个文件，同理，apt-get install sm.
+接下来发现还是不行，继续查看log，发现libgnome没有找到，接着apt-get install libgnomeui-dev.
+还有一个一下三个包（python2.6-dev是为了打开python这个特性，如果不需要，可以不用）。
+sudo apt-get install libncurses5-dev python2.6-dev xorg-dev
+ 
+注意：
+我编译的时候加了–enable-gui=gnome2选项，但是结果出来的还是gtk2.0版本，因为默认的是不检测gnome的，可以用–enable-gnome-check打开检测。。
+附上我的编译选项：</p>
+
+<div id="_mcePaste" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">./configure –with-features=huge –enable-gui=gnome2 –enable-multibyte –enable-gnome-check –enable-xim –enable-cscope –enable-pythoninterp –enable-python3interp –with-python-config-dir=/usr/lib/python2.6/config –enable-fontset –enable-perlinterp</em></div>
+
+
+<p>对应的开发语言接口必须要先安装他们。在python的时候遇到了些问题，就是我安装了2.7的，但是检测到的还是2.6，而想卸掉2.6，那么就会把一大堆依赖项卸掉，最后导致系统崩溃。所以只能用2.6,虽然没什么影响，但是我想知道怎么升级到2.7,而把2.6卸掉，知道的可以告诉我一下~</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/ba-ge-shi-fen-qiang-da-de-wordpress-cha-jian/">八个十分强大的WordPress插件</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>作者：Jon  翻译：William Long
+<span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">WordPress</span></span>是一个非常流行的免费网站内容管理软件，然而同时，如果你想为你的网站提供一个良好的平台，那么就需要在默认的<span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">WordPress</span></span>中增加一些自定义的功能。最简单的方法就是插件。只要将一些特殊的文件放到Wordpress的安装目录下，就可以得到新的功能。这里介绍8个绝对物超所值的Wordpress插件。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">WP Shortstat</strong>
+Jeff Minard开发的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://jrm.cc/archives/blog/wp-shortstat/" target="_blank">WP-Shortstat</a>，是将一个简单的网站统计软件“Shortstat”移植到Wordpress。如果你是OS X用户，你还可以下载<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.keeganjones.com/widgets/shortstat/" target="_blank">WP-Shortstat Widget</a>桌面版。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Get Custom</strong>
+经常有Wordpress的新用户问我，“怎么往文章中插入附件呢？”，默认的Wordpress不提供这样的功能，但是它提供了方法。在Wordpress中你可以使用“Custom Fields”来贴上自定义数据，Scott Reilly的“<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.coffee2code.com/archives/2004/06/30/plugin-get-custom/" target="_blank">Get Custom</a>”插件可以很容易地做到这一点。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/ba-ge-shi-fen-qiang-da-de-wordpress-cha-jian/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-two/">数组与指针的艺术-第二章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">数组名是一个指针常量吗？</strong>
+数组名是一个指针常量这种观点来源于数组名在表达式计算中与指针的结果等效性。例如下面的代码：
+int a[10], <em>p = a, </em>q;
+q = a + 1;
+q = p + 1;
+在效果上看，a + 1与 p + 1是相同的，这很容易给人一种a就是p的假象，但，这仅仅是假象。鉴于指针常量包含了指针和常量两类概念，我们可以把这个问题分开两部分进行讨论。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-two/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-three/">数组与指针的艺术-第三章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">C/C++的数组不同于VB等语言的数组，是有层次的，这个层次指的不是维度，而是象俄罗斯有名的套娃一样，一维套一维，亦即数组的嵌套，数组的元素也是数组，VB等语言的数组与之相比更像一个平面。</span>
+数组嵌套这个现象从其它语言的角度来看有点奇特，但其实原因也很简单。C/C++的对象模型并不视数组为某种数值的简单集合，而是对象的聚集，每个元素都是一个对象。元素为整数对象，就是整数数组，为浮点数对象，就是浮点数数组。然而，数组本身也是一种对象，因此一个数组也能作为另一个数组的元素。当某个一维数组以一维数组作为元素时，这个一维数组每个元素都具有数组类型，这个一维数组其实是二维数组，同理，一个以二维数组作为元素的一维数组其实是三维数组。因此，使用C/C++数组的时候应该用数组嵌套的观点去看待。有人据此认为，C/C++的数组不是真正的数组，还有的认为C/C++没有多维数组，这些观点都有失偏颇，与其它语言的数组相比，两者只是同一事物的不同实例，是实现方法的不同，而本质是一样的，C/C++的数组嵌套可视为对数组概念的发展。
+现在来看看数组的定义：</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-three/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-ten/">数组与指针的艺术-第十章(完)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">当写下这个题目的时候，笔者心里其实非常犯难。因为从本质上来说，本章想阐述的内容与题目所宣示的概念，其实是不一样的。在编程中，我们常常要处理一段长度未知的数据，而且，运行过程中长度可能会发生变化，现行的C/C++标准没有提供在栈段和数据段内存中的实现，只提供堆中的实现，例如可以象下面代码那样在堆中分配一段内存，以处理一组长度不确定的整数：</span>
+int <em>p = ( int</em> )malloc( n * sizeof( int ) );
+现在我们常常将这段堆内存称为“动态数组”。这正确吗？数组是一个高层概念，是C/C++对象模型及类型系统的重要组成。一个对象欲成为一个数组，引用此对象的表达式或标识符必须具有高层的数组类型，但这段内存没有任何数组类型的引用，只有一个指向它的指针，因此，这段内存不是C/C++高层语义上的数组。虽然p可以使用下标运算符访问内存块中的数据，但其实只不过得益于下标运算符的指针性质（如第四章所述）而已。一个真正的动态数组，不仅长度在运行期内可变，还需要具备数组类型的抽象，这要求语言规则的支持，这些条件是p所不具备的。但是，真正的动态数组的实现也不容易，往往受到效率等多重因素的制约，即使实现了也可能需要付出很大的代价，得不偿失，正因如此，C/C++标准都没有提供对动态数组的支持。不过，这段堆内存被称为“动态数组”多年来已经习惯成自然了，笔者没有为其重新命名的技术能力和资历，也就只有随波逐流，暂且也称之为动态数组吧，重要的是明白两者本质的不同。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-ten/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-six/">数组与指针的艺术-第六章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">const一词在字面上来源于常量constant，const对象在C/C++中是有不同解析的，如第二章所述，在C中常量表达式必须是编译期，运行期的不是常量表达式，因此C中的const不是常量表达式；但在C++中，由于去掉了编译期的限定，因此是常量表达式。</span>
+对于一个指向const对象的指针pointer to const T，由于把const视作常量表达式，常常存在如下两种观点：
+1。这是一个指向常量的指针，简称常量指针；
+2。这个指针指向的内容不可改变。
+这是比较粗糙的理解。虽然这个指针的类型是pointer to const T，但不代表它指向的对象真的是一个常量或者不可改变，例如：
+int i = 10;
+const int <em>p = &i;
+i = 20;
+p指向的对象i明显不是常量，虽然p指向i，但i的值依然可以改变。对于这个现象，C++标准有明确的论述：
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">7.1.5.1 The cv-qualifiers</strong>
+a pointer or reference to a cv-qualified type need not actually point or refer to a cv-qualified object, but it is treated as if it does;
+其中cv指的是const和volatile，const和volatile叫type qualifier，类型限定词。const T只是类型假定，并非指出该对象是什么，这个对象也许是const限定的，也许不是。既然上述两种看法都是不恰当的，pointer to const T又应如何看待呢？一种比较好的理解是，将其视作一条访问路径。对一个对象进行取值或者修改操作，可以有很多种方法，每种方法都相当于一条能够对对象进行访问的路径，例如：</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-six/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-seven/">数组与指针的艺术-第七章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">首先看看如下一个声明：</span>
+int<em> ( </em>( <em>fun )( int</em> ) )[10];
+这是一个会让初学者感到头晕目眩、感到恐惧的函数指针声明。在熟练掌握C/C++的声明语法之前，不学习一定的规则，想理解好这类复杂声明是比较困难的。
+C/C++所有复杂的声明结构，都是由各种声明嵌套构成的。如何解读复杂指针声明？右左法则是一个很著名、很有效的方法。不过，右左法则其实并不是C/C++标准里面的内容，它是从C/C++标准的声明规定中归纳出来的方法。C/C++标准的声明规则，是用来解决如何创建声明的，而右左法则是用来解决如何辩识一个声明的，从嵌套的角度看，两者可以说是一个相反的过程。右左法则的英文原文是这样说的：
+The right-left rule: Start reading the declaration from the innermost parentheses, go right, and then go left. When you encounter parentheses, the direction should be reversed. Once everything in the parentheses has been parsed, jump out of it. Continue till the whole declaration has been parsed.
+这段英文的翻译如下：
+右左法则：首先从最里面的圆括号看起，然后往右看，再往左看。每当遇到圆括号时，就应该掉转阅读方向。一旦解析完圆括号里面所有的东西，就跳出圆括号。重复这个过程直到整个声明解析完毕。
+笔者要对这个法则进行一个小小的修正，应该是从未定义的标识符开始阅读，而不是从括号读起，之所以是未定义的标识符，是因为一个声明里面可能有多个标识符，但未定义的标识符只会有一个。
+现在通过一些例子来讨论右左法则的应用，先从最简单的开始，逐步加深：
+int (<em>func)(int </em>p);
+首先找到那个未定义的标识符，就是func，它的外面有一对圆括号，而且左边是一个<em>号，这说明func是一个指针，然后跳出这个圆括号，先看右边，也是一个圆括号，这说明(</em>func)是一个函数，而func是一个指向这类函数的指针，就是一个函数指针，这类函数具有int<em>类型的形参，返回值类型是int。
+int (</em>func)(int <em>p, int (</em>f)(int<em>));
+func被一对括号包含，且左边有一个</em>号，说明func是一个指针，跳出括号，右边也有个括号，那么func是一个指向函数的指针，这类函数具有int <em>和int (</em>)(int<em>)这样的形参，返回值为int类型。再来看一看func的形参int (</em>f)(int<em>)，类似前面的解释，f也是一个函数指针，指向的函数具有int</em>类型的形参，返回值为int。
+int (<em>func[5])(int </em>p);
+func右边是一个[]运算符，说明func是一个具有5个元素的数组，func的左边有一个<em>，说明func的元素是指针，要注意这里的</em>不是修饰func的，而是修饰func[5]的，原因是[]运算符优先级比<em>高，func先跟[]结合，因此</em>修饰的是func[5]。跳出这个括号，看右边，也是一对圆括号，说明func数组的元素是函数类型的指针，它所指向的函数具有int<em>类型的形参，返回值类型为int。
+int (</em>(<em>func)[5])(int </em>p);
+func被一个圆括号包含，左边又有一个<em>，那么func是一个指针，跳出括号，右边是一个[]运算符号，说明func是一个指向数组的指针，现在往左看，左边有一个</em>号，说明这个数组的元素是指针，再跳出括号，右边又有一个括号，说明这个数组的元素是指向函数的指针。总结一下，就是：func是一个指向数组的指针，这个数组的元素是函数指针，这些指针指向具有int<em>形参，返回值为int类型的函数。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-seven/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-one/">数组与指针的艺术-第一章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: large; padding: 0px; margin: 0px; border: 0px initial initial;">数组与指针概念剖析</span></strong>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">数组与指针生来就是双胞胎，多数人就是从数组的学习开始指针的旅程的。在学习的过程中，很自然就会经常听到或见到关于数组与指针的各种各样的看法，下面我节选一些在各种论坛和文章里经常见到的文字：</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">“一维数组是一级指针”</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">“二维数组是二级指针”</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">“数组名是一个常量指针”</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">“数组名是一个指针常量”</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">……………………</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: medium; padding: 0px; margin: 0px; border: 0px initial initial;">这些文字看起来非常熟悉吧？类似的文字还有许多。不过非常遗憾，这些文字都是错误的，实际上数组名永远都不是指针！这个结论也许会让你震惊，但它的确是事实。但是，在论述这个问题之前，首先需要解决两个问题：什么是指针？什么是数组？这是本章的主要内容，数组名是否指针这个问题留在第二章进行讨论。看到这里，也许有人心里就会嘀咕了，这么简单的问题还需要说吗？int *p, a[10];不就是指针和数组吗？但是，笔者在过往的讨论过程中，还真的发现有不少人对这两个概念远非清晰，这会妨碍对后面内容的理解，所以还是有必要先讨论一下。</span></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-one/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-nine/">数组与指针的艺术-第九章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">C90及C++的数组对象定义是静态联编的，在编译期就必须给定对象的完整信息。但在程序设计过程中，我们常常遇到需要根据上下文环境来定义数组的情况，在运行期才能确知数组的长度。对于这种情况，C90及C++没有什么很好的办法去解决（STL的方法除外），只能在堆中创建一个内存映像与需求数组一样的替代品，这种替代品不具有数组类型，这是一个遗憾。C99的可变长数组为这个问题提供了一个部分解决方案。</span>
+可变长数组（variable length array，简称VLA）中的可变长指的是编译期可变，数组定义时其长度可为整数类型的表达式，不再象C90/C++那样必须是整数常量表达式。在C99中可如下定义数组：
+int n = 10, m = 20;
+char a[n];
+int b[m][n];
+a的类型为char[n]，等效指针类型是char<em>，b的类型为int[m][n]，等效指针类型是int(</em>)[n]。int(*)[n]是一个指向VLA的指针，是由int[n]派生而来的指针类型。
+由此，C99引入了一个新概念：可变改类型（variably modified type，简称VM）。一个含有源自VLA派生的完整声明器被称为可变改的。VM包含了VLA和指向VLA的指针，注意VM类型并没有创建新的类型种类，VLA和指向VLA的指针仍然属于数组类型和指针类型，是数组类型和指针类型的扩展。
+一个VM实体的声明或定义，必须符合如下三个条件：
+1。代表该对象的标识符属于普通标识符（ordinary identifier）；
+2。具有代码块作用域或函数原型作用域；
+3。无链接性。
+Ordinary identifier指的是除下列三种情况之外的标识符：
+1。标签（label）；
+2。结构、联合和枚举标记（struct tag、uion tag、enum tag）；
+3。结构、联合成员标识符。
+这意味着VM类型的实体不能作为结构、联合的成员。第二个条件限制了VM不能具有文件作用域，存储连续性只能为auto，这是因为编译器通常把全局对象存放于数据段，对象的完整信息必须在编译期内确定。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-nine/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/17/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/15/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

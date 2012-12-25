@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>sae wordpress 转 typecho - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="wordpress用久了就感觉不新鲜了。。并且随着wordpress的不断更新，它也变的越来越庞大(我不说痈肿)&#8230;太多东西是我不需要的，后来无意中发现了typecho这个博客程序,它最大的特点就是简洁，轻便，所以就打算把博客转为typecho试试水先。 这篇文章适用范围是：
+1. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2012/09/20/sae-wordpress--zhuan--typecho/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Sae Wordpress 转 Typecho</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-20T00:00:00+08:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>wordpress用久了就感觉不新鲜了。。并且随着wordpress的不断更新，它也变的越来越庞大(我不说痈肿)&#8230;太多东西是我不需要的，后来无意中发现了typecho这个博客程序,它最大的特点就是简洁，轻便，所以就打算把博客转为typecho试试水先。</p>
+
+<p>这篇文章适用范围是：
+1.sae上的wordpress应用数据转移到另外一个sae typecho应用上，而不是原地把wordpress程序直接转换为typecho，如果你原来的wordpress程序不是在sae上的话，那就可以跳过了，因为你可以直接使用插件把数据转过来。
+所以不符合你的需求的同学可以不用往下看了~当然你如果对我的折腾过程有兴趣也可以继续。。</p>
+
+<p>因为sae上是无法得到数据库用户名和密码的，所以没办法通过插件进行数据转换，那就只能手动折腾了。
+经过测试，发现直接在sae mysql上导出的数据是不完整的，必须通过Deferred Jobs才能导出完整的数据。
+Deferred Jobs在sae应用管理后台的服务管理一栏中，先从Deferred Jobs中把数据库中的数据导出来，如果数据大于4M，再通过Deferred Jobs把数据导入你的typecho应用中,导入方法可以从文档中找到.
+导入完成后，你的typecho数据库中会有typecho<em>和wp</em>前缀的n张表,然后进入typecho数据库中，把typecho_comments ，typecho_contents， typecho_metas表中的唯一条数据删除(新装的typecho中会有一篇文章和一条评论).然后数据转换正式开始。</p>
+
+<!--more-->
+
+
+<p>1.转换评论，在PHPMyAdmin中点击sql一栏，输入下面的sql语句然后点执行,把wordpress中的评论转换过来
+[sql]insert into typecho_comments (coid, cid,created, author, authorId, ownerId, mail, url, ip, agent, text, type, status, parent)
+select
+wp_comments.comment_ID,
+wp_comments.comment_post_ID,
+unix_timestamp(wp_comments.comment_date_gmt),
+wp_comments.comment_author,
+wp_comments.user_id,
+1,
+wp_comments.comment_author_email,
+wp_comments.comment_author_url,
+wp_comments.comment_author_IP,
+wp_comments.comment_agent,
+wp_comments.comment_content,
+wp_comments.comment_type,
+wp_comments.comment_approved,
+wp_comments.comment_parent
+from wp_comments[/sql]</p>
+
+<p>上面的语句执行完后再输入下面语句把wp的评论类型转换过来
+[sql]update typecho_comments set type = &#8216;comment&#8217; where isnull(type) or length(trim(type))&lt;1; //把评论类型为空的评论的类型设置为&#8217;comment&#8217;[/sql]</p>
+
+<p>然后把垃圾评论和回收站中的评论删掉再设置好评论的状态
+[sql]delete from typecho_comments where status = &#8216;spam&#8217;; //删除垃圾评论
+delete from typecho_comments where status = &#8216;trash&#8217;; //删除回收站中的评论</p>
+
+<p>update typecho_comments set status = &#8216;approved&#8217; where status = &#8216;1&#8217;; //设置wp中的批准的评论的状态为1
+update typecho_comments set status = &#8216;waiting&#8217; where status = &#8216;0&#8217;; //设置wp中的等待审核的评论的状态为0[/sql]</p>
+
+<p>现在你打开typecho博客，已经可以看到就算一篇文章的没有，但是却有一堆的评论。。。
+2.分类，tag转换,先把默认分类删掉(可以进博客后台删,也可以从数据库的typecho_metas中删)，删完分别输入下面的语句
+[sql]//转换tag
+insert into typecho_metas (mid, name, slug, type, description, count)
+select
+term_taxonomy_id,
+name,
+slug,
+&#8216;tag&#8217;,
+description,
+count
+from wp_term_taxonomy
+join wp_terms
+on wp_terms.term_id = wp_term_taxonomy.term_id
+where taxonomy = &#8216;post_tag&#8217;;</p>
+
+<p>//转换分类
+insert into typecho_metas (mid, name, slug, type, description, count)
+select
+term_taxonomy_id,
+name,
+slug,
+&#8216;category&#8217;,
+description,
+count
+from wp_term_taxonomy
+join wp_terms
+on wp_terms.term_id = wp_term_taxonomy.term_id
+where taxonomy = &#8216;category&#8217;
+[/sql]</p>
+
+<p>3.转换分类,tag，文章关系表
+[sql]insert into typecho_relationships (cid, mid)
+SELECT
+object_id,
+wp_term_relationships.term_taxonomy_id
+FROM
+wp_term_relationships
+join wp_term_taxonomy
+on wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id[/sql]</p>
+
+<p>4.转换文章表,typecho中使用slug作为文章链接,这里是把woredpress中的post_name子段转换为slug, 而wordpress的post_name子段允许重复,typecho的slug是不允许重复的，所以可能会转换失败，官方的转换插件中是把post_name和ID连接起来作为slug的，但是这样的结果就是你的文章的链接后面会加入一串无意义的数字，所以如果你文章中post_name重复的次数不多的话，建议你先手动把重复的修改一下，然后再继续下面的转换，如果重复的太多，而你又可以接收your_post_url12345,这样的链接的画，你可以把下面语句中的第6行从post_name改为CONCAT(post_name, ID),就可以了。
+[sql]insert into typecho_contents (cid,title,slug,created,modified, <code>text</code>, <code>order</code>,authorId,template,type,status,password,commentsNum,allowComment,allowFeed,allowPing)
+select
+ID,
+post_title,
+post_name,
+unix_timestamp(post_date_gmt),
+unix_timestamp(post_modified_gmt),
+post_content,
+menu_order,
+post_author,
+NULL,
+post_type,
+post_status,
+post_password,
+comment_count,
+comment_status,
+&#8216;1&#8217;,
+ping_status
+from wp_posts
+where post_type = &#8216;post&#8217; or post_type = &#8216;page&#8217;[/sql]</p>
+
+<p>然后删除回收站中和自动保存的文章
+[sql]delete from <code>typecho_contents</code> WHERE status = &#8216;trash&#8217; //删除回收站中文章
+delete from <code>typecho_contents</code> WHERE status = &#8216;auto-draft&#8217; //删除自动保存文章
+update typecho_contents set allowComment = &#8216;1&#8217; //打开文章评论
+update typecho_contents set allowPing = &#8216;1&#8217; //打开文章pingback[/sql]</p>
+
+<p>转换到此结束。
+最后如果你有绑定独立域名的话，到mysql的typecho_options表中把siteUrl子段改为你的独立域名即可~</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-20T00:00:00+08:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/09/20/linux-visual-diff-tool/" title="Previous Post: linux可视化差异比较工具 meld">&laquo; linux可视化差异比较工具 meld</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/09/20/typecho-rewrite-rule/" title="Next Post: typecho rewrite 规则">typecho rewrite 规则 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

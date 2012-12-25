@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>整合DoWiKi和Wordpress - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="注意： 3.x版本的整合文件已经更新，可以从下面的地址下载，并且要添加5.6两个步骤 http://www.gokuai.com/f/E933e76w2l2G44b6 http://dl.dbank.com/c00te8rbvn  
+这里将介绍无缝整合dokuwiki和你的wordpress的方法 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/10/intergete-dowiki-and-wordpress/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">整合DoWiKi和Wordpress</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><strong>注意：</strong></p>
+
+<p>3.x版本的整合文件已经更新，可以从下面的地址下载，并且要添加5.6两个步骤</p>
+
+<p><a href="http://www.gokuai.com/f/E933e76w2l2G44b6">http://www.gokuai.com/f/E933e76w2l2G44b6</a></p>
+
+<p><a href="http://dl.dbank.com/c00te8rbvn">http://dl.dbank.com/c00te8rbvn</a></p>
+
+<p> 
+这里将介绍无缝整合<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="dokuwiki" href="http://www.aitilife.com/tag/dokuwiki">dokuwiki</a>和你的<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">wordpress</span></span>的方法,这样无论你在哪一个登录，都会同时登录到另一个去,并且用户是完全一样的。你可以访问<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://muagames.com/">http://muagames.com</a>这个演示站点。在<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">wordpress</span></span>中的默认角色在dokuwiki中会成为用户群，你可以分配wiki权限给他们！这需要少量改变你的dokuwiki的安装方法，如果wordpress版本高于2.6的话，也需要少量更改，低于这个版本则无需更改。并且你不需要任何php知识和其他东西来完成这次整合。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">概述：</strong>
+我们将要为dokuwiki创建一个定制的身份验证模块,这个模块将会使用wordpress的认证工具而不是dokuwiki的。我们也要调整一些设置以便让dokuwiki知道什么用户可以做什么和不可以做什么，就是实现用户的不同权限。然后设置他让wordpress用户变成wiki的用户。[more]
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">安装和下载：</strong>
+首先，如果你还没有wordpress和dokuwiki,那就上传和安装他们，我建议为他们在同一目录下各建立一个文件来存放，像下面这样。
+|-目录
+|-/wordpress目录
+|-/dokuwiki目录
+但着不是必要的。无论你安装在哪里，记下他们的安装路径，因为我们需要在下一步用到他们。现在，下载这个压缩包然后解压他们到某个地方进行访问：<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/images/uploads/2010/11/dokuwiki_wordpress_integration_v1.11.zip">dokuwiki_wordpress_integration_v1.1</a>(适用于2.x版本的wordpress,如果你的是3.x版本的请到文章开头给出的链接下载整合文件),</strong>接下来就可以开始整合啦～
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">第一步：身份验证模块</strong>
+从刚才下载的压缩包中复制keeyaiwp.class.php文件到你的dokuwiki目录/inc/auth文件夹中，然后用编辑器打开他，找到下面这行
+$wordpresspath=’../wordpress/’;这应该是文件中除注释中的第一行代码。改变’../wordpress/’为你的wordpress文件夹相对于dokuwiki文件夹的路径,如果你的安装目录像上面所说的，那么就不需要改动了。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">第二步：wiki配置选项</strong>
+进入你的dokuwiki/conf文件夹目录，找到local.php文件。如果这个文件不存在，把local.php.dist这个文件重命名为local.php。这个文件包含一些wiki设置，包括让dokuwiki使用我们创建的身份验证模块也是在这里设置，打开local.php然后添加和修改下面的给出内容。注意：@administrator不是@admin。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="wp_syntax" style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0.1em; padding-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; background-image: url('http://www.aitilife.com/wp-content/themes/suffusion/images/blockquote-r.png'); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: #f9f9f9; color: #110000; overflow-x: auto; overflow-y: hidden; width: 581px; background-position: 100% 100%; background-repeat: no-repeat no-repeat; border: 1px solid silver;">
+</span><span class='line'>&lt;div class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;div class='bogus-wrapper'>&lt;notextile>&lt;figure class='code'>&lt;div class="highlight">&lt;table>&lt;tr>&lt;td class="gutter">&lt;pre class="line-numbers">&lt;span class='line-number'>1&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>2&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>3&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>4&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>5&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>6&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>7&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>8&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>9&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>10&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>11&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>12&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>13&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>14&lt;/span>
+</span><span class='line'>&lt;/pre>&lt;/td>&lt;td class='code'>&lt;pre>&lt;code class=''>&lt;span class='line'>$conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'useacl'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>;
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'superuser'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '@administrator';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'disableactions'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'register';       // Disable the ability to register: handle with wordpress
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'autopasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                    // Disable password autogen: not important if users can't register
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'resendpasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                   // Disable password resend:
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'profileconfirm'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '&lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>';      // password must be verified when editing profile
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'passcrypt'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'smd5';            // Not sure what passcrypt needs to be set to, but this works
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // use wordpress login system
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'authtype'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'keeyaiwp';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // default group name
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'defaultgroup'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= 'user';&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>&lt;/div>&lt;/figure>&lt;/notextile>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>&lt;/div></span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">第三步：wiki权限</strong>
+进入你的dokuwiki/conf文件夹目录，找到acl.auth.php文件。如果这个文件不存在，把acl.auth.php.dist这个文件重命名为acl.auth.php,这个文件控制wiki用户和用户群组的默认权限，我们将要添加四个低级的wordpress角色(我们已经添加管理员角色通过设置他为superuser）作为wiki用户群组。你应该调整这些设置以便你的wiki按照你需要的方式工作。名字都是wordpress roles-不要需改他们-那些数字全是dokuwiki权限。这是dokuwiki的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.dokuwiki.org/acl">ACL</a>文档，下面的数字的意思可以从里面找到。你只需选择你需要的最大的数字——每一个包含低于他的数字的所有权限。我的默认设置是让所有人可以阅读，所有的登录用户（投稿者，作者）可以阅读/编辑/创建页面，而编辑者和管理员可以上传媒体和删除页面，只有Administrators group的用户可以访问wiki管理工具。
+打开文件并添加以下行（与以上所述的任何调整）：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="wp_syntax" style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0.1em; padding-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; background-image: url('http://www.aitilife.com/wp-content/themes/suffusion/images/blockquote-r.png'); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: #f9f9f9; color: #110000; overflow-x: auto; overflow-y: hidden; width: 581px; background-position: 100% 100%; background-repeat: no-repeat no-repeat; border: 1px solid silver;">
+</span><span class='line'>&lt;div class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;div class='bogus-wrapper'>&lt;notextile>&lt;figure class='code'>&lt;div class="highlight">&lt;table>&lt;tr>&lt;td class="gutter">&lt;pre class="line-numbers">&lt;span class='line-number'>1&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>2&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>3&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>4&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>5&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>6&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>7&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>8&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>9&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>10&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>11&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>12&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>13&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>14&lt;/span>
+</span><span class='line'>&lt;/pre>&lt;/td>&lt;td class='code'>&lt;pre>&lt;code class=''>&lt;span class='line'>$conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'useacl'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>;
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'superuser'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '@administrator';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'disableactions'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'register';       // Disable the ability to register: handle with wordpress
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'autopasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                    // Disable password autogen: not important if users can't register
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'resendpasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                   // Disable password resend:
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'profileconfirm'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '&lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>';      // password must be verified when editing profile
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'passcrypt'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'smd5';            // Not sure what passcrypt needs to be set to, but this works
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // use wordpress login system
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'authtype'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'keeyaiwp';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // default group name
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'defaultgroup'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= 'user';&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>&lt;/div>&lt;/figure>&lt;/notextile>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>&lt;/div></span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">第四步：wordpress的编辑功能</strong>
+高版本wordpress的问题是is_ssl函数的重复声明，要解决他，我们需要打开wordpress的文件然后让他只在is_ssl函数不存在的情况下定义is_ssl函数。具体操作如下：
+1.打开wp-includes/funtions.php，寻找is_ssl函数，然后更改他为下面给出的代码，并在开始和结束位置添加大括号。在wp2.9.1中他在第3091行。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="wp_syntax" style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0.1em; padding-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; background-image: url('http://www.aitilife.com/wp-content/themes/suffusion/images/blockquote-r.png'); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: #f9f9f9; color: #110000; overflow-x: auto; overflow-y: hidden; width: 581px; background-position: 100% 100%; background-repeat: no-repeat no-repeat; border: 1px solid silver;">
+</span><span class='line'>&lt;div class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;div class='bogus-wrapper'>&lt;notextile>&lt;figure class='code'>&lt;div class="highlight">&lt;table>&lt;tr>&lt;td class="gutter">&lt;pre class="line-numbers">&lt;span class='line-number'>1&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>2&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>3&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>4&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>5&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>6&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>7&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>8&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>9&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>10&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>11&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>12&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>13&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>14&lt;/span>
+</span><span class='line'>&lt;/pre>&lt;/td>&lt;td class='code'>&lt;pre>&lt;code class=''>&lt;span class='line'>$conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'useacl'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>;
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'superuser'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '@administrator';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'disableactions'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'register';       // Disable the ability to register: handle with wordpress
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'autopasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                    // Disable password autogen: not important if users can't register
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'resendpasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                   // Disable password resend:
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'profileconfirm'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '&lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>';      // password must be verified when editing profile
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'passcrypt'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'smd5';            // Not sure what passcrypt needs to be set to, but this works
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // use wordpress login system
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'authtype'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'keeyaiwp';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // default group name
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'defaultgroup'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= 'user';&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>&lt;/div>&lt;/figure>&lt;/notextile>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>&lt;/div></span></code></pre></td></tr></table></div></figure>
+
+
+<p>很好，现在已经整合成功了，很简单吧？现在你的博客和wiki的登录应该是同步的了。做完以上步骤后，你可以使用wiki管理工具来进一部调整用户和用户组的权限，而不需要再次进入代码里修改了。
+<strong>第五步：(wordpress3.x执行这一步，2.x不需要)</strong>
+我们需要创建两个新的文件。首先，因为我们不打算使用WordPress的
+config文件，但我们需要它里面的信息，我们需要复制并重新命名它。
+复制wp - config.php文件，并将其重命名WP-doku-config.php文件。然后改变从最后一行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'useacl'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>;
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'superuser'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '@administrator';
+</span><span class='line'>
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'disableactions'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'register';       // Disable the ability to register: handle with wordpress
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'autopasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                    // Disable password autogen: not important if users can't register
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'resendpasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                   // Disable password resend:
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'profileconfirm'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '&lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>';      // password must be verified when editing profile
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'passcrypt'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'smd5';            // Not sure what passcrypt needs to be set to, but this works
+</span><span class='line'>
+</span><span class='line'>  // use wordpress login system
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'authtype'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'keeyaiwp';
+</span><span class='line'>
+</span><span class='line'>  // default group name
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'defaultgroup'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= 'user';</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>第六步:(wordpress3.x执行这一步，2.x不需要</strong>)
+复制下载文件中的wp-doku-settings.php文件到wordpress文件夹中
+注意：
+wordpress升级到3.x版本后,作者特别强调，这是一个hack，通过丑陋的方法实现wordpress和dowiki的整合，虽然他能正常工作。
+译自：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://keeyai.com/projects-and-releases/dokuwiki-tools/dokuwiki-and-wordpress-integration/">http://keeyai.com/projects-and-releases/dokuwiki-tools/dokuwiki-and-wordpress-integration/</a>
+ </p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/其他/'>其他</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/10/huo-hu-liu-lan-qi-%EF%BC%88firefox%EF%BC%89-zi-dong-jin-ru-tuo-ji-gong-zuo-mo-shi-jie-jue/" title="Previous Post: 火狐浏览器（firefox）自动进入“脱机工作”模式解决办法">&laquo; 火狐浏览器（firefox）自动进入“脱机工作”模式解决办法</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/10/javascript--xue-xi-zi-yuan-tui-jian/" title="Next Post: JavaScript 学习资源推荐">JavaScript 学习资源推荐 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

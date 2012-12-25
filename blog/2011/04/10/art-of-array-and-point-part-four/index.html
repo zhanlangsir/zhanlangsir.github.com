@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>数组与指针的艺术-第四章 - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="下标运算符[]一直被作为数组的专有运算符来介绍，经过长年的应用，人们也早已对这个用法习以为常，视为跟每天的午餐一样稀松平常的事情。当你很遐意地写下a[0]表达式的时候，如果抽空回过头来看看标准中关于下标运算符的条款，你很可能会大吃一惊：
+6.5.2.1 Array subscripting &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/10/art-of-array-and-point-part-four/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">数组与指针的艺术-第四章</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">下标运算符[]一直被作为数组的专有运算符来介绍，经过长年的应用，人们也早已对这个用法习以为常，视为跟每天的午餐一样稀松平常的事情。当你很遐意地写下a[0]表达式的时候，如果抽空回过头来看看标准中关于下标运算符的条款，你很可能会大吃一惊：</span>
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">6.5.2</strong><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">.1 Array subscripting</strong>
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Constraints</strong>
+One of the expressions shall have type ‘‘pointer to object <em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">type</em>’’, the other expression shall have integer type, and the result has type ‘‘<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">type</em>’’.
+其中一个表达式具有指针类型，而不是数组类型！为什么会这样呢？如果规定为数组类型，由于表达式中的数组类型会隐式转换为指针类型，两个条款就会产生矛盾，当然，可以将下标运算符也作为转换规则的例外，但直接规定为指针类型显然能带来更多的好处，而且，既然数组类型能够转换为指针类型，却不让指针使用下标运算符，会显得无可理喻。从条款的角度来讲，下标运算符其实是指针运算符。
+<span id="more-1222" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"> </span>
+另一个表达式的类型是integer，这意味着表达式的值可以是负数，这是由于指针运算里包含了减法的缘故，但是要注意不应该发生越界的行为。
+在条款的上下文中，并没有规定[]运算符两个操作数的顺序，这意味着即使调换两个操作数的位置，也没有违反标准。这现象还可以从另一个角度进行分析，在表达式中，D[N]会转换为等价表达式<em>( D + N )，把D和N的位置调换，就成了</em>( N + D )，就是N[D]了。
+考虑如下代码：
+int a[10]，<em>p = a;
+p[0] = 10;
+( p + 1 )[0] = 20;
+0[p + 1] = 10;
+( &amp;a )[0][0] = 20;
+0[&amp;a][0] = 30;
+0[0[&amp;a]] = 40;
+a[0] = “0123456789ABCDEF”[0];
+下面对各个表达式进行解释：
+p[0]：就是a[0]；
+( p + 1 )[0]：p移动一个int的距离，就是a[1]；
+0[p + 1]：就是( p + 1 )[0]；
+( &amp;a )[0][0]：这个表达式有点古怪，a的类型是int[10]，&amp;a就是int( * )[10]，是一个指向具有10个int元素的一维数组的指针，( &amp;a )[0]就是&amp;a指向的第0个元素，类型为int[10]，因此( &amp;a )[0][0]就是( &amp;a )[0]的第0个元素。<!--more-->
+0[&amp;a][0]：把( &amp;a )[0][0]第一维的0与&amp;a调换一下，就是0[&amp;a][0]；
+0[0[&amp;a]]：再调换0[&amp;a]与第二维[0]中的0，就成了0[0[&amp;a]]，跟( &amp;a )[0][0]等价。
+最后一个表达式”0123456789ABCDEF”[0]是一个常用的技巧，它可以快速将一个数字转换为16进制字符。”0123456789ABCDEF”是一个字符串字面量，类型是char[17]（在C中）或者const char[17]（在C++中），转换后的指针类型分别为char</em>和const char<em>，因此”0123456789ABCDEF”[0]就是第0个元素’0’。这个技巧常常用在进制转换中，以下代码将一个长整数的内存映像转换为16进制表示：
+char</em> convert( unsigned long Value )
+{
+static char Buffer[sizeof( unsigned long ) * 2 + 1];
+int i;
+for( i = sizeof( unsigned long ) * 2 – 1; i >= 0; –i )
+{
+Buffer[i] = “0123456789ABCDEF”[Value % 16];
+Value /= 16;
+}
+return Buffer;
+}
+当然，笔者在这里介绍这些古怪的表达式仅仅为了对下标运算符进行一些探讨，并非鼓励人们编写这样的代码。但在某些情况下，形如”0123456789ABCDEF”[Value%16]这样的表达式仍然是一个很好的选择，与下面的代码相比：
+Remainder = Value % 16;
+if( Remainder >= 10 ) Buffer[i] = ‘A’ + Remainder – 10;
+else Buffer[i] = ’0′ + Remainder;
+前者显然更加简明、精练，更容易阅读，所以，应根据不同的情况进行取舍。代码中使用了除法和求余运算，有些人很喜欢把这些运算直接用移位代替，以追求极速。但现代编译器对代码的优化已经非常出色，乘除运算与直接移位之间的效率差别已经小到几乎可以忽略不计的程度，除非在需要进行大量数学运算或对效率极其敏感的场合，否则所提高的那么一点微末的速度是无法弥补可读性的损失的。在可读性、空间及效率之间应进行均衡的选择，而不是盲目追求极端。
+ </p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-c-/'>c/c++</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/10/art-of-array-and-point-part-five/" title="Previous Post: 数组与指针的艺术-第五章">&laquo; 数组与指针的艺术-第五章</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/10/art-of-array-and-point-part-nine/" title="Next Post: 数组与指针的艺术-第九章">数组与指针的艺术-第九章 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

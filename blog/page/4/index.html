@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="很好的学习资料，写的简浅易懂，喜欢的同学可以看看 WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型(上) WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型(下)
+">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/page/4/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/05/wpf-thread-model/">WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-05T00:00:00+08:00" pubdate data-updated="true">Jul 5<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>很好的学习资料，写的简浅易懂，喜欢的同学可以看看</p>
+
+<p><a title="WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型(上)" href="http://www.cnblogs.com/Nullnoid/archive/2008/08/03/1259012.html" target="_blank">WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型(上)</a></p>
+
+<p><a title="WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型下(下)" href="http://www.cnblogs.com/Nullnoid/archive/2008/08/06/1259429.html%20" target="_blank">WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型(下)</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/03/resume-fedora15-grub/">Fedora15+win7双系统重装win7后恢复fedora15引导</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-03T00:00:00+08:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>之前写过一篇恢复ubuntu引导的文章,本来以为fedora15可以跟ubuntu一样恢复引导，但是实际上还是遇到了一些问题，现在记录下来以防以后忘记了！</p>
+
+<p>想了解如何恢复ubuntu引导可以点这里：</p>
+
+<p><a href="resume-ubuntu-grub">ubuntu10.10+win7双系统重装win7后恢复ubuntu引导方法</a></p>
+
+<p><strong>恢复引导方法：</strong></p>
+
+<p>1.放进liveCD,重启,看到有界面出来的时候,选择试用,不要点安装。</p>
+
+<p>2.进入fedora15试用版后,打开终端</p>
+
+<p>3.输入以下命令:</p>
+
+<p>su</p>
+
+<p>fdisk -l //得到的结果类似下面。查看fedora的根目录在那,这里没办法直接看出来,只能靠你自己识别,可以从分区的大小判断是不是根分区，就是在装fedora时，挂载点为 / 的那个分区</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/07/03/resume-fedora15-grub/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/28/dotnet-reflector/">.NET Reflector 7.1.0.143 破解</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-28T00:00:00+08:00" pubdate data-updated="true">Jun 28<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1><strong>什么是.NET Reflector?</strong></h1>
+
+
+<p>一般会去查找它的破解版的同学肯定知道它是干什么用的~不过这里还是简单说明一下吧~</p>
+
+<p>.NET Reflector是一个类浏览器和反编译器，可以分析程序集并向你展示它的所有秘密。.NET 框架向全世界引入了可用来分析任何基于 .NET 的代码（无论它是单个类还是完整的程序集）的反射概念。反射还可以用来检索有关特定程序集中包含的各种类、方法和属性的信息。使用 .NET Reflector，你可以浏览程序集的类和方法，可以分析由这些类和方法生成的 Microsoft 中间语言 (MSIL)，并且可以反编译这些类和方法并查看 C# 或 Visual Basic .NET 中的等价类和方法。</p>
+
+<p>在 .NET Reflector 内部，有各种可用来进一步分析该程序集的工具。要查看构成某个方法的 MSIL，请单击该方法并从菜单中选择 Disassembler。</p>
+
+<p>.NET 框架提供了许多执行类似操作的不同方法。例如，如果你需要从 XML 中读取一组数据，则存在多种使用 XmlDocument、XPathNavigator 或 XmlReader 完成该工作的不同方法。通过使用 .NET Reflector， 你可以查看 Microsoft 在编写数据集的 ReadXml 方法时使用了什么，或者查看他们在从配置文件读取数据时做了哪些工作。.NET Reflector 还是一个了解以下最佳实施策略的优秀方法：创建诸如 HttpHandlers 或配置处理程序之类的对象，因为你可以了解到 Microsoft 工作组实际上是如何在框架中生成这些对象的。</p>
+
+<p>官网：<a href="http://www.reflector.net/">http://www.reflector.net/</a></p>
+
+<p>破解版下载：</p>
+
+<p><a href="http://www.everbox.com/f/zVeY5svNz5i19tIyUVdCDQfErH">盛大网盘下载</a></p>
+
+<p> </p>
+
+<p><a title="reflector够快下载" href="http://www.gokuai.com/f/OTAD09a0bHq7q9Oy" target="_blank">够快下载</a></p>
+
+<p>说明：</p>
+
+<p>下载文件里有两个压缩包，一个就是Reflector软件,是最新得7.1.0.143版,刚才官网下下来的，如果你不相信小狼的RP的话，可以到上面给出的官网下载。然后Patch压缩包里的就是破解文件，把他解压到Reflector所在目录中，运行Patch.exe,点第一个按钮就OK了。</p>
+
+<p>如果你喜欢这个软件，小狼建议你支持正版~</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/23/from-blogenging-to-wordpress/">从BlogEngine把数据转到WordPress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-23T00:00:00+08:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>从BlogEngine转到WordPress，可以按照以下步骤转换。</p>
+
+<p>1.导出BlogML.xml文件</p>
+
+<p>2.更改BlogML.xml里面的文件路径（例如image.axd?…之类的）</p>
+
+<p>3.更改BlogML.xml里的分类的GUID，更改为名称即可（记得全局匹配）</p>
+
+<p>4.用<a href="http://www.kavinda.net/content/other/BlogML-WordPress-Import.zip">BlogML插件</a>(也可以直接插件页面搜索一下就能找到)导入BlogML（上传到/wp-admin/import/然后导入->blogml）</p>
+
+<p>5.如果导入有错误，可以用Bulk Delete删掉。</p>
+
+<p>6.如果导入超时，可以在BlogML那个php头文件的require_once(‘XPath.class.php’);之后加入如下代码。</p>
+
+<p>ini_set(“memory_limit”,”146M”);
+ini_set(“max_execution_time”, “300″);
+ini_set(“max_input_time”, “300″);</p>
+
+<p>OK，反复操作吧，直到成功。</p>
+
+<p>但是郁闷的是～竟然没有导出标签～难道要自己手动修改嘛～有没有同学有好的办法呢？</p>
+
+<p>转自：<a href="http://www.jguoer.com/blog/index.php/archives/448">http://www.jguoer.com/blog/index.php/archives/448</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/23/404-error-with-nginx-webserver-when-alter-wordpress-permalink/">Nginx服务器下修改wordpress固定链接后出现404错误</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-23T00:00:00+08:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在修改了一个网站的wordpress固定链接后，突然发现页面以前的文章都打不开了。报404错误。</p>
+
+<p>网站的信息如下：
+操作系统：CentOS5.4 64bit
+www服务器：Nginx 0.8.54
+wp版本：wordpress 3.0.5</p>
+
+<p>在参考网络上的解决方式后，发现是未配置配置文件造成～
+操作方式如下：
+01、打开nginx的配置文件【vi /your_nginx_path/conf/nginx.conf】
+02、找如下部分，然后按代码里面添加相应的配置</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/06/23/404-error-with-nginx-webserver-when-alter-wordpress-permalink/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/16/install-kde4-6-2-in-fedora15/">fedora15下安装kde4.6.2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-16T00:00:00+08:00" pubdate data-updated="true">Jun 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span style="font-size: medium;">先发一下牢骚，gnome3真是逊毙了，完全颠覆了用户的使用习惯，这样就叫创新？这样就叫注重用户体验吗？用起来太不习惯了，没办法，只能换kde了。当然，我还是十分期待gnome3的下一次升级，希望真的以用户的使用习惯为重点，而不是为了界面效果。</span></p>
+
+<p><span style="font-size: medium;">牢骚发完就开始干正事了。</span></p>
+
+<p>1.先下载<a href="http://apt.kde-redhat.org/apt/kde-redhat/fedora/kde.repo">kde.repo</a>，下载完后把它放到/etc/yum.repos.d/目录下</p>
+
+<p>su</p>
+
+<p>mv ~/download/kde.repo /etc/yum.reops.d/ (第一个路径修改为你下载好的kde.repo所在路径)</p>
+
+<p>然后用</p>
+
+<p>yum groupupdate kde-desktop</p>
+
+<p>命令开始安装，要下载200多M的东西，慢慢等吧。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/06/16/install-kde4-6-2-in-fedora15/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/29/rhythmbox-jing-chang-beng-kui-huo-zhe-zi-dong-guan-bi/">Rhythmbox经常崩溃或者自动关闭</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-29T00:00:00+08:00" pubdate data-updated="true">May 29<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>linux下毕竟没有像foobar2K这样的音乐播放器，又不想用wine,对比了下linux下的播放器，最终还是选择了rhythmbox，banshee虽然看起来不错，但小狼试用了一下，发现音质确实悲剧，有同学可能会说，rhythmbox和banshee用的都是gstream输出，音质是一样的，但实际不一样～小狼也不知道为什么，banshee确实会出现破声,声音不清晰等等问题。但是用了一段时间的rhythmbox后，发现只要先切换到rhythmbox然后按alt+tab切换，rhythmbox就会崩溃掉，同样在左侧菜单栏随便点点某些选项也会自动关闭，真是太坑爹了。。。</p>
+
+<p>翻了一下google,发现是配置文件惹的祸，只要删掉对应配置文件就可以了，不用怕，下次导入音乐的时候，配置文件会自动重新创建的～</p>
+
+<p>rhythmbox的配置文件在以下几个地方，即在用户主目录下按ctrl+h,显示隐藏文件就可以看见了。</p>
+
+<p>~/.gconf/apps/rhythmbox<br style="padding: 0px; margin: 0px;">~/.cache/rhythmbox<br style="padding: 0px; margin: 0px;">~/.local/share/rhythmbox<br style="padding: 0px; margin: 0px;">~/.gnome2/accels/rhythmbox</p>
+
+<p>然后就把他们都删掉就可以了！</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/28/fedora15-xia-qi-dong-iceplayer-chu-xian-duan-cuo-wu-de-jie-jue-ban-fa/">Fedora15下启动iceplayer出现段错误的解决办法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-28T00:00:00+08:00" pubdate data-updated="true">May 28<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在fedora15下安装iceplayer～结果出现一大堆问题，而论坛上提到的源无法正常使用，只能手动编译，下了一堆的依赖库后，终于编译成功，但是问题再次出现，如下：</p>
+
+<p> </p>
+
+<p>Welcome! Version=:4.05-20110520</p>
+
+<p>Debug:init one-instance</p>
+
+<p>Debug:init gtk &amp; gst</p>
+
+<p>Debug:初始化环境</p>
+
+<p>Debug:初始化配置</p>
+
+<p>Debug:初始化皮肤参数</p>
+
+<p>Debug:搜索home目录皮肤</p>
+
+<p>Debug:/home/zhanlang/.iceplayer/skin/mac_slax/</p>
+
+<p>Debug:初始化home目录皮肤失败</p>
+
+<p>Debug:搜索usr目录皮肤</p>
+
+<p>Debug:/usr/share/iceplayer/skin/mac_slax/</p>
+
+<p>Debug:初始化usr目录皮肤成功</p>
+
+<p>Debug:初始化界面</p>
+
+<p>Debug:建立主要窗体</p>
+
+<p>Debug:初始化notify</p>
+
+<p>Debug:初始化歌词</p>
+
+<p>[more]</p>
+
+<p>Debug:应用配置</p>
+
+<p>Debug:读取多播放列表</p>
+
+<p>Debug:初始化播放列表</p>
+
+<p>Debug:初始化播放列表success!</p>
+
+<p>Debug:初始化迷你模式</p>
+
+<p>Debug:初始化 mini</p>
+
+<p>Debug:应用播放类配置</p>
+
+<p>Debug:初始化 some configures</p>
+
+<p>Debug:初始化全局快捷键</p>
+
+<p>Debug:初始化均衡器</p>
+
+<p>段错误(吐核)</p>
+
+<div>真纠结啊～这样对新手来说影响很不好，安装一个音乐播放器都这么麻烦，我估计很多人会放弃使用的</div>
+
+
+<div>好了，废话不多说，百度一下，有人说用ulimit改堆栈大小就可以，但实际上还是启动失败，而只要把根目录下的</div>
+
+
+<div>~/.iceplayer文件夹里的configure.conf里的42行，使用歌词=1改为0就可以了～</div>
+
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/24/install-mp3-decoder-in-fedora15/">Fedora15下安装mp3解码器</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-24T00:00:00+08:00" pubdate data-updated="true">May 24<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>由于版权问题，fedora是没有安装mp3解码器的，官方源里同样没有，所以对于新手来说，要听mp3还得折腾一翻，所以这里就介绍一下安装mp3解码器的方法，让新手少走点弯路。</p>
+
+<p>首先就是添加有mp3解码器的下载源-fusion</p>
+
+<p> <a style="word-wrap: break-word; text-decoration: none; color: #0099cc; line-height: normal;" href="http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm" target="_blank">http://download1.rpmfusion.org/f &#8230; e-stable.noarch.rpm</a></p>
+
+<p><a style="word-wrap: break-word; text-decoration: none; color: #0099cc; line-height: normal;" href="http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm" target="_blank">http://download1.rpmfusion.org/n &#8230; e-stable.noarch.rpm</a></p>
+
+<p><span style="border-collapse: collapse; font-size: 14px; line-height: 22px;">先下载上面两个rpm文件，下载完安装后就会添加上了fusion源了。</span></p>
+
+<p><span style="border-collapse: collapse; font-size: 14px; line-height: 22px;">然后打开终端,输入</span></p>
+
+<p><span style="border-collapse: collapse; font-size: 14px; line-height: 22px;">su</span></p>
+
+<p><span style="border-collapse: collapse; font-size: 14px; line-height: 22px;">密码</span></p>
+
+<p><span style="border-collapse: collapse; font-size: 14px; line-height: 22px;">yum &#8211;nogpg install gstreamer-ffmpeg gstream-plugin-bad  gstream-plugin-ugly</span></p>
+
+<div style="border-collapse: collapse; font-size: 14px; line-height: 22px;">然后再打开mp3文件看看，是不是已经可以了～</div>
+
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/24/huo-qu--gpg--mi-yao-shi-bai-errno-14/">获取 GPG 密钥失败：[Errno 14]</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-24T00:00:00+08:00" pubdate data-updated="true">May 24<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> </p>
+
+<h3 style="font-family: Cantarell, 'Droid Sans', Verdana, sans-serif; margin-top: 0px; margin-right: 0px; margin-bottom: 0.3em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; vertical-align: baseline; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: transparent; line-height: 1.2em; color: #3c6eb4; text-transform: uppercase; padding: 0px; border: 0px initial initial;"><span style="color: #333333; font-size: 13px; line-height: 19px; font-weight: normal; text-transform: none;">每个 fusion源发布的稳定 RPM 软件包都配有一个 GPG 签名。默认情况下，yum 和图形更新工具验证这些签名并拒绝安装任何没有签名或者签名损坏的软件包。您总是应该在安装软件包之前验证其签名。这些签名可确保您要安装的软件包出自fusion仓库，且没有被提供该软件包的网页或者镜像更换（无意的或者恶意的）。</span></h3>
+
+
+<p><span style="color: #333333; font-size: 13px; line-height: 19px; font-weight: normal; text-transform: none;">
+</span>
+而我们安装fusion源的时候，默认是没有添加gpg密钥的，所以安装软件的时候会出现想
+获取 GPG 密钥失败：[Errno 14] Could not open/read file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-15-x86_64
+<span style="font-size: small;"><span style="border-collapse: collapse; line-height: 22px;">这种错误，那么怎么解决呢？</span></span>
+<span style="font-size: small;"><span style="border-collapse: collapse; line-height: 22px;"></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/05/24/huo-qu--gpg--mi-yao-shi-bai-errno-14/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/5/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/3/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

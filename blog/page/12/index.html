@@ -1,0 +1,1052 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="据来自Sucuri博客的消息，MySQL官方网站MySQL.com被SQL注入攻击（blind SQL injection）。一篇博客文章（MySQL.com Vulnerable To Blind SQL Injection Vulnerability）披露了MySQL. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/page/12/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/mysql-com-bei-sql-zhu-ru-gong-ji--yong-hu-mi-ma-shu-ju-bei-gong-bu/">MySQL.com被SQL注入攻击，用户密码数据被公布</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>据来自<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://blog.sucuri.net/2011/03/mysql-com-compromised.html" target="_blank">Sucuri博客</a>的消息，MySQL官方网站MySQL.com被SQL注入攻击（blind SQL injection）。一篇博客文章（<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://seclists.org/fulldisclosure/2011/Mar/309" target="_blank">MySQL.com Vulnerable To Blind SQL Injection Vulnerability</a>）披露了MySQL.com数据库的漏洞及数据库结构的dump部分。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Vulnerable Target : http://mysql.com/customers/view/index.&lt;span style="color: #787878;">&lt;span style="outline-style: initial; outline-color: initial;">html&lt;/span>&lt;/span>?id=1170
+</span><span class='line'>Host IP : 213.136.52.29
+</span><span class='line'>Web Server : Apache/2.2.15 (&lt;span style="color: #787878;">&lt;span style="outline-style: initial; outline-color: initial;">Fedora&lt;/span>&lt;/span>)
+</span><span class='line'>Powered-by : PHP/5.2.13
+</span><span class='line'>Injection Type : MySQL Blind
+</span><span class='line'>Current DB : web</span></code></pre></td></tr></table></div></figure>
+
+
+<p>攻击者通过MySQL.com上查看用户的页面进入，获取到了数据库、表及存储用户密码的dump数据（如何获取并未公布）…如果你在MySQL.com有用户，建议尽快更改密码。
+更严重的是，攻击者<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://pastebin.com/BayvYdcP" target="_blank">将用户密码数据公布</a>在网上让其他人进行破解。更糟糕的是MySQL产品负责人的密码已被破解（竟然是4位数字），blogs.mysql.com的多个用户的密码也被破解。
+MYSQL官方目前没有任何回应。
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/mounting-devloop0-on-filesystem-squashfs-failedinputoutput-error/">Mounting /dev/loop0 on //filesystem Squashfs failed:Input/output Error</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+安装ubuntu10.10-desktop版本时，出现了mounting /dev/loop0 on //filesystem squashfs failed:Input/output <span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">error</span></span>错误，没办法，还是只能百度，<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">google</span></span>。百度没办法解决，我就google。再次发现了google的强大，发现了不少类似的错误，但是都没有一个确凿的解决方案，老外门讨论说刻了N张碟，并且在不同电脑上光盘安装都会出现这个问题，最后看见一个说发现下下来的iso文件大小不对，md5检验不一样。所以我检验了一下ubuntu10.10的iso的md5 ，结果还真跟官方不一样，那个郁闷阿。然后就上官网再下一次、刻录。成功运行。。。。。
+看来这个问题就是因为iso数据不完整或者被改过了。不排除其他原因，但是大部分都是这个原因。
+我刻录成功的下载地址：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://ubuntu.org.cn/desktop/get-ubuntu/download/">http://ubuntu.org.cn/desktop/get-ubuntu/download/</a>
+官方md5检验地址:<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://releases.ubuntu.com/releases/">http://releases.ubuntu.com/releases/</a>
+md5检验工具好压里就有，或者自己下一个吧！
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/linux-xia-bian-cheng/">Linux下编程</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.lslnet.com/linux/books/resource/gmake.html" target="_blank">GNU make 指南</a>
+<a href="http://blog.csdn.net/ugg/archive/2007/05/23/1622555.aspx">makefile详解</a>
+<a title="vi/vim使用进阶: 目录" href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/" target="_blank">vi/vim使用进阶: 目录</a>
+<a title="gdb使用指南~(1)" href="http://blog.csdn.net/Lalphbet/archive/2005/02/25/301939.aspx" target="_blank">gdb使用指南(1)</a>
+<a title="gdb使用指南~(1)" href="http://blog.csdn.net/Lalphbet/archive/2005/02/25/301939.aspx" target="_blank"></a><a title="gdb使用指南~(2)" href="http://blog.csdn.net/Lalphbet/archive/2005/02/25/301949.aspx" target="_blank">gdb使用指南(2)</a>
+<a title="gdb使用指南~(2)" href="http://blog.csdn.net/Lalphbet/archive/2005/02/25/301949.aspx" target="_blank"></a><a title="gdb使用指南~(3)" href="http://blog.csdn.net/Lalphbet/archive/2005/02/25/301953.aspx" target="_blank">gdb使用指南(3)</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/linux-li-ming-ling-pkg-config-gong-ju-de-shi-yong/">Linux里命令pkg-config工具的使用</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">一、编译和连接</strong>
+一般来说，如果库的头文件不在 /usr/include 目录中，那么在编译的时候需要用 -I 参数指定其路径。由于同一个库在不同系统上可能位于不同的目录下，用户安装库的时候也可以将库安装在不同的目录下，所以即使使用同一个库，由于库的路径的 不同，造成了用 -I 参数指定的头文件的路径也可能不同，其结果就是造成了编译命令界面的不统一。如果使用 -L 参数，也会造成连接界面的不统一。编译和连接界面不统一会为库的使用带来麻烦。
+为了解决编译和连接界面不统一的问题，人们找到了一些解决办法。其基本思想就是：事先把库的位置信息等保存起来，需要的时候再通过特定的工具将其中有用的 信息提取出来供编译和连接使用。这样，就可以做到编译和连接界面的一致性。其中，目前最为常用的库信息提取工具就是下面介绍的 <span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">pkg-config</span></span>。
+pkg-config 是通过库提供的一个 .pc 文件获得库的各种必要信息的，包括版本信息、编译和连接需要的参数等。这些信息可以通过 pkg-config 提供的参数单独提取出来直接供编译器和连接器使用。[more]
+The pkgconfig package contains tools for passing the include path and/or library paths to build tools during the make file execution.
+pkg-config is a function that returns meta information for the specified library.
+The default setting for PKG_CONFIG_PATH is /usr/lib/pkgconfig because of the prefix we use to install pkgconfig. You may add to PKG_CONFIG_PATH by exporting additional paths on your system where pkgconfig files are installed. Note that PKG_CONFIG_PATH is only needed when compiling packages, not during run-time.
+在默认情况下，每个支持 pkg-config 的库对应的 .pc 文件在安装后都位于安装目录中的 lib/pkgconfig 目录下。例如，我们在上面已经将 Glib 安装在 /opt/gtk 目录下了，那么这个 Glib 库对应的 .pc 文件是 /opt/gtk/lib/pkgconfig 目录下一个叫 glib-2.0.pc 的文件：
+prefix=/opt/gtk/
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+glib_genmarshal=glib-genmarshal
+gobject_query=gobject-query
+glib_mkenums=glib-mkenums
+Name: GLib
+Description: C Utility Library
+Version: 2.12.13
+Libs: -L${libdir} -lglib-2.0
+Cflags: -I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include
+使用 pkg-config 的 –cflags 参数可以给出在编译时所需要的选项，而 –libs 参数可以给出连接时的选项。例如，假设一个 sample.c 的程序用到了 Glib 库，就可以这样编译：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">$ gcc -c `pkg-config --cflags glib-2.0` sample.c&lt;/strong></span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后这样连接：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">$ gcc -c `pkg-config --cflags glib-2.0` sample.c&lt;/strong></span></code></pre></td></tr></table></div></figure>
+
+
+<p>或者上面两步也可以合并为以下一步：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">$ gcc -c `pkg-config --cflags glib-2.0` sample.c&lt;/strong></span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以看到：由于使用了 pkg-config 工具来获得库的选项，所以不论库安装在什么目录下，都可以使用相同的编译和连接命令，带来了编译和连接界面的统一。
+使用 pkg-config 工具提取库的编译和连接参数有两个基本的前提：</p>
+
+<ol style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; list-style-type: decimal; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">库本身在安装的时候必须提供一个相应的 .pc 文件。不这样做的库说明不支持 pkg-config 工具的使用。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">pkg-config 必须知道要到哪里去寻找此 .pc 文件。</li>
+</ol>
+
+
+<p>GTK+ 及其依赖库支持使用 pkg-config 工具，所以剩下的问题就是如何告诉 pkg-config 到哪里去寻找库对应的 .pc 文件，这也是通过设置搜索路径来解决的。
+对于支持 pkg-config 工具的 GTK+ 及其依赖库来说，库的头文件的搜索路径的设置变成了对 .pc 文件搜索路径的设置。.pc 文件的搜索路径是通过环境变量 PKG_CONFIG_PATH 来设置的，pkg-config 将按照设置路径的先后顺序进行搜索，直到找到指定的 .pc 文件为止。
+安装完 Glib 后，在 bash 中应该进行如下设置：
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">$ export PKG_CONFIG_PATH=/opt/gtk/lib/pkgconfig:$PKG_CONFIG_PATH</strong>
+可以执行下面的命令检查是否 /opt/gtk/lib/pkgconfig 路径已经设置在 PKG_CONFIG_PATH 环境变量中：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">$ gcc -c `pkg-config --cflags glib-2.0` sample.c&lt;/strong></span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样设置之后，使用 Glib 库的其它程序或库在编译的时候 pkg-config 就知道首先要到 /opt/gtk/lib/pkgconfig 这个目录中去寻找 glib-2.0.pc 了（GTK+ 和其它的依赖库的 .pc 文件也将拷贝到这里，也会首先到这里搜索它们对应的 .pc 文件）。之后，通过 pkg-config 就可以把其中库的编译和连接参数提取出来供程序在编译和连接时使用。
+另外还需要注意的是：环境变量的设置只对当前的终端窗口有效。如果到了没有进行上述设置的终端窗口中，pkg-config 将找不到新安装的 glib-2.0.pc 文件、从而可能使后面进行的安装（如 Glib 之后的 Atk 的安装）无法进行。
+在我们采用的安装方案中，由于是使用环境变量对 GTK+ 及其依赖库进行的设置，所以当系统重新启动、或者新开一个终端窗口之后，如果想使用新安装的 GTK+ 库，需要如上面那样重新设置 PKG_CONFIG_PATH 和 LD_LIBRARY_PATH 环境变量。
+这种使用 GTK+ 的方法，在使用之前多了一个对库进行设置的过程。虽然显得稍微繁琐了一些，但却是一种最安全的使用 GTK+ 库的方式，不会对系统上已经存在的使用了 GTK+ 库的程序（比如 GNOME 桌面）带来任何冲击。
+为了使库的设置变得简单一些，可以把下面的这两句设置保存到一个文件中（比如 set_gtk-2.10 文件）:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #a52a2a; padding: 0px; margin: 0px; border: 0px initial initial;">export&lt;/span> PKG_CONFIG_PATH=/opt/gtk/lib/pkgconfig:$PKG_CONFIG_PATH
+</span><span class='line'>&lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #a52a2a; padding: 0px; margin: 0px; border: 0px initial initial;">export&lt;/span> LD_LIBRARY_PATH=/opt/gtk/lib:$LD_LIBRARY_PATH</span></code></pre></td></tr></table></div></figure>
+
+
+<p>之后，就可以用下面的方法进行库的设置了（其中的 source 命令也可以用 . 代替）：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">$ gcc -c `pkg-config --cflags glib-2.0` sample.c&lt;/strong></span></code></pre></td></tr></table></div></figure>
+
+
+<p> 只有在用新版的 GTK+ 库开发应用程序、或者运行使用了新版 GTK+ 库的程序的时候，才有必要进行上述设置。 如果想避免使用 GTK+ 库之前上述设置的麻烦，可以把上面两个环境变量的设置在系统的配置文件中（如 /etc/profile）或者自己的用户配置文件中（如 ~/.bash_profile） ；库的搜索路径也可以设置在 /etc/ld.so.conf 文件中，等等。这种设置在系统启动时会生效，从而会导致使用 GTK+ 的程序使用新版的 GTK+ 运行库，这有可能会带来一些问题。当然，如果你发现用新版的 GTK+ 代替旧版没有什么问题的话，使用这种设置方式是比较方便的。加入到~/.bashrc中，例如： PKG_CONFIG_PATH=/opt/gtk/lib/pkgconfig 重启之后： [root@localhost ~]# echo $PKG_CONFIG_PATH /opt/gtk/lib/pkgconfig  <strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">二、运行时</strong> 库文件在连接（静态库和共享库）和运行（仅限于使用共享库的程序）时被使用，其搜索路径是在系统中进行设置的。一般 <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Linux" href="http://www.aitilife.com/category/operating-system/linux">Linux</a> 系统把 /lib 和 /usr/lib 两个目录作为默认的库搜索路径，所以使用这两个目录中的库时不需要进行设置搜索路径即可直接使用。对于处于默认库搜索路径之外的库，需要将库的位置添加到 库的搜索路径之中。设置库文件的搜索路径有下列两种方式，可任选其一使用：</p>
+
+<ol style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; list-style-type: decimal; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">在环境变量 LD_LIBRARY_PATH 中指明库的搜索路径。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">在 /etc/ld.so.conf 文件中添加库的搜索路径。</li>
+</ol>
+
+
+<p>将自己可能存放库文件的路径都加入到/etc/ld.so.conf中是明智的选择 ^<em>^ 添加方法也极其简单，将库文件的绝对路径直接写进去就OK了，一行一个。例如： /usr/X11R6/lib /usr/local/lib /opt/lib 需要注意的是：第二种搜索路径的设置方式对于程序连接时的库（包括共享库和静态库）的定位已经足够了，但是对于使用了共享库的程序的执行还是不够的。这是 因为为了加快程序执行时对共享库的定位速度，避免使用搜索路径查找共享库的低效率，所以是直接读取库列表文件 /etc/ld.so.cache 从中进行搜索的。/etc/ld.so.cache 是一个非文本的数据文件，不能直接编辑，它是根据 /etc/ld.so.conf 中设置的搜索路径由 /sbin/ldconfig 命令将这些搜索路径下的共享库文件集中在一起而生成的（ldconfig 命令要以 root 权限执行）。因此，为了保证程序执行时对库的定位，在 /etc/ld.so.conf 中进行了库搜索路径的设置之后，还必须要运行 /sbin/ldconfig 命令更新 /etc/ld.so.cache 文件之后才可以。ldconfig ,简单的说，它的作用就是将/etc/ld.so.conf列出的路径下的库文件 缓存到/etc/ld.so.cache 以供使用。因此当安装完一些库文件，(例如刚安装好glib)，或者修改ld.so.conf增加新的库路径后，需要运行一下 /sbin/ldconfig使所有的库文件都被缓存到ld.so.cache中，如果没做，即使库文件明明就在/usr/lib下的，也是不会被使用 的，结果编译过程中抱错，缺少xxx库，去查看发现明明就在那放着，搞的想大骂computer蠢猪一个。 ^</em>^ 在程序连接时，对于库文件（静态库和共享库）的搜索路径，除了上面的设置方式之外，还可以通过 -L 参数显式指定。因为用 -L 设置的路径将被优先搜索，所以在连接的时候通常都会以这种方式直接指定要连接的库的路径。 前面已经说明过了，库搜索路径的设置有两种方式：在环境变量 LD_LIBRARY_PATH 中设置以及在 /etc/ld.so.conf 文件中设置。其中，第二种设置方式需要 root 权限，以改变 /etc/ld.so.conf 文件并执行 /sbin/ldconfig 命令。而且，当系统重新启动后，所有的基于 GTK2 的程序在运行时都将使用新安装的 GTK+ 库。不幸的是，由于 GTK+ 版本的改变，这有时会给应用程序带来兼容性的问题，造成某些程序运行不正常。为了避免出现上面的这些情况，在 GTK+ 及其依赖库的安装过程中对于库的搜索路径的设置将采用第一种方式进行。这种设置方式不需要 root 权限，设置也简单：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">$ gcc -c `pkg-config --cflags glib-2.0` sample.c&lt;/strong></span></code></pre></td></tr></table></div></figure>
+
+
+<p> 可以用下面的命令查看 LD_LIBRAY_PATH 的设置内容：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">$ gcc -c `pkg-config --cflags glib-2.0` sample.c&lt;/strong></span></code></pre></td></tr></table></div></figure>
+
+
+<p> 至此，库的两种设置就完成了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/liang-ge-hen-meng-de-wordpress-cha-jian/">两个很萌的wordpress插件~</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 25px; color: #333333; line-height: 1.1em; font-weight: normal; padding: 0px; border: 0px initial initial;">1.MP-Ukagaka伪春菜插件</h2>
+
+
+<p>网站没有看板娘？博客无调戏对象？访客寂寞难耐？伪春菜插件满足你！原价一千九百八的伪春菜插件现在只要二百五加三八！
+没错，你没有看错，现在只要二百八十八！还等什么，赶紧拿起电话订购吧！下面图中的超萌超可爱的萝莉就是你的啦….
+一个不够没关系,还可以换,现在总共有三个可供你选择。前100名打入电话的死宅，还可获得阿部高和基情销魂衴一枚（才怪），不要再犹豫了！
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="mp-ukagaka-preview-s" src="http://blog.lolily.com/images/uploads/2010/02/mp-ukagaka-preview-s.jpg" alt="mp ukagaka preview s 两个很萌的wordpress插件~" width="480">[more]
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 15px; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;">插件下载</span></p>
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">当前版本：1.5</li>
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">兼容版本：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="WordPress" href="http://www.aitilife.com/category/anything-about-wordpress">WordPress</a>2.8+，支持WP 3.0+的多站点（MultiSite）功能。</li>
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">下载页面：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://wordpress.org/extend/plugins/mp-ukagaka/">WordPress插件目录</a>
+</li>
+</ul>
+
+
+<p>更详细的说明请看这里：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://blog.lolily.com/wordpress-plugin-mp-ukagaka.html">http://blog.lolily.com/wordpress-plugin-mp-ukagaka.html</a></p>
+
+<h2 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 25px; color: #333333; line-height: 1.1em; font-weight: normal; padding: 0px; border: 0px initial initial;">2.Hamster</h2>
+
+
+<p>严格地说，这个不算一个插件，你只需要在你的网站的任意地方放下一下代码，就可以马上拥有一只会跑滚轮，会喝水，会吃你喂的东西的超级可爱小仓鼠。
+最让人喜欢的一点是…….它永远不会挂掉….你可以放上几个月不管它也没事，突然心血来潮也可以狂让它跑滚轮。狂喂它东西吃，保证不会歇菜，也不会有人告你虐畜..这么多好处的小仓鼠是不是让你心动了?心动不如行动。赶快拿起电话…!!!不好意思，说错台词了..应该是赶快把下面的代码复制到你想显示小仓鼠的地方吧：
+ </p>
+
+<table style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border-collapse: collapse; padding: 0px; margin: 0px; border: 0px initial initial;"><tbody style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><tr style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<td class="line_numbers" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; text-align: right; background-color: #ddeeff; color: gray; overflow-x: visible; overflow-y: visible; margin: 0px; border: 0px initial initial;">
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1</span></code></pre></td></tr></table></div></figure>
+
+
+</td>
+<td class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1</span></code></pre></td></tr></table></div></figure>
+
+
+</td>
+</tr></tbody></table>
+
+
+<p>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">效果如下：</span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;"><img src="http://img.aitilife.com/aitilife/2011%2f4%2fHamster.png" alt=""></span>
+官方主页:<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="http://abowman.com/google-modules/hamster/" href="http://abowman.com/google-modules/hamster/" target="_blank">http://abowman.com/google-modules/hamster/</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/jie-jue-ubuntu-zhong-shi-yong-windows-wen-jian-ming-luan-ma-wen-ti/">解决Ubuntu中使用windows文件名乱码问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>ubuntu环境设置的字符集utf8，<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="windows" href="http://www.aitilife.com/category/operating-system/windows">windows</a>默认字符集是GBK，Ubuntu的默认字符集为utf-8，这使 得在用telnet登录远程服务器或查看windows文件时出现乱码。需要将ubuntu环境设置为GBK或GB2312，或设置软件使其正确显示汉 字。下面以GBK字符集为例进行说明：<br><br>一、修改Ubuntu默认字符集为GBK<br>1、首先设置sudo vi /var/lib/locales/supported.d/local<br>添加一行 zh_CN.GBK GBK<br>sudo locale-gen生成locale
+2、修改ubuntu的字符集<br>方法：修改/etc/environment，增加以下内容：<br>LANGUAGE=”zh_CN:zh:en_US:en”<br>LANG=zh_CN.GBK<br>然后重启X即可<br>这个方法对没有设置LANG及LANGUAGE环境变量的用户有效
+二、设置软件命名其正常显示GBK<br>这需要软件本身支持多字符编码，最常见的是IE等浏览器，可以通过设置编码显示GBK字符集。Ubuntu下的一些软件也支持此功能，以ubuntu的终 端程序为例，使其正常显示GBK编码的方法是：在termial窗口上点击菜单：终端->设置字符编码->选择GBK即可。
+＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃<br>解决文件名，mp3标签，文本文件的中文乱码[more]
+从windows转移到ubuntu的用户，常常会发现自己在windows下创建/下载/保存的文件经常性出现乱码问题(kubuntu出现问题的可能性更高一些)。而使用默认播放器打开以往的音乐文件(mp3等)时，出现乱码的机会更是接近100%。
+这些问题的解决方案在ubuntu使用技巧中已被收录，但是由于问题的普遍性，我认为有必要转移到这里。
+转换文件名由GBK为UTF8
+sudo apt-get install convmv<br>convmv -r -f cp936 -t utf8 –notest –nosmart <em><br>转换文件内容由GBK到UTF8<br>iconv -f gbk -t utf8 $i > newfile
+转换 mp3 标签编码
+sudo apt-get install python-mutagen<br>find . -iname “</em>.mp3” -execdir mid3iconv -e GBK {} ;
+＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃<br>buntu默认的打开.txt文件用的是gedit，可gedit默认编码是UTF8，打开windows下编辑的gb2312的文档都是乱码。解决方法之一就是把gedit的编码改为GB2312，方法如下：
+在Applications菜单上点右键，选择EditMenu.在MainMenu的对话框中勾选SystemTools－ConfigurationEditor，并从Applications菜单中开启。
+依次开启/apps/gedit-2/preferences/encodings/双击右侧auto_detected,在弹出对话框中点选Add，添加Values值为GB2312,确定后选中，点选Up按钮将其移至第一位。
+同样方法，对show_in_menu进行设置，并将GB2312置于首位。
+还有一种方法是用openoffice打开.txt文件时，会让你选择编码，选GB2312就行了。
+＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊<br>1.系统默认编码
+我们知道在中文 Windows 下一般来说系统的默认编码是 GBK, 从 <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Java" href="http://www.aitilife.com/category/develop-technology/java">Java</a> 开发的角度来说, 就是在进行诸如 Java 源代码编译, 文件读写等操作时, 默认使用的编码是 GBK; 而我们参照一般的 Ubuntu 中文安装文档, 可能会建议将默认的语言设置为 zh_CN.UTF-8, 这样会带来一些问题, 比如我在 Windows 使用 Eclipse 时的编辑器的默认编码是 GBK, 但是在 Ubuntu 下面就是 UTF-8, 同样是使用 Eclipse, 在 Windows 下的中文文档到了 Ubuntu 中会产生乱码, 必须手工逐个文档设置属性中的编码为 GBK 才可以正常; 一些测试代码也是以默认编码读取文件的, 这些代码读取出来的文件内容也会包含乱码.
+所以, 最好是将系统的默认编码设置为 GBK, 这样和 Windows 下面的开发环境最接近. 设置的方法应该不止一种, 我采用的是编辑 /etc/environment, 改成这个样子:<br>LANGUAGE=”zh_CN:zh:en_US:en”<br>GST_ID3_TAG_ENCODING=GBK<br>LANG=zh_CN.GBK<br>LC_CTYLE=zh_CN.GBK
+＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊<br>Ubuntu 中文编码设置<br>今天开始把工作环境全部迁移到<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Linux" href="http://www.aitilife.com/category/operating-system/linux">Linux</a>，一天下来，算平静。很庆幸当初在win下面用了Mozilla Thunderbird邮件客户端，而不是OutLook，这简直太方便了，可以直接把上百兆的邮件存放目录复制到linux下直接用，与之形成鲜明对比 的是微软的新版live Messager,今天发现微软的这个东西甚至不支持安装在他们自己的WinXP 64/Wind2003/2008上面？我没有什么可说的呢。
+Ubuntu 默认采用UTF8编码，可以方便global。但对中文支持，还不细致，即便默认采用中文安装，也并不会自动添加GB＊等支持，致使在Ubuntu下访问部分Win文本文件时，出现乱码。
+I. 配置系统环境<br>执行 sudo vi /var/lib/locales/supported.d/zh<br>加入以下配置参数
+zh_CN.GB18030 GB18030 (最新汉字编码字符集，向下兼容GBK,GB2312)<br>zh_CN.GBK GBK (汉字扩展编码,向下兼容GB2312, 并包含BIG5全部汉字)<br>zh_CN.GB2312 GB2312 (简化汉字编码字符集, 最近有客户要我们改进GB2312,太看得起我们了，我只能说:”NO!”)<br>zh_CN.GB18031 GB18031 (数字键盘汉字编码输入,面向手持设备，我的Nokia3120从来就是发短信，接听电话，无法和PC通讯，就不用这个了。 maybe用Google Android SDK的大侠们需要这个)<br>zh_HK.BIG5 BIG5 (繁体)<br>zh_TW.BIG5 BIG5 (繁体)
+然后执行 sudo locale-gen<br>提示以下信息，成功了<br>zh_CN.GB18030… done<br>zh_CN.GBK… done<br>……
+II. 系统环境支持GB*内码了，但用vi, gedit等工具访问文件还会继续乱码，需要针对不同的工具分别配置，使之自己检测支持范围内的编码<br>e.g. vi<br>执行 sudo vi /etc/vim/vimrc<br>加入以下配置参数<br>let &amp;termencoding=&amp;encoding<br>set fileencodings=utf-8,gb18030,gbk,gb2312,big5
+e.g. gedit<br>执行 sudo gconf-editor<br>选择 apps/gedit-2/preferences/encodings<br>找到 auto_detected 编辑，在Values中分别加入 GB18030,GBK,GB2312,BIG5</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/javascript--xue-xi-zi-yuan-tui-jian/">JavaScript 学习资源推荐</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近 reddit 有讨论：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.reddit.com/r/javascript/comments/fqht8/references_for_javascript_mastery/">References for JavaScript Mastery</a>. 去年 Rey Bango 博客上也有一篇文章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://blog.reybango.com/2010/12/15/what-to-read-to-get-up-to-speed-in-javascript/">What to Read to Get Up to Speed in JavaScript</a>. 下面是我的整理，希望能对你有所帮助。<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://lifesinger.wordpress.com/">岁月如歌</a>
+<span id="more-839" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"> </span></p>
+
+<h3 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">登堂入门</h3>
+
+
+<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
+<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.amazon.com/DOM-Scripting-Design-JavaScript-Document/dp/1430233893/">DOM Scripting: Web Design with JavaScript and the Document Object Model</a> – 2005 年，这本书的第一版是我最喜爱的前端书籍之一。知识点的讲解轻松有趣，例子由浅入深，引人入胜。去年发现这本书有第二版了，增加了 HTML5 章节，原有内容也与时俱进。我相信无论新人还是老手，都会发现这是一本好书。</li>
+    <li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://eloquentjavascript.net/">Eloquent JavaScript</a> – 这是一本在线书籍，里面的例子都可调试。作者缓缓道来，内容翔实丰富。从 2007 年始，这本书历经四年，直到今年一月份才正式出版。建议国内有志人士翻译成中文，在保证翻译质量的基础上，造福国内前端。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/javascript--xue-xi-zi-yuan-tui-jian/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/intergete-dowiki-and-wordpress/">整合DoWiKi和Wordpress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>注意：</strong></p>
+
+<p>3.x版本的整合文件已经更新，可以从下面的地址下载，并且要添加5.6两个步骤</p>
+
+<p><a href="http://www.gokuai.com/f/E933e76w2l2G44b6">http://www.gokuai.com/f/E933e76w2l2G44b6</a></p>
+
+<p><a href="http://dl.dbank.com/c00te8rbvn">http://dl.dbank.com/c00te8rbvn</a></p>
+
+<p> 
+这里将介绍无缝整合<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="dokuwiki" href="http://www.aitilife.com/tag/dokuwiki">dokuwiki</a>和你的<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">wordpress</span></span>的方法,这样无论你在哪一个登录，都会同时登录到另一个去,并且用户是完全一样的。你可以访问<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://muagames.com/">http://muagames.com</a>这个演示站点。在<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">wordpress</span></span>中的默认角色在dokuwiki中会成为用户群，你可以分配wiki权限给他们！这需要少量改变你的dokuwiki的安装方法，如果wordpress版本高于2.6的话，也需要少量更改，低于这个版本则无需更改。并且你不需要任何php知识和其他东西来完成这次整合。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">概述：</strong>
+我们将要为dokuwiki创建一个定制的身份验证模块,这个模块将会使用wordpress的认证工具而不是dokuwiki的。我们也要调整一些设置以便让dokuwiki知道什么用户可以做什么和不可以做什么，就是实现用户的不同权限。然后设置他让wordpress用户变成wiki的用户。[more]
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">安装和下载：</strong>
+首先，如果你还没有wordpress和dokuwiki,那就上传和安装他们，我建议为他们在同一目录下各建立一个文件来存放，像下面这样。
+|-目录
+|-/wordpress目录
+|-/dokuwiki目录
+但着不是必要的。无论你安装在哪里，记下他们的安装路径，因为我们需要在下一步用到他们。现在，下载这个压缩包然后解压他们到某个地方进行访问：<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/images/uploads/2010/11/dokuwiki_wordpress_integration_v1.11.zip">dokuwiki_wordpress_integration_v1.1</a>(适用于2.x版本的wordpress,如果你的是3.x版本的请到文章开头给出的链接下载整合文件),</strong>接下来就可以开始整合啦～
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">第一步：身份验证模块</strong>
+从刚才下载的压缩包中复制keeyaiwp.class.php文件到你的dokuwiki目录/inc/auth文件夹中，然后用编辑器打开他，找到下面这行
+$wordpresspath=’../wordpress/’;这应该是文件中除注释中的第一行代码。改变’../wordpress/’为你的wordpress文件夹相对于dokuwiki文件夹的路径,如果你的安装目录像上面所说的，那么就不需要改动了。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">第二步：wiki配置选项</strong>
+进入你的dokuwiki/conf文件夹目录，找到local.php文件。如果这个文件不存在，把local.php.dist这个文件重命名为local.php。这个文件包含一些wiki设置，包括让dokuwiki使用我们创建的身份验证模块也是在这里设置，打开local.php然后添加和修改下面的给出内容。注意：@administrator不是@admin。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="wp_syntax" style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0.1em; padding-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; background-image: url('http://www.aitilife.com/wp-content/themes/suffusion/images/blockquote-r.png'); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: #f9f9f9; color: #110000; overflow-x: auto; overflow-y: hidden; width: 581px; background-position: 100% 100%; background-repeat: no-repeat no-repeat; border: 1px solid silver;">
+</span><span class='line'>&lt;div class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;div class='bogus-wrapper'>&lt;notextile>&lt;figure class='code'>&lt;div class="highlight">&lt;table>&lt;tr>&lt;td class="gutter">&lt;pre class="line-numbers">&lt;span class='line-number'>1&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>2&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>3&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>4&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>5&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>6&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>7&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>8&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>9&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>10&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>11&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>12&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>13&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>14&lt;/span>
+</span><span class='line'>&lt;/pre>&lt;/td>&lt;td class='code'>&lt;pre>&lt;code class=''>&lt;span class='line'>$conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'useacl'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>;
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'superuser'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '@administrator';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'disableactions'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'register';       // Disable the ability to register: handle with wordpress
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'autopasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                    // Disable password autogen: not important if users can't register
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'resendpasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                   // Disable password resend:
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'profileconfirm'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '&lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>';      // password must be verified when editing profile
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'passcrypt'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'smd5';            // Not sure what passcrypt needs to be set to, but this works
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // use wordpress login system
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'authtype'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'keeyaiwp';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // default group name
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'defaultgroup'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= 'user';&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>&lt;/div>&lt;/figure>&lt;/notextile>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>&lt;/div></span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">第三步：wiki权限</strong>
+进入你的dokuwiki/conf文件夹目录，找到acl.auth.php文件。如果这个文件不存在，把acl.auth.php.dist这个文件重命名为acl.auth.php,这个文件控制wiki用户和用户群组的默认权限，我们将要添加四个低级的wordpress角色(我们已经添加管理员角色通过设置他为superuser）作为wiki用户群组。你应该调整这些设置以便你的wiki按照你需要的方式工作。名字都是wordpress roles-不要需改他们-那些数字全是dokuwiki权限。这是dokuwiki的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.dokuwiki.org/acl">ACL</a>文档，下面的数字的意思可以从里面找到。你只需选择你需要的最大的数字——每一个包含低于他的数字的所有权限。我的默认设置是让所有人可以阅读，所有的登录用户（投稿者，作者）可以阅读/编辑/创建页面，而编辑者和管理员可以上传媒体和删除页面，只有Administrators group的用户可以访问wiki管理工具。
+打开文件并添加以下行（与以上所述的任何调整）：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="wp_syntax" style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0.1em; padding-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; background-image: url('http://www.aitilife.com/wp-content/themes/suffusion/images/blockquote-r.png'); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: #f9f9f9; color: #110000; overflow-x: auto; overflow-y: hidden; width: 581px; background-position: 100% 100%; background-repeat: no-repeat no-repeat; border: 1px solid silver;">
+</span><span class='line'>&lt;div class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;div class='bogus-wrapper'>&lt;notextile>&lt;figure class='code'>&lt;div class="highlight">&lt;table>&lt;tr>&lt;td class="gutter">&lt;pre class="line-numbers">&lt;span class='line-number'>1&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>2&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>3&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>4&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>5&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>6&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>7&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>8&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>9&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>10&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>11&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>12&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>13&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>14&lt;/span>
+</span><span class='line'>&lt;/pre>&lt;/td>&lt;td class='code'>&lt;pre>&lt;code class=''>&lt;span class='line'>$conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'useacl'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>;
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'superuser'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '@administrator';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'disableactions'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'register';       // Disable the ability to register: handle with wordpress
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'autopasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                    // Disable password autogen: not important if users can't register
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'resendpasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                   // Disable password resend:
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'profileconfirm'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '&lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>';      // password must be verified when editing profile
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'passcrypt'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'smd5';            // Not sure what passcrypt needs to be set to, but this works
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // use wordpress login system
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'authtype'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'keeyaiwp';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // default group name
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'defaultgroup'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= 'user';&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>&lt;/div>&lt;/figure>&lt;/notextile>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>&lt;/div></span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">第四步：wordpress的编辑功能</strong>
+高版本wordpress的问题是is_ssl函数的重复声明，要解决他，我们需要打开wordpress的文件然后让他只在is_ssl函数不存在的情况下定义is_ssl函数。具体操作如下：
+1.打开wp-includes/funtions.php，寻找is_ssl函数，然后更改他为下面给出的代码，并在开始和结束位置添加大括号。在wp2.9.1中他在第3091行。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="wp_syntax" style="margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0.1em; padding-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; background-image: url('http://www.aitilife.com/wp-content/themes/suffusion/images/blockquote-r.png'); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: #f9f9f9; color: #110000; overflow-x: auto; overflow-y: hidden; width: 581px; background-position: 100% 100%; background-repeat: no-repeat no-repeat; border: 1px solid silver;">
+</span><span class='line'>&lt;div class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;div class='bogus-wrapper'>&lt;notextile>&lt;figure class='code'>&lt;div class="highlight">&lt;table>&lt;tr>&lt;td class="gutter">&lt;pre class="line-numbers">&lt;span class='line-number'>1&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>2&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>3&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>4&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>5&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>6&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>7&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>8&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>9&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>10&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>11&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>12&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>13&lt;/span>
+</span><span class='line'>&lt;span class='line-number'>14&lt;/span>
+</span><span class='line'>&lt;/pre>&lt;/td>&lt;td class='code'>&lt;pre>&lt;code class=''>&lt;span class='line'>$conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'useacl'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>;
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'superuser'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '@administrator';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'disableactions'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'register';       // Disable the ability to register: handle with wordpress
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'autopasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                    // Disable password autogen: not important if users can't register
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'resendpasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                   // Disable password resend:
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'profileconfirm'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '&lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>';      // password must be verified when editing profile
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'passcrypt'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'smd5';            // Not sure what passcrypt needs to be set to, but this works
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // use wordpress login system
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'authtype'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'keeyaiwp';
+</span><span class='line'>&lt;/span>&lt;span class='line'>
+</span><span class='line'>&lt;/span>&lt;span class='line'>  // default group name
+</span><span class='line'>&lt;/span>&lt;span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'defaultgroup'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= 'user';&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>&lt;/div>&lt;/figure>&lt;/notextile>&lt;/div>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;/div>
+</span><span class='line'>&lt;/div></span></code></pre></td></tr></table></div></figure>
+
+
+<p>很好，现在已经整合成功了，很简单吧？现在你的博客和wiki的登录应该是同步的了。做完以上步骤后，你可以使用wiki管理工具来进一部调整用户和用户组的权限，而不需要再次进入代码里修改了。
+<strong>第五步：(wordpress3.x执行这一步，2.x不需要)</strong>
+我们需要创建两个新的文件。首先，因为我们不打算使用WordPress的
+config文件，但我们需要它里面的信息，我们需要复制并重新命名它。
+复制wp - config.php文件，并将其重命名WP-doku-config.php文件。然后改变从最后一行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'useacl'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>;
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'superuser'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '@administrator';
+</span><span class='line'>
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'disableactions'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'register';       // Disable the ability to register: handle with wordpress
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'autopasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                    // Disable password autogen: not important if users can't register
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'resendpasswd'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= &lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">0&lt;/span>;                   // Disable password resend:
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'profileconfirm'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = '&lt;span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">1&lt;/span>';      // password must be verified when editing profile
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'passcrypt'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'smd5';            // Not sure what passcrypt needs to be set to, but this works
+</span><span class='line'>
+</span><span class='line'>  // use wordpress login system
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'authtype'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span> = 'keeyaiwp';
+</span><span class='line'>
+</span><span class='line'>  // default group name
+</span><span class='line'>  $conf&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">[&lt;/span>'defaultgroup'&lt;span class="br0" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; padding: 0px; margin: 0px; border: 0px initial initial;">]&lt;/span>= 'user';</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>第六步:(wordpress3.x执行这一步，2.x不需要</strong>)
+复制下载文件中的wp-doku-settings.php文件到wordpress文件夹中
+注意：
+wordpress升级到3.x版本后,作者特别强调，这是一个hack，通过丑陋的方法实现wordpress和dowiki的整合，虽然他能正常工作。
+译自：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://keeyai.com/projects-and-releases/dokuwiki-tools/dokuwiki-and-wordpress-integration/">http://keeyai.com/projects-and-releases/dokuwiki-tools/dokuwiki-and-wordpress-integration/</a>
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/huo-hu-liu-lan-qi-%EF%BC%88firefox%EF%BC%89-zi-dong-jin-ru-tuo-ji-gong-zuo-mo-shi-jie-jue/">火狐浏览器（firefox）自动进入“脱机工作”模式解决办法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+一打开火狐浏览器（<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">firefox</span></span>）就自动进入了“脱机工作”模式，原因可能是检测不到电脑联网，因为不是通过系统默认的网络管理小程序联网的。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">解决办法：</strong>
+打开Firefox浏览器，然后在网址输入栏当中输入<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">about:config</span>，这时进入一个设置界面，按<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">ctrl+f</span>打开查找栏，找到<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">toolkit.networkmanager.disable</span>，把它设置为<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">true</span>就OK了。
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/http--cuo-wu--500-21-internal-server-error/">HTTP 错误 500.21 - Internal Server Error</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">HTTP 错误 500.21 – Internal Server Error</h4>
+处理程序“PageHandlerFactory-Integrated”在其模块列表中有一个错误模块“ManagedPipelineHandler”
+
+</div>
+
+
+<p><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://images.cnblogs.com/cnblogs_com/pingjiang/WindowsLiveWriter/IIS6asp.netMVCHTTP.21InternalServerError_9060/image_2.png"><img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="image" src="http://images.cnblogs.com/cnblogs_com/pingjiang/WindowsLiveWriter/IIS6asp.netMVCHTTP.21InternalServerError_9060/image_thumb.png" border="0" alt="image thumb HTTP 错误 500.21   Internal Server Error" width="644"></a>
+错误原因:在安装FrameWorkv4.0后在安装IIS,导致Framework没有安装完全
+解决方案:只需要重新安装一下就可以了.在Frameworv4.0的目录中安装的程序以<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">管理员权限</strong>重新运行一下就可以了.
+具体步骤:
+1.开始->运行->cmd打开命令行工具，复制以下代码，粘贴到cmd里，回车运行</p>
+
+<div style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<h3 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">%windir%Microsoft.NETFrameworkv4.0.30319aspnet_regiis.exe -i</h3>
+安装完成后就可以了~注意当前用户必须具有管理员权限。
+
+</div>
+
+
+<p><img src="http://img.aitilife.com/aitilife/2011%2f4%2fregiis.png" alt=""></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/13/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/11/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

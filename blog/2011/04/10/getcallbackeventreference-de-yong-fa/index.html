@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>GetCallbackEventReference的用法 - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="作用：获取一个对客户端函数的引用；调用该函数时，将启动一个对服务器端事件的客户端回调。此重载方法的客户端函数包含指定的控件、参数、客户端脚本和上下文。
+函数原型：
+public string GetCallbackEventReference (
+Control control,
+string &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/10/getcallbackeventreference-de-yong-fa/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">GetCallbackEventReference的用法</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>作用：获取一个对客户端函数的引用；调用该函数时，将启动一个对服务器端事件的客户端回调。此重载方法的客户端函数包含指定的控件、参数、客户端脚本和上下文。
+函数原型：
+public string GetCallbackEventReference (
+Control control,
+string argument,
+string clientCallback,
+string context
+)</p>
+
+<p>第一个参数指定了服务器端将要处理回调的目标对象，即处理客户端回调的服务器端控件。该控件必须实现 ICallbackEventHandler 接口并提供 RaiseCallbackEvent 方法。
+如果传入的是this，则表示页面本身。也可以传入任何实现了ICallbackEventHandler的页面控件(page control)的引用。
+在任何情况下，客户端的提交动作(submit action)会提交至和标准回传(postback)机制相同的ASPX页面。
+第二个参数是一个JavaScript常量表达式，表示页面传给服务器的输入数据。如将一个下拉列表当前选中元素的值传入”document.getElementById[&#8216;cboEmployees&#8217;].value”：。
+第三个参数是一个用户定义在<script>块中的JavaScript回调(callback)函数名。回调(callback)执行后，此函数最终负责页面的更新,即最后服务器端得结果会返回给此参数指定的函数，设计人员在此参数指定的函数中编写代码实现页面的无闪烁更新。
+最后两个可选参数可用来指定错误处理函数(<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">error</span></span> handler)和上下文对象(context object)
+其中上下文对象的作用是启动回调之前在客户端计算的客户端脚本。 脚本的结果传回客户端事件处理程序。即第三个参数clientCallback指定的脚本可在此定义，而不必在设计页面定义。[more]
+例：
+StringBuilder context1 = new StringBuilder();
+context1.Append(“function ReceiveServerData1(arg, context)”);
+context1.Append(“{“);
+context1.Append(“Message1.innerText = arg;”);
+context1.Append(“value1 = arg;”);
+context1.Append(“}”);
+String cbReference1 = cs.GetCallbackEventReference(this, “arg”,
+“ReceiveServerData1″, context1.ToString());
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 12px; line-height: 18px; white-space: pre; padding: 0px; margin: 0px; border: 0px initial initial;">GetCallbackEventReference函数将产生如下的脚本调用：</span>
+WebForm_DoCallback(pageID, input, UpdateEmployeeViewHandler, null, null);
+此函数的代码会自动下载到客户端并通过<script>标签添加到页面响应(page’s response)中。WebForm_DoCallback 使用XmlHttpRequest DOM对象(XmlHttpRequest DOM object)回调(call back)当前页面的URL。
+与此同时，它会添加一些额外的隐藏域(hidden field)以便服务器区分更简单的轻量级回调(callback)请求和一般回传(postback)请求。
+处理请求时，<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="ASP.NET" href="http://www.aitilife.com/category/develop-technology/asp-net">ASP.NET</a>运行时(runtime)标识出调用的目标对象(传给GetCallbackEventReference的第一个参数)，确认它实现了ICallbackEventHandler接口后调用RaiseCallbackEvent方法：
+void RaiseCallbackEvent (
+string eventArgument
+)
+eventArgument一般即是通过GetCallbackEventReference指定的页面传递到服务器端的输入数据，即参数2
+RaiseCallbackEvent处理完毕，即通过调用
+public string GetCallbackResult()
+将处理结果返回给调用控件，交由客户端执行GetCallbackEventReference指定的客户端脚本clientCallback，由其完成客户端刷新。
+上面说过，脚本回调(script callback)并不适用于所有浏览器，尽管最新的浏览器，包括Internet Explorer 5+, Netscape 6+, and Safari1.2+都能行。
+Microsoft在<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="ASP.NET" href="http://www.aitilife.com/tag/asp-net">ASP.NET</a>2.0中加入了两个新的browser bapabilities：SupportsXmlHttp 与SupportsCallback以便开发人员检查方案的可行性。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">一条让页面刷新更快的告诫</strong>
+尽管脚本回调(script callback) 定义在ASP.NET 2.0中，要使其在ASP.NET 1.1里工作也并不很困难。在ASP.NET 2.0中，很多服务器控件(server control)借助脚本回调(script callback)提供了更迅速的页面刷新。
+最突出的例子也许是GridView控件(GridView control)，作为DataGrid的接班人，选择性地运用脚本回调(script callback)实现分页显示记录。
+正如前面所说，脚本回调(script callback)依赖于文档对象模型(DOM)的XmlHttpRequest对象。在Internet Explorer中，此文档对象模型对象(DOM object)通过ActiveX控件(ActiveX control)实现——Microsoft.XmlHttp。
+在IE中浏览这样的页面时，你必须适当降低安全设置以允许ActiveX控件(ActiveX control)能被脚本调用。在其他以同样方式实现XmlHttpRequest文档对象模型对象(DOM object)的浏览器中，这是不必要的。
+事实上，基于Mozilla的浏览内置支持了HTTP请求功能器，而没用使用ActiveX控件(ActiveX control)——这也是在Internet Explorer 7.0中被寄予厚望的功能。
+下面简单例子可作参考<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">(例子来源于asp.net高级编程第7版</strong>)：
+服务器端</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>private string result;
+</span><span class='line'>
+</span><span class='line'>    protected void Page_Load(object sender, EventArgs e)
+</span><span class='line'>    {
+</span><span class='line'>        string script = Page.ClientScript.GetCallbackEventReference(this, "arg", "getRandom", "content1");
+</span><span class='line'>        string script1 = "function UseCallBack(arg, content1)" + "{" + script + ";" + "}";
+</span><span class='line'>        raise.Text = script1;
+</span><span class='line'>        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "UseCallBack", script1, true);
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    public void RaiseCallbackEvent(string EventArgs)
+</span><span class='line'>    {
+</span><span class='line'>        result = EventArgs;
+</span><span class='line'>    }
+</span><span class='line'>    public string GetCallbackResult()
+</span><span class='line'>    {
+</span><span class='line'>        return result+"test";
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+
+
+<p>客户端
+ </p>
+
+<table style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border-collapse: collapse; padding: 0px; margin: 0px; border: 0px initial initial;"><tbody style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><tr style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
+<td class="line_numbers" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; text-align: right; background-color: #ddeeff; color: gray; overflow-x: visible; overflow-y: visible; margin: 0px; border: 0px initial initial;">
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>private string result;
+</span><span class='line'>
+</span><span class='line'>    protected void Page_Load(object sender, EventArgs e)
+</span><span class='line'>    {
+</span><span class='line'>        string script = Page.ClientScript.GetCallbackEventReference(this, "arg", "getRandom", "content1");
+</span><span class='line'>        string script1 = "function UseCallBack(arg, content1)" + "{" + script + ";" + "}";
+</span><span class='line'>        raise.Text = script1;
+</span><span class='line'>        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "UseCallBack", script1, true);
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    public void RaiseCallbackEvent(string EventArgs)
+</span><span class='line'>    {
+</span><span class='line'>        result = EventArgs;
+</span><span class='line'>    }
+</span><span class='line'>    public string GetCallbackResult()
+</span><span class='line'>    {
+</span><span class='line'>        return result+"test";
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+
+
+</td>
+<td class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>private string result;
+</span><span class='line'>
+</span><span class='line'>    protected void Page_Load(object sender, EventArgs e)
+</span><span class='line'>    {
+</span><span class='line'>        string script = Page.ClientScript.GetCallbackEventReference(this, "arg", "getRandom", "content1");
+</span><span class='line'>        string script1 = "function UseCallBack(arg, content1)" + "{" + script + ";" + "}";
+</span><span class='line'>        raise.Text = script1;
+</span><span class='line'>        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "UseCallBack", script1, true);
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    public void RaiseCallbackEvent(string EventArgs)
+</span><span class='line'>    {
+</span><span class='line'>        result = EventArgs;
+</span><span class='line'>    }
+</span><span class='line'>    public string GetCallbackResult()
+</span><span class='line'>    {
+</span><span class='line'>        return result+"test";
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+
+
+</td>
+</tr></tbody></table>
+
+
+<p>
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">这个代码的工作流程是怎么样得呢?</strong>
+首先 ,点击按钮Button1后,触发test()函数,函数内调用UseCallBack函数,可以在此传入参数,传入的参数将会传给服务器端的RaiseCallbackEvent函数进行解析,当然,也可以中途截断这个参数的传递,就是在
+string script = Page.ClientScript.GetCallbackEventReference(this, “arg”, “getRandom”, “content1″);
+语句中,使用第二个参数进行截断,可以在此绑定其他数据,如document.forms[i].XXX.value等.那么最后返回给客户端得将会是绑定的这个数据。
+ </p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/dotnet/'>DotNet</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/10/gd-iis7-301-zhong-ding-xiang-fang-fa/" title="Previous Post: GD IIS7 301重定向方法">&laquo; GD IIS7 301重定向方法</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/10/gimp-paint-studio-gei-ni-de-gimp-cha-shang-chi-bang/" title="Next Post: Gimp Paint Studio:给你的Gimp插上翅膀">Gimp Paint Studio:给你的Gimp插上翅膀 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

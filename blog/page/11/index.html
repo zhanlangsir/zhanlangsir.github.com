@@ -1,0 +1,653 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content=" 
+有时候在使用vim的时候，显示中文为乱码，这个时候我们可以修改vimrc文件解决问题！
+首先，你需要搞清楚vimrc所在的位置。一般来说，在linux系统里，应该是这样
+Linux: /usr/share/vim/vimrc
+在Windows系统，应该是在vim的安装目录
+Windows: c &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/page/11/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/resolve-vim-chinese-garbled/">解决VIM中文乱码</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+有时候在使用vim的时候，显示中文为乱码，这个时候我们可以修改vimrc文件解决问题！
+首先，你需要搞清楚vimrc所在的位置。一般来说，在<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="linux" href="http://www.aitilife.com/category/operating-system/linux">linux</a>系统里，应该是这样
+Linux: /usr/share/vim/vimrc
+在<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">Windows</span></span>系统，应该是在vim的安装目录
+<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">Windows</span></span>: c:program filesvimvimrc
+我目前使用的是Windows7 ，路径显示为
+C:Program FilesVim_vimrc
+这里所说的都是全局设定，打开vimrc文件后，只需要在文件最后添加以下代码就可以了：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>set fileencodings=utf-8,gb2312,gbk,gb18030
+</span><span class='line'>set termencoding=utf-8
+</span><span class='line'>set fileformats=unix
+</span><span class='line'>set encoding=prc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样，你的vim中文乱码问题就解决了！
+需要注意的是，在Windows7和vista下，由于加强版的管理员权限，你用vim直接打开vimrc文件，所做的修改是无法保存的！哪怕你使用的是:wq! 命令！一个简单的方法就是先在开始里面用管理员权限启动vim，然后通过vim打开vimrc文件做修改就可以了！
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/rang-win7-zai-xiu-mian-zhuang-tai-xia-xia-zai-dong-xi/">让win7在休眠状态下下载东西</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>喜欢在网上下载电影、电视剧观看的朋友也是越来越多，当然为了不影响自己的上网速度，很多人都选择在晚上临睡前打开下载任务，然后自己睡觉，电脑继 续干活。有过这种下载经验的网友都会知道，想要让电脑下载不中断，就必须保证电脑不会进入休眠等待机状态，所以需要将<span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">Windows</span></span>系统的电源管理手动调整到从不关闭的状态，这样才能确保电脑不休息，下载不中断。
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="让win7在休眠状态下下载东西" src="http://windows.chinaitlab.com/UploadFiles_3263/201009/20100910091901762.jpg" alt="20100910091901762 让win7在休眠状态下下载东西" width="494"></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/rang-win7-zai-xiu-mian-zhuang-tai-xia-xia-zai-dong-xi/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/pkg-config/">Makefile好助手：pkg-config</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+你在Unix下开发过软件吗？写完一个程序，编译运行完全正常，在你本机上工作得好好的，你放到源代码管理系统中。然后，告诉你的同事说，你可以取下来用了。这时，你长长的出了一口气，几天的工作没有白费，多么清新的空气啊，你开始飘飘然了。
+“Hi，怎么编译不过去？”你还沉浸在那种美妙的感觉之中，双臂充满着力量，似乎没有什么问题能难倒你的。正在此时，那个笨蛋已经冲着你嚷开了。
+“不会吧，我这边好好的！”表面上你说得很客气，其实，你心里已经骂开了，真笨，不知道脑子干嘛用的。也许，你想的没错，上次，他犯了一个简单的错误，不是你一去就解决了吗。
+他喊三次之后，你不得不放下你手上的工作，刚才那种美妙的感觉已经消失得无影无踪了，要不是你把情绪控制得很好，一肚子气就要撒在他身上了。你走到他的电脑前，键入make，优雅的按下回车。怎么可能出错呢？你信心十足。然而，屏幕上的结果多少有点让人脸红，该死的，libxxx.so怎么会让不到呢？
+你在/usr目录中查找libxxx.so，一切都逃不过你的眼睛。奇怪，libxxx.so怎么在/usr/local/lib下，不是应该在/usr/lib下的吗？这你可不能怪别人，别人想安装在哪里都行，下次还可能安装到/lib目录下呢。<span id="more-185" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"> </span>
+以上的场景并非虚构，我都经历过好几次，明明在本机上好好的，在别人的机器上连编译都过不去。可能两人的操作系统一模一样，需要的库都安装上，只是由于个人喜好不同，安装在不同的目录而已。遇到这种情况，每次都技巧性的绕过去了，用的补丁型的方法，心里老惦记其它地方能不能工作。
+今天我们要介绍的pkgconfig，为解决以上问题提供了一个优美方案。从此，你再也不为此担忧了。Pkgconfig提供了下面几个功能：
+1.         检查库的版本号。如果所需要的库的版本不满足要求，它会打印出错误信息，避免链接错误版本的库文件。
+2.         获得编译预处理参数，如宏定义，头文件的位置。
+3.         获得链接参数，如库及依赖的其它库的位置，文件名及其它一些连接参数。
+4.         自动加入所依赖的其它库的设置。
+这一切都自动的，库文件安装在哪里都没关系！
+在使用前，我们说说pkgconfig的原理，pkgconfig并非精灵，可以凭空得到以上信息。事实上，为了让pkgconfig可以得到这些信息，要求库的提供者，提供一个.pc文件。比如gtk+-2.0的pc文件内容如下：
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">prefix=/usr</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">exec_prefix=/usr</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">libdir=/usr/lib</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">includedir=/usr/include</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">target=x11</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"> </em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">gtk_binary_version=2.4.0</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">gtk_host=i386-redhat-<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">linux</span></span>-gnu</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Name: GTK+</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Description: GIMP Tool Kit (${target} target)</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Version: 2.6.7</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Requires: gdk-${target}-2.0 atk</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Libs: -L${libdir} -lgtk-${target}-2.0</em>
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Cflags: -I${includedir}/gtk-2.0</em>
+这个文件一般放在/usr/lib/pkgconfig/或者/usr/local/lib/pkgconfig/里，当然也可以放在其它任何地方，如像X11相关的pc文件是放在/usr/X11R6/lib/pkgconfig下的。为了让pkgconfig可以找到你的pc文件，你要把pc文件所在的路径，设置在环境变量PKG_CONFIG_PATH里。
+使用方法很简单，比如，我们要使用gtk+的库编译一个程序：
+<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">gcc -g arrow.c -o arrow  <code>&lt;span style="color: #787878;"&gt;&lt;span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;"&gt;pkg-config&lt;/span&gt;&lt;/span&gt; “gtk+-2.0 &gt; 2.0.0″ –cflags –libs</code></em>
+只要安装了gtk+2.0，不管它在哪里，编译都是正常的。这是不是简单很多了？
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/phpmyadmin-wu-fa-zai-fa-sheng-cuo-wu-shi-chuang-jian-hui-hua--qing-jian-cha--php--huo-wang-zhan-fu/">phpMyAdmin:无法在发生错误时创建会话，请检查 PHP 或网站服务器日志XX错误解决办法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>1.打开我的电脑——系统安装盘(不错的话一般都是C盘)——打开<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="WINDOWS" href="http://www.aitilife.com/category/operating-system/windows">WINDOWS</a>文件夹——找到Temp目录;
+右击打开属性，点到安全选项，如果没有你可以先按一下alt，然后就会出现工具栏,在窗口的上边点开 工具——文件夹选项——查看——将“使用单文件共享(推荐)”钱的勾去掉就有了;
+2.说简单点就是：WIN下系统文件夹 <a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="windows" href="http://www.aitilife.com/tag/windows">windows</a>里面就有一个 TEMP的临时文件夹，只需将此文件夹USER用户权限设置为完全控制就能解决。假如还是有这个错误，原来的那个文件夹带它里边的东西都删除。
+3.  另外还有一种方法：在c盘windows目录下 php.ini
+比如你可以找到这一行session.save_path = “某个路径”
+改为　session.save_path = “D:webserverphpsession”
+然后要建立这个目录D:webserverphpsession
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/php-cuo-wu-failed-to-open-stream-permission-denied-in-xxx-on-xxx/">Php错误:failed to Open Stream: Permission Denied in Xxx on Xxx</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+学习php的时候遇到这个错误
+Warning: move_uploaded_file(/xxxx) [function.move-uploaded-file]: failed to open stream: Permission denied in /xxx on line <em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">x</em>
+搜了一下，发现这是因为目标目录的权限问题所致，你对move_uploaded_file函数的目标目录必须拥有创建和删除文件的权限，<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">ubuntu</span></span>下只要右键点击目标目录，点<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">属性->权限</span></strong>,把（<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">其他</strong></span>）的文件夹访问权限改为<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">创建和删除文件</span></strong>就可以了。
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/pei-zhi-cuo-wu---zai-wei-yi-mi-yao-shu-xing-value-she-zhi-wei-xxx-shi--wu/">&#8220;配置错误 在唯一密钥属性“value”设置为“xxx”时，无法添加类型为“add”的重复集合项&#8221;解决办法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>只要把iis网站根目录下的web.config文件删除就可以了~
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/opensuse-xia-dian-ji-chrome-mei-fan-ying/">Opensuse下点击chrome没反应</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">chrome</span></span>是小狼最喜欢的浏览器,装了<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">opensuse</span></span>后,第一时间就装上chrome，但是装完后怎么点击图标都启动不了,猜想可能是缺少某些文件了，就在终端中启动/opt/<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">google</span></span>/chrome/目录中的chrome程序,果不其然,提示少了xxx共享库。
+细心看看,发现提示少的这些库文件都在/opt/google/chrome目录下,所以小狼就尝试把他们复制到/usr/lib目录下,具体命令如下：
+sudo cp /opt/google/chrome/libbz2.so.1.0  /usr/lib
+sudo cp /opt/google/chrome/libnss3.so.1d  /usr/lib
+sudo cp /opt/google/chrome/libnssutil3.so.1d  /usr/lib
+sudo cp /opt/google/chrome/libplc4.so.0d  /usr/lib
+sudo cp /opt/google/chrome/libsmime3.so.1d  /usr/lib
+然后还缺一个libpng，这chrome目录下没有,所以就手动装了一个
+sudo zypper install libpng12-0
+全部完成后,鸡动地点了一些chrome图标,阿门，终于打开了～赶紧同步一下书签去～
+打开后有出现无法打开配置文件的，就把用户目录下的.config/google-chrome/default/web data这个文件删除就行了
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/opensuse-xia-bian-yi-scim-googlepinyin-ti-shi-zhao-bu-dao-scim/">Opensuse下编译scim-googlepinyin提示找不到scim</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">opensuse</span></span>下编译scim-googlepinyin时提示:
+checking for SCIM… no configure: <span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">error</span></span>: Package requirements (scim >= 1.4.0) were not met:  No package ‘scim’ found
+是因为没有找到对于的库文件
+sudo zypper install scim-devel
+即可
+接下来继续configure，发现提示cannot find input file: <span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">Makefile</span></span>.in
+因为没有安装libtool这个包
+sudo zypper install libtool
+就大公告成～
+如果make的时候以下错误,是因为没有安装g++
+libtool: compile:  g++ -DHAVE_CONFIG_H -I. -I../.. -Wall -c dictbuilder.cpp  -o .libs/libpinyinime_la-dictbuilder.o
+../../libtool: line 983: g++: command not found
+解决办法是
+sudo zypper install gcc-c++
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/objectdock-plus-v2-0-50727-han-po-jie-fang-fa/">ObjectDock Plus v2.0.50727(含破解方法)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>昨天到同学宿舍逛了逛，突然发现自己的桌面很老土,这让小狼情何以堪啊…….不行.感觉美化一下先，搜索了很久，终于发现了一款很受欢迎的dock软件,安装后桌面的美观度唰唰地就上升了几个等级，极大的满足了小狼的虚荣心<del>~~忽忽忽忽</del>
+好东西怎敢自己藏着呢，当然要拿出来大家分享啊，你好我好大家好，大家好才是真的好啊！(小狼绝对不是好迪的枪手。。。。)
+还有，同学们注意了:此版本为破解版，紧供学习所用，如喜欢此软件，请购买正版………….
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; font-weight: normal; padding: 0px; margin: 0px; border: 0px initial initial;">此版本版本号为2.0.50727 , 支持<span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">win7</span></span> 32/<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">64</span>bit 或 winXP 32bit,无需担心兼容问题！</span></strong>
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; font-weight: normal; padding: 0px; margin: 0px; border: 0px initial initial;"> </span><span id="more-819" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"> </span>破解步骤：</strong>
+先运行keygen，选patch，完成后点save，保存到主程序安装目录即可[more]
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="ObjectDock Plus v2.0.50727(含破解方法)" src="http://img208.poco.cn/mypoco/myphoto/20101026/08/5599087920101026083358023.jpg" alt="5599087920101026083358023 ObjectDock Plus v2.0.50727(含破解方法)" width="600"><br>
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="ObjectDock Plus v2.0.50727(含破解方法)" src="http://img208.poco.cn/mypoco/myphoto/20101026/08/5599087920101026083428058.jpg" alt="5599087920101026083428058 ObjectDock Plus v2.0.50727(含破解方法)" width="600"></p>
+
+<br>
+
+
+<p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">顺便附上一些图标供替换，下载地址在文章最后:</strong><br><br><img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="ObjectDock Plus v2.0.50727(含破解方法)" src="http://img208.poco.cn/mypoco/myphoto/20101103/16/55990879201011031638111466878384115_002.jpg" alt="55990879201011031638111466878384115 002 ObjectDock Plus v2.0.50727(含破解方法)" width="600">
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">下面的两张图是“<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">阿拉丁神灯StackDockle</span>t”特效插件,此插件在下载包内了:</strong>
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="ObjectDock Plus v2.0.50727(含破解方法)" src="http://img208.poco.cn/mypoco/myphoto/20101026/00/559908792010102600183209.png" alt="559908792010102600183209 ObjectDock Plus v2.0.50727(含破解方法)" width="267">
+ <strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">附一个截图插件</strong><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">:</strong>
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="ObjectDock Plus v2.0.50727(含破解方法)" src="http://img208.poco.cn/mypoco/myphoto/20101103/16/55990879201011031638111466878384115_000.jpg" alt="55990879201011031638111466878384115 000 ObjectDock Plus v2.0.50727(含破解方法)" width="331"> <br>此插件没有像QQ那样的保存到哪里选项，截图后自动保存到插件目录，点击最后的打开截图文件夹就可以看到了，Capture开头的就是截下来的图:
+<strong><img style="border: 0px initial initial;" src="http://img.aitilife.com/aitilife/2011%2f4%2fcapture.jpg" alt=""></strong>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #008000; padding: 0px; margin: 0px; border: 0px initial initial;"> </span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;"><br></span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">PS:</strong></span>
+<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;"><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"> </strong>发现 </span><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">天气 插件</span><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;"> 对于国内用户不再 那么鸡肋了，已经可以 精确到 县一级了</span><br><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;">以山东省齐河县为例，写为:Qihe, China (Shandong)<br></span><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;">格式为 ：所处地方, 所在国家 (所属省) </span><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #444444; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;">，名称为英文，</span><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;">注意 城市英文名除了港澳台** 一般都是拼音，</span><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;">“,()”为英文标点，“China” 和 “（” 前各空一格，省可以省略，它会自动搜出结果让你选，</span></span></span><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #333333; padding: 0px; margin: 0px; border: 0px initial initial;">温度用摄氏度选的话Celsius…</span><br><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #000000; padding: 0px; margin: 0px; border: 0px initial initial;">填好后，点Update更新…</span><br><br><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #000000; padding: 0px; margin: 0px; border: 0px initial initial;"><img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="ObjectDock Plus v2.0.50727(含破解方法)" src="http://img208.poco.cn/mypoco/myphoto/20101027/09/5599087920101027090811017.jpg" alt="5599087920101027090811017 ObjectDock Plus v2.0.50727(含破解方法)" width="500"><br></span><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #000000; padding: 0px; margin: 0px; border: 0px initial initial;"> </span></p>
+
+<hr style="margin-bottom: 1.5em; height: 3px; background-color: #777777; border: 1px dotted #666666;">
+
+
+<p><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #000000; padding: 0px; margin: 0px; border: 0px initial initial;">官网:<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.stardock.com/products/objectdock/">http://www.stardock.com/products/objectdock/</a></span>
+Objectdock plug破解版下载地址:<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Objectdock plug" href="http://www.gokuai.com/f/9N901q5m6CK9Dcg1" target="_blank">够快下载</a>
+阴影图标下载地址：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="阴影图标" href="http://www.gokuai.com/f/47202CLf84h7eFn9" target="_blank">够快下载</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/nuo-ji-ya-kai-fang-symbian-xi-tong-yuan-ma/">诺基亚开放Symbian系统源码</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>诺基亚今天宣布在<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://symbian.nokia.com/">symbian.nokia.com</a>开放Symbian手机系统源码，这意味着开发者可以自由访问源码、文档和工具，但目前部分内容还没有完全被公开出来，目前“<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://symbian.nokia.com/symbian-documentation" target="_blank">documentation</a>”页面还暂时显示”coming soon”接下来几周将会如数公布。
+<img style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; max-width: 99%; padding: 0px; margin: 0px; border: 0px none initial;" title="Nokia's Symbian blog post" src="http://www.cofftech.com/data/attachment/portal/2011/04/01/nokia11875201104011620452.png" alt="nokia11875201104011620452 诺基亚开放Symbian系统源码" width="700">
+如果您对Symbian源码有兴趣，请注册：
+<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://symbian.nokia.com/registration/register" target="_blank">http://symbian.nokia.com/registration/register</a>
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/12/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/10/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

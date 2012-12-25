@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>用组策略优化你的Windows 7 - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="Windows 7与XP一样也有组策略功能，利用这一功能你可以优化系统、进行个性化配置，让Windows 7跑得更快、资源占用更少，这样即使是配置低的电脑也能飞快运行Windows 7了！
+要使用Windows 7组策略功能，你可以按Win+R键打开运行窗口，输入gpedit.msc回车， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/13/yong-zu-ce-lve-you-hua-ni-de-windows-7/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">用组策略优化你的Windows 7</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-13T00:00:00+08:00" pubdate data-updated="true">Apr 13<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p> <span style="font-size: 14px;"><span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">Windows</span></span> 7与XP一样也有组策略功能，利用这一功能你可以优化系统、进行个性化配置，让<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">Windows</span></span> 7跑得更快、资源占用更少，这样即使是配置低的电脑也能飞快运行Windows 7了！</span>
+要使用Windows 7组策略功能，你可以按Win+R键打开运行窗口，输入gpedit.msc回车，然后在组策略编辑器中操作即可；如果组策略被锁死了，可以这样来解锁：按Win+R键打开运行窗口输入mmc.exe，在弹出的窗口中单击“文件”，定位到&lt;系统盘／Windows／System32>目录并打开gpedit.msc，单击左侧的计算机配置→安全设置→软件限制策略→其他规则，在右边窗口中删除“gpedit.msc”限制条目，或者双击该条目，将“安全级别”从“不允许”改为“不限制”，单击“确定”完成。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><!--more-->禁止保存搜索记录
+</strong>Windows 7搜索历史记录会自动保存在下拉列表框中，要禁止保存搜索记录可这样操作：按Win+R键，输入gpedi t.ms c打开组策略，单击左侧的用户配置→管理模板→Windows组件→Windows资源管理器，在右侧窗口中找到“在Windows资源管理器搜索框中关闭最近搜索条目的显示”项目，双击打开，在弹出的窗口选择“已启用”，单击“确定”退出生效。[more]
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">禁用屏保
+</strong>许多场合下，例如在电脑上看电影时就需要禁用屏保，方法是按Win+R键，输入gpedit.msc打开组策略，单击左侧的用户配置→管理模板→Windows组件→Windows Media Player→播放，在右边窗口中双击“允许运行屏幕保护程序”条目，选择“已禁用”，单击“确定”退出。
+接下来依次单击“开始”菜单→所有程序→Windows MediaPlayer，启动Windows Media Player，单击“工具”菜单下的“选项”→播放机，检查“播放机设置”下的“播放时允许运行屏幕保护程序”项，看到已被禁用了。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">关闭“安装更新并关机”弹窗
+</strong>如果你在Windows 7中启动了自动更新功能，每次单击“开始”菜单选择“关机”或者以其他方法关机之前，系统都会出现“安装更新并关机”弹窗，必须先安装更新然后才能关机，要关闭这样的弹窗方法如下：按Win+R键，输入gpedit.msc打开组策略，单击左侧的计算机配置→管理模块→Windows组件→WindowsUpdate，在右边窗口中双击“不要在‘关闭Windows’对话框显示安装更新并关机”条目，选择“已启用”，单击“确定”退出。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">关闭错误报告弹窗
+</strong>Windows 7运行时如果出现异常就会弹出一个错误报告对话框，询问你是否将此错误提交给微软官方网站，你可以用组策略关闭这个错误报告弹窗，方法如下：按Win+R键，输入gpedit.msc打开组策略，单击左侧的计算机配置→管理模板→系统→Internet通信管理→Internet 通信设置，在右边窗口中双击“关闭Windows错误报告”条目，选择“已启用”，单击“确定”退出。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">关闭系统还原</strong>
+在Windows 7中禁用系统还原可以节省磁盘空间，方法是按Win+R键，输入gpedit.msc打开组策略，单击左侧的计算机配置→管理模板→系统→系统还原，在右边窗口中双击“关闭系统还原”条目，选择“已启用”，单击“确定”启用该策略。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">关闭自动播放功能</strong>
+Windows 7默认情况下会开启自动播放功能，当你将U盘插到电脑上时，U盘中的病毒就会利用autorun.inf自动运行并感染电脑，为了防止中毒，你应该关闭自动播放功能，方法如下：打开组策略，单击左侧的计算机配置→管理模板→Windows组件→自动播放策略，在右边窗口中双击“关闭自动播放”条目，选择“已启用”，单击“确定”退出。
+接下来按Win+R键，输入services.msc打开服务，在右边窗口中双击“ShellHardwareDetection”服务，点“停止”停止该服务，并将启动类型设为“手动”，单击“确定”完成。
+<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">禁用自带刻录功能
+</strong>Windows 7中集成了刻录功能，不过它没有专业刻录软件那样强大，如果你想使用第三方软件来刻录光盘，可以禁用Windows 7的自带刻录功能。
+按Win+R键，输入gpedit.msc打开组策略，单击左侧的用户配置→管理模板→Windows组件→Windows资源管理器”，在右边窗口中双击“删除CD刻录功能”条目，选择“已启用”，单击“确定”退出。
+ </p>
+
+<p> </p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-13T00:00:00+08:00" pubdate data-updated="true">Apr 13<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/windows/'>Windows</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/13/vim-zhu-ti-bao/" title="Previous Post: vim主题包">&laquo; vim主题包</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/16/di-san-fang-ge-xing-zhuo-mian-zhu-ti--an-hei-cai-hong/" title="Next Post: 第三方个性桌面主题：暗黑彩虹">第三方个性桌面主题：暗黑彩虹 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

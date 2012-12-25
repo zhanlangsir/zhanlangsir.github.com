@@ -1,0 +1,678 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="最近开始学习emacs，据说常用小指去按ctrl键对小指不好，一般的方法就是交换ctrl和caps lock键位置。 在ubuntu下交换这两个键灰常方便，赞一个。 1.点击右上角的最右边的图标，然后选择键盘一项 2.点击下方的布局设置 3.点击右下角的选项 4. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/page/2/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/01/swap-ctrl-and-caps-lock-in-ubuntu12-04/">ubuntu12.04下交换ctrl和caps Lock键</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-01T00:00:00+08:00" pubdate data-updated="true">May 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近开始学习emacs，据说常用小指去按ctrl键对小指不好，一般的方法就是交换ctrl和caps lock键位置。</p>
+
+<p>在ubuntu下交换这两个键灰常方便，赞一个。</p>
+
+<p>1.点击右上角的<span style="color: #ff0000;">最右边的图标</span>，然后选择<span style="color: #ff0000;">键盘</span>一项</p>
+
+<p>2.点击下方的<span style="color: #ff0000;">布局设置</span></p>
+
+<p>3.点击右下角的<span style="color: #ff0000;">选项</span></p>
+
+<p>4.选择Ctrl键位置选项卡中的交换ctrl和大写锁定</p>
+
+<p>刚换过来还不是很习惯，切换输入法的时候老是会按ctrl，结果变成了大写锁定，看来还要点时间去适应啊。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/10/update-qabstractitemview/">关于QAbstractItemView的刷新问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>之前遇到了<a href="http://www.aitilife.com/2012/03/17/updateqtreeview/">QTreeView的刷新问题</a>，使用了一个很笨的办法，</p>
+
+<p>实际上只要在更新调用相应的beginInsertRows,beginInsertColumns等方法就可以了。
+void QAbstractItemModel::beginInsertRows ( const QModelIndex &amp; parent, int first, int last );</p>
+
+<p>void QAbstractItemModel::endInsertRows () ;</p>
+
+<p>void QAbstractItemModel::beginInsertColumns ( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endInsertColumns ();</p>
+
+<p>void QAbstractItemModel::beginRemoveColumns ( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endRemoveColumns ();</p>
+
+<p>void QAbstractItemModel::beginRemoveRows ( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endRemoveRows ();</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/06/fedora16-install-font/">Fedora16安装新字体</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-06T00:00:00+08:00" pubdate data-updated="true">Apr 6<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>1.将windows字体拷贝到/usr/share/fonts/truetype下面，文件夹名字可以随便起
+cp /media/c/WINDOWS/Fonts/* /usr/share/fonts/truetype/
+默认字体权限应该是755，如果不是的话，手动更改下
+chmod 755 *
+2.在/usr/share/fonts/truetype下面运行
+mkfontscale
+mkfontdir
+3.运行fc-cache -fv，刷新字体缓存。
+现在就一切ok了</p>
+
+<p>当然，前提是先su获取root权限～</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/31/qtqq/">Qtqq</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-31T00:00:00+08:00" pubdate data-updated="true">Mar 31<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div>3/31 更新:
+v0.2.0-alpha 比上一版本多了获取好友，群，群成员头像功能。多了最近列表,其他还有很多小改动，修复一些bug!优化了界面！合并Mazenvoy提供的托盘代码。再次更新：
+v0.1.2 修复好友,群列表无法显示bug!修改聊天窗口字体大小颜色，调整聊天窗口布局,修正群聊天打开前几条消息显示号码而不是q名的问题! 感谢sallking抽时间测试。
+
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+
+学习过程中做的～本机测试没问题。
+目前可以好友，群聊天。发送接受表情，发送接受图片。
+
+下载地址：
+<a href="https://github.com/zhanlangsir/Qtqq/downloads">https://github.com/zhanlangsir/Qtqq/downloads</a>
+<div>附件:</div>
+<div><a id="" href="http://forum.ubuntu.org.cn/download/file.php?id=153851&mode=view/login.png"><img title="Click to enlarge" src="http://forum.ubuntu.org.cn/download/file.php?id=153851&t=1" alt="login.png"></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/03/31/qtqq/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/17/update-qtreeview/">Qtreeview的刷新问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-17T00:00:00+08:00" pubdate data-updated="true">Mar 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div>在使用qtreview搭配自定义模型的时候，发现修改了模型中某项的内容时，只有鼠标处于该qtreview中，它才会刷新内容。只要鼠标在qtreeview外面时，它就维持原样~</div>
+
+
+<div>经过一番摸索，发现只要对qtreeview调用</div>
+
+
+<div>
+<div>setUpdatedEnable(<span style="color: #0000ff;"><strong>false</strong></span>);
+setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</div>
+</div>
+
+
+<div>连续两次调用后，qtreeview就会进行刷新了~</div>
+
+
+<div></div>
+
+
+<div></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/24/my-view-ofqt-coordinate-system/">Qt坐标系统见解</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-24T00:00:00+08:00" pubdate data-updated="true">Feb 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>看到Graphics View Framework的时候，被窗口，视口，场景坐标系，对象坐标系，世界坐标系，逻辑坐标，物理坐标等等概念彻底搞懵了。到底他们之间是什么关系呢？是怎样映射的呢？到现在小狼还没有搞懂，不过经过不断试验，有了一点点自己的理解。</p>
+
+<p><strong><span style="color: #ff0000;">QPainter的各种draw方法是基于窗口坐标系的。</span></strong></p>
+
+<p>窗口坐标为逻辑坐标，是基于视口坐标系的;视口坐标为物理坐标，是基于绘图设备坐标系的。没有做过改动的情况下，他们是一样的，都是以绘图设备(paint device,qwidget,qpixmap等都为绘图设备)大小为大小，左上角为原点(0,0)。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/02/24/my-view-ofqt-coordinate-system/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/22/develop-qt-use-vs2010/">使用vs2010进行qt开发</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-22T00:00:00+08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>网上搜到的几乎都是说自己重新编译qt，基本都要3 4个小时的。不过还好现在qt vs编译版已经出来了~直接安装即可。</p>
+
+<p>下载qt vs编译版：<a href="http://qt.nokia.com/downloads/windows-cpp-vs2010">http://qt.nokia.com/downloads/windows-cpp-vs2010</a></p>
+
+<p>下载qt vs addin:<a href="http://qt.nokia.com/downloads/visual-studio-add-in">http://qt.nokia.com/downloads/visual-studio-add-in</a></p>
+
+<p>qt vs addin并不支持vs2010 express版，请注意了。</p>
+
+<p>安装方法就是一路next&#8230;.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/25/install-wmware-on-fedora16/">Fedora16装wmware Workstation8详细过程</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-25T00:00:00+08:00" pubdate data-updated="true">Nov 25<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>因课程需要，要装虚拟机学习minux操作系统，所以小狼就装了wmware workstation8,但是装完之后却运行不了，说找不到kernel header，如果有安装到kernel header的话，在/usr/src目录下可以找到,没有的话就用下面的命令安装:
+su
+yum install kernel-devel
+装完后/usr/src/kernels目录下就多出了一个3.1.1-2&#8230;.i686文件夹，说明kernel header已经成功安装了，但是把虚拟机需要的kernel header定位到
+/usr/src/kernels/3.1.1-2.fc16.i686/include目录后，发现还是不行
+用
+uname -r名令看了一下当前内核版本</p>
+
+<p>[root@XXXX Downloads]# uname -r
+3.1.0-7.fc16.i686</p>
+
+<p>发现是3.1.0的，原来是版本不对，升级一下内核版本就好了，升级内核命令(同时升级所有能升级的东西)
+su
+yum update</p>
+
+<p>然后重启，登录的时候选择3.1.1-2版本的内核。</p>
+
+<p>重启后，再运行vmware的时候，确实没有再说找不到kernel-header了，但是要编译kernel供vmware使用，在点同意编译和输入root用户密码后，界面闪了一下，吓了小狼一跳，然后。。。。就木有然后了。。</p>
+
+<p>其实装很多大型的软件都有这种情况，比如IBM的Rational software architect,是因为没有root权限，无法对需要的文件进行访问。所以用root身份去运行就好了。具体步骤如下：</p>
+
+<p>su</p>
+
+<p>/usr/bin/wmware</p>
+
+<p>然后等待编译，编译完成之后就可以看到熟系的wmware界面出现了</p>
+
+<p>而升级内核后引导菜单会多出几项选择，去掉旧内核版本菜单的方法可以看这里：<a href="http://hi.baidu.com/knityster/blog/item/9cc58f0e8ca61ec67acbe12e.html">http://hi.baidu.com/knityster/blog/item/9cc58f0e8ca61ec67acbe12e.html</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/15/fedora14-appear-garbled-when-play-sanguosh/">Fedora玩三国杀显示乱码</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-15T00:00:00+08:00" pubdate data-updated="true">Nov 15<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在fedora玩三国杀的时候，发现界面上的字都可以正常显示，但是聊天发的消息全都是乱码，虽然不影响游戏，但就是不爽啊。。。。</p>
+
+<p>解决办法就是安装cjkuni-uming-fonts字体。</p>
+
+<p>具体步骤：</p>
+
+<p>打开终端，输入su获取管理员权限</p>
+
+<p>输入yum install cjkuni-uming-fonts 回车</p>
+
+<p>坐等安装完成就可以了～</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/12/uicc-exe-not-internal-error-when-complier-wtl/">&#8216;uicc.exe&#8217; 不是内部或外部命令，也不是可运行的程序</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-12T00:00:00+08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>使用wtl编译时出现一些警告：</p>
+
+<p><span style="color: #ff0000;">warning MSB8004: Intermediate 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。</span></p>
+
+<p><span style="color: #ff0000;">warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。</span></p>
+
+<p>其实这个警告没什么关系，要去掉只须在项目属性的常规设置中为两个目录添加一个斜杠结尾就OK了。</p>
+
+<p>添加Ribbon特性的时候出现以下错误：</p>
+
+<p><span style="color: #ff0000;">&#8216;uicc.exe&#8217; 不是内部或外部命令，也不是可运行的程序</span></p>
+
+<p>原因是没有这个工具，可以到以下地址下载最新的window sdk。安装之后就可以了</p>
+
+<p><a href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=18950">http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=18950</a></p>
+
+<p>上面的链接有三个版本的sdk
+GRMSDK_EN_DVD.iso
+GRMSDKIAI_EN_DVD.iso
+GRMSDKX_EN_DVD.iso
+其中第一个是x86体系的，第二个是amd64体系，最后一个则是Itanium体系的，自己选择下那个。</p>
+
+<p>安装完毕就可以在C:Program FilesMicrosoft SDKsWindowsv7.1Bin 这个目录下看到有uicc这个工具了。</p>
+
+<p>但是到这里还是不能成功编译的，因为这个目录还没有添加到Path环境变量中，所以还是无法找到uicc工具，所以还要把uicc工具所在目录添加到Path环境变量中。具体步骤如下：
+1.右键我的电脑(或者计算机)->属性->高级系统设置->环境变量，在系统变量中找到Path,拖到最后，在最后一项后加个&#8221;<span style="color: #ff0000;">;</span>&#8220;号，然后把uicc所在目录添加到后面。</p>
+
+<p>重启一下vs，重新编译</p>
+
+<p>PS:</p>
+
+<p>如果安装sdk时出现错误，可以看一下这里的解决办法，希望能帮到各位：</p>
+
+<p><a href="http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/">http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
