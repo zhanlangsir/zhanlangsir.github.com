@@ -4,7 +4,7 @@
   <title><![CDATA[挨踢人生]]></title>
   <link href="http://zhanlangsir.github.com/atom.xml" rel="self"/>
   <link href="http://zhanlangsir.github.com/"/>
-  <updated>2012-12-25T13:45:11+08:00</updated>
+  <updated>2012-12-25T13:47:10+08:00</updated>
   <id>http://zhanlangsir.github.com/</id>
   <author>
     <name><![CDATA[zhanlang]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[hello octopress]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2012/12/24/hello-octopress/"/>
-    <updated>2012-12-24T16:33:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2012/12/24/hello-octopress</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Qtqq v0.7.0-beta]]></title>
@@ -942,6 +933,33 @@ GRMSDKX_EN_DVD.iso
 <p>如果安装sdk时出现错误，可以看一下这里的解决办法，希望能帮到各位：</p>
 
 <p><a href="http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/">http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[安装windows sdk时的错误]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/11/12/error-of-install-windows-sdk/"/>
+    <updated>2011-11-12T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/11/12/error-of-install-windows-sdk</id>
+    <content type="html"><![CDATA[<p>安装Microsoft Windows SDK 7.1的时候出现了一下错误：</p>
+
+<p><span style="color: #ff0000;">Microsoft Windows SDK for Windows 7&#8221; product has reported the following error: Please refer to SamplesSetupHTMLConfigDetails.htm document for further information.</span></p>
+
+<p>解决办法很简单：</p>
+
+<p>一般把Visual C++ compiler勾掉就可以了~</p>
+
+<p>如果不行的话，就一个一个安装，先勾第一个选项，装完，再勾第二个，这样。</p>
+
+<p>或者打开iso目录，把setup文件夹里的各个文件夹里的安装包安装一遍。。。。。</p>
+
+<p> </p>
+
+<p>装完sdk7.1后，记得装KB2519277</p>
+
+<p>下载地址和说明请看这里，小狼就不翻译了~</p>
+
+<p><a href="http://support.microsoft.com/kb/2519277">http://support.microsoft.com/kb/2519277</a></p>
 ]]></content>
   </entry>
   

@@ -9,14 +9,10 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="终端中输入：
-sudo apt-get install p7zip
-解压命令：右键解压缩或者：
-7zr x 文件名
-或者
-7zr e文件名
- 
-">
+  <meta name="description" content="在Ubuntu下安装Google拼音输入法，如下：
+A. 获取代码：（没有git的先安装git：sudo apt-get install git-core）
+$ git clone git://github.com/tchaikov/scim-googlepinyin.git
+$ cd scim- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,48 +67,6 @@ sudo apt-get install p7zip
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/10/ubuntu-xia-da-kai--7z-wen-jian/">ubuntu下打开.7z文件</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>终端中输入：
-sudo apt-get install p7zip
-解压命令：右键解压缩或者：
-7zr x 文件名
-或者
-7zr e文件名
- </p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -506,6 +460,64 @@ CV_Launcher_by_ConstantVelocity:<a style="outline-width: 0px; outline-style: ini
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/resolve-vim-chinese-garbled/">解决VIM中文乱码</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+有时候在使用vim的时候，显示中文为乱码，这个时候我们可以修改vimrc文件解决问题！
+首先，你需要搞清楚vimrc所在的位置。一般来说，在<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="linux" href="http://www.aitilife.com/category/operating-system/linux">linux</a>系统里，应该是这样
+Linux: /usr/share/vim/vimrc
+在<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">Windows</span></span>系统，应该是在vim的安装目录
+<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">Windows</span></span>: c:program filesvimvimrc
+我目前使用的是Windows7 ，路径显示为
+C:Program FilesVim_vimrc
+这里所说的都是全局设定，打开vimrc文件后，只需要在文件最后添加以下代码就可以了：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>set fileencodings=utf-8,gb2312,gbk,gb18030
+</span><span class='line'>set termencoding=utf-8
+</span><span class='line'>set fileformats=unix
+</span><span class='line'>set encoding=prc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样，你的vim中文乱码问题就解决了！
+需要注意的是，在Windows7和vista下，由于加强版的管理员权限，你用vim直接打开vimrc文件，所做的修改是无法保存的！哪怕你使用的是:wq! 命令！一个简单的方法就是先在开始里面用管理员权限启动vim，然后通过vim打开vimrc文件做修改就可以了！
+ </p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -523,10 +535,6 @@ CV_Launcher_by_ConstantVelocity:<a style="outline-width: 0px; outline-style: ini
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
       </li>
     
@@ -540,6 +548,10 @@ CV_Launcher_by_ConstantVelocity:<a style="outline-width: 0px; outline-style: ini
     
       <li class="post">
         <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/linux-visual-diff-tool/">linux可视化差异比较工具 meld</a>
       </li>
     
   </ul>

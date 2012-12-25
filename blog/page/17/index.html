@@ -9,8 +9,9 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="下标运算符[]一直被作为数组的专有运算符来介绍，经过长年的应用，人们也早已对这个用法习以为常，视为跟每天的午餐一样稀松平常的事情。当你很遐意地写下a[0]表达式的时候，如果抽空回过头来看看标准中关于下标运算符的条款，你很可能会大吃一惊：
-6.5.2.1 Array subscripting &hellip;">
+  <meta name="description" content="字符串字面量（string literal）是一段双引号括起来的多字节字符序列，C/C++将其实现为具有静态存储连续性的字符数组。初学者（包括不少书籍）常将其称为字符串常量，但这说法只在C++成立，C中不成立。C中的常量只包括下列四种：
+6.4.4 Constants
+Syntax &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,66 +66,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-four/">数组与指针的艺术-第四章</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">下标运算符[]一直被作为数组的专有运算符来介绍，经过长年的应用，人们也早已对这个用法习以为常，视为跟每天的午餐一样稀松平常的事情。当你很遐意地写下a[0]表达式的时候，如果抽空回过头来看看标准中关于下标运算符的条款，你很可能会大吃一惊：</span>
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">6.5.2</strong><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">.1 Array subscripting</strong>
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Constraints</strong>
-One of the expressions shall have type ‘‘pointer to object <em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">type</em>’’, the other expression shall have integer type, and the result has type ‘‘<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">type</em>’’.
-其中一个表达式具有指针类型，而不是数组类型！为什么会这样呢？如果规定为数组类型，由于表达式中的数组类型会隐式转换为指针类型，两个条款就会产生矛盾，当然，可以将下标运算符也作为转换规则的例外，但直接规定为指针类型显然能带来更多的好处，而且，既然数组类型能够转换为指针类型，却不让指针使用下标运算符，会显得无可理喻。从条款的角度来讲，下标运算符其实是指针运算符。
-<span id="more-1222" style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"> </span>
-另一个表达式的类型是integer，这意味着表达式的值可以是负数，这是由于指针运算里包含了减法的缘故，但是要注意不应该发生越界的行为。
-在条款的上下文中，并没有规定[]运算符两个操作数的顺序，这意味着即使调换两个操作数的位置，也没有违反标准。这现象还可以从另一个角度进行分析，在表达式中，D[N]会转换为等价表达式<em>( D + N )，把D和N的位置调换，就成了</em>( N + D )，就是N[D]了。
-考虑如下代码：
-int a[10]，<em>p = a;
-p[0] = 10;
-( p + 1 )[0] = 20;
-0[p + 1] = 10;
-( &amp;a )[0][0] = 20;
-0[&amp;a][0] = 30;
-0[0[&amp;a]] = 40;
-a[0] = “0123456789ABCDEF”[0];
-下面对各个表达式进行解释：
-p[0]：就是a[0]；
-( p + 1 )[0]：p移动一个int的距离，就是a[1]；
-0[p + 1]：就是( p + 1 )[0]；
-( &amp;a )[0][0]：这个表达式有点古怪，a的类型是int[10]，&amp;a就是int( * )[10]，是一个指向具有10个int元素的一维数组的指针，( &amp;a )[0]就是&amp;a指向的第0个元素，类型为int[10]，因此( &amp;a )[0][0]就是( &amp;a )[0]的第0个元素。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-four/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
   
   
     <article>
@@ -777,10 +718,6 @@ base和test只给出了声明，没有给出定义。不完整类型必须通过
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/12/24/hello-octopress/">hello octopress</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
       </li>
     
@@ -794,6 +731,10 @@ base和test只给出了声明，没有给出定义。不完整类型必须通过
     
       <li class="post">
         <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/linux-visual-diff-tool/">linux可视化差异比较工具 meld</a>
       </li>
     
   </ul>
