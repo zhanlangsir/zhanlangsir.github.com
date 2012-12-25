@@ -9,8 +9,7 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content=" 
-安装ubuntu10.10-desktop版本时，出现了mounting /dev/loop0 on //filesystem squashfs failed:Input/output error错误，没办法，还是只能百度，google。百度没办法解决，我就google。 &hellip;">
+  <meta name="description" content="据来自Sucuri博客的消息，MySQL官方网站MySQL.com被SQL注入攻击（blind SQL injection）。一篇博客文章（MySQL.com Vulnerable To Blind SQL Injection Vulnerability）披露了MySQL. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +64,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/mysql-com-bei-sql-zhu-ru-gong-ji--yong-hu-mi-ma-shu-ju-bei-gong-bu/">MySQL.com被SQL注入攻击，用户密码数据被公布</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>据来自<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://blog.sucuri.net/2011/03/mysql-com-compromised.html" target="_blank">Sucuri博客</a>的消息，MySQL官方网站MySQL.com被SQL注入攻击（blind SQL injection）。一篇博客文章（<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://seclists.org/fulldisclosure/2011/Mar/309" target="_blank">MySQL.com Vulnerable To Blind SQL Injection Vulnerability</a>）披露了MySQL.com数据库的漏洞及数据库结构的dump部分。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Vulnerable Target : http://mysql.com/customers/view/index.&lt;span style="color: #787878;">&lt;span style="outline-style: initial; outline-color: initial;">html&lt;/span>&lt;/span>?id=1170
+</span><span class='line'>Host IP : 213.136.52.29
+</span><span class='line'>Web Server : Apache/2.2.15 (&lt;span style="color: #787878;">&lt;span style="outline-style: initial; outline-color: initial;">Fedora&lt;/span>&lt;/span>)
+</span><span class='line'>Powered-by : PHP/5.2.13
+</span><span class='line'>Injection Type : MySQL Blind
+</span><span class='line'>Current DB : web</span></code></pre></td></tr></table></div></figure>
+
+
+<p>攻击者通过MySQL.com上查看用户的页面进入，获取到了数据库、表及存储用户密码的dump数据（如何获取并未公布）…如果你在MySQL.com有用户，建议尽快更改密码。
+更严重的是，攻击者<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://pastebin.com/BayvYdcP" target="_blank">将用户密码数据公布</a>在网上让其他人进行破解。更糟糕的是MySQL产品负责人的密码已被破解（竟然是4位数字），blogs.mysql.com的多个用户的密码也被破解。
+MYSQL官方目前没有任何回应。
+ </p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -902,93 +956,6 @@ wordpress升级到3.x版本后,作者特别强调，这是一个hack，通过丑
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/10/how-to-decrease-grub-menu-item-in-ubuntu/">ubuntu10.10更新后引导菜单出现多个菜单项解决办法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">一开始刻盘装的是ubuntu10.10，装好更新后，重启时发现出现了7个引导菜单项，虽然放着也没什么害处，但是对于追求简洁干净的小狼来说是无法忍受的，所以只能向谷哥求救勒～</span>
-重启进入引导菜单后，可以看见ubuntu的引导项就有4个:</p>
-
-<table style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border-collapse: collapse; padding: 0px; margin: 0px; border: 0px initial initial;"><tbody style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><tr style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">
-<td class="line_numbers" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; text-align: right; background-color: #ddeeff; color: gray; overflow-x: visible; overflow-y: visible; margin: 0px; border: 0px initial initial;">
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1
-</span><span class='line'>2
-</span><span class='line'>3
-</span><span class='line'>4
-</span><span class='line'>5
-</span><span class='line'>6
-</span><span class='line'>7</span></code></pre></td></tr></table></div></figure>
-
-
-</td>
-<td class="code" style="padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 4px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; vertical-align: top; margin: 0px; border: 0px initial initial;">
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1
-</span><span class='line'>2
-</span><span class='line'>3
-</span><span class='line'>4
-</span><span class='line'>5
-</span><span class='line'>6
-</span><span class='line'>7</span></code></pre></td></tr></table></div></figure>
-
-
-</td>
-</tr></tbody></table>
-
-
-<p> 
-4个菜单项，很明显这是重复了的，因为这4个引导项上两个和下两个只有版本号是不一样的，2.6.35-22版本是更新之前的版本的引导菜单，可以去掉。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/04/10/how-to-decrease-grub-menu-item-in-ubuntu/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -1010,6 +977,10 @@ wordpress升级到3.x版本后,作者特别强调，这是一个hack，通过丑
       </li>
     
       <li class="post">
+        <a href="/blog/2012/12/23/qtqq-1223/">Qtqq 12/23</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
@@ -1019,10 +990,6 @@ wordpress升级到3.x版本后,作者特别强调，这是一个hack，通过丑
     
       <li class="post">
         <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/linux-visual-diff-tool/">linux可视化差异比较工具 meld</a>
       </li>
     
   </ul>

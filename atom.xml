@@ -4,7 +4,7 @@
   <title><![CDATA[挨踢人生]]></title>
   <link href="http://zhanlangsir.github.com/atom.xml" rel="self"/>
   <link href="http://zhanlangsir.github.com/"/>
-  <updated>2012-12-25T13:47:10+08:00</updated>
+  <updated>2012-12-25T13:51:06+08:00</updated>
   <id>http://zhanlangsir.github.com/</id>
   <author>
     <name><![CDATA[zhanlang]]></name>
@@ -146,6 +146,116 @@
 
 
 <div>这些不全是qtqq依赖的，有的是编译环境,qtqq现在依赖的是qt4,gtk,libnofity.现在没有很好的方法去实现托盘图标,qt自带的在ubuntu下无法正常使用，所以暂时只能用gtk代替。</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Qtqq 12/23]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2012/12/23/qtqq-1223/"/>
+    <updated>2012-12-23T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2012/12/23/qtqq-1223</id>
+    <content type="html"><![CDATA[<p>12/23更新:</p>
+
+<p>版本:v0.8.0-alpha</p>
+
+<p><strong>新特性:</strong></p>
+
+<p>1.聊天窗口使用tab页</p>
+
+<p><strong>其他修改：</strong></p>
+
+<p>1.关闭气泡消息提示</p>
+
+<p>2.新消息提醒改为托盘图标菜单</p>
+
+<p>3.搜索结果显示方式改变</p>
+
+<p>关于qtqq v0.8.0-alpha功能的说明可以看这里:</p>
+
+<p><a href="http://www.aitilife.com/2012/12/23/about-qtqq0-8-0-alpha">关于qtqq0-8-0-alpha</a></p>
+
+<div></div>
+
+
+<div><strong>安装方法:</strong></div>
+
+
+<div>ppa没人维护了，有熟悉的童鞋可以接手</div>
+
+
+<p>ppa:
+sudo add-apt-repository ppa:qtqq/qtqq-stable
+sudo apt-get update</p>
+
+<div>sudo apt-get install qtqq</div>
+
+
+<p> </p>
+
+<div>手动编译:</div>
+
+
+<div>git clone https://github.com/zhanlangsir/Qtqq.git qtqq</div>
+
+
+<div></div>
+
+
+<div>cd qtqq</div>
+
+
+<div>git checkout qtqq-dev</div>
+
+
+<div>mkdir release</div>
+
+
+<div>cd release</div>
+
+
+<div>cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)</div>
+
+
+<div>make</div>
+
+
+<div>sudo make install</div>
+
+
+<p> <div>fedora需要准备的环境:</div></p>
+
+<div></div>
+
+
+<div>需要安装git cmake qt-devel  gcc gcc-c++ qtwebkit-devel, yum install即可.</div>
+
+
+<div></div>
+
+
+<div></div>
+
+
+<p> <div>ubuntu需要准备的环境:</div></p>
+
+<div></div>
+
+
+<div>需要安装git cmake g++ qt4-dev-tools</div>
+
+
+<div></div>
+
+
+<div>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</div>
+
+
+<div></div>
+
+
+<div>还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki">https://github.com/zhanlangsir/Qtqq/wiki</a>
+</div>
 
 ]]></content>
   </entry>
@@ -933,33 +1043,6 @@ GRMSDKX_EN_DVD.iso
 <p>如果安装sdk时出现错误，可以看一下这里的解决办法，希望能帮到各位：</p>
 
 <p><a href="http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/">http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[安装windows sdk时的错误]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/11/12/error-of-install-windows-sdk/"/>
-    <updated>2011-11-12T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/11/12/error-of-install-windows-sdk</id>
-    <content type="html"><![CDATA[<p>安装Microsoft Windows SDK 7.1的时候出现了一下错误：</p>
-
-<p><span style="color: #ff0000;">Microsoft Windows SDK for Windows 7&#8221; product has reported the following error: Please refer to SamplesSetupHTMLConfigDetails.htm document for further information.</span></p>
-
-<p>解决办法很简单：</p>
-
-<p>一般把Visual C++ compiler勾掉就可以了~</p>
-
-<p>如果不行的话，就一个一个安装，先勾第一个选项，装完，再勾第二个，这样。</p>
-
-<p>或者打开iso目录，把setup文件夹里的各个文件夹里的安装包安装一遍。。。。。</p>
-
-<p> </p>
-
-<p>装完sdk7.1后，记得装KB2519277</p>
-
-<p>下载地址和说明请看这里，小狼就不翻译了~</p>
-
-<p><a href="http://support.microsoft.com/kb/2519277">http://support.microsoft.com/kb/2519277</a></p>
 ]]></content>
   </entry>
   
