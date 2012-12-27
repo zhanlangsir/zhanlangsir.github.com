@@ -9,7 +9,9 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="使用wtl编译时出现一些警告： warning MSB8004: Intermediate 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。 warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜杠， &hellip;">
+  <meta name="description" content="使用wtl编译时出现一些警告：
+warning MSB8004: Intermediate 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。
+warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜杠， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,40 +92,40 @@
   </header>
 
 
-<div class="entry-content"><p>使用wtl编译时出现一些警告：</p>
-
-<p><span style="color: #ff0000;">warning MSB8004: Intermediate 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。</span></p>
-
-<p><span style="color: #ff0000;">warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。</span></p>
+<div class="entry-content"><p>使用wtl编译时出现一些警告：<br/>
+warning MSB8004: Intermediate 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。<br/>
+warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。</p>
 
 <p>其实这个警告没什么关系，要去掉只须在项目属性的常规设置中为两个目录添加一个斜杠结尾就OK了。</p>
 
-<p>添加Ribbon特性的时候出现以下错误：</p>
+<p>添加Ribbon特性的时候出现以下错误：<br/>
+&#8216;uicc.exe&#8217; 不是内部或外部命令，也不是可运行的程序</p>
 
-<p><span style="color: #ff0000;">&#8216;uicc.exe&#8217; 不是内部或外部命令，也不是可运行的程序</span></p>
+<p>原因是没有这个工具，可以到以下地址下载最新的window sdk,安装之后就可以了<br/>
+<a href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=18950" title="windows sdk download path">window sdk下载地址</a></p>
 
-<p>原因是没有这个工具，可以到以下地址下载最新的window sdk。安装之后就可以了</p>
+<!--more-->
 
-<p><a href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=18950">http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=18950</a></p>
 
-<p>上面的链接有三个版本的sdk
-GRMSDK_EN_DVD.iso
-GRMSDKIAI_EN_DVD.iso
-GRMSDKX_EN_DVD.iso
-其中第一个是x86体系的，第二个是amd64体系，最后一个则是Itanium体系的，自己选择下那个。</p>
+<p>上面的链接有三个版本的sdk</p>
+
+<ul>
+<li>GRMSDK_EN_DVD.iso</li>
+<li>GRMSDKIAI_EN_DVD.iso</li>
+<li>GRMSDKX_EN_DVD.iso<br/>
+其中第一个是x86体系的，第二个是amd64体系，最后一个则是Itanium体系的，自己选择下那个。</li>
+</ul>
+
 
 <p>安装完毕就可以在C:Program FilesMicrosoft SDKsWindowsv7.1Bin 这个目录下看到有uicc这个工具了。</p>
 
-<p>但是到这里还是不能成功编译的，因为这个目录还没有添加到Path环境变量中，所以还是无法找到uicc工具，所以还要把uicc工具所在目录添加到Path环境变量中。具体步骤如下：
-1.右键我的电脑(或者计算机)->属性->高级系统设置->环境变量，在系统变量中找到Path,拖到最后，在最后一项后加个&#8221;<span style="color: #ff0000;">;</span>&#8220;号，然后把uicc所在目录添加到后面。</p>
+<p>但是到这里还是不能成功编译的，因为这个目录还没有添加到Path环境变量中，所以还是无法找到uicc工具，所以还要把uicc工具所在目录添加到Path环境变量中。具体步骤如下：<br/>
+右键我的电脑(或者计算机)->属性->高级系统设置->环境变量，在系统变量中找到Path,拖到最后，在最后一项后加个<strong><em>;</em></strong>号，然后把uicc所在目录添加到后面。</p>
 
 <p>重启一下vs，重新编译</p>
 
-<p>PS:</p>
-
-<p>如果安装sdk时出现错误，可以看一下这里的解决办法，希望能帮到各位：</p>
-
-<p><a href="http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/">http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/</a></p>
+<p><strong>PS:</strong><br/>
+如果安装sdk时出现错误，可以看一下这里的解决办法，希望能帮到各位：<a href="/blog/2011/11/12/error-of-install-windows-sdk" title="error when install windows sdk">windows sdk安装错误</a></p>
 </div>
 
 
@@ -176,13 +178,42 @@ GRMSDKX_EN_DVD.iso
   </footer>
 </article>
 
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -193,15 +224,11 @@ GRMSDKX_EN_DVD.iso
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

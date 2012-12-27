@@ -9,7 +9,17 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="8/13 更新: 版本:v0.7.0-beta 新特性: 托盘图标根据最后一个发送消息人的头像显示 主界面可以查找好友，支持拼音首字母和汉字方式，比如张三,可以输入ZS或者张三查找 添加notify支持 托盘图标显示登陆人q号和登陆状态tip(可以无视&#8230;.) 路径支持中文,ctrl+ &hellip;">
+  <meta name="description" content="D 消息将要被删除(被标记为删除 )
+d 消息有附件被标记为删除
+K 包含PGP公共密钥
+N 新消息
+O 老消息
+P 消息经过PGP加密
+r 消息已经被回复
+S 消息用PGP签名,并且签名已经验证成功
+s 消息用PGP签名
+! 消息被标记(message is flagged)
+* 消息已打上标签 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,6 +80,57 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/12/26/mutt-message-status-flags/">Mutt消息状态标志</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-26T21:10:00+08:00" pubdate data-updated="true">Dec 26<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>D 消息将要被删除(被标记为删除 )<br/>
+d 消息有附件被标记为删除<br/>
+K 包含PGP公共密钥<br/>
+N 新消息<br/>
+O 老消息<br/>
+P 消息经过PGP加密<br/>
+r 消息已经被回复
+S 消息用PGP签名,并且签名已经验证成功<br/>
+s 消息用PGP签名<br/>
+! 消息被标记(message is flagged)<br/>
+* 消息已打上标签(message is tagged)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/12/26/mutt-message-status-flags/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a></h1>
     
     
@@ -93,24 +154,24 @@
   </header>
 
 
-  <div class="entry-content"><p><strong>8/13 更新:</strong></p>
+  <div class="entry-content"><h2>8/13 更新:</h2>
 
 <p>版本:v0.7.0-beta</p>
 
-<p><strong>新特性:</strong></p>
+<h2>新特性:</h2>
 
 <ul>
 <li>托盘图标根据最后一个发送消息人的头像显示</li>
-    <li>主界面可以查找好友，支持拼音首字母和汉字方式，比如张三,可以输入ZS或者张三查找</li>
-    <li>添加notify支持</li>
-    <li>托盘图标显示登陆人q号和登陆状态tip(可以无视&#8230;.)</li>
-    <li>路径支持中文,ctrl+alt+Z连续两次可激活主窗口.点击群聊天窗口的名字链接可打开好友聊天窗口!</li>
-    <li>单机托盘最小化，回复主界面</li>
-    <li>登陆界面回车登陆</li>
+<li>主界面可以查找好友，支持拼音首字母和汉字方式，比如张三,可以输入ZS或者张三查找</li>
+<li>添加notify支持</li>
+<li>托盘图标显示登陆人q号和登陆状态tip(可以无视&#8230;.)</li>
+<li>路径支持中文,ctrl+alt+Z连续两次可激活主窗口.点击群聊天窗口的名字链接可打开好友聊天窗口!</li>
+<li>单机托盘最小化，回复主界面</li>
+<li>登陆界面回车登陆</li>
 </ul>
 
 
-<p><strong></div>
+</div>
   
   
     <footer>
@@ -149,110 +210,34 @@
   </header>
 
 
-  <div class="entry-content"><p>12/23更新:</p>
+  <div class="entry-content"><h2>12/23更新:</h2>
 
 <p>版本:v0.8.0-alpha</p>
 
-<p><strong>新特性:</strong></p>
+<h2>新特性:</h2>
 
-<p>1.聊天窗口使用tab页</p>
-
-<p><strong>其他修改：</strong></p>
-
-<p>1.关闭气泡消息提示</p>
-
-<p>2.新消息提醒改为托盘图标菜单</p>
-
-<p>3.搜索结果显示方式改变</p>
-
-<p>关于qtqq v0.8.0-alpha功能的说明可以看这里:</p>
-
-<p><a href="http://www.aitilife.com/2012/12/23/about-qtqq0-8-0-alpha">关于qtqq0-8-0-alpha</a></p>
-
-<div></div>
+<ul>
+<li>聊天窗口使用tab页</li>
+</ul>
 
 
-<div><strong>安装方法:</strong></div>
+<h2>其他修改：</h2>
+
+<ul>
+<li>关闭气泡消息提示</li>
+<li>新消息提醒改为托盘图标菜单</li>
+<li>搜索结果显示方式改变</li>
+</ul>
 
 
-<div>ppa没人维护了，有熟悉的童鞋可以接手</div>
-
-
-<p>ppa:
-sudo add-apt-repository ppa:qtqq/qtqq-stable
-sudo apt-get update</p>
-
-<div>sudo apt-get install qtqq</div>
-
-
-<p> </p>
-
-<div>手动编译:</div>
-
-
-<div>git clone https://github.com/zhanlangsir/Qtqq.git qtqq</div>
-
-
-<div></div>
-
-
-<div>cd qtqq</div>
-
-
-<div>git checkout qtqq-dev</div>
-
-
-<div>mkdir release</div>
-
-
-<div>cd release</div>
-
-
-<div>cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)</div>
-
-
-<div>make</div>
-
-
-<div>sudo make install</div>
-
-
-<p> <div>fedora需要准备的环境:</div></p>
-
-<div></div>
-
-
-<div>需要安装git cmake qt-devel  gcc gcc-c++ qtwebkit-devel, yum install即可.</div>
-
-
-<div></div>
-
-
-<div></div>
-
-
-<p> <div>ubuntu需要准备的环境:</div></p>
-
-<div></div>
-
-
-<div>需要安装git cmake g++ qt4-dev-tools</div>
-
-
-<div></div>
-
-
-<div>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</div>
-
-
-<div></div>
-
-
-<div>还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki">https://github.com/zhanlangsir/Qtqq/wiki</a>
-</div>
+<p>关于qtqq v0.8.0-alpha功能的说明可以看这里:<a href="/blog/2012/12/23/about-qtqqv080-alpha" title="关于qtqq v0.8.0-alpha">关于qtqq v0.8.0-alpha</a></p>
 
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/12/23/qtqq-1223/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -263,7 +248,7 @@ sudo apt-get update</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a></h1>
     
     
       <p class="meta">
@@ -286,16 +271,16 @@ sudo apt-get update</p>
   </header>
 
 
-  <div class="entry-content"><h3>功能修改：</h3>
+  <div class="entry-content"><h2>功能修改：</h2>
 
+<p>0.8版本中把聊天窗口整合到了一个tab页中<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/tab.png" title="tab page" alt="tab" /></p>
 
-<p>0.8版本中把聊天窗口整合到了一个tab页中</p>
-
-<p><img class="alignnone size-medium wp-image-1675" alt="tab" src="http://www.aitilife.com/images/uploads/2012/12/tab1-300x267.png" width="300" height="267"></div>
+</div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2012/12/23/about-qtqqv080-alpha/">Read on &rarr;</a>
     </footer>
   
 
@@ -330,26 +315,29 @@ sudo apt-get update</p>
   </header>
 
 
-  <div class="entry-content"><p>后台永久链接配置:
-是否使用地址重写功能：启用
-自定义文章路径： 个性化定义 /{year}/{month}/{day}/{slug}
-独立页面后缀名： html</p>
+  <div class="entry-content"><h3>后台永久链接配置:</h3>
 
-<p>这个文件你可以到sae后台的appconfig中填写
-appconfig规则:</p>
+<p>是否使用地址重写功能：<em>启用</em><br/>
+自定义文章路径： 个性化定义 <code>/{year}/{month}/{day}/{slug}</code><br/>
+独立页面后缀名： <em>html</em></p>
 
-<p>name: your app name</p>
+<p>你可以到sae后台的appconfig中填写appconfig规则:</p>
 
-<p>version: 1</p>
+<pre><code>name: your app name
+version: 1
+cron:
+handle:
+- rewrite: if( in_header["Host"] == "aitiblog.sinaapp.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"
+- rewrite: if( in_header["Host"] == "1.aitiblog.sinaapp.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"
+- rewrite: if( in_header["Host"] == "aitilife.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"
+- rewrite: if( in_header["Host"] == "aitilife.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"
+</code></pre>
 
-<p>cron:</p>
-
-<p>handle:</div>
+<p>第一二个rewrite把sina的域名重定向到www开头的独立域名。<br/>
+第三个rewrite把独立顶级域名重定向到www开头的独立域名。<br/>
+最后一个rewrite到正确的地址。</p>
+</div>
   
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/09/20/typecho-rewrite-rule/">Read on &rarr;</a>
-    </footer>
   
 
 
@@ -360,7 +348,7 @@ appconfig规则:</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">Sae Wordpress 转 Typecho</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/09/20/sae-wordpress-zhuan-typecho/">Sae Wordpress 转 Typecho</a></h1>
     
     
       <p class="meta">
@@ -383,22 +371,24 @@ appconfig规则:</p>
   </header>
 
 
-  <div class="entry-content"><p>wordpress用久了就感觉不新鲜了。。并且随着wordpress的不断更新，它也变的越来越庞大(我不说痈肿)&#8230;太多东西是我不需要的，后来无意中发现了typecho这个博客程序,它最大的特点就是简洁，轻便，所以就打算把博客转为typecho试试水先。</p>
+  <div class="entry-content"><p>wordpress用久了就感觉不新鲜了。。<br/>
+并且随着wordpress的不断更新，它也变的越来越庞大(我不说痈肿)&#8230;太多东西是我不需要的，后来无意中发现了typecho这个博客程序,它最大的特点就是简洁，轻便，所以就打算把博客转为typecho试试水先。</p>
 
-<p>这篇文章适用范围是：
-1.sae上的wordpress应用数据转移到另外一个sae typecho应用上，而不是原地把wordpress程序直接转换为typecho，如果你原来的wordpress程序不是在sae上的话，那就可以跳过了，因为你可以直接使用插件把数据转过来。
-所以不符合你的需求的同学可以不用往下看了~当然你如果对我的折腾过程有兴趣也可以继续。。</p>
+<p><strong><em>这篇文章适用范围是：</em></strong><br/>
+sae上的wordpress应用数据转移到另外一个sae typecho应用上，而不是原地把wordpress程序直接转换为typecho，如果你原来的wordpress程序不是在sae上的话，那就可以跳过了，因为你可以直接使用插件把数据转过来。</p>
 
-<p>因为sae上是无法得到数据库用户名和密码的，所以没办法通过插件进行数据转换，那就只能手动折腾了。
-经过测试，发现直接在sae mysql上导出的数据是不完整的，必须通过Deferred Jobs才能导出完整的数据。
-Deferred Jobs在sae应用管理后台的服务管理一栏中，先从Deferred Jobs中把数据库中的数据导出来，如果数据大于4M，再通过Deferred Jobs把数据导入你的typecho应用中,导入方法可以从文档中找到.
+<p>所以<em>不符合</em>你的需求的同学可以不用往下看了~当然你如果对我的折腾过程有兴趣也可以继续。。</p>
+
+<p>因为sae上是无法得到数据库用户名和密码的，所以没办法通过插件进行数据转换，那就只能手动折腾了.<br/>
+经过测试，发现直接在sae mysql上导出的数据是不完整的，必须通过<strong>Deferred Jobs</strong>才能导出完整的数据。<br/>
+Deferred Jobs在sae应用管理后台的服务管理一栏中，先从Deferred Jobs中把数据库中的数据导出来，如果数据大于4M，再通过Deferred Jobs把数据导入你的typecho应用中,导入方法可以从文档中找到.<br/>
 导入完成后，你的typecho数据库中会有typecho<em>和wp</em>前缀的n张表,然后进入typecho数据库中，把typecho_comments ，typecho_contents， typecho_metas表中的唯一条数据删除(新装的typecho中会有一篇文章和一条评论).然后数据转换正式开始。</p>
 
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2012/09/20/sae-wordpress-zhuan-typecho/">Read on &rarr;</a>
     </footer>
   
 
@@ -478,88 +468,18 @@ Deferred Jobs在sae应用管理后台的服务管理一栏中，先从Deferred J
   </header>
 
 
-  <div class="entry-content"><p>在linux下没问题的cmake文件到了win下却出现&#8221;install Library TARGETS given no DESTINATION&#8221;错误，这不科学啊。又翻了一遍发现win下包括cygwin都属于dll平台，</p>
+  <div class="entry-content"><p>在linux下没问题的cmake文件到了win下却出现<strong>&#8220;install Library TARGETS given no DESTINATION&#8221;</strong>错误，这不科学啊。又翻了一遍发现win下包括cygwin都属于dll平台，</p>
 
-<p>动态库文件应该属于RUNTIME目标,所以把install中的Library改为RUNTIME就OK了。
-add_library(libname
+<p>动态库文件应该属于<strong>RUNTIME</strong>目标,所以把install中的Library改为RUNTIME就OK了。</p>
+
+<pre><code>add_library(libname
 SHARED
 files
 )
 install(TARGETS libname RUNTIME DESTINATION ${libdir})
-参考：
-<a title="LIBRARY_OUTPUT_DIRECTORY" href="http://www.cmake.org/cmake/help/v2.8.8/cmake.html#prop_tgt:LIBRARY_OUTPUT_DIRECTORY">LIBRARY_OUTPUT_DIRECTORY</a></p>
-</div>
-  
-  
+</code></pre>
 
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/18/shou-ye/">首页</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-18T00:00:00+08:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/18/1625/">1625</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-18T00:00:00+08:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
+<p>参考：<a href="http://www.cmake.org/cmake/help/v2.8.8/cmake.html#prop_tgt:LIBRARY_OUTPUT_DIRECTORY" title="cmake: LIBRARY_OUTPUT_DIRECTORY">cmake: LIBRARY_OUTPUT_DIRECTORY</a></p>
 </div>
   
   
@@ -597,19 +517,7 @@ install(TARGETS libname RUNTIME DESTINATION ${libdir})
 
   <div class="entry-content"><p>vs装了va之后,输入{,[这些符号时，都会自动完成配对的},],虽然工作量非常小，但是实际使用起来的时候还是赶紧方便了不少，因为不需要输入{,然后输入},最后再定位到{}之间。在vim下，auto pairs这一插件正好提供了这个功能。</p>
 
-<p>插件主页：<a href="http://www.vim.org/scripts/script.php?script_id=3599">http://www.vim.org/scripts/script.php?script_id=3599</a></p>
-
-<p>他功能有：</p>
-
-<p>1.补全对称的 {, [, &#8216;, &#8220;等符号</p>
-
-<p> </p>
-
-<p>2.自动补空格，当输入{时，你会得到{|},这样的符号，中间的|代表光标所在位置（下同，|都代表光标所在位置，不再提醒）,</p>
-
-<p>然后按空格的时候，会自动在光标两边各加入一个空格，结果就是{ | },而不是{ |}.</p>
-
-<p> </p>
+<p>插件主页：<a href="http://www.vim.org/scripts/script.php?script_id=3599" title="vim plugin: auto pair">auto-pair</a></p>
 
 </div>
   
@@ -617,6 +525,59 @@ install(TARGETS libname RUNTIME DESTINATION ${libdir})
     <footer>
       <a rel="full-article" href="/blog/2012/07/28/vim-auto-pairs-plugin/">Read on &rarr;</a>
     </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/01/swap-ctrl-and-caps-lock-in-ubuntu12-04/">ubuntu12.04下交换ctrl和caps Lock键</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-01T00:00:00+08:00" pubdate data-updated="true">May 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近开始学习emacs，据说常用小指去按ctrl键对小指不好，一般的方法就是交换ctrl和caps lock键位置。</p>
+
+<p>在ubuntu下交换这两个键灰常方便，赞一个。</p>
+
+<ol>
+<li>点击右上角的<strong>最右边的图标</strong>,然后选择<strong>键盘</strong>一项</li>
+<li>点击下方的<strong>布局设置</strong></li>
+<li>点击右下角的<strong>选项</strong></li>
+<li>选择Ctrl键位置选项卡中的交换ctrl和大写锁定</li>
+</ol>
+
+
+<p>刚换过来还不是很习惯，切换输入法的时候老是会按ctrl，结果变成了大写锁定，看来还要点时间去适应啊。</p>
+
+<hr />
+
+<p>后记:<br/>
+好吧,我还是乖乖用回了vim,emacs的按键太让人蛋疼了- -!</p>
+</div>
+  
   
 
 
@@ -633,8 +594,18 @@ install(TARGETS libname RUNTIME DESTINATION ${libdir})
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -645,15 +616,11 @@ install(TARGETS libname RUNTIME DESTINATION ${libdir})
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

@@ -9,7 +9,8 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="今天在学习MVC的时候，发现在添加内容的时候，提交表单缺毫无反应。 后台的controller有如下代码，正常来说，提交表单后应该会调用第二个Create函数的，下断点后发现根本没有调用到！ public ViewResult Create()
+  <meta name="description" content="今天在学习MVC的时候，发现在添加内容的时候，提交表单缺毫无反应。
+后台的controller有如下代码，正常来说，提交表单后应该会调用第二个Create函数的，下断点后发现根本没有调用到！ public ViewResult Create()
 {
 return View();
 } [ &hellip;">
@@ -93,82 +94,61 @@ return View();
   </header>
 
 
-<div class="entry-content"><p>今天在学习MVC的时候，发现在添加内容的时候，提交表单缺毫无反应。</p>
+<div class="entry-content"><p>今天在学习MVC的时候，发现在添加内容的时候，提交表单缺毫无反应。<br/>
+后台的controller有如下代码，正常来说，提交表单后应该会调用第二个Create函数的，下断点后发现根本没有调用到！</p>
 
-<p>后台的controller有如下代码，正常来说，提交表单后应该会调用第二个Create函数的，下断点后发现根本没有调用到！</p>
-
-<p>public ViewResult Create()
+<pre><code>public ViewResult Create()
 {
 return View();
-}</p>
+}
 
-<p>[HttpPost]
+[HttpPost]
 public void Create(Post post)
 {
 postDB.Posts.Add(post);
 postDB.SaveChanges();
-}</p>
+}
+</code></pre>
 
 <!--more-->
 
 
 <p>Create视图文件是自动生成的，scaffold模板选的是Edit,生成部分代码如下:</p>
 
-<p>@using (Html.BeginForm()) {
+<pre><code>@using (Html.BeginForm()) {
 @Html.ValidationSummary(true)
-<fieldset>
-<legend>Post</legend></p>
+&lt;fieldset&gt;
+&lt;legend&gt;Post&lt;/legend&gt;
 
-<p>@Html.HiddenFor(model => model.postID)</p>
+@Html.HiddenFor(model =&gt; model.postID)
 
-<div class="editor-label">
-@Html.LabelFor(model => model.content)
-</div>
+&lt;div class="editor-label"&gt;
+@Html.LabelFor(model =&gt; model.content)
+&lt;/div&gt;
+&lt;div class="editor-field"&gt;
+@Html.EditorFor(model =&gt; model.content)
+@Html.ValidationMessageFor(model =&gt; model.content)
+&lt;/div&gt;…..
+</code></pre>
 
-
-<div class="editor-field">
-@Html.EditorFor(model => model.content)
-@Html.ValidationMessageFor(model => model.content)
-</div>
-
-
-<p>…..</p>
-
-<p>查看教程后，发现和能正常提交的表单代码区别在于多了</p>
-
-<p>@Html.HiddenFor(model => model.postID)</p>
+<p>查看教程后，发现和能正常提交的表单代码区别在于多了<code>@Html.HiddenFor(model =&gt; model.postID)</code></p>
 
 <p>这行,说明问题应该就在这里,查看运行后网页源代码，发现</p>
 
-<p><input data-val="true" data-val-number="The field postID must be a number." data-val-required="postID 字段是必需的。" id="postID" name="postID" type="hidden" value="" /></p>
+<pre><code>    &lt;input data-val="true" data-val-number="The field postID must be a number." data-val-required="postID 字段是必需的。" id="postID" name="postID" type="hidden" value="" /&gt;
+</code></pre>
 
 <p>这句，说明postID启动了客户端验证，需要输入postID。</p>
 
-<p>在</p>
+<p>在<code>@Html.HiddenFor(model =&gt; model.postID)</code>后插入<code>@Html.ValidationMessageFor(Model =&gt; Model.postID)</code> 运行<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/mvc.png" title="mvc" alt="mvc" /><br/>
+结果证实了postID字段启动了客户端的验证！</p>
 
-<p>@Html.HiddenFor(model => model.postID)</p>
+<p>但是postID是我写的post模型的主键，应该由数据库自动插入的，所以最后的解决办法是：<br/>
+删掉<code>@Html.HiddenFor(model =&gt; model.postID)</code><br/>
+这行，因为postID应该是数据库自行插入，不需用户干预。</p>
 
-<p>后插入</p>
-
-<p>@Html.ValidationMessageFor(Model => Model.postID)</p>
-
-<p>运行</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/05/mvc_thumb.png"><img class="alignnone size-full wp-image-1465" title="mvc_thumb" src="http://www.aitilife.com/images/uploads/2011/05/mvc_thumb.png" alt="" width="244" height="145"></a></p>
-
-<p>结果证实了postID字段启动了客户端的验证！</p>
-
-<p>但是postID是我写的post模型的主键，应该由数据库自动插入的，所以最后的解决办法是：</p>
-
-<p>删掉</p>
-
-<p>@Html.HiddenFor(model => model.postID)</p>
-
-<p>这行，因为postID应该是数据库自行插入，不需用户干预。</p>
-
-<p>或者在post模型的</p>
-
-<p>postID属性上加入[scaffoldcolumn(false)]属性声明，表示生成视图模板时，不为postID生成任何代码！</p>
+<p>或者在post模型的postID属性上加入<code>[scaffoldcolumn(false)]</code>属性声明，表示生成视图模板时，不为postID生成任何代码！</p>
 </div>
 
 
@@ -212,7 +192,7 @@ postDB.SaveChanges();
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/04/30/jie-zhu-windows-live-25g-mian-fei-kong-jian-shi-xian-wordpress-ling-fu-jian-luo-ben/" title="Previous Post: 借助Windows Live 25G免费空间实现WordPress零附件“裸奔”">&laquo; 借助Windows Live 25G免费空间实现WordPress零附件“裸奔”</a>
+        <a class="basic-alignment left" href="/blog/2011/04/23/resolve-the-problem-of-win7-can-not-sleep/" title="Previous Post: win7无法进入睡眠状态解决办法">&laquo; win7无法进入睡眠状态解决办法</a>
       
       
         <a class="basic-alignment right" href="/blog/2011/05/12/mvc3ajax-invalid/" title="Next Post: MVC3ajax无效的问题">MVC3ajax无效的问题 &raquo;</a>
@@ -221,13 +201,42 @@ postDB.SaveChanges();
   </footer>
 </article>
 
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -238,15 +247,11 @@ postDB.SaveChanges();
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

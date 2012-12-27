@@ -9,7 +9,7 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="最近开始学习emacs，据说常用小指去按ctrl键对小指不好，一般的方法就是交换ctrl和caps lock键位置。 在ubuntu下交换这两个键灰常方便，赞一个。 1.点击右上角的最右边的图标，然后选择键盘一项 2.点击下方的布局设置 3.点击右下角的选项 4. &hellip;">
+  <meta name="description" content="之前遇到了QTreeView的刷新问题,使用了一个很笨的办法. 实际上只要在更新调用相应的beginInsertRows,beginInsertColumns等方法就可以了. void QAbstractItemModel::beginInsertRows( const QModelIndex & &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,54 +70,6 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/05/01/swap-ctrl-and-caps-lock-in-ubuntu12-04/">ubuntu12.04下交换ctrl和caps Lock键</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-01T00:00:00+08:00" pubdate data-updated="true">May 1<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近开始学习emacs，据说常用小指去按ctrl键对小指不好，一般的方法就是交换ctrl和caps lock键位置。</p>
-
-<p>在ubuntu下交换这两个键灰常方便，赞一个。</p>
-
-<p>1.点击右上角的<span style="color: #ff0000;">最右边的图标</span>，然后选择<span style="color: #ff0000;">键盘</span>一项</p>
-
-<p>2.点击下方的<span style="color: #ff0000;">布局设置</span></p>
-
-<p>3.点击右下角的<span style="color: #ff0000;">选项</span></p>
-
-<p>4.选择Ctrl键位置选项卡中的交换ctrl和大写锁定</p>
-
-<p>刚换过来还不是很习惯，切换输入法的时候老是会按ctrl，结果变成了大写锁定，看来还要点时间去适应啊。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2012/04/10/update-qabstractitemview/">关于QAbstractItemView的刷新问题</a></h1>
     
     
@@ -141,21 +93,22 @@
   </header>
 
 
-  <div class="entry-content"><p>之前遇到了<a href="http://www.aitilife.com/2012/03/17/updateqtreeview/">QTreeView的刷新问题</a>，使用了一个很笨的办法，</p>
+  <div class="entry-content"><p>之前遇到了<a href="/blog/2012/03/17/update-qtreeview/" title="QTreeView的刷新问题">QTreeView的刷新问题</a>,使用了一个很笨的办法.</p>
 
-<p>实际上只要在更新调用相应的beginInsertRows,beginInsertColumns等方法就可以了。
-void QAbstractItemModel::beginInsertRows ( const QModelIndex &amp; parent, int first, int last );</p>
+<p>实际上只要在更新调用相应的beginInsertRows,beginInsertColumns等方法就可以了.</p>
 
-<p>void QAbstractItemModel::endInsertRows () ;</p>
+<pre><code>void QAbstractItemModel::beginInsertRows( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endInsertRows();
 
-<p>void QAbstractItemModel::beginInsertColumns ( const QModelIndex &amp; parent, int first, int last );
-void QAbstractItemModel::endInsertColumns ();</p>
+void QAbstractItemModel::beginInsertColumns( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endInsertColumns();
 
-<p>void QAbstractItemModel::beginRemoveColumns ( const QModelIndex &amp; parent, int first, int last );
-void QAbstractItemModel::endRemoveColumns ();</p>
+void QAbstractItemModel::beginRemoveColumns( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endRemoveColumns();
 
-<p>void QAbstractItemModel::beginRemoveRows ( const QModelIndex &amp; parent, int first, int last );
-void QAbstractItemModel::endRemoveRows ();</p>
+void QAbstractItemModel::beginRemoveRows( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endRemoveRows();
+</code></pre>
 </div>
   
   
@@ -191,17 +144,27 @@ void QAbstractItemModel::endRemoveRows ();</p>
   </header>
 
 
-  <div class="entry-content"><p>1.将windows字体拷贝到/usr/share/fonts/truetype下面，文件夹名字可以随便起
-cp /media/c/WINDOWS/Fonts/* /usr/share/fonts/truetype/
-默认字体权限应该是755，如果不是的话，手动更改下
-chmod 755 *
-2.在/usr/share/fonts/truetype下面运行
-mkfontscale
-mkfontdir
-3.运行fc-cache -fv，刷新字体缓存。
-现在就一切ok了</p>
+  <div class="entry-content"><ol>
+<li>先<code>su</code>获取root权限</li>
+<li>将windows字体拷贝到<code>/usr/share/fonts/truetype</code>下面,文件夹名字可以随便起
 
-<p>当然，前提是先su获取root权限～</p>
+<pre><code> cp /media/c/WINDOWS/Fonts/* /usr/share/fonts/truetype/
+</code></pre>
+
+ 默认字体权限应该是755,如果不是的话,手动更改下
+
+<pre><code> chmod 755 *
+</code></pre></li>
+<li>在<code>/usr/share/fonts/truetype</code>下面运行
+
+<pre><code> mkfontscale
+ mkfontdir
+</code></pre></li>
+<li>运行<code>fc-cache -fv</code>,刷新字体缓存。</li>
+</ol>
+
+
+<p>现在就一切ok了</p>
 </div>
   
   
@@ -237,19 +200,22 @@ mkfontdir
   </header>
 
 
-  <div class="entry-content"><div>3/31 更新:
-v0.2.0-alpha 比上一版本多了获取好友，群，群成员头像功能。多了最近列表,其他还有很多小改动，修复一些bug!优化了界面！合并Mazenvoy提供的托盘代码。再次更新：
-v0.1.2 修复好友,群列表无法显示bug!修改聊天窗口字体大小颜色，调整聊天窗口布局,修正群聊天打开前几条消息显示号码而不是q名的问题! 感谢sallking抽时间测试。
+  <div class="entry-content"><h2>3/31 更新:</h2>
 
-&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+<p>版本:<strong>v0.2.0-alpha</strong>
+功变:</p>
 
-学习过程中做的～本机测试没问题。
-目前可以好友，群聊天。发送接受表情，发送接受图片。
+<ul>
+<li>比上一版本多了获取好友，群，群成员头像功能</li>
+<li>多了最近列表</li>
+<li>其他小改动</li>
+<li>修复一些bug</li>
+<li>优化了界面</li>
+<li>合并Mazenvoy提供的托盘代码</li>
+</ul>
 
-下载地址：
-<a href="https://github.com/zhanlangsir/Qtqq/downloads">https://github.com/zhanlangsir/Qtqq/downloads</a>
-<div>附件:</div>
-<div><a id="" href="http://forum.ubuntu.org.cn/download/file.php?id=153851&mode=view/login.png"><img title="Click to enlarge" src="http://forum.ubuntu.org.cn/download/file.php?id=153851&t=1" alt="login.png"></div>
+
+</div>
   
   
     <footer>
@@ -288,26 +254,15 @@ v0.1.2 修复好友,群列表无法显示bug!修改聊天窗口字体大小颜�
   </header>
 
 
-  <div class="entry-content"><div>在使用qtreview搭配自定义模型的时候，发现修改了模型中某项的内容时，只有鼠标处于该qtreview中，它才会刷新内容。只要鼠标在qtreeview外面时，它就维持原样~</div>
+  <div class="entry-content"><p>在使用qtreview搭配自定义模型的时候，发现修改了模型中某项的内容时，只有鼠标处于该qtreview中，它才会刷新内容。只要鼠标在qtreeview外面时，它就维持原样~</p>
 
+<p>经过一番摸索，发现只要对qtreeview调用</p>
 
-<div>经过一番摸索，发现只要对qtreeview调用</div>
+<pre><code>setUpdatedEnable(false);
+setUpdateEnable(true);
+</code></pre>
 
-
-<div>
-<div>setUpdatedEnable(<span style="color: #0000ff;"><strong>false</strong></span>);
-setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</div>
-</div>
-
-
-<div>连续两次调用后，qtreeview就会进行刷新了~</div>
-
-
-<div></div>
-
-
-<div></div>
-
+<p>连续两次调用后，qtreeview就会进行刷新了~</p>
 </div>
   
   
@@ -320,7 +275,7 @@ setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</di
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/02/24/my-view-ofqt-coordinate-system/">Qt坐标系统见解</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/02/24/my-view-of-qt-coordinate-system/">Qt坐标系统见解</a></h1>
     
     
       <p class="meta">
@@ -345,7 +300,7 @@ setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</di
 
   <div class="entry-content"><p>看到Graphics View Framework的时候，被窗口，视口，场景坐标系，对象坐标系，世界坐标系，逻辑坐标，物理坐标等等概念彻底搞懵了。到底他们之间是什么关系呢？是怎样映射的呢？到现在小狼还没有搞懂，不过经过不断试验，有了一点点自己的理解。</p>
 
-<p><strong><span style="color: #ff0000;">QPainter的各种draw方法是基于窗口坐标系的。</span></strong></p>
+<p><strong><em>QPainter的各种draw方法是基于窗口坐标系的。</em></strong></p>
 
 <p>窗口坐标为逻辑坐标，是基于视口坐标系的;视口坐标为物理坐标，是基于绘图设备坐标系的。没有做过改动的情况下，他们是一样的，都是以绘图设备(paint device,qwidget,qpixmap等都为绘图设备)大小为大小，左上角为原点(0,0)。</p>
 
@@ -353,7 +308,7 @@ setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</di
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/02/24/my-view-ofqt-coordinate-system/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2012/02/24/my-view-of-qt-coordinate-system/">Read on &rarr;</a>
     </footer>
   
 
@@ -397,69 +352,6 @@ setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</di
 <p>qt vs addin并不支持vs2010 express版，请注意了。</p>
 
 <p>安装方法就是一路next&#8230;.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/11/25/install-wmware-on-fedora16/">Fedora16装wmware Workstation8详细过程</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-25T00:00:00+08:00" pubdate data-updated="true">Nov 25<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>因课程需要，要装虚拟机学习minux操作系统，所以小狼就装了wmware workstation8,但是装完之后却运行不了，说找不到kernel header，如果有安装到kernel header的话，在/usr/src目录下可以找到,没有的话就用下面的命令安装:
-su
-yum install kernel-devel
-装完后/usr/src/kernels目录下就多出了一个3.1.1-2&#8230;.i686文件夹，说明kernel header已经成功安装了，但是把虚拟机需要的kernel header定位到
-/usr/src/kernels/3.1.1-2.fc16.i686/include目录后，发现还是不行
-用
-uname -r名令看了一下当前内核版本</p>
-
-<p>[root@XXXX Downloads]# uname -r
-3.1.0-7.fc16.i686</p>
-
-<p>发现是3.1.0的，原来是版本不对，升级一下内核版本就好了，升级内核命令(同时升级所有能升级的东西)
-su
-yum update</p>
-
-<p>然后重启，登录的时候选择3.1.1-2版本的内核。</p>
-
-<p>重启后，再运行vmware的时候，确实没有再说找不到kernel-header了，但是要编译kernel供vmware使用，在点同意编译和输入root用户密码后，界面闪了一下，吓了小狼一跳，然后。。。。就木有然后了。。</p>
-
-<p>其实装很多大型的软件都有这种情况，比如IBM的Rational software architect,是因为没有root权限，无法对需要的文件进行访问。所以用root身份去运行就好了。具体步骤如下：</p>
-
-<p>su</p>
-
-<p>/usr/bin/wmware</p>
-
-<p>然后等待编译，编译完成之后就可以看到熟系的wmware界面出现了</p>
-
-<p>而升级内核后引导菜单会多出几项选择，去掉旧内核版本菜单的方法可以看这里：<a href="http://hi.baidu.com/knityster/blog/item/9cc58f0e8ca61ec67acbe12e.html">http://hi.baidu.com/knityster/blog/item/9cc58f0e8ca61ec67acbe12e.html</a></p>
 </div>
   
   
@@ -541,40 +433,125 @@ yum update</p>
   </header>
 
 
-  <div class="entry-content"><p>使用wtl编译时出现一些警告：</p>
-
-<p><span style="color: #ff0000;">warning MSB8004: Intermediate 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。</span></p>
-
-<p><span style="color: #ff0000;">warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。</span></p>
+  <div class="entry-content"><p>使用wtl编译时出现一些警告：<br/>
+warning MSB8004: Intermediate 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。<br/>
+warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。</p>
 
 <p>其实这个警告没什么关系，要去掉只须在项目属性的常规设置中为两个目录添加一个斜杠结尾就OK了。</p>
 
-<p>添加Ribbon特性的时候出现以下错误：</p>
+<p>添加Ribbon特性的时候出现以下错误：<br/>
+&#8216;uicc.exe&#8217; 不是内部或外部命令，也不是可运行的程序</p>
 
-<p><span style="color: #ff0000;">&#8216;uicc.exe&#8217; 不是内部或外部命令，也不是可运行的程序</span></p>
+<p>原因是没有这个工具，可以到以下地址下载最新的window sdk,安装之后就可以了<br/>
+<a href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=18950" title="windows sdk download path">window sdk下载地址</a></p>
 
-<p>原因是没有这个工具，可以到以下地址下载最新的window sdk。安装之后就可以了</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/11/12/uicc-exe-not-internal-error-when-complier-wtl/">Read on &rarr;</a>
+    </footer>
+  
 
-<p><a href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=18950">http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=18950</a></p>
 
-<p>上面的链接有三个版本的sdk
-GRMSDK_EN_DVD.iso
-GRMSDKIAI_EN_DVD.iso
-GRMSDKX_EN_DVD.iso
-其中第一个是x86体系的，第二个是amd64体系，最后一个则是Itanium体系的，自己选择下那个。</p>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/12/error-of-install-windows-sdk/">安装windows Sdk时的错误</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<p>安装完毕就可以在C:Program FilesMicrosoft SDKsWindowsv7.1Bin 这个目录下看到有uicc这个工具了。</p>
 
-<p>但是到这里还是不能成功编译的，因为这个目录还没有添加到Path环境变量中，所以还是无法找到uicc工具，所以还要把uicc工具所在目录添加到Path环境变量中。具体步骤如下：
-1.右键我的电脑(或者计算机)->属性->高级系统设置->环境变量，在系统变量中找到Path,拖到最后，在最后一项后加个&#8221;<span style="color: #ff0000;">;</span>&#8220;号，然后把uicc所在目录添加到后面。</p>
 
-<p>重启一下vs，重新编译</p>
 
-<p>PS:</p>
 
-<p>如果安装sdk时出现错误，可以看一下这里的解决办法，希望能帮到各位：</p>
 
-<p><a href="http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/">http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/</a></p>
+
+
+  
+
+
+<time datetime="2011-11-12T00:00:00+08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>安装Microsoft Windows SDK 7.1的时候出现了一下错误：<br/>
+<strong><em>Microsoft Windows SDK for Windows 7 product has reported the following error: Please refer to SamplesSetupHTMLConfigDetails.htm document for further information.</em></strong></p>
+
+<p>解决办法很简单：<br/>
+一般把Visual C++ compiler勾掉就可以了~<br/>
+如果不行的话，就一个一个安装，先勾第一个选项，装完，再勾第二个，这样。<br/>
+或者打开iso目录，把setup文件夹里的各个文件夹里的安装包安装一遍。。。。。</p>
+
+<p>装完sdk7.1后，记得装<strong>KB2519277</strong></p>
+
+<p>下载地址和说明请看这里，小狼就不翻译了~<br/>
+<a href="http://support.microsoft.com/kb/2519277" title="kb2519277">kb2519277</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/25/key-and-serial-number/">各种密钥-序列号</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-25T00:00:00+08:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong><em>SQLServer2008:</em></strong></p>
+
+<pre><code>Developer: PTTFM-X467G-P7RH2-3Q6CG-4DMYB
+Enterprise: JD8Y6-HQG69-P9H84-XDTPG-34MBB
+</code></pre>
+
+<p><strong><em>Vs2010:</em></strong></p>
+
+<pre><code>YCFHQ-9DWCY-DKV88-T2TMH-G7BHP
+</code></pre>
+
+<p><strong><em>Blend:</em></strong></p>
+
+<pre><code>6WDDQ-K7D4F-GQGF4-2VYBJ-8K6MB
+</code></pre>
+
+<p><strong><em>PhotoShop Cs5:</em></strong></p>
+
+<pre><code>1330-1343-1830-9875-8192-3098
+1330-1650-7442-9032-3879-0986
+</code></pre>
 </div>
   
   
@@ -595,8 +572,18 @@ GRMSDKX_EN_DVD.iso
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -607,15 +594,11 @@ GRMSDKX_EN_DVD.iso
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

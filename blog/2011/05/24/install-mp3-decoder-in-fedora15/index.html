@@ -9,7 +9,9 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="由于版权问题，fedora是没有安装mp3解码器的，官方源里同样没有，所以对于新手来说，要听mp3还得折腾一翻，所以这里就介绍一下安装mp3解码器的方法，让新手少走点弯路。 首先就是添加有mp3解码器的下载源-fusion http://download1.rpmfusion.org/f &# &hellip;">
+  <meta name="description" content="由于版权问题，fedora是没有安装mp3解码器的，官方源里同样没有，所以对于新手来说，要听mp3还得折腾一翻，所以这里就介绍一下安装mp3解码器的方法，让新手少走点弯路。 首先就是添加有mp3解码器的下载源-fusion
+fusion free
+fusion nonfree &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,26 +94,19 @@
 
 <div class="entry-content"><p>由于版权问题，fedora是没有安装mp3解码器的，官方源里同样没有，所以对于新手来说，要听mp3还得折腾一翻，所以这里就介绍一下安装mp3解码器的方法，让新手少走点弯路。</p>
 
-<p>首先就是添加有mp3解码器的下载源-fusion</p>
+<p>首先就是添加有mp3解码器的下载源-fusion<br/>
+<a href="http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm" title="fusion free">fusion free</a><br/>
+<a href="http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm" title="fusion non free">fusion nonfree</a><br/>
+先下载上面两个rpm文件，下载完安装后就会添加上了fusion源了。</p>
 
-<p> <a style="word-wrap: break-word; text-decoration: none; color: #0099cc; line-height: normal;" href="http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm" target="_blank">http://download1.rpmfusion.org/f &#8230; e-stable.noarch.rpm</a></p>
+<p>然后打开终端,输入</p>
 
-<p><a style="word-wrap: break-word; text-decoration: none; color: #0099cc; line-height: normal;" href="http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm" target="_blank">http://download1.rpmfusion.org/n &#8230; e-stable.noarch.rpm</a></p>
+<pre><code>su 密码
+yum --nogpg install gstreamer-ffmpeg gstream-plugin-bad  gstream-plugin-ugly
+</code></pre>
 
-<p><span style="border-collapse: collapse; font-size: 14px; line-height: 22px;">先下载上面两个rpm文件，下载完安装后就会添加上了fusion源了。</span></p>
-
-<p><span style="border-collapse: collapse; font-size: 14px; line-height: 22px;">然后打开终端,输入</span></p>
-
-<p><span style="border-collapse: collapse; font-size: 14px; line-height: 22px;">su</span></p>
-
-<p><span style="border-collapse: collapse; font-size: 14px; line-height: 22px;">密码</span></p>
-
-<p><span style="border-collapse: collapse; font-size: 14px; line-height: 22px;">yum &#8211;nogpg install gstreamer-ffmpeg gstream-plugin-bad  gstream-plugin-ugly</span></p>
-
-<div style="border-collapse: collapse; font-size: 14px; line-height: 22px;">然后再打开mp3文件看看，是不是已经可以了～</div>
-
-
-<p> </p>
+<p>然后再打开mp3文件看看，是不是已经可以了～
+ </p>
 </div>
 
 
@@ -158,19 +153,48 @@
         <a class="basic-alignment left" href="/blog/2011/05/24/huo-qu--gpg--mi-yao-shi-bai-errno-14/" title="Previous Post: 获取 GPG 密钥失败：[Errno 14]">&laquo; 获取 GPG 密钥失败：[Errno 14]</a>
       
       
-        <a class="basic-alignment right" href="/blog/2011/05/28/fedora15-xia-qi-dong-iceplayer-chu-xian-duan-cuo-wu-de-jie-jue-ban-fa/" title="Next Post: fedora15下启动iceplayer出现段错误的解决办法">fedora15下启动iceplayer出现段错误的解决办法 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2011/06/23/from-blogenging-to-wordpress/" title="Next Post: 从BlogEngine把数据转到WordPress">从BlogEngine把数据转到WordPress &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
 
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -181,15 +205,11 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

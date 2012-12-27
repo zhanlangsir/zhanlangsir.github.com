@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Windows | 挨踢人生]]></title>
   <link href="http://zhanlangsir.github.com/blog/categories/windows/atom.xml" rel="self"/>
   <link href="http://zhanlangsir.github.com/"/>
-  <updated>2012-12-25T13:51:06+08:00</updated>
+  <updated>2012-12-28T00:52:17+08:00</updated>
   <id>http://zhanlangsir.github.com/</id>
   <author>
     <name><![CDATA[zhanlang]]></name>
@@ -18,39 +18,36 @@
     <link href="http://zhanlangsir.github.com/blog/2011/11/12/error-of-install-windows-sdk/"/>
     <updated>2011-11-12T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2011/11/12/error-of-install-windows-sdk</id>
-    <content type="html"><![CDATA[<p>安装Microsoft Windows SDK 7.1的时候出现了一下错误：</p>
+    <content type="html"><![CDATA[<p>安装Microsoft Windows SDK 7.1的时候出现了一下错误：<br/>
+<strong><em>Microsoft Windows SDK for Windows 7 product has reported the following error: Please refer to SamplesSetupHTMLConfigDetails.htm document for further information.</em></strong></p>
 
-<p><span style="color: #ff0000;">Microsoft Windows SDK for Windows 7" product has reported the following error: Please refer to SamplesSetupHTMLConfigDetails.htm document for further information.</span></p>
+<p>解决办法很简单：<br/>
+一般把Visual C++ compiler勾掉就可以了~<br/>
+如果不行的话，就一个一个安装，先勾第一个选项，装完，再勾第二个，这样。<br/>
+或者打开iso目录，把setup文件夹里的各个文件夹里的安装包安装一遍。。。。。</p>
 
-<p>解决办法很简单：</p>
+<p>装完sdk7.1后，记得装<strong>KB2519277</strong></p>
 
-<p>一般把Visual C++ compiler勾掉就可以了~</p>
-
-<p>如果不行的话，就一个一个安装，先勾第一个选项，装完，再勾第二个，这样。</p>
-
-<p>或者打开iso目录，把setup文件夹里的各个文件夹里的安装包安装一遍。。。。。</p>
-
-<p> </p>
-
-<p>装完sdk7.1后，记得装KB2519277</p>
-
-<p>下载地址和说明请看这里，小狼就不翻译了~</p>
-
-<p><a href="http://support.microsoft.com/kb/2519277">http://support.microsoft.com/kb/2519277</a></p>
+<p>下载地址和说明请看这里，小狼就不翻译了~<br/>
+<a href="http://support.microsoft.com/kb/2519277" title="kb2519277">kb2519277</a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[win7无法进入睡眠状态解决办法]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/04/23/win7-wu-fa-jin-ru-shui-mian-zhuang-tai-jie-jue-ban-fa/"/>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/23/resolve-the-problem-of-win7-can-not-sleep/"/>
     <updated>2011-04-23T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/04/23/win7-wu-fa-jin-ru-shui-mian-zhuang-tai-jie-jue-ban-fa</id>
+    <id>http://zhanlangsir.github.com/blog/2011/04/23/resolve-the-problem-of-win7-can-not-sleep</id>
     <content type="html"><![CDATA[<p>无论睡眠、休眠、关机这都和你的电源管理有着密切的关系，因此如果你的系统无法睡眠第一个先要查看电源管理，这里有一条命令，操作步骤是</p>
 
 <p>开始->运行->输入CMD回车 然后输入powercfg 空格–a回车</p>
 
-<p>可以查看你是否是因为硬件或者软件问题而导致无法睡眠的，一般情况下会有S1 S2 S3 三个睡眠状态，而且会提示你此系统固件支持哪几个睡眠，下面就分硬件和软件两个方面来检查以及解决。
-如果输入命令后出现三个睡眠状态系统固件均不支持，那很可能是因为你的主板没有开启睡眠功能，这样你就要重新启动电脑，进入你的BIOS进行操作，如果有人要问怎么进入BIOS啊？好吧回答一下，开机后主板自检时，台式机尤其是组装的多是摁下DEL键，很多品牌机有自己的BIOS，会显示摁哪个键子进入SET UP，有的是F10 有的是ESC等等，这个你要自己看了，要眼急手快，因为时间非常短的，笔记本也是如此会有不同的按键来进入BIOS，进入之后找到POWER（电源）项，在里边查找S1 S2 S3项，并开启，多是开启S3就可以，然后保存，重启。 [more]</p>
+<p>可以查看你是否是因为硬件或者软件问题而导致无法睡眠的，一般情况下会有S1 S2 S3 三个睡眠状态，而且会提示你此系统固件支持哪几个睡眠，下面就分硬件和软件两个方面来检查以及解决。</p>
+
+<p>如果输入命令后出现三个睡眠状态系统固件均不支持，那很可能是因为你的主板没有开启睡眠功能，这样你就要重新启动电脑，进入你的BIOS进行操作，如果有人要问怎么进入BIOS啊？好吧回答一下，开机后主板自检时，台式机尤其是组装的多是摁下DEL键，很多品牌机有自己的BIOS，会显示摁哪个键子进入SET UP，有的是F10 有的是ESC等等，这个你要自己看了，要眼急手快，因为时间非常短的，笔记本也是如此会有不同的按键来进入BIOS，进入之后找到POWER（电源）项，在里边查找S1 S2 S3项，并开启，多是开启S3就可以，然后保存，重启。</p>
+
+<!--more-->
+
 
 <p>如果输入命令后显示VGA.EXE 或者DISPLAY.EXE抑或XXXXX.EXE就说明你的硬件影响到了电源而导致无法睡眠，这种情况下多是驱动问题，VGA 、display的就是显卡驱动，所需要做的就是更新相对的驱动，这种情况还有一个表现就是睡眠选项为灰色。</p>
 
@@ -65,119 +62,157 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[漂亮的透明磨砂win7主题Glass Onion for W7]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/04/22/beautiful-win7-theme-glass-onion-for-w7/"/>
-    <updated>2011-04-22T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/04/22/beautiful-win7-theme-glass-onion-for-w7</id>
-    <content type="html"><![CDATA[<p>今天发现了一款灰常漂亮的透明磨砂win7主题Glass Onion for W7,支持32和64位版本~</p>
-
-<p>其实第一次听说要介绍这个主题我是拒绝的，因为，你不能让我介绍，我就马上去介绍，第一我要试一下，因为我不愿意写完文章了以后再加一些特技上去，PS一下，很漂亮、很诱人，这样看众一定会骂我，根本没有这样的桌面，就证明下面那个是假的。后来我也经过证实它确实是透明磨砂的，我用了大概一个小时左右，感觉还不错，后来我在写文章的时候也要求不要加特技，因为我要让看众看到，我用完之后是这个样子，你们用完之后也会是这个样子！- -!龙哥的台词真强大~</p>
-
-<p>原图：</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/04/theme2_thumb.png"><img class="alignnone size-thumbnail wp-image-1478" title="theme2_thumb" src="http://www.aitilife.com/images/uploads/2011/04/theme2_thumb-150x150.png" alt="" width="150" height="150"></a></p>
-
-<!--more-->
+    <title type="html"><![CDATA[win7激活工具]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/win7-activation-tools/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/win7-activation-tools</id>
+    <content type="html"><![CDATA[<ol>
+<li>Win7自动激活补丁</li>
+<li>Windows7 Activation 一键激活破解补丁</li>
+<li>Oem7F6</li>
+</ol>
 
 
-<p>小狼装了之后的效果：</p>
+<p>本补丁只能用于学习研究，如果你需要合法使用Windows7，请购买正版！
+希望大家都能尽可能地支持正版，毕竟厂商有钱赚才会继续，我们才能享受到更好用的软件。对于实在无能力的朋友，请保持低调……</p>
 
-<p><a href="http://www.aitilife.com/images/uploads/2011/04/dusk_thumb.png"><img class="alignnone size-thumbnail wp-image-1479" title="dusk_thumb" src="http://www.aitilife.com/images/uploads/2011/04/dusk_thumb-150x150.png" alt="" width="150" height="150"></a></p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/04/theme1.png"><img class="alignnone size-thumbnail wp-image-1481" title="theme1" src="http://www.aitilife.com/images/uploads/2011/04/theme1-150x150.png" alt="" width="150" height="150"></a></p>
-
-<p>有一点个人感觉不好，就是阴影部分范围太大了~</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/04/shadow.png"><img class="alignnone size-thumbnail wp-image-1482" title="shadow" src="http://www.aitilife.com/images/uploads/2011/04/shadow-150x150.png" alt="" width="150" height="150"></a></p>
-
-<p>安装方法：</p>
-
-<p>解压zip主题包,在win7要使用第三方主题,就要安装Uxstyle破解软件,当然也有其他方法，不过这个非常简单。</p>
-
-<p>UxStyle在zip主题包的tool文件夹中</p>
-
-<p>安装完UxStyle后,再把theme文件夹中的所有内容复制到C:windowsResourcesTheme目录中</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/04/theme_thumb.png"><img class="alignnone size-thumbnail wp-image-1483" title="theme_thumb" src="http://www.aitilife.com/images/uploads/2011/04/theme_thumb-150x150.png" alt="" width="150" height="150"></a></p>
-
-<p>然后在桌面右键,选择个性化,在个性化界面选择对应的主题就OK了~</p>
-
-<p>当然还有一些细节部分的改变要替换系统文件,具体操作查看zip主题包中的READ ME文件！</p>
-
-<p> </p>
-
-<p>Glass Onion for W7下载：<a href="http://dl.dbank.com/c0hf8o44lg">DBank下载</a></p>
-
-<p>原主题地址：<a href="http://solmiler.deviantart.com/art/Glass-Onion-for-W7-202355689">http://solmiler.deviantart.com/art/Glass-Onion-for-W7-202355689</a></p>
+<p>下载地址：<a href="http://dl.dbank.com/c0l2xd1wlc" title="Dbank下载">Dbank下载</a></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[第三方个性桌面主题：暗黑彩虹]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/04/16/di-san-fang-ge-xing-zhuo-mian-zhu-ti--an-hei-cai-hong/"/>
-    <updated>2011-04-16T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/04/16/di-san-fang-ge-xing-zhuo-mian-zhu-ti--an-hei-cai-hong</id>
-    <content type="html"><![CDATA[<p>Windows 7官方主题虽然数量众多，但说白了绝大多数都只是一些壁纸包而已，偶尔加入一些音效，从来没有对窗口UI的真正改动，所以第三方精美主题颇受欢迎，只是这些主题一般都需要更改系统文件，使用起来有些麻烦。这大概就是鱼与熊掌不可兼得了。
-今天我们又找来了一个既黑暗又鲜艳的桌面主题“Placebo”，看看上面的截图就知道了。这个来自sorrylois的主题设计看起来像一道彩虹瀑布，非常漂亮，也非常酷。
-<img style="vertical-align: top; border: 1px solid black;" src="http://img1.cache.netease.com/catchpic/4/46/462DAED9C32552016D5E0DA9A7760D70.jpg" alt="第三方个性桌面主题：暗黑彩虹"></p>
+    <title type="html"><![CDATA[Visual Studio 2008小技巧-快速提高工作效率]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/vs2008-tip/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/vs2008-tip</id>
+    <content type="html"><![CDATA[<p>身为一名程序员一定知道vim和emacs这两个神级编辑器,他们并没有vs,vc的继承ide功能,却还是很多高级程序员的首选工具,因为它们的按键方案的高速,快捷.其实vs也有不少类似的功能,只是很多程序员没有细心的去发掘这些功能而已,如果熟练地掌握vs的各种小技巧,效率还是很可观的额~</p>
 
-<!--more-->
+<ol>
+<li><p>回到上一个光标位置<br/>
+使用组合键<code>Ctrl + -</code>键表示Navigate BackWard, 使用组合键1Ctrl + Shift + -`键表示 Forward.</p></li>
+<li><p>删除多余的using指令，并且排序<br/>
+当我们新一个类的时候，Visual Studio 会将常用的命名空间using在类的头部。但是在我们写完一个类的时候，有些using是多余的，删除多余的using，再排一下序，可以使代码看起来更清晰。Visual Studio 2008 已经为我们做好了这一切。在代码编辑区点击右键，可以看到”组织 using”菜单，这就是我们需要的了。
+ <!--more--></p></li>
+<li><p>复制或删除一行代码时，不用先选择它<br/>
+如果你想复制一行代码，你只需要简单的按CTRL+c拷贝，然后按CTRL+v粘贴这行就可以了，而不需要选择整行的代码。如果你想删除一行代码，只需按CTRL+x就可以了。
+ </p></li>
+<li><p>取代其他编辑器里Ctrl+F的方便的增量查找<br/>
+用过ultraedit会对那两个上下搜索按钮印象深刻，Visual studio里有更厉害的。
+操作方法：
+1）.按Ctrl+I键<br/>
+2）.键入你要搜索的文本。注意：这时你会看到光标跳至第一个匹配的地方，匹配的文本高亮显示<br/>
+3）.再次按下Ctrl+I键，光标将跳至下一个匹配的文本<br/>
+4）.按Ctrl+Shift+I可向后搜索<br/>
+5）.要停止搜索，按ESC键</p></li>
+<li><p>如何在编辑器中进行框式选择<br/>
+<strong>操作方法：</strong><br/>
+你是否知道VS提供了两种不同的选择模型：流式和框式吗？<br/>
+大家应该都熟悉流式选择模型了，只要使用Shift+方向键即可（或者使用鼠标进行选择）.<br/>
+框式选择则允许你同时对航和列进行选择。只要同时按下Shift+Alt+方向键，你就了解它的不同之处了。剪切，拷贝，粘贴，这些功能都能使用，只是需要记住从哪里开始选择的。啊，让我想起了那段做测试时的时光。<br/>
+<strong><em>备注：</em></strong><br/>
+也可以使用鼠标+Alt键完成该操作。前两天我还遇到该提示的一个有意思的用法。有时候我们拷贝网上的文章中的代码时会将行号一起拷进来，使用框式选择可以只选择行号部分，将其删除。</p></li>
+<li><p>如何使用快捷键在当前代码行的上面或下面插入一行(推荐，很实用) <br/>
+按下Ctrl+Enter会在上面插入一个空行，Ctrl+Shift+Enter则会在下面插入一个空行。光标会移至新行的开始处。<br/>
+<strong><em>备注：</em></strong><br/>
+这是我非常喜欢的一个快捷键，如果不用这个，则需要使用Home或End，然后使用方向键，再使用回车才能达到上面的效果。</p></li>
+<li><p>安装之后，将您的IDE设置恢复到默认设置<br/>
+如果IDE的设置在任何先前发布的版本中做了更改，它们都应该被恢复到默认设置。可以在Visual Studio 2008中点击菜单<code>Tools &gt; Import and Export Settings… &gt; Reset all settings</code>,此外还有一些Import和Export的选项可用。</p></li>
+<li><p>通过按”tab”两次插入代码块<br/>
+<strong>操作步骤：</strong><br/>
+在编辑的中输入代码片段，比如"for"<br/>
+在这个状态下，按两次"tab"键，将会插入代码块，如下图所示<br/>
+此时你可以把第一”i”改成"j",然后按Tab键，则所有的变量都变成了"j"<br/>
+<strong><em>备注：</em></strong>这样既快又不容易语法出错。</p></li>
+<li><p>使用Ctrl+Tab打开IDE的导航，获得鸟瞰视图<br/>
+同时在Visual Studio中导航到所有打开的文件和工具窗体<br/>
+按”Ctrl+Tab”键，打开IDE导航窗口，按住Ctrl键，同时用方向键或鼠标选中一个文件或工具窗体来激活<br/>
+备注：这时最好不要松开”Ctrl+Tab”，按方向键看鸟瞰图，全部松开后就定位到需要的文件或工具窗体，说实在的，这窗口挺酷的</p></li>
+<li><p>查找匹配的标记<br/>
+某些标识总是成对出现。例如，"{"标识必须用对应的"}"标识关闭。虽然你点击一个{ 和它匹配的}就会高亮显示，但是如果代码过长的话就不好找了，同样，编译器指示符”#region”必须有对应的”#endregion”指示符。当导航你的代码时，你有时需要查找对应的标识。通过按Ctrl-]你可以这样做。这个快捷键只有当光标在这些标识符的任何一个的下面时才起作用，它会立即跳转到对应的标识符而不管它是开的或闭的标识<br/>
+如果你想显亮两个匹配的标识之间的所有代码时，按Ctrl-Shift-]显亮整个块，并移动光标到开的标识处。这个快捷键只有当光标在任意的标识的下面时才起作用(如光标在区域内它就不会起作用了).</p></li>
+<li><p>怎样创建区域以方便代码的阅读？</p>
+
+<pre><code>#region
+代码区域
+#endregion
+</code></pre></li>
+<li><p>怎样同时修改多个控件的属性？<br/>
+选中多个控件，然后右键属性，这个时候这些控件共有的属性就会出现，修改之后所有的控件都会变化。</p></li>
+<li><p>怎样快速添加命名空间？<br/>
+对于引用了dll,但代码中没有引用其命名空间的类，输入类名后在类名上按Ctrl+.即可自动添加该类的引用命名空间语句。</p></li>
+<li><p>怎样实现快速拷贝或剪切一行？<br/>
+光标只要在某行上，不用选中该行，直接按Ctrl+c 或Ctrl+x 就可以拷贝或剪切该行。</p></li>
+<li><p>怎样使用任务管理器？<br/>
+假如我们开发的项目很大，在项目中有些代码没有完成，我们可以做一下标记，便于将来查找。
+创建方法：在要标志的地方输入：//TODO:…内容…
+使用方法：视图—>任务列表—>注释</p></li>
+<li><p>命令行快速启动<br/>
+"Inetmgr"        IIS管理器，不用到管理里去找了，很快就可以显示IIS管理了<br/>
+"sqlwb"          快速启动SQL2005企业管理器<br/>
+"isqlw"           这是SQL2000的我也提供一下吧，这个可以起到SQL2000的查询分析器<br/>
+"devenv"        启动相应版本的VS Studio</p></li>
+<li><p>Ctrl提示透明窗口<br/>
+这是一个比较有意思的键。VS2005下，当你在调试代码的时候，有时候提示信息会遮挡代码，这个时候你按CTRL可以将提示透明。VS2008这个透明效果，在更多的地方可见了，你不妨自己亲自动手看看。</p></li>
+<li><p>F12、Ctrl+减号、CTRL + SHIFT + 减号 <br/>
+这三个键在查看代码的时候，特别有用。通过F12你可以快速的找到一个函数的定义，通过Ctrl+减号你可以快速的返回到函数的调用处。</p></li>
+</ol>
 
 
-<p><strong style="font-weight: bold;">使用方法如下：</strong>
-－ 下载并安装Placebo：
-<span style="white-space: pre;"> </span><a href="http://solmiler.deviantart.com/art/Placebo-for-Windows-7-188414149">http://solmiler.deviantart.com/art/Placebo-for-Windows-7-188414149</a>
-－ 下载Rainmeter：
-<span style="white-space: pre;"> </span><a href="http://rainmeter.net/RainCMS/">http://rainmeter.net/RainCMS/</a>
-－ 下载并安装插件ABP：
-<span style="white-space: pre;"> </span><a href="http://rainmeter.net/RainCMS/?q=Suites_ABP%20">http://rainmeter.net/RainCMS/?q=Suites_ABP </a>
-<img style="vertical-align: top; border: 1px solid black;" src="http://img1.cache.netease.com/catchpic/B/B5/B55127B567DE7C7F0FC402E074B87E18.jpg" alt="第三方个性桌面主题：暗黑彩虹">
-本文来源：驱动之家MyDrivers</p>
-
-<h1 style="font-size: 20px; letter-spacing: 1px; margin-top: 10px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;"><span style="font-size: 15px; font-weight: normal; letter-spacing: normal;"> 
-<h1 style="font-size: 20px; letter-spacing: 1px; margin-top: 10px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;">关于Rainmeter的更多文章可以看这里：</h1>
-<h1 style="font-size: 20px; letter-spacing: 1px; margin-top: 10px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;"><strong><a class="taggedlink" style="text-decoration: none; color: #5c80b1;" href="http://www.aitilife.com/post/2011/04/10/rainmeter.aspx">超牛X的windows桌面美化软件-雨滴(Rainmeter)</a></strong></h1>
- 
-
-</span></h1>
-
-
-<h1 style="font-size: 20px; letter-spacing: 1px; margin-top: 10px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;"><strong><a class="taggedlink" style="text-decoration: none; color: #5c80b1;" href="http://www.aitilife.com/post/2011/04/10/rainmeter-dock-pulgin.aspx">三款rainmeter dock插件</a></strong></h1>
-
-
-<p> </p>
+<p>转自: <a href="http://www.cnblogs.com/flysnow-z/archive/2009/06/19/1506472.html" title="flysnow's blog">flysnow</a></p>
 
 <p> </p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[用组策略优化你的Windows 7]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/04/13/yong-zu-ce-lve-you-hua-ni-de-windows-7/"/>
-    <updated>2011-04-13T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/04/13/yong-zu-ce-lve-you-hua-ni-de-windows-7</id>
-    <content type="html"><![CDATA[<p> <span style="font-size: 14px;"><span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">Windows</span></span> 7与XP一样也有组策略功能，利用这一功能你可以优化系统、进行个性化配置，让<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">Windows</span></span> 7跑得更快、资源占用更少，这样即使是配置低的电脑也能飞快运行Windows 7了！</span>
-要使用Windows 7组策略功能，你可以按Win+R键打开运行窗口，输入gpedit.msc回车，然后在组策略编辑器中操作即可；如果组策略被锁死了，可以这样来解锁：按Win+R键打开运行窗口输入mmc.exe，在弹出的窗口中单击“文件”，定位到&lt;系统盘／Windows／System32>目录并打开gpedit.msc，单击左侧的计算机配置→安全设置→软件限制策略→其他规则，在右边窗口中删除“gpedit.msc”限制条目，或者双击该条目，将“安全级别”从“不允许”改为“不限制”，单击“确定”完成。
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><!--more-->禁止保存搜索记录
-</strong>Windows 7搜索历史记录会自动保存在下拉列表框中，要禁止保存搜索记录可这样操作：按Win+R键，输入gpedi t.ms c打开组策略，单击左侧的用户配置→管理模板→Windows组件→Windows资源管理器，在右侧窗口中找到“在Windows资源管理器搜索框中关闭最近搜索条目的显示”项目，双击打开，在弹出的窗口选择“已启用”，单击“确定”退出生效。[more]
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">禁用屏保
-</strong>许多场合下，例如在电脑上看电影时就需要禁用屏保，方法是按Win+R键，输入gpedit.msc打开组策略，单击左侧的用户配置→管理模板→Windows组件→Windows Media Player→播放，在右边窗口中双击“允许运行屏幕保护程序”条目，选择“已禁用”，单击“确定”退出。
-接下来依次单击“开始”菜单→所有程序→Windows MediaPlayer，启动Windows Media Player，单击“工具”菜单下的“选项”→播放机，检查“播放机设置”下的“播放时允许运行屏幕保护程序”项，看到已被禁用了。
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">关闭“安装更新并关机”弹窗
-</strong>如果你在Windows 7中启动了自动更新功能，每次单击“开始”菜单选择“关机”或者以其他方法关机之前，系统都会出现“安装更新并关机”弹窗，必须先安装更新然后才能关机，要关闭这样的弹窗方法如下：按Win+R键，输入gpedit.msc打开组策略，单击左侧的计算机配置→管理模块→Windows组件→WindowsUpdate，在右边窗口中双击“不要在‘关闭Windows’对话框显示安装更新并关机”条目，选择“已启用”，单击“确定”退出。
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">关闭错误报告弹窗
-</strong>Windows 7运行时如果出现异常就会弹出一个错误报告对话框，询问你是否将此错误提交给微软官方网站，你可以用组策略关闭这个错误报告弹窗，方法如下：按Win+R键，输入gpedit.msc打开组策略，单击左侧的计算机配置→管理模板→系统→Internet通信管理→Internet 通信设置，在右边窗口中双击“关闭Windows错误报告”条目，选择“已启用”，单击“确定”退出。
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">关闭系统还原</strong>
-在Windows 7中禁用系统还原可以节省磁盘空间，方法是按Win+R键，输入gpedit.msc打开组策略，单击左侧的计算机配置→管理模板→系统→系统还原，在右边窗口中双击“关闭系统还原”条目，选择“已启用”，单击“确定”启用该策略。
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">关闭自动播放功能</strong>
-Windows 7默认情况下会开启自动播放功能，当你将U盘插到电脑上时，U盘中的病毒就会利用autorun.inf自动运行并感染电脑，为了防止中毒，你应该关闭自动播放功能，方法如下：打开组策略，单击左侧的计算机配置→管理模板→Windows组件→自动播放策略，在右边窗口中双击“关闭自动播放”条目，选择“已启用”，单击“确定”退出。
-接下来按Win+R键，输入services.msc打开服务，在右边窗口中双击“ShellHardwareDetection”服务，点“停止”停止该服务，并将启动类型设为“手动”，单击“确定”完成。
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">禁用自带刻录功能
-</strong>Windows 7中集成了刻录功能，不过它没有专业刻录软件那样强大，如果你想使用第三方软件来刻录光盘，可以禁用Windows 7的自带刻录功能。
-按Win+R键，输入gpedit.msc打开组策略，单击左侧的用户配置→管理模板→Windows组件→Windows资源管理器”，在右边窗口中双击“删除CD刻录功能”条目，选择“已启用”，单击“确定”退出。
- </p>
+    <title type="html"><![CDATA[Windows 7硬盘安装方法]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/hard-disk-install-win7/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/hard-disk-install-win7</id>
+    <content type="html"><![CDATA[<h2>一、如果有vista安装盘的话，方法也很简单：</h2>
 
-<p> </p>
+<ol>
+<li>下载windows7 7057 ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)</li>
+<li>BIOS中选择光驱启动，进入vista安装界面</li>
+<li>选择左下角修复计算机(自动搜索系统，提示加载驱动或关闭，选择关闭进入修复选项)</li>
+<li>选择最后一项命令修复，在命令框输入<code>D:/7057/sources/setup.exe</code>,开始安装</li>
+<li>选择安装语言、格式化C盘 (即使C盘原本没有系统此法也可行)</li>
+</ol>
+
+
+<!--more-->
+
+
+<h2>二、XP系统下全新安装windows 7：</h2>
+
+<ol>
+<li>下载windows 7 7057ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)</li>
+<li>把D:/7057目录下的bootmgr和boot目录(其实只要里面的boot.sdi和bcd文件)拷贝到c盘根目录下,并在C盘根目录下建个sources文件夹。(XP下不需要取得管理员权限)</li>
+<li>把D:/7057/sources下的boot.win复制到C盘刚建的sources文件夹</li>
+<li>用管理员身份运行cmd，然后输入c:/boot/bootsect.exe /nt60 c: 提示successful(即成功了!)</li>
+<li>关闭cmd窗口重启计算机，自动进入安装界面，选择安装语言，同时选择适合自己的时间和货币显示种类及键盘和输入方式</li>
+<li>出现“开始安装界面”，(要注意了，不点击“现在安装”)点左下角“修复计算机”(repair mycomputer)，进入”系统恢复选择”，选择最后一项”命令提示符”(commandprompt)，进入DOS窗口</li>
+<li>输入<code>D:/7057/sources/setup.exe</code>，开始安装</li>
+<li>选择安装语言、格式化C盘，就OK了</li>
+</ol>
+
+
+<h2>三、vista系统下全新安装windows7(实践证明XP用此种方法也更加方便)：</h2>
+
+<ol>
+<li>下载windows 7 7057ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)</li>
+<li>复制D:/7057文件夹中的Boot、EFI、sources文件夹和bootmgr至C盘根目录下</li>
+<li>复制D:/7057/boot下Bootsect.exe至C盘根目录下
+. 部需取得管理员权限</li>
+<li>管理员身份运行cmd，输入c:/bootsect.exe(空格)/nt60 c:并回车(最好复制，中间有空格)</li>
+<li>重启系统自动进入安装界面，点左下角的修复计算机repair my computer)</li>
+<li>选择最后一项命令提示符，进入DOS窗口，输入D:/7057/sources/setup.exe进入安装界面</li>
+<li>选择安装语言、格式化C盘，就OK了</li>
+</ol>
+
+
+<p>不过，这四种方法还都不是最最简单的办法，最最简单的办法是什么?直接在xp下用虚拟光驱装，打开安装程序，选择较大的一个硬盘分区，确定，重启后 就直接是win7的安装界面，OK~
+其实有刻录机的同学也不妨用硬盘来安装windows 7 ，不仅免掉了碟的开支，而且用硬盘安装也更加稳定不是~</p>
 ]]></content>
   </entry>
   

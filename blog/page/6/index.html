@@ -9,7 +9,9 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="无论睡眠、休眠、关机这都和你的电源管理有着密切的关系，因此如果你的系统无法睡眠第一个先要查看电源管理，这里有一条命令，操作步骤是 开始->运行->输入CMD回车 然后输入powercfg 空格–a回车 可以查看你是否是因为硬件或者软件问题而导致无法睡眠的，一般情况下会有S1 S2 S3 &hellip;">
+  <meta name="description" content="打开我的电脑——系统安装盘(不错的话一般都是C盘)——打开WINDOWS文件夹——找到Temp目录
+右击打开属性，点到安全选项，如果没有你可以先按一下alt，然后就会出现工具栏,在窗口的上边点开 工具——文件夹选项——查看——将“使用单文件共享(推荐)”钱的勾去掉就有了
+说简单点就是： &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,7 +72,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/23/win7-wu-fa-jin-ru-shui-mian-zhuang-tai-jie-jue-ban-fa/">Win7无法进入睡眠状态解决办法</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/10/phpmyadmin-can-not-create-session/">phpMyAdmin:无法在发生错误时创建会话,请检查PHP或网站服务器日志XX 解决办法</a></h1>
     
     
       <p class="meta">
@@ -86,29 +88,23 @@
   
 
 
-<time datetime="2011-04-23T00:00:00+08:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2011</time>
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>无论睡眠、休眠、关机这都和你的电源管理有着密切的关系，因此如果你的系统无法睡眠第一个先要查看电源管理，这里有一条命令，操作步骤是</p>
+  <div class="entry-content"><ol>
+<li>打开我的电脑——系统安装盘(不错的话一般都是C盘)——打开WINDOWS文件夹——找到Temp目录<br/>
+右击打开属性，点到安全选项，如果没有你可以先按一下alt，然后就会出现工具栏,在窗口的上边点开 工具——文件夹选项——查看——将“使用单文件共享(推荐)”钱的勾去掉就有了</li>
+<li>说简单点就是：WIN下系统文件夹windows里面就有一个TEMP的临时文件夹，只需将此文件夹USER用户权限设置为完全控制就能解决。假如还是有这个错误，原来的那个文件夹带它里边的东西都删除</li>
+<li>另外还有一种方法：在c盘windows目录下 php.ini<br/>
+比如你可以找到这一行session.save_path = &#8220;某个路径&#8221;<br/>
+改为<code>session.save_path = "D:\\webserverphpsession"</code><br/>
+然后要建立这个目录<code>D:\\webserverphpsession</code></li>
+</ol>
 
-<p>开始->运行->输入CMD回车 然后输入powercfg 空格–a回车</p>
-
-<p>可以查看你是否是因为硬件或者软件问题而导致无法睡眠的，一般情况下会有S1 S2 S3 三个睡眠状态，而且会提示你此系统固件支持哪几个睡眠，下面就分硬件和软件两个方面来检查以及解决。
-如果输入命令后出现三个睡眠状态系统固件均不支持，那很可能是因为你的主板没有开启睡眠功能，这样你就要重新启动电脑，进入你的BIOS进行操作，如果有人要问怎么进入BIOS啊？好吧回答一下，开机后主板自检时，台式机尤其是组装的多是摁下DEL键，很多品牌机有自己的BIOS，会显示摁哪个键子进入SET UP，有的是F10 有的是ESC等等，这个你要自己看了，要眼急手快，因为时间非常短的，笔记本也是如此会有不同的按键来进入BIOS，进入之后找到POWER（电源）项，在里边查找S1 S2 S3项，并开启，多是开启S3就可以，然后保存，重启。 [more]</p>
-
-<p>如果输入命令后显示VGA.EXE 或者DISPLAY.EXE抑或XXXXX.EXE就说明你的硬件影响到了电源而导致无法睡眠，这种情况下多是驱动问题，VGA 、display的就是显卡驱动，所需要做的就是更新相对的驱动，这种情况还有一个表现就是睡眠选项为灰色。</p>
-
-<p>如果显示下列XXXXXX阻止进入睡眠状态，那就可能是软件问题，你安装的某个软件导致无法睡眠，这样的话你就俩者取其一吧，或者是要睡眠而卸掉软件，或者要软件而不管睡眠。</p>
-
-<p>如果输入命令后显示此系统固件支持睡眠S1 S3，不支持S2，而没有显示其他内容，睡眠电源正常。那么再看看其他方面。</p>
-
-<p>首先在你的设备管理里找到网络适配器，下拉，会出现你的网卡，台式机多只有一个，笔记本还多一个无线网卡，要做的是双击你的网卡，找到电源管理选项将允许此设备唤醒计算机，前边的对号勾掉，确定，这往往还可以解决本本点击关机后而重启的问题，再找到鼠标和其他指针设备，同样也是电源管理，勾掉允许此设备唤醒计算机。</p>
-
-<p>如果上述方法还不能解决的话，最后一个杀手锏就是打开开始->控制面板->硬件和声音->电源选项->在你当前的电源计划上选择更改计划设置，弹出的对话框后，再选择更改高级电源设置，弹出的对话框中找到睡眠，然后点击下拉，再点击允许混合睡眠，默认的设置是开启，你只需要更改成关闭，然后应用->确定，再试试你的系统能否睡眠了。</p>
 </div>
   
   
@@ -121,7 +117,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/23/mao-pao-pai-xu-biao-yan/">冒泡排序表演</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/10/php-failed-to-open-stream/">Php错误:failed to Open Stream: Permission Denied in Xxx on Xxx</a></h1>
     
     
       <p class="meta">
@@ -137,16 +133,17 @@
   
 
 
-<time datetime="2011-04-23T00:00:00+08:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2011</time>
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>这么强大的冒泡排序有木有见过。。。。</p>
-
-<p><embed type="application/x-shockwave-flash" width="480" height="400" src="http://player.youku.com/player.php/sid/XMjU4MTg3MTU2/v.swf" allowscriptaccess="sameDomain" align="middle" quality="high"></embed></p>
+  <div class="entry-content"><p> 
+学习php的时候遇到这个错误<br/>
+<strong><em>Warning: move_uploaded_file(/xxxx) [function.move-uploaded-file]: failed to open stream: Permission denied in /xxx on line x</em></strong><br/>
+搜了一下，发现这是因为目标目录的权限问题所致，你对move_uploaded_file函数的目标目录必须拥有创建和删除文件的权限,ubuntu下只要右键点击目标目录，点属性->权限,把(其他)的文件夹访问权限改为创建和删除文件就可以了。</p>
 </div>
   
   
@@ -159,7 +156,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/22/beautiful-win7-theme-glass-onion-for-w7/">漂亮的透明磨砂win7主题Glass Onion for W7</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/10/path-of-gcc-to-search-include-file/">GCC 编译时如何寻找所需要的头文件</a></h1>
     
     
       <p class="meta">
@@ -175,280 +172,65 @@
   
 
 
-<time datetime="2011-04-22T00:00:00+08:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2011</time>
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>今天发现了一款灰常漂亮的透明磨砂win7主题Glass Onion for W7,支持32和64位版本~</p>
+  <div class="entry-content"><p> </p>
 
-<p>其实第一次听说要介绍这个主题我是拒绝的，因为，你不能让我介绍，我就马上去介绍，第一我要试一下，因为我不愿意写完文章了以后再加一些特技上去，PS一下，很漂亮、很诱人，这样看众一定会骂我，根本没有这样的桌面，就证明下面那个是假的。后来我也经过证实它确实是透明磨砂的，我用了大概一个小时左右，感觉还不错，后来我在写文章的时候也要求不要加特技，因为我要让看众看到，我用完之后是这个样子，你们用完之后也会是这个样子！- -!龙哥的台词真强大~</p>
+<h2>一、头文件</h2>
 
-<p>原图：</p>
+<p>gcc在编译时寻找所需要的头文件 ：</p>
 
-<p><a href="http://www.aitilife.com/images/uploads/2011/04/theme2_thumb.png"><img class="alignnone size-thumbnail wp-image-1478" title="theme2_thumb" src="http://www.aitilife.com/images/uploads/2011/04/theme2_thumb-150x150.png" alt="" width="150" height="150"></a></p>
+<ul>
+<li>搜寻会从-I开始</li>
+<li>然后找gcc的环境变量 C_INCLUDE_PATH,CPLUS_INCLUDE_PATH,OBJC_INCLUDE_PATH</li>
+<li>再找内定目录
 
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/04/22/beautiful-win7-theme-glass-onion-for-w7/">Read on &rarr;</a>
-    </footer>
-  
+<pre><code>  /usr/include
+  /usr/local/include
+  /usr/lib/gcc-lib/i386-linux/2.95.2/include
+  /usr/lib/gcc-lib/i386-linux/2.95.2/../../../../include/g++-3
+  /usr/lib/gcc-lib/i386-linux/2.95.2/../../../../i386-linux/include
+</code></pre>
 
+ 库文件但是如果装gcc的时候，是有给定的prefix的话，那么就是
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/20/ji-yu-asp-net-de-kai-yuan-cms-nei-rong-guan-li-xi-tong/">基于asp.net的开源CMS内容管理系统</a></h1>
-    
-    
-      <p class="meta">
-        
+<pre><code>  /usr/include
+  prefix/include
+  prefix/xxx-xxx-xxx-gnulibc/include
+  prefix/lib/gcc-lib/xxxx-xxx-xxx-gnulibc/2.8.1/include
+</code></pre></li>
+</ul>
 
 
+<!--more>
+##二、库文件
+编译的时候:
 
+* gcc会去找-L
+* 再找gcc的环境变量LIBRARY_PATH
+* 再找内定目录 /lib：/usr/lib： /usr/local/lib：这是当初compile gcc时写在程序内的
 
+##三、运行时动态库的搜索路径
 
+1. 在配置文件/etc/ld.so.conf中指定动态库搜索路径
+2. 通过环境变量LD_LIBRARY_PATH指定动态库搜索路径（当通过该环境变量指定多个动态库搜索路径时，路径之间用冒号”：”分隔）
+3. 在编译目标代码时指定该程序的动态库搜索路径（还可以在编译目标代码时指定程序的动态库搜索路径。
+ .  通过gcc 的参数”-Wl,-rpath,”指定。当指定多个动态库搜索路径时，路径之间用冒号”：”分隔
+4. 默认的动态库搜索路径/lib,/usr/lib
+可以通过执行可执行文件pos得到的结果不同获知其搜索到了哪个动态库，从而获得第1个动态库搜索顺序，然后删除该动态库，
+再执行程序pos，获得第2个动态库搜索路径，再删除第2个被搜索到的动态库，如此往复，将可得到Linux搜索动态库的先后顺序。
 
+   动态库的搜索路径搜索的先后顺序是：
+   1. 编译目标代码时指定的动态库搜索路径
+   2. 环境变量LD_LIBRARY_PATH指定的动态库搜索路径
+   3. 配置文件/etc/ld.so.conf中指定的动态库搜索路径
+   4. 默认的动态库搜索路径`/lib`
 
-
-  
-
-
-<time datetime="2011-04-20T00:00:00+08:00" pubdate data-updated="true">Apr 20<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong>国内CMS：</strong></p>
-
-<p>1.web7CMS</p>
-
-<p>web7cms是由西部动力（北京）科技有限公司开发的一款开源的cms系统,现最新版本为2.7,号称可以“全拖曳建站”，另外还有自由权限布局，一键数据库迁移，多浏览器支持，多数据库支持等等特性，具体内容查看这里：<a href="http://www.westengine.com/we7-cms/c-feature/">http://www.westengine.com/we7-cms/c-feature/</a></p>
-
-<p>官网：<a href="http://www.westengine.com/">http://www.westengine.com/</a></p>
-
-<p>2.NetCMS
-NetCMS是基于ASP.NET2.0开发的网站内容管理系统，程序完全开源，没有任何文件加密, 不需要注册任何组件,完全开源方便您二次开发。
-全新“网站模板与网站程序完全分离”的概念，具有强大的标签加样式的个性化组合，自定义标签、自定义表单、JS管 理加JS模型（自定义JS，系统JS）的灵活应用，支持不同频道、栏目、内容页、专题等应用不同的模板，随时能编辑、修改 和更换网站界面，系统集成类同Macromedia Dreamweaver一样简单的可视模板编辑方式，可批量设置属性，模板标签全面支持目前最受欢迎的DIV+CSS格式，支持批量绑定模板，完全做到轻松换肤。
-下载地址：<a href="http://dl.dbank.com/c00t64xzz1">DBank下载</a> （官网已经无法打开，此为1.70版源代码）[more]</p>
-
-<p>3.ROYCMS
-ROYcms!NT内容管理系统是国内CMS市场的新秀、也是国内少有的采用微软的ASP.NET 2.0 + SQL2000/2005 技术框架开发的CMS，充分利用 ASP.NET架构的优势，突破传统ASP类CMS的局限性， 采用更稳定执行速度更高效的面向对象语言C#设计，沿续PETshop的代码框架，全新的模板引擎机制， 全新的静态生成方案，这些功能和技术上的革新塑造了一个基础结构稳定功能创新和执行高效的CMS。
-功能特色：
-模板自由组合定制
-静态生成HTML
-资源无限级分类
-插件形式易于扩展
-命名规范适合二次开发
-下载地址：<a href="http://www.roycms.cn/index.html">http://www.roycms.cn/index.html</a></p>
-
-<p>4.将博CMS&#8211;JUMBOTCMS
-是一套个人独立开发的内容管理系统，其前身为jbsitecms采用WEB2.0设计理念、无刷新更新页面，前台模板自定义
-.NET 版本：VS2005+MSSQL2000
-1、基本模块还是文章、图片和下载（增加了视频模块）。
-2、将评论、公告、统计、友情链接、顶客等作为扩展插件，可灵活启用或关闭。
-3、增加了用户留言模块(插件形式)。
-4、部分标签发生了变化。
-5、其他小功能的更新很多，这里不一一陈述。 以上是功能上的更新，在技术上比较 v2008以 WebControls为主，而v2009融入了更多的前台技术……
-下载地址：<a href="http://jumbotcms.net">http://jumbotcms.net</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/04/20/ji-yu-asp-net-de-kai-yuan-cms-nei-rong-guan-li-xi-tong/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/19/gvim-theme-generation-online/">Gvim主题在线生成</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-19T00:00:00+08:00" pubdate data-updated="true">Apr 19<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>点击顶部的</p>
-
-<p>Generate bright就自动生成亮色系列主题</p>
-
-<p>Generate Dark 自动生成暗色系列主题</p>
-
-<p>生成主题后，再右击下角的Vim Scheme,另存为主题名(自订.例如:aitilife).vim,然后把这个文件放到vim根目录的color目录下,打开gvim,输入colo aitilife，就可以应用刚才生成的主题了，当然这样只可以在当前打开的gvim中应用主题,要持久选择这个主题就必须在配置文件中应用主题。具体方法为：</p>
-
-<p><strong>linux：</strong></p>
-
-<p>修改~/.vimrc文件,没有可以自己创建一个,在里面添加</p>
-
-<p>colo aitilife</p>
-
-<p>一行就可以了.</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/04/19/gvim-theme-generation-online/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/16/di-san-fang-ge-xing-zhuo-mian-zhu-ti--an-hei-cai-hong/">第三方个性桌面主题：暗黑彩虹</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-16T00:00:00+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Windows 7官方主题虽然数量众多，但说白了绝大多数都只是一些壁纸包而已，偶尔加入一些音效，从来没有对窗口UI的真正改动，所以第三方精美主题颇受欢迎，只是这些主题一般都需要更改系统文件，使用起来有些麻烦。这大概就是鱼与熊掌不可兼得了。
-今天我们又找来了一个既黑暗又鲜艳的桌面主题“Placebo”，看看上面的截图就知道了。这个来自sorrylois的主题设计看起来像一道彩虹瀑布，非常漂亮，也非常酷。
-<img style="vertical-align: top; border: 1px solid black;" src="http://img1.cache.netease.com/catchpic/4/46/462DAED9C32552016D5E0DA9A7760D70.jpg" alt="第三方个性桌面主题：暗黑彩虹"></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/04/16/di-san-fang-ge-xing-zhuo-mian-zhu-ti--an-hei-cai-hong/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/13/yong-zu-ce-lve-you-hua-ni-de-windows-7/">用组策略优化你的Windows 7</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-13T00:00:00+08:00" pubdate data-updated="true">Apr 13<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p> <span style="font-size: 14px;"><span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">Windows</span></span> 7与XP一样也有组策略功能，利用这一功能你可以优化系统、进行个性化配置，让<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">Windows</span></span> 7跑得更快、资源占用更少，这样即使是配置低的电脑也能飞快运行Windows 7了！</span>
-要使用Windows 7组策略功能，你可以按Win+R键打开运行窗口，输入gpedit.msc回车，然后在组策略编辑器中操作即可；如果组策略被锁死了，可以这样来解锁：按Win+R键打开运行窗口输入mmc.exe，在弹出的窗口中单击“文件”，定位到&lt;系统盘／Windows／System32>目录并打开gpedit.msc，单击左侧的计算机配置→安全设置→软件限制策略→其他规则，在右边窗口中删除“gpedit.msc”限制条目，或者双击该条目，将“安全级别”从“不允许”改为“不限制”，单击“确定”完成。
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/04/13/yong-zu-ce-lve-you-hua-ni-de-windows-7/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/13/vim-zhu-ti-bao/">Vim主题包</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-13T00:00:00+08:00" pubdate data-updated="true">Apr 13<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>演示地址：<a href="http://www.vi-improved.org/color_sampler_pack/">http://www.vi-improved.org/color_sampler_pack/</a></p>
-
-<p>下载地址：<a href="http://www.gokuai.com/f/Sa04ok22364UplH2">够快下载</a></p>
-
-<p><strong>安装指南：</strong></p>
-
-<p>直接解压到vim根目录就可以了!</p>
-
-<p>linux:~/.vim</p>
-
-<p><span style="line-height: 28px;">windows:</span>vim安装目录</p>
 </div>
   
   
@@ -461,7 +243,7 @@ ROYcms!NT内容管理系统是国内CMS市场的新秀、也是国内少有的�
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/13/seven-php-deleloper-environment-create-tool/">7款本地PHP环境搭建工具</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/10/linux-xia-bian-cheng/">Linux下编程</a></h1>
     
     
       <p class="meta">
@@ -477,23 +259,72 @@ ROYcms!NT内容管理系统是国内CMS市场的新秀、也是国内少有的�
   
 
 
-<time datetime="2011-04-13T00:00:00+08:00" pubdate data-updated="true">Apr 13<span>th</span>, 2011</time>
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>平时调试php程序或者试用一下php的网站程序什么的都需要一个快速,方便的环境,每次都直接在远程虚拟主机上弄的话，就太麻烦了，也会把虚拟主机弄的一团糟，而手动本地搭建php环境需要安装mysql,php,apache2等等东西，有的童鞋可能嫌太麻烦了，所以下面介绍7款本地phhp环境搭建工具,可以快速搭建好本地php环境！
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://www.apachefriends.org/zh_cn/xampp.html">1. XAMPP</a></strong>
-XAMPP是一款比较强大的本地测试平台，它集成了必须的三个功能，还带有 FileZilla，软件带有一个控制面板，在里面可以把Apache、MySql和FileZilla三者注册为系统服务或者卸载服务，有服务启动的控 制按钮，而且在窗口下部还能看到服务的运行信息。虽说面板是英文的，但清楚易懂。注册为系统服务有个好处就是开机能够自动运行，但是会消耗一定的系统资 源，怎么取舍用户自己来定。安装成功，服务也启动成功后，就可以把浏览器打开输入http://localhost/，试试是否成功。在XAMPP的网页 选项里，有中文支持。[more]
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://www.wampserver.com/en/">2. Wamp Server</a></strong>
-它的官方网站没有中文，但是程序支持中文。启动安装程序后，它会提示你请先卸载旧版，不支持 覆盖式的升级，然后一路NEXT就能安装成功。它在任务托盘里有个图标，如果服务启动异常，它就是红色的；如果部分异常，它就变成黄色；如果是一切正常， 那么它就变成了白色。这些不同的颜色警示，你很容易判断当前你的localhost能不能打开。它还能切换在线和离线状态，选项中的文语言项中也有简体中 文可选，很不错。
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://vertrigo.sourceforge.net/">3. Vertrigo Server</div>
+  <div class="entry-content"><ul>
+<li><a href="http://www.lslnet.com/linux/books/resource/gmake.html">GNU make 指南</a></li>
+<li><a href="http://blog.csdn.net/ugg/archive/2007/05/23/1622555.aspx">makefile详解</a></li>
+<li><a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/">vi/vim使用进阶</a></li>
+<li><a href="http://blog.csdn.net/Lalphbet/archive/2005/02/25/301939.aspx">gdb使用指南~(1)</a></li>
+<li><a href="http://blog.csdn.net/Lalphbet/archive/2005/02/25/301939.aspx">gdb使用指南~(2)</a></li>
+<li><a href="http://blog.csdn.net/Lalphbet/archive/2005/02/25/301949.aspx">gdb使用指南~(3)</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/javascript-study-resources/">JavaScript 学习资源推荐</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近 reddit 有讨论：<a href="http://www.reddit.com/r/javascript/comments/fqht8/references_for_javascript_mastery/">References for JavaScript Mastery</a>.</p>
+
+<p>去年 Rey Bango 博客上也有一篇文章：<a href="http://blog.reybango.com/2010/12/15/what-to-read-to-get-up-to-speed-in-javascript/">What to Read to Get Up to Speed in JavaScript</a>.</p>
+
+<p>下面是我的整理，希望能对你有所帮助。</p>
+
+<h2>登堂入门</h2>
+
+<ul>
+<li><p><a href="http://www.amazon.com/DOM-Scripting-Design-JavaScript-Document/dp/1430233893/">DOM Scripting: Web Design with JavaScript and the Document Object Model</a> – 2005 年，这本书的第一版是我最喜爱的前端书籍之一。知识点的讲解轻松有趣，例子由浅入深，引人入胜。去年发现这本书有第二版了，增加了 HTML5 章节，原有内容也与时俱进。我相信无论新人还是老手，都会发现这是一本好书。</p></li>
+<li><p><a href="http://eloquentjavascript.net/">Eloquent JavaScript</a> – 这是一本在线书籍，里面的例子都可调试。作者缓缓道来，内容翔实丰富。从 2007 年始，这本书历经四年，直到今年一月份才正式出版。建议国内有志人士翻译成中文，在保证翻译质量的基础上，造福国内前端。</div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2011/04/13/seven-php-deleloper-environment-create-tool/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2011/04/10/javascript-study-resources/">Read on &rarr;</a>
     </footer>
   
 
@@ -505,7 +336,7 @@ XAMPP是一款比较强大的本地测试平台，它集成了必须的三个功
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/13/ru-he-kuai-su-gei-tu-pian-tian-jia-shui-yin/">如何快速给图片添加水印</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/10/iconv-command/">Iconv命令</a></h1>
     
     
       <p class="meta">
@@ -521,31 +352,248 @@ XAMPP是一款比较强大的本地测试平台，它集成了必须的三个功
   
 
 
-<time datetime="2011-04-13T00:00:00+08:00" pubdate data-updated="true">Apr 13<span>th</span>, 2011</time>
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><span style="white-space: pre;"> </span>很多站在可能都很烦恼自己的文章被随意转载，而且转载的时候还不标明出处，同时转载的图片链接是直接引用源站点的，这样更是会大量消耗源站点的流量。为了防止这种情况，很多站点采取了防图片盗链措施，例如：TX，途牛等等大型网站都有防图片盗链措施。但是其实盗链有得也有失，具体分析可以查看这篇文章： <a href="http://www.chinaz.com/Webmaster/Club/05101142P2010.html">防止图片外链 得到了什么，失去了什么</a>，所以，小狼认为，在流量足够的情况下，可以给图片打上水印，这样会带来一些潜在的流量~</p>
+  <div class="entry-content"><p>iconv命令用于转换指定文件的编码,默认输出到标准输出设备,亦可指定输出文件。<br/>
+用法： iconv [选项&#8230;] [文件&#8230;]<br/>
+有如下选项可用:<br/>
+输入/输出格式规范：<br/>
+-f, –from-code=名称 原始文本编码<br/>
+-t, –to-code=名称 输出编码</p>
 
-<p><span style="white-space: pre;"> </span>好了，废话不多少，下面就介绍如何快速给图片添加水印。</p>
+<p>信息：<br/>
+-l, –list 列举所有已知的字符集</p>
 
-<p> </p>
+<p>输出控制：<br/>
+-c 从输出中忽略无效的字符<br/>
+-o, –output=FILE 输出文件<br/>
+-s, –silent 关闭警告<br/>
+–verbose 打印进度信息<br/>
+-?, –help 给出该系统求助列表<br/>
+–usage 给出简要的用法信息<br/>
+-V, –version 打印程序版本号</p>
 
-<p><strong>1.在线打水印:</strong></p>
+<p>示例:<br/>
+<code>iconv -f utf-8 -t gb2312 aaa.txt &gt;bbb.txt</code><br/>
+这个命令读取aaa.txt文件，从utf-8编码转换为gb2312编码,其输出定向到bbb.txt文件</p>
+</div>
+  
+  
 
-<p><a href="http://picmarkr.com/">PicMarkr</a></p>
 
-<p><span style="line-height: 19px;"><a href="http://www.watermarktool.com/">WaterMarkTool</a></span></p>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/hard-disk-install-win7/">Windows 7硬盘安装方法</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<p><span style="line-height: 19px;"></div>
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>一、如果有vista安装盘的话，方法也很简单：</h2>
+
+<ol>
+<li>下载windows7 7057 ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)</li>
+<li>BIOS中选择光驱启动，进入vista安装界面</li>
+<li>选择左下角修复计算机(自动搜索系统，提示加载驱动或关闭，选择关闭进入修复选项)</li>
+<li>选择最后一项命令修复，在命令框输入<code>D:/7057/sources/setup.exe</code>,开始安装</li>
+<li>选择安装语言、格式化C盘 (即使C盘原本没有系统此法也可行)</li>
+</ol>
+
+
+</div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2011/04/13/ru-he-kuai-su-gei-tu-pian-tian-jia-shui-yin/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2011/04/10/hard-disk-install-win7/">Read on &rarr;</a>
     </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/gvim-open-file-as-tab-page/">Gvim 用标签页打开文件(linux+windows)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>linux下:</h3>
+
+<p>对你想打开的类型右健，属性->打开方式->添加->使用自定义命令，然后输入以下命令:<code>gvim  -p –remote-tab-silent</code> 就OK 了。</p>
+
+<h3>windows下:</h3>
+
+<p>我们在windows中使用vim时，经常会通过右键菜单选择“Edit with Vim”来打开文件。但这种方式打开的文件，会在当前窗口中打开，而不是像Ultra Edit那样在一个新的标签页中打开<br/>
+VIM 7.0开始已经支持标签页了，怎样在打开文件时新建一个标签呢？在http://www.vim.org/有好几个Tip是与此有关的，下面介绍的两种方法，是我所尝试过的最简单有效的办法。它们分别是vim tips #1314和#1440，链接见文末的参考文档。</p>
+
+<p>还有一种方法，在cmd中逐句输入</p>
+
+<pre><code>ftype code=”C:Program FilesVimvim72gvim.exe” –remote-tab-silent “%1″
+assoc .c=code
+assoc .h=code
+</code></pre>
+
+<p>code只是一个代名词，指代他后面所指的程序。这里就是gvim（路径修改成自己的安装路径）,下面两句assoc….表示给.c和.h后缀的文件指代打开的软件，这里是code，就是gvim<br/>
+如果是c++.可以再加一句</p>
+
+<pre><code>ftype code=”C:Program FilesVimvim72gvim.exe” –remote-tab-silent “%1″
+assoc .c=code
+assoc .h=code
+</code></pre>
+
+<p>然后试着双击一下上面提到的三种后缀的文件，看有没有成功，没有的话在上面提及的三种后缀的文件上右键->属性，更改打开方式为gvim.</span>
+然后再双击一下。看是不是已经成功啦~</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/gvim-open-file-as-tab-page/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/gvim-has-no-gui-after-complier/">编译时打开了&#8211;enable-gui=gnome2选项，却没有gvim</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 
+参考了易水博客的说明<br/>
+他介绍的原因是<code>conftest.c:16:27: erro: X11/Intrinsic.h: No such file or directory</code>,即没有这个文件，解决办法是安装libxt-dev包，直接apt-get就可以。<br/>
+我看了一下我的原因，发现错误不一样，是没有X11/SM/sm_XXX.h,这个文件，同理，apt-get install sm.<br/>
+接下来发现还是不行，继续查看log，发现libgnome没有找到，接着apt-get install libgnomeui-dev.<br/>
+还有一个一下三个包（python2.6-dev是为了打开python这个特性，如果不需要，可以不用）.<br/>
+<code>sudo apt-get install libncurses5-dev python2.6-dev xorg-dev</code>
+ 
+<strong>注意：</strong>
+我编译的时候加了–enable-gui=gnome2选项，但是结果出来的还是gtk2.0版本，因为默认的是不检测gnome的，可以用–enable-gnome-check打开检测。。</p>
+
+<p>附上我的编译选项：</p>
+
+<pre><code>    ./configure –with-features=huge –enable-gui=gnome2 –enable-multibyte –enable-gnome-check –enable-xim –enable-cscope –enable-pythoninterp –enable-python3interp –with-python-config-dir=/usr/lib/python2.6/config –enable-fontset –enable-perlinterp
+</code></pre>
+
+<p>对应的开发语言接口必须要先安装他们。在python的时候遇到了些问题，就是我安装了2.7的，但是检测到的还是2.6，而想卸掉2.6，那么就会把一大堆依赖项卸掉，最后导致系统崩溃。所以只能用2.6,虽然没什么影响，但是我想知道怎么升级到2.7,而把2.6卸掉，知道的可以告诉我一下~</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/gvim-gtk-warning-invalid-input-string-warning/">Gvim 菜单无法显示( Gtk-WARNING **: Invalid Input String)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>原因：<br/>
+linux默认安装将会把中文区域设置为zh_CN.utf8，而GVim能识别的中文区域设置为zh_CN.UTF-8。因此GVim会在启动时报错，且无法正常加载中文菜单。</p>
+
+<p>解决方案：<br/>
+代码:<br/>
+<code>cd /usr/share/vim/vim72/lang&lt;br&gt;sudo ln -s menu_zh_cn.utf-8.vim menu_zh_cn.utf8.vim</code></p>
+
+<p>此方法使得GVim可以识别zh_CN.utf8，并采用于zh_CN.UTF-8完全相同的菜单设置。并且不影响系统的中文区域设置。</p>
+</div>
+  
   
 
 
@@ -564,8 +612,18 @@ XAMPP是一款比较强大的本地测试平台，它集成了必须的三个功
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -576,15 +634,11 @@ XAMPP是一款比较强大的本地测试平台，它集成了必须的三个功
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

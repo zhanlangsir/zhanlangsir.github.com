@@ -9,8 +9,7 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="深入解析c++中的数组和指针,是很好的学习资料,童鞋们不要错过额~
-一直以来想把2005年写的《再再论指针》修改一下，因为经过了这么多年，对Ｃ／Ｃ＋＋的理解与０５年相比又有了一些进展。但公司的工作一直很忙，没有时间进行修改工作。直到１０月初的长假，才开始。从放假到现在过去两个月了， &hellip;">
+  <meta name="description" content="深入解析c++中的数组和指针,是很好的学习资料,童鞋们不要错过额~ 一直以来想把2005年写的《再再论指针》修改一下，因为经过了这么多年，对Ｃ／Ｃ＋＋的理解与０５年相比又有了一些进展。但公司的工作一直很忙，没有时间进行修改工作。直到１０月初的长假，才开始。从放假到现在过去两个月了， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,21 +90,25 @@
   </header>
 
 
-<div class="entry-content"><p><span style="font-size: 14px; text-align: justify;">深入解析c++中的数组和指针,是很好的学习资料,童鞋们不要错过额~</span>
-一直以来想把2005年写的《再再论指针》修改一下，因为经过了这么多年，对Ｃ／Ｃ＋＋的理解与０５年相比又有了一些进展。但公司的工作一直很忙，没有时间进行修改工作。直到１０月初的长假，才开始。从放假到现在过去两个月了，一直利用空闲时间断断续续地修改，共写了两万字，十章节。偶不是作家，两万字对偶来说已经是极限中的极限了，没有功劳也有苦劳，没有苦劳也有疲劳吧，不过总算把这几年来对数组与指针的心得写成了一系列文章，当然限于偶的水平，存在错误无法避免，希望跟各位朋友一起，共同讨论，共同进步！
-前言：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/2011/04/10/art-of-array-and-point-introduction/" target="_blank">前言</a>
-第一章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/2011/04/10/art-of-array-and-point-part-one" target="_blank">数组与指针概念剖析</a>
-第二章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/2011/04/10/art-of-array-and-point-part-two" target="_blank">数组与指针的艺术</a>
-第三章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/2011/04/10/art-of-array-and-point-part-three" target="_blank">数组的解剖学</a>
-第四章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/2011/04/10/art-of-array-and-point-part-four" target="_blank">[]运算符的本质</a>
-第五章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/2011/04/10/art-of-array-and-point-part-five" target="_blank">字符串字面量—一个特殊的数组</a>
-第六章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/2011/04/10/art-of-array-and-point-part-six" target="_blank">指针与const</a>
-第七章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/2011/04/10/art-of-array-and-point-part-seven" target="_blank">右左法则—-复杂指针解析</a>
-第八章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/2011/04/10/art-of-array-and-point-part-eight/" target="_blank">柔性数组成员</a>
-第九章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/2011/04/10/art-of-array-and-point-part-nine" target="_blank">C99可变长数组VLA详解</a>
-第十章：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.aitilife.com/2011/04/10/art-of-array-and-point-part-ten" target="_blank">动态数组</a>
-<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">完！</span>
-转自：<a href="http://blog.csdn.net/supermegaboy">http://blog.csdn.net/supermegaboy</a></p>
+<div class="entry-content"><p>深入解析c++中的数组和指针,是很好的学习资料,童鞋们不要错过额~</p>
+
+<p>一直以来想把2005年写的《再再论指针》修改一下，因为经过了这么多年，对Ｃ／Ｃ＋＋的理解与０５年相比又有了一些进展。但公司的工作一直很忙，没有时间进行修改工作。直到１０月初的长假，才开始。从放假到现在过去两个月了，一直利用空闲时间断断续续地修改，共写了两万字，十章节。偶不是作家，两万字对偶来说已经是极限中的极限了，没有功劳也有苦劳，没有苦劳也有疲劳吧，不过总算把这几年来对数组与指针的心得写成了一系列文章，当然限于偶的水平，存在错误无法避免，希望跟各位朋友一起，共同讨论，共同进步！</p>
+
+<p>前言：<a href="/blog/2011/04/10/art-of-array-and-point-introduction">前言</a><br/>
+第一章：<a href="/blog/2011/04/10/art-of-array-and-point-part-one">数组与指针概念剖析</a><br/>
+第二章：<a href="/blog/2011/04/10/art-of-array-and-point-part-two">数组与指针的艺术</a><br/>
+第三章：<a href="/blog/2011/04/10/art-of-array-and-point-part-three">数组的解剖学</a><br/>
+第四章：<a href="/blog/2011/04/10/art-of-array-and-point-part-four">[]运算符的本质</a><br/>
+第五章：<a href="/blog/2011/04/10/art-of-array-and-point-part-five">字符串字面量—一个特殊的数组</a><br/>
+第六章：<a href="/blog/2011/04/10/art-of-array-and-point-part-six">指针与const</a><br/>
+第七章：<a href="/blog/2011/04/10/art-of-array-and-point-part-seven">右左法则—-复杂指针解析</a><br/>
+第八章：<a href="/blog/2011/04/10/art-of-array-and-point-part-eight">柔性数组成员</a><br/>
+第九章：<a href="/blog/2011/04/10/art-of-array-and-point-part-nine">C99可变长数组VLA详解</a><br/>
+第十章：<a href="/blog/2011/04/10/art-of-array-and-point-part-ten">动态数组</a></p>
+
+<p>完！</p>
+
+<p>转自：<a href="http://blog.csdn.net/supermegaboy">supermegaboy</a></p>
 </div>
 
 
@@ -149,7 +152,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/04/10/add-icon-for-custom-app-on-ubuntu/" title="Previous Post: ubuntu 给自定义应用程序添加小图标">&laquo; ubuntu 给自定义应用程序添加小图标</a>
+        <a class="basic-alignment left" href="/blog/2011/04/10/8-jquery-study-resources/" title="Previous Post: 推荐8个jQuery学习网站">&laquo; 推荐8个jQuery学习网站</a>
       
       
         <a class="basic-alignment right" href="/blog/2011/04/10/art-of-array-and-point-introduction/" title="Next Post: 数组与指针的艺术-前言">数组与指针的艺术-前言 &raquo;</a>
@@ -158,13 +161,42 @@
   </footer>
 </article>
 
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -175,15 +207,11 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

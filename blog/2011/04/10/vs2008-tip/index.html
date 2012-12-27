@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Visual Studio 2008小技巧-快速提高工作效率 - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="身为一名程序员一定知道vim和emacs这两个神级编辑器,他们并没有vs,vc的继承ide功能,却还是很多高级程序员的首选工具,因为它们的按键方案的高速,快捷.其实vs也有不少类似的功能,只是很多程序员没有细心的去发掘这些功能而已,如果熟练地掌握vs的各种小技巧,效率还是很可观的额~ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/10/vs2008-tip/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Visual Studio 2008小技巧-快速提高工作效率</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>身为一名程序员一定知道vim和emacs这两个神级编辑器,他们并没有vs,vc的继承ide功能,却还是很多高级程序员的首选工具,因为它们的按键方案的高速,快捷.其实vs也有不少类似的功能,只是很多程序员没有细心的去发掘这些功能而已,如果熟练地掌握vs的各种小技巧,效率还是很可观的额~</p>
+
+<ol>
+<li><p>回到上一个光标位置<br/>
+使用组合键<code>Ctrl + -</code>键表示Navigate BackWard, 使用组合键1Ctrl + Shift + -`键表示 Forward.</p></li>
+<li><p>删除多余的using指令，并且排序<br/>
+当我们新一个类的时候，Visual Studio 会将常用的命名空间using在类的头部。但是在我们写完一个类的时候，有些using是多余的，删除多余的using，再排一下序，可以使代码看起来更清晰。Visual Studio 2008 已经为我们做好了这一切。在代码编辑区点击右键，可以看到”组织 using”菜单，这就是我们需要的了。
+ <!--more--></p></li>
+<li><p>复制或删除一行代码时，不用先选择它<br/>
+如果你想复制一行代码，你只需要简单的按CTRL+c拷贝，然后按CTRL+v粘贴这行就可以了，而不需要选择整行的代码。如果你想删除一行代码，只需按CTRL+x就可以了。
+ </p></li>
+<li><p>取代其他编辑器里Ctrl+F的方便的增量查找<br/>
+用过ultraedit会对那两个上下搜索按钮印象深刻，Visual studio里有更厉害的。
+操作方法：
+1）.按Ctrl+I键<br/>
+2）.键入你要搜索的文本。注意：这时你会看到光标跳至第一个匹配的地方，匹配的文本高亮显示<br/>
+3）.再次按下Ctrl+I键，光标将跳至下一个匹配的文本<br/>
+4）.按Ctrl+Shift+I可向后搜索<br/>
+5）.要停止搜索，按ESC键</p></li>
+<li><p>如何在编辑器中进行框式选择<br/>
+<strong>操作方法：</strong><br/>
+你是否知道VS提供了两种不同的选择模型：流式和框式吗？<br/>
+大家应该都熟悉流式选择模型了，只要使用Shift+方向键即可（或者使用鼠标进行选择）.<br/>
+框式选择则允许你同时对航和列进行选择。只要同时按下Shift+Alt+方向键，你就了解它的不同之处了。剪切，拷贝，粘贴，这些功能都能使用，只是需要记住从哪里开始选择的。啊，让我想起了那段做测试时的时光。<br/>
+<strong><em>备注：</em></strong><br/>
+也可以使用鼠标+Alt键完成该操作。前两天我还遇到该提示的一个有意思的用法。有时候我们拷贝网上的文章中的代码时会将行号一起拷进来，使用框式选择可以只选择行号部分，将其删除。</p></li>
+<li><p>如何使用快捷键在当前代码行的上面或下面插入一行(推荐，很实用) <br/>
+按下Ctrl+Enter会在上面插入一个空行，Ctrl+Shift+Enter则会在下面插入一个空行。光标会移至新行的开始处。<br/>
+<strong><em>备注：</em></strong><br/>
+这是我非常喜欢的一个快捷键，如果不用这个，则需要使用Home或End，然后使用方向键，再使用回车才能达到上面的效果。</p></li>
+<li><p>安装之后，将您的IDE设置恢复到默认设置<br/>
+如果IDE的设置在任何先前发布的版本中做了更改，它们都应该被恢复到默认设置。可以在Visual Studio 2008中点击菜单<code>Tools &gt; Import and Export Settings… &gt; Reset all settings</code>,此外还有一些Import和Export的选项可用。</p></li>
+<li><p>通过按”tab”两次插入代码块<br/>
+<strong>操作步骤：</strong><br/>
+在编辑的中输入代码片段，比如&#8221;for&#8221;<br/>
+在这个状态下，按两次&#8221;tab&#8221;键，将会插入代码块，如下图所示<br/>
+此时你可以把第一”i”改成&#8221;j&#8221;,然后按Tab键，则所有的变量都变成了&#8221;j&#8221;<br/>
+<strong><em>备注：</em></strong>这样既快又不容易语法出错。</p></li>
+<li><p>使用Ctrl+Tab打开IDE的导航，获得鸟瞰视图<br/>
+同时在Visual Studio中导航到所有打开的文件和工具窗体<br/>
+按”Ctrl+Tab”键，打开IDE导航窗口，按住Ctrl键，同时用方向键或鼠标选中一个文件或工具窗体来激活<br/>
+备注：这时最好不要松开”Ctrl+Tab”，按方向键看鸟瞰图，全部松开后就定位到需要的文件或工具窗体，说实在的，这窗口挺酷的</p></li>
+<li><p>查找匹配的标记<br/>
+某些标识总是成对出现。例如，&#8221;{&#8220;标识必须用对应的&#8221;}&#8221;标识关闭。虽然你点击一个{ 和它匹配的}就会高亮显示，但是如果代码过长的话就不好找了，同样，编译器指示符”#region”必须有对应的”#endregion”指示符。当导航你的代码时，你有时需要查找对应的标识。通过按Ctrl-]你可以这样做。这个快捷键只有当光标在这些标识符的任何一个的下面时才起作用，它会立即跳转到对应的标识符而不管它是开的或闭的标识<br/>
+如果你想显亮两个匹配的标识之间的所有代码时，按Ctrl-Shift-]显亮整个块，并移动光标到开的标识处。这个快捷键只有当光标在任意的标识的下面时才起作用(如光标在区域内它就不会起作用了).</p></li>
+<li><p>怎样创建区域以方便代码的阅读？</p>
+
+<pre><code>#region
+代码区域
+#endregion
+</code></pre></li>
+<li><p>怎样同时修改多个控件的属性？<br/>
+选中多个控件，然后右键属性，这个时候这些控件共有的属性就会出现，修改之后所有的控件都会变化。</p></li>
+<li><p>怎样快速添加命名空间？<br/>
+对于引用了dll,但代码中没有引用其命名空间的类，输入类名后在类名上按Ctrl+.即可自动添加该类的引用命名空间语句。</p></li>
+<li><p>怎样实现快速拷贝或剪切一行？<br/>
+光标只要在某行上，不用选中该行，直接按Ctrl+c 或Ctrl+x 就可以拷贝或剪切该行。</p></li>
+<li><p>怎样使用任务管理器？<br/>
+假如我们开发的项目很大，在项目中有些代码没有完成，我们可以做一下标记，便于将来查找。
+创建方法：在要标志的地方输入：//TODO:…内容…
+使用方法：视图—>任务列表—>注释</p></li>
+<li><p>命令行快速启动<br/>
+&#8220;Inetmgr&#8221;        IIS管理器，不用到管理里去找了，很快就可以显示IIS管理了<br/>
+&#8220;sqlwb&#8221;          快速启动SQL2005企业管理器<br/>
+&#8220;isqlw&#8221;           这是SQL2000的我也提供一下吧，这个可以起到SQL2000的查询分析器<br/>
+&#8220;devenv&#8221;        启动相应版本的VS Studio</p></li>
+<li><p>Ctrl提示透明窗口<br/>
+这是一个比较有意思的键。VS2005下，当你在调试代码的时候，有时候提示信息会遮挡代码，这个时候你按CTRL可以将提示透明。VS2008这个透明效果，在更多的地方可见了，你不妨自己亲自动手看看。</p></li>
+<li><p>F12、Ctrl+减号、CTRL + SHIFT + 减号 <br/>
+这三个键在查看代码的时候，特别有用。通过F12你可以快速的找到一个函数的定义，通过Ctrl+减号你可以快速的返回到函数的调用处。</p></li>
+</ol>
+
+
+<p>转自: <a href="http://www.cnblogs.com/flysnow-z/archive/2009/06/19/1506472.html" title="flysnow's blog">flysnow</a></p>
+
+<p> </p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/windows/'>Windows</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/10/vivim-shi-yong-jin-jie-mu-lu/" title="Previous Post: vi/vim使用进阶: 目录">&laquo; vi/vim使用进阶: 目录</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/10/win7-activation-tools/" title="Next Post: win7激活工具">win7激活工具 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-1223/">Qtqq 12/23</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -92,122 +92,83 @@
 
 <div class="entry-content"><p>今天写一些博客的代码时候想调用像Wordpress一样的头像,而wordpress的头像是基于gravatar的，所以就到官网看了一下API和说明，成功调用了gravatar，现在就把过程记录下来，方便用户或者站长或者XXX等有需要的童鞋使用吧~</p>
 
-<p>1.什么是Gravatar?</p>
+<h2>1.什么是Gravatar?</h2>
 
 <p>Gravatar 的概念首先是在国外的独立WordPress 博客中雄起的，当你到任何一个支持 Gravatar 的网站留言时，提供你的 Email 地址即可为你显示出匹配的头像。当然，这个头像，是需要你事先到 Gravatar 的网站注册并上传的，否则，在这个网站上，就只会显示成一个默认的头像。另外注册与使用 Gravatar 均是完全免费的，而站长可以通过调用Gravatar的API实现根据浏览者的邮箱调用gravatar上的头像，而无需本地存储对应头像。</p>
 
-<p>2.网站的浏览者如何设置一个通用的头像?(当然，需要浏览的网站支持gravatar)</p>
+<h2>2.网站的浏览者如何设置一个通用的头像?(当然，需要浏览的网站支持gravatar)</h2>
 
-<p>这个问题已经有很多网站介绍过，这里就不赘述，想了解<a href="http://www.fanshuwo.com.cn/post/Gravatar.html" target="_blank">点击这里</a></p>
-
-<p>3.如何在自己的网站上调用Gravatar的头像?</p>
+<p>这个问题已经有很多网站介绍过，这里就不赘述，想了解<a href="http://www.fanshuwo.com.cn/post/Gravatar.html" title="set avatar">设置gravatar头像</a></p>
 
 <!--more-->
 
 
-<p>3.1 Gravatar调用链接介绍</p>
+<h2>3.如何在自己的网站上调用Gravatar的头像?</h2>
 
-<p>首先如果浏览者在Gravatar官网上注册过并且上传了头像，那么他的头像的逻辑链接就会是这样的：</p>
+<h3>3.1 Gravatar调用链接介绍</h3>
 
-<p>http://www.gravatar.com/avatar/HASH</p>
+<p>首先如果浏览者在Gravatar官网上注册过并且上传了头像，那么他的头像的逻辑链接就会是这样的：<br/>
+<code>http://www.gravatar.com/avatar/HASH</code><br/>
+其中HASH是根据注册所用邮箱进行散列计算后得出来的，而前面的部分就不用更改。<br/>
+也就是说你通过
+<code>&lt;img src="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /&gt;</code><br/>
+这样一句html就可以调用gravatar上的头像，当然后面的205e460b479e2e5b48aec07710c08d50就是根据邮箱散列出来的结果。</p>
 
-<p>其中HASH是根据注册所用邮箱进行散列计算后得出来的，而前面的部分就不用更改。</p>
+<p>NOTE:<br/>
+如果有需要,在散列值后加上.jpg会得到相同的调用结果。如：
+<code>&lt;img src=”http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50.jpg “/&gt;</code></p>
 
-<p>就是说你通过</p>
+<h3>3.2 定制大小</h3>
 
-<p><img src="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" /></p>
+<p>如果没有在请求url上使用大小设定参数的话,调用的结果为默认的80X80像素的图片,大小如下：<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/gravatar1.jpg" title="gravatar 1" alt="gravatar1" /><br/>
+如果想自定义图像大小，可以在url上添加查询字符串s=大小,或者size=大小,其中大小是以像素为单位的。例如：
+<code>&lt;img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200 /&gt;</code>或者<br/>
+<code>&lt;img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?size=200 /&gt;</code><br/>
+就会调用大小为200X200像素的图像,大小的可设范围为:1-512像素,但是注意尽量不要设置的太大，因为用户上传的图像可能不会太大，会引起分辨率过低而造成模糊的效果。</p>
 
-<p>这样一句html就可以调用gravatar上的头像，当然后面的205e460b479e2e5b48aec07710c08d50就是根据邮箱散列出来的结果。</p>
+<h3>3.3默认头像</h3>
 
-<p>NOTE:</p>
+<p>如果用户没有在gravatar上注册过，或者没有在gravatar上传过头像，那么散列出来的结果也是没有对应图像的，那么就会返回默认的头像：<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/gravatar_default.jpg" title="gravatar default" alt="gravatar_default" /><br/>
+看起来不是很美观，不过不用担心，你完全可以自己设定另外的默认头像，这可以通过添加查询字符串d=默认图片url,default=默认图片url,例如:<br/>
+<code>&lt;img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&amp;d=http%3A%2F%2Fexample.com%2Fimages%2Favatar.jpg /&gt;</code>或者<br/>
+<code>&lt;img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&amp;default=http%3A%2F%2Fexample.com%2Fimages%2Favatar.jpg /&gt;</code></p>
 
-<p>如果有需要,在散列值后加上.jpg会得到相同的调用结果。如：</p>
+<p>其中的默认图片url必须是经过url编码后的url。如果你不想使用自己的默认头像，gravatar内建了一些默认头像，如下：<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/gravatar2.png" title="gravatar 2" alt="gravatar2" /><br/>
+你可以通过d或者default查询字符串调用它们,对应的值分别为404,mm,identicon,monsterid,wavatar,retro。举其中一个例子：<br/>
+<code>&lt;img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&amp;default=mm/&gt;</code><br/>
+那么当205e460b479e2e5b48aec07710c08d50对应的用户不存在或者没有上传过头像的时候，就会得到上图中第一幅头像,其他的可以自行试一下,只需在浏览器地址栏输入<a href="http://www.gravatar.com/avatar/sdsfsdf?d=mm">http://www.gravatar.com/avatar/sdsfsdf?d=mm</a>就可以看到对应的默认头像了。</p>
 
-<p><img src=”http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50.jpg “/></p>
-
-<p> </p>
-
-<p>3.2 定制大小</p>
-
-<p>如果没有在请求url上使用大小设定参数的话,调用的结果为默认的80X80像素的图片,大小如下：</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/05/gravatar1_thumb.jpg"><img class="alignnone size-full wp-image-1458" title="gravatar1_thumb" src="http://www.aitilife.com/images/uploads/2011/05/gravatar1_thumb.jpg" alt="" width="84" height="84"></a></p>
-
-<p>如果想自定义图像大小，可以在url上添加查询字符串s=大小,或者size=大小,其中大小是以像素为单位的。例如：</p>
-
-<p><img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200 />或者</p>
-
-<p><img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?size=200 /></p>
-
-<p>就会调用大小为200X200像素的图像,大小的可设范围为:1-512像素,但是注意尽量不要设置的太大，因为用户上传的图像可能不会太大，会引起分辨率过低而造成模糊的效果。</p>
-
-<p>3.3默认头像</p>
-
-<p>如果用户没有在gravatar上注册过，或者没有在gravatar上传过头像，那么散列出来的结果也是没有对应图像的，那么就会返回默认的头像：</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/05/gravatar_default_thumb.jpg"><img class="alignnone size-full wp-image-1459" title="gravatar_default_thumb" src="http://www.aitilife.com/images/uploads/2011/05/gravatar_default_thumb.jpg" alt="" width="84" height="84"></a></p>
-
-<p>看起来不是很美观，不过不用担心，你完全可以自己设定另外的默认头像，这可以通过添加查询字符串d=默认图片url,default=默认图片url,例如:</p>
-
-<p><img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&d=http%3A%2F%2Fexample.com%2Fimages%2Favatar.jpg />或者</p>
-
-<p><img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&default=http%3A%2F%2Fexample.com%2Fimages%2Favatar.jpg /></p>
-
-<p>其中的默认图片url必须是经过url编码后的url。如果你不想使用自己的默认头像，gravatar内建了一些默认头像，如下：</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/05/gravatar2_thumb.png"><img class="alignnone size-full wp-image-1460" title="gravatar2_thumb" src="http://www.aitilife.com/images/uploads/2011/05/gravatar2_thumb.png" alt="" width="244" height="49"></a></p>
-
-<p>你可以通过d或者default查询字符串调用它们,对应的值分别为404,mm,identicon,monsterid,wavatar,retro。举其中一个例子：</p>
-
-<p><img src=http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&default=mm/></p>
-
-<p>那么当205e460b479e2e5b48aec07710c08d50对应的用户不存在或者没有上传过头像的时候，就会得到上图中第一幅头像,其他的可以自行试一下,只需在浏览器地址栏输入<a href="http://www.gravatar.com/avatar/sdsfsdf?d=mm">http://www.gravatar.com/avatar/sdsfsdf?d=mm</a>就可以看到对应的默认头像了。</p>
-
-<p>3.4强制使用默认头像</p>
+<h2>3.4强制使用默认头像</h2>
 
 <p>如果你需要强制所以浏览者都使用你设定的默认头像，那么只需要添加查询字符串f=y或者forcedefault=y，那么无论浏览者有没有在garvatar上传过头像，结果都是你设定的头像,一般都不需要设定此选项</p>
 
-<p>3.5 图片等级</p>
+<h2>3.5 图片等级</h2>
 
-<p>gravatar允许用户对自己上传的头像评定等级,其中有g,pg,r,x从低到高的四个等级，他们的意思是：</p>
+<p>gravatar允许用户对自己上传的头像评定等级,其中有g,pg,r,x从低到高的四个等级，他们的意思是：<br/>
+g: 适合所有观众浏览<br/>
+pg:包含粗鲁、挑逗的动作，或者轻微的暴力成分<br/>
+r: 包含激烈的暴力，裸体成分<br/>
+x: 出现性行为和强烈暴力成分</p>
 
-<ul>
-<li>
-<strong>g</strong>: 适合所有观众浏览</li>
-    <li>
-<strong>pg</strong>:包含粗鲁、挑逗的动作，或者轻微的暴力成分</li>
-    <li>
-<strong>r</strong>: 包含激烈的暴力，裸体成分</li>
-    <li>
-<strong>x</strong>: 出现性行为和强烈暴力成分</li>
-</ul>
+<p>你可以通过添加r=等级或者rating=等级设定自己网站上运行显示的等级的图像,比如,如果有某个用户在gravatar上传了包含色情成分的头像，并且他很自觉的把头像设定为x级，而他跑到你的网站上去留言了，那么他的头像就会出现在你的网站上(当然，前提是你的网站支持gravatar)，这时候你就要小心被和谐掉了，所以为了让他的头像不会显示，你就可以在url中添加查询字符串r=g来排除掉pg,r,x等级的头像的显示,即你的网站上只会显示g等级的头像，其他的都会显示为gravatar默认头像或者你设置的默认头像。</p>
 
+<p><strong>Note:</strong><br/>
+如果设置r=r,那么g,pg,r等级的都可以显示，低于设定等级的头像都可以显示。另外，这还需要一个很重要的条件，就是用户把自己的头像设定为正确的等级，如果他上传的头像含有暴力、色情成分，但是他把头像设定为g等级，那么还是会显示的。</p>
 
-<p>你可以通过添加r=等级或者rating=等级设定自己网站上运行显示的等级的图像，比如，如果有某个用户在gravatar上传了包含色情成分的头像，并且他很自觉的把头像设定为x级，而他跑到你的网站上去留言了，那么他的头像就会出现在你的网站上(当然，前提是你的网站支持gravatar)，这时候你就要小心被和谐掉了，所以为了让他的头像不会显示，你就可以在url中添加查询字符串r=g来排除掉pg,r,x等级的头像的显示,即你的网站上只会显示g等级的头像，其他的都会显示为gravatar默认头像或者你设置的默认头像。</p>
+<h2>3.6 联合参数</h2>
 
-<p>Note:</p>
+<p>你可以把所以查询字符串通过&amp;符号连接在一起，例如：
+<code>http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&amp;r=pg&amp;d=404</code></p>
 
-<p>如果设置r=r,那么g,pg,r等级的都可以显示，低于设定等级的头像都可以显示。另外，这还需要一个很重要的条件，就是用户把自己的头像设定为正确的等级，如果他上传的头像含有暴力、色情成分，但是他把头像设定为g等级，那么还是会显示的。</p>
+<h2>3.7 安全方面</h2>
 
-<p>3.6 联合参数</p>
+<p>如果你的网站使用了ssl，例如以https开头的网站，那么对gravatar头像的请求链接也需要改变一下,以
+<code>https://secure.gravatar.com/...</code>开头，其他方面和上面说的一样</p>
 
-<p>你可以把所以查询字符串通过&amp;符号连接在一起，例如：</p>
-
-<p><a href="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&r=pg&d=404">http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&amp;r=pg&amp;d=404</a></p>
-
-<p> </p>
-
-<p>3.7 安全方面</p>
-
-<p>如果你的网站使用了ssl，例如以https开头的网站，那么对gravatar头像的请求链接也需要改变一下,以</p>
-
-<p><a href="https://secure.gravatar.com/">https://secure.gravatar.com/</a>&#8230;开头，其他方面和上面说的一样</p>
-
-<p> </p>
-
-<p>暂时就说这么多了~</p>
-
-<p>更详细的介绍请看官网介绍：<a href="http://en.gravatar.com/site/implement/">http://en.gravatar.com/site/implement/</a></p>
+<p>更详细的介绍请看官网介绍：<a href="http://en.gravatar.com/site/implement/" title="gravatar">gravatar官网</a></p>
 </div>
 
 
@@ -251,7 +212,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/05/13/requestvalidationmode--dao-zhi--validaterequestfalse--shi-xiao-huo-zhe-asp-net-4-0-shi-jian-xiao-xi---fa-sheng-le-yan-zheng/" title="Previous Post: requestValidationMode 导致 ValidateRequest=False 失效或者ASP.NET 4.0事件消息: 发生了验证错误；检测到有潜在危险的Request.Form值">&laquo; requestValidationMode 导致 ValidateRequest=False 失效或者ASP.NET 4.0事件消息: 发生了验证错误；检测到有潜在危险的Request.Form值</a>
+        <a class="basic-alignment left" href="/blog/2011/05/12/mvc3ajax-invalid/" title="Previous Post: MVC3ajax无效的问题">&laquo; MVC3ajax无效的问题</a>
       
       
         <a class="basic-alignment right" href="/blog/2011/05/14/mvc-dao-hang-shu-xing-wu-fa-xian-shi/" title="Next Post: MVC导航属性无法显示">MVC导航属性无法显示 &raquo;</a>
@@ -260,13 +221,42 @@
   </footer>
 </article>
 
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -277,15 +267,11 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

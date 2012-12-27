@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Qt | 挨踢人生]]></title>
   <link href="http://zhanlangsir.github.com/blog/categories/qt/atom.xml" rel="self"/>
   <link href="http://zhanlangsir.github.com/"/>
-  <updated>2012-12-25T13:51:06+08:00</updated>
+  <updated>2012-12-28T00:52:17+08:00</updated>
   <id>http://zhanlangsir.github.com/</id>
   <author>
     <name><![CDATA[zhanlang]]></name>
@@ -18,189 +18,187 @@
     <link href="http://zhanlangsir.github.com/blog/2012/12/23/qtqq-v070-beta/"/>
     <updated>2012-12-23T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2012/12/23/qtqq-v070-beta</id>
-    <content type="html"><![CDATA[<p><strong>8/13 更新:</strong></p>
+    <content type="html"><![CDATA[<h2>8/13 更新:</h2>
 
 <p>版本:v0.7.0-beta</p>
 
-<p><strong>新特性:</strong></p>
+<h2>新特性:</h2>
 
 <ul>
 <li>托盘图标根据最后一个发送消息人的头像显示</li>
-    <li>主界面可以查找好友，支持拼音首字母和汉字方式，比如张三,可以输入ZS或者张三查找</li>
-    <li>添加notify支持</li>
-    <li>托盘图标显示登陆人q号和登陆状态tip(可以无视....)</li>
-    <li>路径支持中文,ctrl+alt+Z连续两次可激活主窗口.点击群聊天窗口的名字链接可打开好友聊天窗口!</li>
-    <li>单机托盘最小化，回复主界面</li>
-    <li>登陆界面回车登陆</li>
+<li>主界面可以查找好友，支持拼音首字母和汉字方式，比如张三,可以输入ZS或者张三查找</li>
+<li>添加notify支持</li>
+<li>托盘图标显示登陆人q号和登陆状态tip(可以无视....)</li>
+<li>路径支持中文,ctrl+alt+Z连续两次可激活主窗口.点击群聊天窗口的名字链接可打开好友聊天窗口!</li>
+<li>单机托盘最小化，回复主界面</li>
+<li>登陆界面回车登陆</li>
 </ul>
 
 
-<p><strong><!--more-->修复bug列表:</strong></p>
+<!--more-->
+
+
+<h2>修复bug列表:</h2>
 
 <ul>
 <li>修复其他系统登陆后崩溃问题</li>
-    <li>修复打开聊天记录偶尔会卡死bug,修复群成员数量减少bug</li>
-    <li>修复启动时偶尔崩溃bug</li>
+<li>修复打开聊天记录偶尔会卡死bug,修复群成员数量减少bug</li>
+<li>修复启动时偶尔崩溃bug</li>
 </ul>
 
 
-<p><strong>其他修改:</strong></p>
+<h2>其他修改:</h2>
 
 <ul>
 <li>修改图片,配置文件存储路径</li>
 </ul>
 
 
-<div></div>
+<h2>安装方法:</h2>
+
+<pre><code>ppa:
+sudo add-apt-repository ppa:qtqq/qtqq-stable
+sudo apt-get update
+sudo apt-get install qtqq
+</code></pre>
+
+<h3>手动编译:</h3>
+
+<pre><code>git clone https://github.com/zhanlangsir/Qtqq.git qtqq
+cd qtqq
+mkdir release
+cd release
+cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)
+make
+sudo make install
+</code></pre>
+
+<h3>fedora需要准备的环境:</h3>
+
+<p>需要安装git cmake qt-devel libnotify-devel gtk2-devel gcc gcc-c++ qtwebkit-devel, yum install即可.</p>
+
+<h3>ubuntu需要准备的环境:</h3>
+
+<p>需要安装git cmake g++ qt4-dev-tools libgtk2.0-dev libnotify-dev
+<strong>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</strong>
+还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki" title="qtqq wiki">qtqq wiki</a></p>
+
+<p>这些不全是qtqq依赖的，有的是编译环境,qtqq现在依赖的是qt4,gtk,libnofity.现在没有很好的方法去实现托盘图标,qt自带的在ubuntu下无法正常使用，所以暂时只能用gtk代替。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Qtqq 12/23]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2012/12/23/qtqq-1223/"/>
+    <updated>2012-12-23T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2012/12/23/qtqq-1223</id>
+    <content type="html"><![CDATA[<h2>12/23更新:</h2>
+
+<p>版本:v0.8.0-alpha</p>
+
+<h2>新特性:</h2>
+
+<ul>
+<li>聊天窗口使用tab页</li>
+</ul>
 
 
-<div></div>
+<h2>其他修改：</h2>
+
+<ul>
+<li>关闭气泡消息提示</li>
+<li>新消息提醒改为托盘图标菜单</li>
+<li>搜索结果显示方式改变</li>
+</ul>
 
 
-<div><strong>安装方法:</strong></div>
+<p>关于qtqq v0.8.0-alpha功能的说明可以看这里:<a href="/blog/2012/12/23/about-qtqqv080-alpha" title="关于qtqq v0.8.0-alpha">关于qtqq v0.8.0-alpha</a></p>
+
+<!--more-->
 
 
-<div>ppa:</div>
+<h2>安装方法:</h2>
 
+<p>ppa<strong>没人维护</strong>了，有熟悉的童鞋可以接手</p>
 
-<div>sudo add-apt-repository ppa:qtqq/qtqq-stable</div>
+<pre><code>ppa:
+sudo add-apt-repository ppa:qtqq/qtqq-stable
+sudo apt-get update
+sudo apt-get install qtqq
+</code></pre>
 
+<p> 
+<strong>手动编译:</strong></p>
 
-<div>sudo apt-get update</div>
+<pre><code>git clone https://github.com/zhanlangsir/Qtqq.git qtqq
+cd qtqq
+git checkout qtqq-dev
+mkdir release
+cd release
+cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)
+make
+sudo make install
+</code></pre>
 
+<p><strong>fedora需要准备的环境:</strong><br/>
+  需要安装git cmake qt-devel  gcc gcc-c++ qtwebkit-devel, yum install即可.</p>
 
-<div>sudo apt-get install qtqq</div>
-
-
-<div></div>
-
-
-<div>手动编译:</div>
-
-
-<div>git clone https://github.com/zhanlangsir/Qtqq.git qtqq</div>
-
-
-<div></div>
-
-
-<div>cd qtqq</div>
-
-
-<div>mkdir release</div>
-
-
-<div>cd release</div>
-
-
-<div>cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)</div>
-
-
-<div>make</div>
-
-
-<div>sudo make install</div>
-
-
-<div></div>
-
-
-<div></div>
-
-
-<div>fedora需要准备的环境:</div>
-
-
-<div></div>
-
-
-<div>需要安装git cmake qt-devel libnotify-devel gtk2-devel gcc gcc-c++ qtwebkit-devel, yum install即可.</div>
-
-
-<div></div>
-
-
-<div>ubuntu需要准备的环境:</div>
-
-
-<div></div>
-
-
-<div>需要安装git cmake g++ qt4-dev-tools libgtk2.0-dev libnotify-dev</div>
-
-
-<div></div>
-
-
-<div>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</div>
-
-
-<div></div>
-
-
-<div>还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki">https://github.com/zhanlangsir/Qtqq/wiki</a>
-</div>
-
-
-<div></div>
-
-
-<div>这些不全是qtqq依赖的，有的是编译环境,qtqq现在依赖的是qt4,gtk,libnofity.现在没有很好的方法去实现托盘图标,qt自带的在ubuntu下无法正常使用，所以暂时只能用gtk代替。</div>
-
+<p><strong>ubuntu需要准备的环境:</strong><br/>
+需要安装git cmake g++ qt4-dev-tools<br/>
+<strong>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</strong><br/>
+还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki" title="qtqq wiki">qtqq wiki</a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[关于qtqq0.8.0-alpha]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2012/12/23/about-qtqq0-8-0-alpha/"/>
+    <link href="http://zhanlangsir.github.com/blog/2012/12/23/about-qtqqv080-alpha/"/>
     <updated>2012-12-23T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2012/12/23/about-qtqq0-8-0-alpha</id>
-    <content type="html"><![CDATA[<h3>功能修改：</h3>
+    <id>http://zhanlangsir.github.com/blog/2012/12/23/about-qtqqv080-alpha</id>
+    <content type="html"><![CDATA[<h2>功能修改：</h2>
+
+<p>0.8版本中把聊天窗口整合到了一个tab页中<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/tab.png" title="tab page" alt="tab" /></p>
+
+<!--more-->
 
 
-<p>0.8版本中把聊天窗口整合到了一个tab页中</p>
+<p>原来的弹出窗口的消息通知方式改为了加到托盘菜单中，因为在ubuntu中为了实现原来的效果必须引入gtk的托盘图标来实现，导致托盘菜单的风格跟其他部分不一样，而且在kde中表现也不怎么样，所以改为下面这种方式<br/>
+另外原来的气泡消息提示也暂时移除了，因为在有的桌面环境上会一直弹出，把其他程序都挡住了，很烦人，原本是通过libnotify来实现气泡提示，现在打算有空的时候自己实现一个qt版本的，可以更好的控制提示方式，时间等等。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/menu.png" title="qtqq menu" alt="menu" /></p>
 
-<p><img class="alignnone size-medium wp-image-1675" alt="tab" src="http://www.aitilife.com/images/uploads/2012/12/tab1-300x267.png" width="300" height="267"><!--more-->原来的弹出窗口的消息通知方式改为了加到托盘菜单中，因为在ubuntu中为了实现原来的效果必须引入gtk的托盘图标来实现，导致托盘菜单的风格跟其他部分不一样，而且在kde中表现也不怎么样，所以改为下马这种方式，另外原来的气泡消息提示也暂时移除了，因为在有的桌面环境上会一直弹出，把其他程序都挡住了，很烦人，原本是通过libnotify来实现气泡提示，现在打算有空的时候自己实现一个qt版本的，可以更好的控制提示方式，时间等等。</p>
-
-<p><a style="color: #0f3647;" href="http://www.aitilife.com/2012/12/23/qtqq0-8-0-alpha/menu" rel="attachment wp-att-1673"><img class="alignnone size-medium wp-image-1673" alt="menu" src="http://www.aitilife.com/images/uploads/2012/12/menu-300x180.png" width="300" height="180"></a></p>
-
-<p>然后好友搜索结果显示方式也改了，原本是弹出筛选下拉框，现在是直接在好友列表中进行筛选，所以搜索完后，你要把搜索内容清除掉。</p>
-
-<p><img class="alignnone size-medium wp-image-1676" alt="search" src="http://www.aitilife.com/images/uploads/2012/12/search-147x300.png" width="147" height="300"></p>
+<p>然后好友搜索结果显示方式也改了，原本是弹出筛选下拉框，现在是直接在好友列表中进行筛选，所以搜索完后，你要把搜索内容清除掉。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/search.png" title="qtqq serach result" alt="search" /></p>
 
 <p>其他还有一些小的修改，比如现在打开的对话框的头像会正确显示好友状态，好友申请对话框正确显示申请者名称和头像等等。</p>
 
-<h3>关于版本号:</h3>
+<h2>关于版本号:</h2>
 
+<p>有关注到qtqq的同学可能会发现版本号一直是在<strong>跳跃</strong>的,比如从0.5.0-alpha跳到0.6.0-alpha,然后又从0.6.0-beta跳到0.7.0-beta。</p>
 
-<p>有关注到qtqq的同学可能会发现版本号一直是在跳跃的,比如从0.5.0-alpha跳到0.6.0-alpha,然后又从0.6.0-beta跳到0.7.0-beta。</p>
+<p><strong>首先对版本号进行一下说明:</strong></p>
 
-<p>首先对版本号进行一下说明:</p>
+<ul>
+<li>alpha版本是刚完成了新功能，我只在本机上进行了一些简单的测试，没有发现问题就发布了</li>
+<li>beta是在我的机子上运行了比较长的时间而没有发生什么大问题的时候发布</li>
+<li>最终的版本就是进入了一个比较稳定的状态</li>
+</ul>
 
-<p>1.alpha版本是刚完成了新功能，我只在本机上进行了一些简单的测试，没有发现问题就发布了</p>
-
-<p>2.beta是在我的机子上运行了比较长的时间而没有发生什么大问题的时候发布</p>
-
-<p>3.最终的版本就是进入了一个比较稳定的状态</p>
 
 <p>之所以会出现版本跳跃就是因为我本身不是一个专业的测试人员，也没有太多的时间花在测试上，所以没办法每次发布都保证程序的稳定。而有时候刚发布一个版本，接下来的时间比较空闲，就继续下一个功能的开发，所以就会出现alpha到alpha的跳跃。而前一个版本的一些后来发现的bug,会在这个版本中进行修改，所以前一个版本的beta和realease版本就不会再出现了～</p>
 
-<h3>关于开发人员:</h3>
-
+<h2>关于开发人员:</h2>
 
 <p>是的，现在还是只有我一个人在开发，之所以不征集人手进行开发是因为qtqq实际上可以说是我的一个实验的程序，当我的水平在变化时，qtqq的架构也会随之被我修改，而我现在也没办法去把他的整体架构决定下来，所以每隔几个版本，代码上都会出现比较大的改变，这点非常不利于多人开发。所以我一直没有发表任何征集人手的帖子，当然，如果你对qtqq的代码有兴趣，你可以fork一份下来做修改，之后再push回我的repo中。</p>
 
-<p>最后说一下这几个月的经历和之后对qtqq的可能更新情况</p>
-
-<p>9月份开始就已经是大四了，要出去找工作，找工作的时间大概花了1个多月，要跑到另外一个城市去，长途奔波，非常蛋疼- -，所幸最后有了结果，1个多月的奔波没有白费。之后回来还要复习考试，考完试还要打几个星期的war3....所以qtqq有大概4个月没有更新，这次更新虽然功能上的变动不大，但是代码上的改动非常大，也是花了比较多的时间。</p>
+<p><em>最后说一下这几个月的经历和之后对qtqq的可能更新情况</em><br/>
+9月份开始就已经是大四了，要出去找工作，找工作的时间大概花了1个多月，要跑到另外一个城市去，长途奔波，非常蛋疼- -，所幸最后有了结果，1个多月的奔波没有白费。之后回来还要复习考试，考完试还要打几个星期的war3....所以qtqq有大概4个月没有更新，这次更新虽然功能上的变动不大，但是代码上的改动非常大，也是花了比较多的时间。</p>
 
 <p>后面的话，更新肯定是不会像一开始那样一个月几更了，因为找到的工作跟qt和ui方面的开发的关系并不大，所以现在会花比较多的时间在工作上面了，但是还是会继续更新的。</p>
 
 <p>另外，在几个月都没有任何更新的情况下，还是有些童鞋提交了一些bug和功能上的建议，这还是让我非常意外和开心的～</p>
 
-<p>最后，安全度过世界末日.It's awesome!</p>
-
-<p>但是4级貌似又挂了...心情无比沉重啊。</p>
+<p>最后，安全度过世界末日.It's awesome!但是4级貌似又挂了...心情无比沉重啊。</p>
 ]]></content>
   </entry>
   
@@ -209,21 +207,22 @@
     <link href="http://zhanlangsir.github.com/blog/2012/04/10/update-qabstractitemview/"/>
     <updated>2012-04-10T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2012/04/10/update-qabstractitemview</id>
-    <content type="html"><![CDATA[<p>之前遇到了<a href="http://www.aitilife.com/2012/03/17/updateqtreeview/">QTreeView的刷新问题</a>，使用了一个很笨的办法，</p>
+    <content type="html"><![CDATA[<p>之前遇到了<a href="/blog/2012/03/17/update-qtreeview/" title="QTreeView的刷新问题">QTreeView的刷新问题</a>,使用了一个很笨的办法.</p>
 
-<p>实际上只要在更新调用相应的beginInsertRows,beginInsertColumns等方法就可以了。
-void QAbstractItemModel::beginInsertRows ( const QModelIndex &amp; parent, int first, int last );</p>
+<p>实际上只要在更新调用相应的beginInsertRows,beginInsertColumns等方法就可以了.</p>
 
-<p>void QAbstractItemModel::endInsertRows () ;</p>
+<pre><code>void QAbstractItemModel::beginInsertRows( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endInsertRows();
 
-<p>void QAbstractItemModel::beginInsertColumns ( const QModelIndex &amp; parent, int first, int last );
-void QAbstractItemModel::endInsertColumns ();</p>
+void QAbstractItemModel::beginInsertColumns( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endInsertColumns();
 
-<p>void QAbstractItemModel::beginRemoveColumns ( const QModelIndex &amp; parent, int first, int last );
-void QAbstractItemModel::endRemoveColumns ();</p>
+void QAbstractItemModel::beginRemoveColumns( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endRemoveColumns();
 
-<p>void QAbstractItemModel::beginRemoveRows ( const QModelIndex &amp; parent, int first, int last );
-void QAbstractItemModel::endRemoveRows ();</p>
+void QAbstractItemModel::beginRemoveRows( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endRemoveRows();
+</code></pre>
 ]]></content>
   </entry>
   
@@ -232,60 +231,40 @@ void QAbstractItemModel::endRemoveRows ();</p>
     <link href="http://zhanlangsir.github.com/blog/2012/03/31/qtqq/"/>
     <updated>2012-03-31T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2012/03/31/qtqq</id>
-    <content type="html"><![CDATA[<div>3/31 更新:
-v0.2.0-alpha 比上一版本多了获取好友，群，群成员头像功能。多了最近列表,其他还有很多小改动，修复一些bug!优化了界面！合并Mazenvoy提供的托盘代码。再次更新：
-v0.1.2 修复好友,群列表无法显示bug!修改聊天窗口字体大小颜色，调整聊天窗口布局,修正群聊天打开前几条消息显示号码而不是q名的问题! 感谢sallking抽时间测试。
+    <content type="html"><![CDATA[<h2>3/31 更新:</h2>
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<p>版本:<strong>v0.2.0-alpha</strong>
+功变:</p>
 
-学习过程中做的～本机测试没问题。
-目前可以好友，群聊天。发送接受表情，发送接受图片。
-
-下载地址：
-<a href="https://github.com/zhanlangsir/Qtqq/downloads">https://github.com/zhanlangsir/Qtqq/downloads</a>
-<div>附件:</div>
-<div><a id="" href="http://forum.ubuntu.org.cn/download/file.php?id=153851&mode=view/login.png"><img title="Click to enlarge" src="http://forum.ubuntu.org.cn/download/file.php?id=153851&t=1" alt="login.png"><!--more--></a></div>
-<div></div>
-<div>
-<a id="" href="http://forum.ubuntu.org.cn/download/file.php?id=153852&mode=view/%E4%B8%BB%E9%9D%A2%E6%9D%BF.png"><img title="Click to enlarge" src="http://forum.ubuntu.org.cn/download/file.php?id=153852&t=1" alt="主面板.png"></a>
-
-</div>
-<div><a id="" href="http://forum.ubuntu.org.cn/download/file.php?id=153850&mode=view/liaotian.png"><img title="Click to enlarge" src="http://forum.ubuntu.org.cn/download/file.php?id=153850&t=1" alt="liaotian.png"></a></div>
-更新过了~修复了接受图片的bug!
-代码也在github.大部分代码和qq服务器的腾讯有关~不了解协议的话可能很难看懂。不过可以用wireshark或者windows下的fiddler抓包去分析。
-
-另外这是学习过程中做的，代码结构可能不够清晰。希望有大牛能够指点一下。。。。
-
-</div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[qtreeview的刷新问题]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2012/03/17/update-qtreeview/"/>
-    <updated>2012-03-17T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2012/03/17/update-qtreeview</id>
-    <content type="html"><![CDATA[<div>在使用qtreview搭配自定义模型的时候，发现修改了模型中某项的内容时，只有鼠标处于该qtreview中，它才会刷新内容。只要鼠标在qtreeview外面时，它就维持原样~</div>
+<ul>
+<li>比上一版本多了获取好友，群，群成员头像功能</li>
+<li>多了最近列表</li>
+<li>其他小改动</li>
+<li>修复一些bug</li>
+<li>优化了界面</li>
+<li>合并Mazenvoy提供的托盘代码</li>
+</ul>
 
 
-<div>经过一番摸索，发现只要对qtreeview调用</div>
+<!--more-->
 
 
-<div>
-<div>setUpdatedEnable(<span style="color: #0000ff;"><strong>false</strong></span>);
-setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</div>
-</div>
+<hr />
 
+<p>学习过程中做的～本机测试没问题。
+目前可以好友，群聊天。发送接受表情，发送接受图片。</p>
 
-<div>连续两次调用后，qtreeview就会进行刷新了~</div>
+<p>下载地址：<a href="https://github.com/zhanlangsir/Qtqq/downloads" title="qtqq下载地址">qtqq下载地址</a></p>
 
+<p><img src="http://forum.ubuntu.org.cn/download/file.php?id=153851&amp;mode=view/login.png" title="qtqq登录窗口" alt="登录窗口" /></p>
 
-<div></div>
+<p><img src="http://forum.ubuntu.org.cn/download/file.php?id=153852&amp;mode=view/%E4%B8%BB%E9%9D%A2%E6%9D%BF.png" title="qtqq主界面" alt="主窗口" /></p>
 
+<p><img src="http://forum.ubuntu.org.cn/download/file.php?id=153850&amp;mode=view/liaotian.png" title="qtqq聊天窗口" alt="聊天窗口" /></p>
 
-<div></div>
+<p>代码托管在<a href="https://github.com/zhanlangsir/Qtqq" title="qtqq github地址">github</a>.大部分代码和qq服务器的腾讯有关~不了解协议的话可能很难看懂。不过可以用wireshark或者windows下的fiddler抓包去分析。</p>
 
+<p>另外这是学习过程中做的，代码结构可能不够清晰。希望有大牛能够指点一下。。。。</p>
 ]]></content>
   </entry>
   

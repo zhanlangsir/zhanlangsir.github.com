@@ -9,8 +9,7 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="字符串字面量（string literal）是一段双引号括起来的多字节字符序列，C/C++将其实现为具有静态存储连续性的字符数组。初学者（包括不少书籍）常将其称为字符串常量，但这说法只在C++成立，C中不成立。C中的常量只包括下列四种：
-6.4.4 Constants
+  <meta name="description" content="字符串字面量（string literal）是一段双引号括起来的多字节字符序列，C/C++将其实现为具有静态存储连续性的字符数组。初学者（包括不少书籍）常将其称为字符串常量，但这说法只在C++成立，C中不成立。C中的常量只包括下列四种： 6.4.4 Constants
 Syntax &hellip;">
   
 
@@ -92,17 +91,24 @@ Syntax &hellip;">
   </header>
 
 
-<div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">字符串字面量（string literal）是一段双引号括起来的多字节字符序列，C/C++将其实现为具有静态存储连续性的字符数组。初学者（包括不少书籍）常将其称为字符串常量，但这说法只在C++成立，C中不成立。C中的常量只包括下列四种：</span>
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">6.4.4 Constants</strong>
+<div class="entry-content"><p>字符串字面量（string literal）是一段双引号括起来的多字节字符序列，C/C++将其实现为具有静态存储连续性的字符数组。初学者（包括不少书籍）常将其称为字符串常量，但这说法只在C++成立，C中不成立。C中的常量只包括下列四种：</p>
+
+<blockquote><p>6.4.4 Constants
 Syntax
 constant:
 integer-constant
 floating-constant
 enumeration-constant
-character-constant
-分别是整数常量、浮点常量、枚举常量和字符常量，并不包括字符串字面量。但由于字符串字面量具有静态存储连续性数组类型，并且在表达式中它会根据数组到指针的隐式转换规则转换为一个代表数组首地址的右值指针，因此C中的字符串字面量的首地址及各元素的地址都是地址常量表达式，但字符串字面量本身不是常量，也不是常量表达式。
-而C++的情形有所不同，C++将字符串字面量归入了常量当中：<!--more-->
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">2.13 Literals</strong>
+character-constant</p></blockquote>
+
+<p>分别是整数常量、浮点常量、枚举常量和字符常量，并不包括字符串字面量。但由于字符串字面量具有静态存储连续性数组类型，并且在表达式中它会根据数组到指针的隐式转换规则转换为一个代表数组首地址的右值指针，因此C中的字符串字面量的首地址及各元素的地址都是地址常量表达式，但字符串字面量本身不是常量，也不是常量表达式。</p>
+
+<p>而C++的情形有所不同，C++将字符串字面量归入了常量当中：</p>
+
+<!--more-->
+
+
+<blockquote><p>2.13 Literals
 There are several kinds of literals.21)
 literal:
 integer-literal
@@ -110,22 +116,29 @@ character-literal
 floating-literal
 string-literal
 boolean-literal
-21) The term “literal” generally designates, in this International Standard, those tokens that are called “constants” in ISO C.
-因此C++中的字符串字面量才可称为字符串常量，而且首地址及各元素地址跟C一样，都是地址常量表达式。
-字符串字面量在C中具有数组类型char[N]，在C++中则为const char[N]，在表达式中当发生数组到指针的转换时，对应的等效指针类型分别是char<em>和const char</em>，因此，在C中，char <em>p = “ABCDEF”是合法的，但让人惊奇的是，上述语句在C++中也是合法的！看起来一个pointer to const char指针被赋予了pointer to char指针，似乎违反了C++中指针转换的more cv-qualified原则。其实字符串字面量在C++中存在两种转换，一种转换依据当前上下文环境，另一种遵循数组到指针的转换，C++标准的内容：
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">2.13.4 String literals</strong>
+21) The term “literal” generally designates, in this International Standard, those tokens that are called “constants” in ISO C.</p></blockquote>
+
+<p>因此C++中的字符串字面量才可称为字符串常量，而且首地址及各元素地址跟C一样，都是地址常量表达式。</p>
+
+<p>字符串字面量在C中具有数组类型char[N]，在C++中则为const char[N]，在表达式中当发生数组到指针的转换时，对应的等效指针类型分别是char*和const char*，因此，在C中，char *p = &#8220;ABCDEF&#8221;是合法的，但让人惊奇的是，上述语句在C++中也是合法的！看起来一个pointer to const char指针被赋予了pointer to char指针，似乎违反了C++中指针转换的more cv-qualified原则。其实字符串字面量在C++中存在两种转换，一种转换依据当前上下文环境，另一种遵循数组到指针的转换，C++标准的内容：</p>
+
+<blockquote><p>2.13.4 String literals
 ……..An ordinary string literal has type “array of n const char” and static storage duration (3.7), where n is the size of the string as defined below, and is initialized with the given characters.
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">4.2 Array-to-pointer conversion</strong>
-A string literal (2.13.4) that is not a wide string literal can be converted to an rvalue of type “pointer to char”; a wide string literal can be converted to an rvalue of type “pointer to wchar_t”. In either case, the result is a pointer to the first element of the array. This conversion is considered only when there is an explicit appropriate pointer target type, and not when there is a general need to convert from an lvalue to an rvalue. [Note: this conversion is deprecated. See Annex D. ] For the purpose of ranking in overload resolution (13.3.3.1.1), this conversion is considered an array-to-pointer conversion followed by a qualification conversion (4.4). [Example: &#8220;abc&#8221; is converted to “pointer to const char” as an array-to-pointer conversion,
-and then to “pointer to char” as a qualification conversion. ]
-在具有显而易见的合适指针目标类型的情况下，例如上述char </em>p = “ABCDEF”，字符串字面量被转换为char<em>而不是const char</em>类型的指针，这个转换实际上是对旧有代码的兼容，是一个特例，而且被指定为deprecated的，将在未来的版本中予以废弃，有些编译器会产生一条提示这是废弃转换的警告。而在函数重载解析中，字符串字面量遵循数组到指针的转换，同时后跟一个限定修饰的转换。
-虽然字符串字面量在C中类型为char[N]，在C++中类型为const char[N]，但并不说明C中的字符串字面量可以修改，C++的不可以。字符串字面量是否可以修改与实现数组的类型无关，C之所以没有规定为const char[N]，还是出于对旧代码的兼容，而C++规定为const char[N]的原因之一是比C更严格的类型安全。无论C与C++都规定对字符串字面量的修改是未定义的，编译器可以自行处理，也的确存在一些允许修改字符串字面量的编译器，例如老一代的编译器TC，编译器不管是否允许修改字符串字面量，都没有违反标准。
-对于那些允许修改字符串字面量的编译器，必须考虑这样一个问题，当代码在不同的上下文中引用了同一个字符串字面量时，如果其中一处修改了该字面量，就会影响其它地方的引用。解决方法是允许同一个字面量的多个实例，这样不同上下文之间不会互相干扰，标准把这个问题的决定权留给了编译器：
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">6.4.5 String literals</strong>
-It is unspecified whether these arrays are distinct provided their elements have the appropriate values.
-在C中，由于字符串字面量不是常量，而且const限定的变量不是常量表达式（C中的常量表达式必须是编译期的），因此所有的常量和常量表达式都是右值。但C++将字符串字面量归入常量，将const限定的变量归入常量表达式，这意味着在C++中存在左值常量和左值常量表达式。
-C与C++在这方面的差异反映出两者对待常量的不同视角。C认为常量是不应该拥有存储空间的，这是非常传统的观点；而C++把常量的概念延伸到了对象模型，是对对象概念的有益扩展，但同时也带来了一些问题，一个具有对象性质的实体，难以避免存在某些合法或不合法的手段去修改其内容，这种行为常常令常量对象的常量性质处于尴尬的境地，由此也催生了常量折叠这一类巧妙的折中。
- </p>
+4.2 Array-to-pointer conversion
+A string literal (2.13.4) that is not a wide string literal can be converted to an rvalue of type “pointer to char”; a wide string literal can be converted to an rvalue of type “pointer to wchar_t”. In either case, the result is a pointer to the first element of the array. This conversion is considered only when there is an explicit appropriate pointer target type, and not when there is a general need to convert from an lvalue to an rvalue. [Note: this conversion is deprecated. See Annex D. ] For the purpose of ranking in overload resolution (13.3.3.1.1), this conversion is considered an array-to-pointer conversion followed by a qualification conversion (4.4). [Example: &#8220;abc&#8221; is converted to “pointer to const char” as an array-to-pointer conversion, and then to “pointer to char” as a qualification conversion. ]</p></blockquote>
+
+<p>在具有显而易见的合适指针目标类型的情况下，例如上述char <em>p = “ABCDEF”，字符串字面量被转换为char</em>而不是const char*类型的指针，这个转换实际上是对旧有代码的兼容，是一个特例，而且被指定为deprecated的，将在未来的版本中予以废弃，有些编译器会产生一条提示这是废弃转换的警告。而在函数重载解析中，字符串字面量遵循数组到指针的转换，同时后跟一个限定修饰的转换。</p>
+
+<p>虽然字符串字面量在C中类型为char[N]，在C++中类型为const char[N]，但并不说明C中的字符串字面量可以修改，C++的不可以。字符串字面量是否可以修改与实现数组的类型无关，C之所以没有规定为const char[N]，还是出于对旧代码的兼容，而C++规定为const char[N]的原因之一是比C更严格的类型安全。无论C与C++都规定对字符串字面量的修改是未定义的，编译器可以自行处理，也的确存在一些允许修改字符串字面量的编译器，例如老一代的编译器TC，编译器不管是否允许修改字符串字面量，都没有违反标准。</p>
+
+<p>对于那些允许修改字符串字面量的编译器，必须考虑这样一个问题，当代码在不同的上下文中引用了同一个字符串字面量时，如果其中一处修改了该字面量，就会影响其它地方的引用。解决方法是允许同一个字面量的多个实例，这样不同上下文之间不会互相干扰，标准把这个问题的决定权留给了编译器：</p>
+
+<blockquote><p>6.4.5 String literals
+It is unspecified whether these arrays are distinct provided their elements have the appropriate values.</p></blockquote>
+
+<p>在C中，由于字符串字面量不是常量，而且const限定的变量不是常量表达式（C中的常量表达式必须是编译期的），因此所有的常量和常量表达式都是右值。但C++将字符串字面量归入常量，将const限定的变量归入常量表达式，这意味着在C++中存在左值常量和左值常量表达式。</p>
+
+<p>C与C++在这方面的差异反映出两者对待常量的不同视角。C认为常量是不应该拥有存储空间的，这是非常传统的观点；而C++把常量的概念延伸到了对象模型，是对对象概念的有益扩展，但同时也带来了一些问题，一个具有对象性质的实体，难以避免存在某些合法或不合法的手段去修改其内容，这种行为常常令常量对象的常量性质处于尴尬的境地，由此也催生了常量折叠这一类巧妙的折中。</p>
 </div>
 
 
@@ -178,13 +191,42 @@ C与C++在这方面的差异反映出两者对待常量的不同视角。C认为
   </footer>
 </article>
 
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -195,15 +237,11 @@ C与C++在这方面的差异反映出两者对待常量的不同视角。C认为
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

@@ -9,11 +9,8 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="1.将windows字体拷贝到/usr/share/fonts/truetype下面，文件夹名字可以随便起
-cp /media/c/WINDOWS/Fonts/* /usr/share/fonts/truetype/
-默认字体权限应该是755，如果不是的话，手动更改下
-chmod 755 *
-2. &hellip;">
+  <meta name="description" content="先su获取root权限
+将windows字体拷贝到/usr/share/fonts/truetype下面,文件夹名字可以随便起 cp /media/c/WINDOWS/Fonts/* /usr/share/fonts/truetype/ 默认字体权限应该是755,如果不是的话,手动更改下 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,17 +91,27 @@ chmod 755 *
   </header>
 
 
-<div class="entry-content"><p>1.将windows字体拷贝到/usr/share/fonts/truetype下面，文件夹名字可以随便起
-cp /media/c/WINDOWS/Fonts/* /usr/share/fonts/truetype/
-默认字体权限应该是755，如果不是的话，手动更改下
-chmod 755 *
-2.在/usr/share/fonts/truetype下面运行
-mkfontscale
-mkfontdir
-3.运行fc-cache -fv，刷新字体缓存。
-现在就一切ok了</p>
+<div class="entry-content"><ol>
+<li>先<code>su</code>获取root权限</li>
+<li>将windows字体拷贝到<code>/usr/share/fonts/truetype</code>下面,文件夹名字可以随便起
 
-<p>当然，前提是先su获取root权限～</p>
+<pre><code> cp /media/c/WINDOWS/Fonts/* /usr/share/fonts/truetype/
+</code></pre>
+
+ 默认字体权限应该是755,如果不是的话,手动更改下
+
+<pre><code> chmod 755 *
+</code></pre></li>
+<li>在<code>/usr/share/fonts/truetype</code>下面运行
+
+<pre><code> mkfontscale
+ mkfontdir
+</code></pre></li>
+<li>运行<code>fc-cache -fv</code>,刷新字体缓存。</li>
+</ol>
+
+
+<p>现在就一切ok了</p>
 </div>
 
 
@@ -157,13 +164,42 @@ mkfontdir
   </footer>
 </article>
 
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -174,15 +210,11 @@ mkfontdir
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

@@ -9,13 +9,9 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content=" 
-数组名是一个指针常量吗？
-数组名是一个指针常量这种观点来源于数组名在表达式计算中与指针的结果等效性。例如下面的代码：
-int a[10], p = a, q;
+  <meta name="description" content="  数组名是一个指针常量吗？ 数组名是一个指针常量这种观点来源于数组名在表达式计算中与指针的结果等效性。例如下面的代码： int a[10], *p = a, *q;
 q = a + 1;
-q = p + 1;
-在效果上看，a + 1与 p + 1是相同的，这很容易给人一种a就是p的假象，但， &hellip;">
+q = p + 1; 在效果上看，a + 1与 p + 1是相同的，这很容易给人一种a就是p的假象，但， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,38 +92,54 @@ q = p + 1;
   </header>
 
 
-<div class="entry-content"><p> 
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">数组名是一个指针常量吗？</strong>
-数组名是一个指针常量这种观点来源于数组名在表达式计算中与指针的结果等效性。例如下面的代码：
-int a[10], <em>p = a, </em>q;
+<div class="entry-content"><p> </p>
+
+<h2>数组名是一个指针常量吗？</h2>
+
+<p>数组名是一个指针常量这种观点来源于数组名在表达式计算中与指针的结果等效性。例如下面的代码：</p>
+
+<pre><code>int a[10], *p = a, *q;
 q = a + 1;
 q = p + 1;
-在效果上看，a + 1与 p + 1是相同的，这很容易给人一种a就是p的假象，但，这仅仅是假象。鉴于指针常量包含了指针和常量两类概念，我们可以把这个问题分开两部分进行讨论。<!--more-->
-一、数组名是指针吗？
-在《Ｃ与指针》一书中，作者用一个著名的例子阐述了数组名与指针的不同。在一个文件中定义：int a[10];然后在另一个文件中声明：extern int <em>a; 笔者不在这里重复其中的原理，书中的作者试图从底层操作上阐述数组名与指针的不同点，但笔者认为这个例子存在一些不足，a在表达式中会转换为一个非对象的符号地址，而指针a却是一个对象，用一个非对象去跟一个对象比较，有“偷跑”的嫌疑，这个例子只是说明了数组名的非对象性质，只能证明对象与非对象实体在底层操作上的不同，事实上，如上一章所述，指针也有非对象形态。笔者认为，无须从底层的角度上花费那么多唇舌，仅仅从字面上的语义就可以推翻数组名是一个指针的观点。
-首先，在Ｃ／Ｃ＋＋中，数组类型跟指针类型是两种不同的派生类型，数组名跟指针是两种不同类型的实体，把数组类型的实体说成“是”另一个类型的实体，本身就是荒谬的；
-其次，a + 1在效果上之所以等同于p + 1，是因为a进行了数组到指针的隐式转换，这是一个转换的过程，是converted to而不是is a的过程。如果是两个相同的事物，又怎会有转换的过程呢？当把a放在a + 1表达式中时，a已经从一个数组名转换为一个指针，a是作为指针而不是数组名参与运算的；
-第三，a + 1与p + 1是等效关系，不是等价关系。等价是相同事物的不同表现形式，而等效是不同事物的相同效果。把数组名说成是指针实际上把等效关系误解为等价关系。
-因此，数组名不是指针，永远也不是，但在一定条件下，数组名可以转换为指针。
-二、数组名是一个常量吗？
-看见这句话有人会觉得奇怪，数组定义之后就不能改变了，数组名不就是个常量吗？在表达式中，数组名的确可以转换为一个不变的符号地址，但在Ｃ中，不变的实体不一定是常量！而且，C/C++有常量与常量表达式之分，常量与常量表达式是两种不同的实体，但常量表达式可以作为常量使用。C/C++中的常量虽然有所不同，但都不包括数组或数组名，而且数组名也不一定是常量表达式。
-请在C90的编译器中编译如下代码，注意不能是C99和C++的，因为C99和C++不再规定数组的初始化器必须是常量表达式，会看不到效果：
-int main( void )
+</code></pre>
+
+<p>在效果上看，a + 1与 p + 1是相同的，这很容易给人一种a就是p的假象，但，这仅仅是假象。鉴于指针常量包含了指针和常量两类概念，我们可以把这个问题分开两部分进行讨论。</p>
+
+<!--more-->
+
+
+<h3>一、数组名是指针吗？</h3>
+
+<p>在《Ｃ与指针》一书中，作者用一个著名的例子阐述了数组名与指针的不同。在一个文件中定义：int a[10];然后在另一个文件中声明：extern int *a; 笔者不在这里重复其中的原理，书中的作者试图从底层操作上阐述数组名与指针的不同点，但笔者认为这个例子存在一些不足，a在表达式中会转换为一个非对象的符号地址，而指针a却是一个对象，用一个非对象去跟一个对象比较，有“偷跑”的嫌疑，这个例子只是说明了数组名的非对象性质，只能证明对象与非对象实体在底层操作上的不同，事实上，如上一章所述，指针也有非对象形态。笔者认为，无须从底层的角度上花费那么多唇舌，仅仅从字面上的语义就可以推翻数组名是一个指针的观点。</p>
+
+<p>首先，在Ｃ／Ｃ＋＋中，数组类型跟指针类型是两种不同的派生类型，数组名跟指针是两种不同类型的实体，把数组类型的实体说成“是”另一个类型的实体，本身就是荒谬的；<br/>
+其次，a + 1在效果上之所以等同于p + 1，是因为a进行了数组到指针的隐式转换，这是一个转换的过程，是converted to而不是is a的过程。如果是两个相同的事物，又怎会有转换的过程呢？当把a放在a + 1表达式中时，a已经从一个数组名转换为一个指针，a是作为指针而不是数组名参与运算的；<br/>
+第三，a + 1与p + 1是等效关系，不是等价关系。等价是相同事物的不同表现形式，而等效是不同事物的相同效果。把数组名说成是指针实际上把等效关系误解为等价关系。<br/>
+因此，数组名不是指针，永远也不是，但在一定条件下，数组名可以转换为指针。</p>
+
+<h3>二、数组名是一个常量吗？</h3>
+
+<p>看见这句话有人会觉得奇怪，数组定义之后就不能改变了，数组名不就是个常量吗？在表达式中，数组名的确可以转换为一个不变的符号地址，但在Ｃ中，不变的实体不一定是常量！而且，C/C++有常量与常量表达式之分，常量与常量表达式是两种不同的实体，但常量表达式可以作为常量使用。C/C++中的常量虽然有所不同，但都不包括数组或数组名，而且数组名也不一定是常量表达式。</p>
+
+<p>请在C90的编译器中编译如下代码，注意不能是C99和C++的，因为C99和C++不再规定数组的初始化器必须是常量表达式，会看不到效果：</p>
+
+<pre><code>int main( void )
 {
-static int a[10], b[10];
-int c[10], d[10];
-int</em> e[] = { a, b };
-/<em> A </em>/
-int<em> f[] = { c, d };
-/</em> B */
-return 0;
+    static int a[10], b[10];
+    int c[10], d[10];
+    int* e[] = { a, b };
+    /* A */
+    int* f[] = { c, d };
+    /* B */
+    return 0;
 }
-B为什么不能通过编译？是由于自动数组名并不是常量表达式。在C中，常量表达式必须是编译期的，只在运行期不变的实体不是常量表达式，请看标准的摘录：
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">6.6 Constant expressions</strong>
-A constant expression can be evaluated during translation rather than runtime, and accordingly may be used in any place that a constant may be.
-c和d是自动数组，首地址在编译期是不可知的，因为这样的对象在编译期还不存在；a和b是静态数组，静态对象从程序开始时就已存在，因此a和b的首地址在编译期是已知的，它们都属于常量表达式中的地址常量表达式。
-所以，C/C++中的数组名，都不是常量。C中的数组名，是否常量表达式要视其存储连续性而定，全局数组、静态数组名都是常量表达式，而自动数组名不是。在C＋＋中，由于不再规定常量表达式必须是编译期的，因此C＋＋的数组名都是常量表达式。
- </p>
+</code></pre>
+
+<p>B为什么不能通过编译？是由于自动数组名并不是常量表达式。在C中，常量表达式必须是编译期的，只在运行期不变的实体不是常量表达式，请看标准的摘录：<br/>
+6.6 Constant expressions<br/>
+A constant expression can be evaluated during translation rather than runtime, and accordingly may be used in any place that a constant may be.<br/>
+c和d是自动数组，首地址在编译期是不可知的，因为这样的对象在编译期还不存在；a和b是静态数组，静态对象从程序开始时就已存在，因此a和b的首地址在编译期是已知的，它们都属于常量表达式中的地址常量表达式。<br/>
+所以，C/C++中的数组名，都不是常量。C中的数组名，是否常量表达式要视其存储连续性而定，全局数组、静态数组名都是常量表达式，而自动数组名不是。在C＋＋中，由于不再规定常量表达式必须是编译期的，因此C＋＋的数组名都是常量表达式。</p>
 </div>
 
 
@@ -174,19 +186,48 @@ c和d是自动数组，首地址在编译期是不可知的，因为这样的对
         <a class="basic-alignment left" href="/blog/2011/04/10/art-of-array-and-point-part-three/" title="Previous Post: 数组与指针的艺术-第三章">&laquo; 数组与指针的艺术-第三章</a>
       
       
-        <a class="basic-alignment right" href="/blog/2011/04/10/ba-ge-shi-fen-qiang-da-de-wordpress-cha-jian/" title="Next Post: 八个十分强大的WordPress插件">八个十分强大的WordPress插件 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2011/04/10/cpp-xml-library/" title="Next Post: c++XML库">c++XML库 &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
 
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -197,15 +238,11 @@ c和d是自动数组，首地址在编译期是不可知的，因为这样的对
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

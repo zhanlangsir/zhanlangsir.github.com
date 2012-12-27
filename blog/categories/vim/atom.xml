@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | 挨踢人生]]></title>
   <link href="http://zhanlangsir.github.com/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://zhanlangsir.github.com/"/>
-  <updated>2012-12-25T13:51:06+08:00</updated>
+  <updated>2012-12-28T00:52:17+08:00</updated>
   <id>http://zhanlangsir.github.com/</id>
   <author>
     <name><![CDATA[zhanlang]]></name>
@@ -20,58 +20,39 @@
     <id>http://zhanlangsir.github.com/blog/2012/07/28/vim-auto-pairs-plugin</id>
     <content type="html"><![CDATA[<p>vs装了va之后,输入{,[这些符号时，都会自动完成配对的},],虽然工作量非常小，但是实际使用起来的时候还是赶紧方便了不少，因为不需要输入{,然后输入},最后再定位到{}之间。在vim下，auto pairs这一插件正好提供了这个功能。</p>
 
-<p>插件主页：<a href="http://www.vim.org/scripts/script.php?script_id=3599">http://www.vim.org/scripts/script.php?script_id=3599</a></p>
-
-<p>他功能有：</p>
-
-<p>1.补全对称的 {, [, ', "等符号</p>
-
-<p> </p>
-
-<p>2.自动补空格，当输入{时，你会得到{|},这样的符号，中间的|代表光标所在位置（下同，|都代表光标所在位置，不再提醒）,</p>
-
-<p>然后按空格的时候，会自动在光标两边各加入一个空格，结果就是{ | },而不是{ |}.</p>
-
-<p> </p>
+<p>插件主页：<a href="http://www.vim.org/scripts/script.php?script_id=3599" title="vim plugin: auto pair">auto-pair</a></p>
 
 <!--more-->
 
 
-<p>3.自动插入新行，输入{|}时，按回车，会自动插入新行，结果会是这样</p>
+<p><strong><em>他的功能有：</em></strong></p>
 
-<p>{</p>
+<ol>
+<li>补全对称的 {, [, ', "等符号</li>
+<li>自动补空格，当输入{时，你会得到{|},这样的符号<br/>
+中间的|代表光标所在位置(下同,|都代表光标所在位置，不再提醒)<br/>
+然后按空格的时候，会自动在光标两边各加入一个空格，结果就是{ | },而不是{ |}.</li>
+<li>自动插入新行，输入{|}时，按回车，会自动插入新行，结果会是这样
 
-<p>|</p>
+<pre><code> {
+     |
+ }
+</code></pre>
 
-<p>}</p>
+<p> 新行是带正确缩进的。</p></li>
+<li>输入时跳过',},]等符号，例如:
+在{ | }这种情况下，你输入}的时候，会跳过后面的那个},而不是输入多一个}</li>
+<li>定位},],例如在
 
-<p>新行是带正确缩进的。</p>
+<pre><code> {
+     |
+ }
+</code></pre>
 
-<p> </p>
+<p>或者 [ | ]这种情况下,输入}或],会跳到匹配的}或]符号后面。</p></li>
+<li>快速包装一个单词，如果你已经输入了一个单词word，现在想在外面加入一层括号,就可以在word前先输入一个括号,结果是这样(|)word,然后按alt+e,那么结果就是(word).</li>
+</ol>
 
-<p>4.输入时跳过',},]等符号，例如:</p>
-
-<p>在</p>
-
-<p>{ |}这种情况下，你输入}的时候，会跳过后面的那个},而不是输入多一个}</p>
-
-<p> </p>
-
-<p>5.定位},],例如在</p>
-
-<p>{</p>
-
-<p>|</p>
-
-<p>}</p>
-
-<p>或者</p>
-
-<p>[ | ]这种情况下,输入}或],会跳到匹配的}或]符号后面。</p>
-
-<p> </p>
-
-<p>6.快速包装一个单词，如果你已经输入了一个单词word，现在想在外面加入一层括号,就可以在word前先输入一个括号,结果是这样(|)word,然后按alt+e,那么结果就是(word).</p>
 
 <p>这写都是比较常用的功能，其他更详细的介绍可以查看help。</p>
 ]]></content>
@@ -86,33 +67,20 @@
 
 <p>在ubuntu下交换这两个键灰常方便，赞一个。</p>
 
-<p>1.点击右上角的<span style="color: #ff0000;">最右边的图标</span>，然后选择<span style="color: #ff0000;">键盘</span>一项</p>
+<ol>
+<li>点击右上角的<strong>最右边的图标</strong>,然后选择<strong>键盘</strong>一项</li>
+<li>点击下方的<strong>布局设置</strong></li>
+<li>点击右下角的<strong>选项</strong></li>
+<li>选择Ctrl键位置选项卡中的交换ctrl和大写锁定</li>
+</ol>
 
-<p>2.点击下方的<span style="color: #ff0000;">布局设置</span></p>
-
-<p>3.点击右下角的<span style="color: #ff0000;">选项</span></p>
-
-<p>4.选择Ctrl键位置选项卡中的交换ctrl和大写锁定</p>
 
 <p>刚换过来还不是很习惯，切换输入法的时候老是会按ctrl，结果变成了大写锁定，看来还要点时间去适应啊。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[learning-gnu-emacspdf中文版]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/05/20/learning-gnu-emacs-pdf-zh-cn/"/>
-    <updated>2011-05-20T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/05/20/learning-gnu-emacs-pdf-zh-cn</id>
-    <content type="html"><![CDATA[<p>vim和emacs是编辑器中的两大神奇，但是学习周期，上手难度自然比其他编辑稍难，但是只要熟系了，就会发现，这两个编辑器真的可以大大提高工作效率，最重要的是，它们还是可跨平台使用的。虽然win下还有其他都很不错的编辑器，例如notepad++,ue等等，但是它们无法在其他平台使用，虽然小狼还是果断放弃。</p>
 
-<p>关于vim的学习资料，本博客已经有一些入门的教程了，所以这次带来得是emacs的入门资料,pdf格式，虽然不是很清晰，但还是可以看D，而且介绍的内容比较基础，适合初学者学习~</p>
+<hr />
 
-<p><a href="http://www.aitilife.com/images/uploads/2011/05/emacs_thumb.png"><img class="alignnone size-full wp-image-1463" title="emacs_thumb" src="http://www.aitilife.com/images/uploads/2011/05/emacs_thumb.png" alt="" width="177" height="244"></a></p>
-
-<!--more-->
-
-
-<p>下载地址:<a href="http://www.gokuai.com/f/Q0R32A7kLt3qzDb0" target="_blank">够快下载</a></p>
+<p>后记:<br/>
+好吧,我还是乖乖用回了vim,emacs的按键太让人蛋疼了- -!</p>
 ]]></content>
   </entry>
   
@@ -121,52 +89,165 @@
     <link href="http://zhanlangsir.github.com/blog/2011/04/19/gvim-theme-generation-online/"/>
     <updated>2011-04-19T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2011/04/19/gvim-theme-generation-online</id>
-    <content type="html"><![CDATA[<p>点击顶部的</p>
-
-<p>Generate bright就自动生成亮色系列主题</p>
-
-<p>Generate Dark 自动生成暗色系列主题</p>
+    <content type="html"><![CDATA[<p>点击顶部的<br/>
+Generate bright就自动生成亮色系列主题 <br/>
+Generate Dark 自动生成暗色系列主题</p>
 
 <p>生成主题后，再右击下角的Vim Scheme,另存为主题名(自订.例如:aitilife).vim,然后把这个文件放到vim根目录的color目录下,打开gvim,输入colo aitilife，就可以应用刚才生成的主题了，当然这样只可以在当前打开的gvim中应用主题,要持久选择这个主题就必须在配置文件中应用主题。具体方法为：</p>
 
-<p><strong>linux：</strong></p>
+<p><strong>linux：</strong><br/>
+修改~/.vimrc文件,没有可以自己创建一个,在里面添加<br/>
+<code>colo aitilife</code><br/>
+一行就可以了.</p>
 
-<p>修改~/.vimrc文件,没有可以自己创建一个,在里面添加</p>
+<!--more-->
 
-<p>colo aitilife</p>
 
-<p>一行就可以了.<!--more--></p>
+<p><strong>windows:</strong><br/>
+修改vim安装目录下的_vimrc文件.同样,没有可以自己创建一个,在里面添加<br/>
+<code>colo aitilife</code><br/>
+一行就可以了.</p>
 
-<p><strong>windows:</strong></p>
-
-<p><span style="line-height: 19px;">修改vim安装目录下的_vimrc文件,同样</span>没有可以自己创建一个,在里面添加</p>
-
-<p>colo aitilife</p>
-
-<p>一行就可以了.</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/04/inspiration.png"><img class="alignnone size-thumbnail wp-image-1475" title="inspiration" src="http://www.aitilife.com/images/uploads/2011/04/inspiration-150x150.png" alt="" width="150" height="150"></a></p>
-
-<p>官网：<a style="cursor: pointer; color: #336699; text-decoration: none;" href="http://inspiration.sweyla.com/code/" rel="nofollow" target="_blank">http://inspiration.sweyla.com/code/</a></p>
+<p>官网：<a href="http://inspiration.sweyla.com/code/" title="swela">inspiration.sweyla.com</a></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[vim主题包]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/04/13/vim-zhu-ti-bao/"/>
-    <updated>2011-04-13T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/04/13/vim-zhu-ti-bao</id>
-    <content type="html"><![CDATA[<p>演示地址：<a href="http://www.vi-improved.org/color_sampler_pack/">http://www.vi-improved.org/color_sampler_pack/</a></p>
+    <title type="html"><![CDATA[用vim写java程序]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/yong-vim-xie-java-cheng-xu/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/yong-vim-xie-java-cheng-xu</id>
+    <content type="html"><![CDATA[<p>目前，linux下最强大最好用的IDE就是Eclipse，而最强大的编辑器又是Vim了，可不可以让这两个东西合二为一呢。没有问题，开源社区的创造力永远不会让你低估</p>
 
-<p>下载地址：<a href="http://www.gokuai.com/f/Sa04ok22364UplH2">够快下载</a></p>
+<p>在Vim中拥有Eclipse的功能，在Eclipse里有Vim的功能，那么eclim是你的选择了<br/>
+官网:<a href="http://eclim.org/">http://eclim.org/</a><br/>
+相关的<a href="http://eclim.org/translations/zh_TW/vim/cheatsheet.html#translations-zh-tw-vim-cheatsheet">中文文档</a><br/>
+使用eclim，你可以在vim中有Eclipse的功能，也可以在Eclipse中嵌入Vim编辑器。很酷</p>
 
-<p><strong>安装指南：</strong></p>
+<p>还有一个工具是Vrapper，这个工具是在Eclipse中使用Vim，你只需要在Eclipse的工具栏上点一下那个gvim的按钮就可以了<br/>
+官网:<a href="http://vrapper.sourceforge.net/home/" title="vrapper">vrapper</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vi/vim使用进阶: 目录]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/04/10/vivim-shi-yong-jin-jie-mu-lu/"/>
+    <updated>2011-04-10T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/04/10/vivim-shi-yong-jin-jie-mu-lu</id>
+    <content type="html"><![CDATA[<p>本系列文章，是原来我在CSDN的<a href="http://blog.csdn.net/easwy" title="Easwy专栏">Easwy专栏</a>撰写的"使用VIM开发软件项目"系列.<br/>
+<a href="http://easwy.com/blog/" title="Easwy's blog">Easwy的博客</a>搬家以后，就把CSDN上的文章全部移到此处。</p>
 
-<p>直接解压到vim根目录就可以了!</p>
+<p>写本系列文章的最初想法，是介绍如何用vi/vim开发软件。但纵观整个系列，讲述的其实和软件开发关系并不大，基本都在讲vim的使用技巧、vim的配置及vimrc、vim的命令和vim的插件。因此，把文章移到新站后，我把本系列的名字改为”vi/vim使用进阶”，希望大家一如既往的支持该系列。
+本文是这一系列文章的总目录，可由此访问本系列所有文章。</p>
 
-<p>linux:~/.vim</p>
+<p>我使用docbook重新整理了一下这些文章，你可以在这里下载html版本的<a href="http://easwy.com/blog/uploads/vim/advanced_vim_skills_html.zip" title="download">vi/vim使用进阶</a>,现在也提供<a href="http://easwy.com/blog/uploads/vim/advanced_vim_skills_pdf.zip" title="download pdf">PDF版本</a>下载.</p>
 
-<p><span style="line-height: 28px;">windows:</span>vim安装目录</p>
+<!--more-->
+
+
+<h2>目录</h2>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-prologue/" title="vim introduction">vi/vim使用进阶: 序言</a></h3>
+
+<p>本文是本系列的序言，讲述我使用vi/vim的经历和心得，以及对vi/vim初学者的一些建议。文中的抓图展示了我的vim使用环境。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-session-file-and-viminfo/" title="session">vi/vim使用进阶: 使用会话和viminfo</a></h3>
+
+<p>本文介绍如何使用vim的会话 (session) 和viminfo来恢复vim的使用环境。如果你需要经常恢复到相同工作环境，此功能非常有用，你不必一次次重新打开文件、设置你的工作环境。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-introduce-vimrc/" title="vimrc">vi/vim使用进阶: vimrc初步</a></h3>
+
+<p>本文简要介绍了vimrc的知识以及如何使用vimrc保存vim的配置。文中还提供了一些键映射(map)，使用这些映射可以快速编辑和加载vimrc。关于vimrc的更多应用，参见本系列其它文章。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-save-project-configuration/" title="save project">vi/vim使用进阶: 保存项目相关配置</a></h3>
+
+<p>本篇主要以path选项为例，讲述如何保存和恢复项目相关的配置。在使用vim的过程中，你可能同时打开几个project，每个project的配置可能都不相同，文中介绍了两种方法来保存每个project自身的独有配置。一种是使用一个固定的vim配置脚本保存project相关的path设置、按键映射等；另外一种是利用前面文章所介绍的会话(session)机制。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-use-ctags-tag-file/" title="tag">vi/vim使用进阶: 使用标签(tag)文件</a></h3>
+
+<p>本文介绍了如何使用Exuberant ctags生成tag文件以及在vim中如何使用tag文件进行跳转、查找等操作。还简要介绍了tag文件的格式，在后面介绍的Lookupfile插件中，会利用tag文件便捷的查找、打开文件。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-taglist-plugin/" title="taglist">vi/vim使用进阶: 使用taglist插件</a></h3>
+
+<p>本文介绍如何使用taglist插件(plugin)来查看程序中的标签(tag)，并介绍了taglist插件的配置和用法。taglist插件利用Exuberant ctags程序生成标签文件，并提供像Source Insight那样的标签窗口，可以方便的跳转到函数、变量等标签所在的位置。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-netrw-bufexplorer-winmanager-plugin/" title="file and buffer browse">vi/vim使用进阶: 文件浏览和缓冲区浏览</a></h3>
+
+<p>本节介绍了如何在vim中浏览文件，以及如何查看当前打开的缓冲区。利用netrw插件，可以方便的在vim中浏览各个目录、打开指定文件，而不用切换到文件浏览器或shell；当然，netrw插件的作用并不仅仅局限于此。利用bufexplorer插件，则可以方便的查看打开的缓冲区(buffer)，在缓冲区间进行切换。本文的最后介绍了winmanager插件，使用这个插件，可以把netrw插件、bufexplorer插件和taglist插件整合起来，使vim看起来更像一个集成开发环境(IDE)。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-lookupfile-plugin/" title="lookupfile">vi/vim使用进阶: lookupfile插件</a></h3>
+
+<p>如果你在开发一个大的项目，当你想在一大堆文件中查找或者编辑指定文件时，<a href="http://easwy.com/blog/archives/advanced-vim-skills-lookupfile-plugin/" title="lookupfile plugin">lookupfile</a>插件是必不可少的。使用它，可以快速查找项目文件、可以在缓冲区查找指定文件、可以浏览指定目录等。在查找时甚至可以使用正则表达式(regex)，在你只记得部分文件名或目录名时，这可是救命的手段。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-filetype-on/" title="filetype">vi/vim使用进阶: 开启文件类型检测</a></h3>
+
+<p>vim最吸引人的一点是，它支持无穷多的文件类型，而且能够随意扩展。在本文主要介绍如何打开文件类型检测的功能，以及如何使用基于文件类型的插件(filetype plugin)。正因为有了文件类型检测的功能，我们才可能针对不同的类型的文件，定义不同的键映射(map)、设置不同的选项，进行语法高亮的染色(后续文章中介绍)…你可以实现任意你想实现的功能。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-syntax-on-colorscheme/" title="vim syntax hightlight">vi/vim使用进阶: 乱花渐欲迷人眼 – 语法高亮</a></h3>
+
+<p>VIM并不是只有黑色两色。正相反，它提供了非常灵活的机制允许用户自定义色彩。运行在终端中的VIM，由于终端本身的限制，只能使用若干种固定的颜色；但对于GVIM来讲，你可以根据你的喜好调出任意的颜色。本文介绍的，正是vim的语法高亮功能。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-cscope/" title="cscope">vi/vim使用进阶: 程序员的利器 – cscope</a></h3>
+
+<p>在前面的文章中介绍了利用ctags生成的tag文件，跳转到标签定义的地方。但如果想查找函数在哪里被调用，或者标签在哪些地方出现过，ctags就无能为力了，这时需要使用更为强大的cscope。本文就介绍如何使用cscope，有了它，你可以把source insight抛到一边去了。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-quickfix-mode/" title="quickfix">vi/vim使用进阶: 剑不离手 – quickfix</a></h3>
+
+<p>vim由一个程序员开发，并且为更多的程序员所使用，所以vim对开发人员的强大支持，也就可以理解了。quickfix模式的引入就是一个例子。quickfix模式，是一种加速你开发的工作方式，使你不必离开vim，就可以快速的完成”编辑-编译-修正”你的程序。它不仅仅对开发人员有用，只要你的工作有类似”编辑-编译-修正”的过程，它就可以极大的简化你的工作。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-omin-complete/" title="omin-complete">vi/vim使用进阶: 智能补全</a></h3>
+
+<p>使用过Source Insight的人一定对它的自动补全功能印象深刻，在很多的集成开发环境中，也都支持自动补全。vim做为一个出色的编辑器，这样的功能当然少不了。本文主要介绍vim的OMNI补全。将在下一篇中介绍其它的补全方式。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-auto-complete/" title="auto complete">vi/vim使用进阶: 自动补全</a></h3>
+
+<p>本文继续介绍vim的补全功能。作为一个通用的编辑器，vim实现的补全功能并不仅仅限于对程序的补全，它可以对文件名补全、根据字典进行补全、根据本缓冲区或其它缓冲区类似的内容进行补全、根据文件语法补全等等，它甚至允许用户自己编写函数来实现定制的补全。本文简要介绍了这些补全的方法。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-basic-move-method/" title="vim move1">vi/vim使用进阶: 指随意动，移动如飞 (一)</a></h3>
+
+<p>VIM提供的移动方式多如牛毛，但我们并不需要掌握全部这些命令，只需要掌握最适合自己的那些命令。本文介绍了最常用的一些移动命令，在下篇文章中将介绍更高级的移动方法。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-advanced-move-method/" title="vim move2">vi/vim使用进阶: 指随意动，移动如飞 (二)</a></h3>
+
+<p>本文介绍如何在vim中移动，主要涉及如何使用跳转表(jump-motions)、使用标记(mark)、使用折行(fold)，以及如何在程序中移动。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-vim-gdb-vimgdb/" title="vimgdb">vi/vim使用进阶: 在VIM中使用GDB调试 – 使用vimgdb</a></h3>
+
+<p>本文介绍了如何使用vimgdb补丁在vim中用gdb调试程序，同时还介绍了vim的编译方法。然而，vim只是一个编辑器，而不是一个集成开发环境(IDE)，所以它对调试的支持很有限。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-vim-gdb-vimgdb-faq/" title="vimgdbfaq">vi/vim使用进阶: vimgdb调试时的常见问题及解决</a></h3>
+
+<p>在上篇文章中我介绍了如何使用vimgdb补丁在vim/gvim中调试程序。后来陆续有一些读者反馈了他们在使用中遇到的问题。在本文中总结一下常见的问题及解决办法。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-vim-gdb-pyclewn/" title="pyclewn">vi/vim使用进阶: 在gvim中使用GDB调试 – 使用pyclewn</a></h3>
+
+<p>本文介绍了如何使用[pyclewn][pyclewn_site]在gvim中用gdb调试程序。pyclewn是vimgdb作者的另外一个作品，使用它可以使gvim在UNIX/LINUX以及windows上与gdb集成调试。</p>
+
+<h3><a href="http://easwy.com/blog/archives/advanced-vim-skills-solve-compile-problem/" title="problem">vi/vim使用进阶: vim编译中遇到的问题及解决方法</a></h3>
+
+<p>本文主要介绍vim编译中遇到的问题及解决办法。文中介绍了如何通过看config.log，来了解配置失败的原因。有些网友编译图形化的gvim失败，可以参照本文的方法解决。</p>
+
+<h3>vi/vim使用进阶: 在vim中使用拷贝/粘贴</h3>
+
+<p>未完待续</p>
+
+<h3>vi/vim使用进阶: 映射自己的vim按键</h3>
+
+<p>未完待续</p>
+
+<h3>vi/vim使用进阶: 巧用vim的缩写功能</h3>
+
+<p>未完待续</p>
+
+<h3>vi/vim使用进阶: 强大的自动命令(autocmd)</h3>
+
+<p>未完待续</p>
+
+<h3>其它你感兴趣的话题</h3>
+
+<p>未完待续</p>
+
+<p>转自:<a href="http://easwy.com/blog/" title="Easwy's blog">Easwy的博客</a></p>
 ]]></content>
   </entry>
   

@@ -9,10 +9,9 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="一、如果有vista安装盘的话，方法也很简单：[more]
-1、下载windows7 7057 ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)
-2、BIOS中选择光驱启动，进入vista安装界面
-3、选择左下角修复计算机(自动搜索系统，提示加载驱动或关闭， &hellip;">
+  <meta name="description" content="一、如果有vista安装盘的话，方法也很简单： 下载windows7 7057 ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)
+BIOS中选择光驱启动，进入vista安装界面
+选择左下角修复计算机(自动搜索系统，提示加载驱动或关闭，选择关闭进入修复选项) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,33 +92,50 @@
   </header>
 
 
-<div class="entry-content"><p>一、如果有vista安装盘的话，方法也很简单：[more]
-1、下载windows7 7057 ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)
-2、BIOS中选择光驱启动，进入vista安装界面
-3、选择左下角修复计算机(自动搜索系统，提示加载驱动或关闭，选择关闭进入修复选项)
-4、选择最后一项命令修复，在命令框输入“D:/7057/sources/setup.exe“(不带引号)，开始安装
-5、选择安装语言、格式化C盘 (即使C盘原本没有系统此法也可行)
-二、XP系统下全新安装<span style="color: #787878;"><span>windows</span></span> 7：
-1、下载windows 7 7057ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)
-2、把D:/7057目录下的bootmgr和boot目录(其实只要里面的boot.sdi和bcd文件)拷贝到c盘根目录下,并在C盘根目录下建个sources文件夹。(XP下不需要取得管理员权限)
-3、把D:/7057/sources下的boot.win复制到C盘刚建的sources文件夹
-4、用管理员身份运行cmd，然后输入c:/boot/bootsect.exe /nt60 c: 提示successful(即成功了!)
-5、关闭cmd窗口重启计算机，自动进入安装界面，选择安装语言，同时选择适合自己的时间和货币显示种类及键盘和输入方式
-6、出现“开始安装界面”，(要注意了，不点击“现在安装”)点左下角“修复计算机”(repair mycomputer)，进入”系统恢复选择”，选择最后一项”命令提示符”(commandprompt)，进入DOS窗口
-7、输入“D:/7057/sources/setup.exe“(不带引号)，开始安装
-8、选择安装语言、格式化C盘，就OK了
-三、vista系统下全新安装windows7(实践证明XP用此种方法也更加方便)：
-1、下载windows 7 7057ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)
-2、复制D:/7057文件夹中的Boot、EFI、sources文件夹和bootmgr至C盘根目录下
-3、复制D:/7057/boot下Bootsect.exe至C盘根目录下
-第2部需取得管理员权限
-4、管理员身份运行cmd，输入c:/bootsect.exe(空格)/nt60 c:并回车(最好复制，中间有空格)
-5、重启系统自动进入安装界面，点左下角的修复计算机repair my computer)
-6、选择最后一项命令提示符，进入DOS窗口，输入D:/7057/sources/setup.exe进入安装界面
-7、选择安装语言、格式化C盘，就OK了
-不过，这四种方法还都不是最最简单的办法，最最简单的办法是什么?直接在xp下用虚拟光驱装，打开安装程序，选择较大的一个硬盘分区，确定，重启后 就直接是<span style="color: #787878;"><span>win7</span></span>的安装界面，OK~
-其实有刻录机的同学也不妨用硬盘来安装windows 7 ，不仅免掉了碟的开支，而且用硬盘安装也更加稳定不是~
- </p>
+<div class="entry-content"><h2>一、如果有vista安装盘的话，方法也很简单：</h2>
+
+<ol>
+<li>下载windows7 7057 ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)</li>
+<li>BIOS中选择光驱启动，进入vista安装界面</li>
+<li>选择左下角修复计算机(自动搜索系统，提示加载驱动或关闭，选择关闭进入修复选项)</li>
+<li>选择最后一项命令修复，在命令框输入<code>D:/7057/sources/setup.exe</code>,开始安装</li>
+<li>选择安装语言、格式化C盘 (即使C盘原本没有系统此法也可行)</li>
+</ol>
+
+
+<!--more-->
+
+
+<h2>二、XP系统下全新安装windows 7：</h2>
+
+<ol>
+<li>下载windows 7 7057ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)</li>
+<li>把D:/7057目录下的bootmgr和boot目录(其实只要里面的boot.sdi和bcd文件)拷贝到c盘根目录下,并在C盘根目录下建个sources文件夹。(XP下不需要取得管理员权限)</li>
+<li>把D:/7057/sources下的boot.win复制到C盘刚建的sources文件夹</li>
+<li>用管理员身份运行cmd，然后输入c:/boot/bootsect.exe /nt60 c: 提示successful(即成功了!)</li>
+<li>关闭cmd窗口重启计算机，自动进入安装界面，选择安装语言，同时选择适合自己的时间和货币显示种类及键盘和输入方式</li>
+<li>出现“开始安装界面”，(要注意了，不点击“现在安装”)点左下角“修复计算机”(repair mycomputer)，进入”系统恢复选择”，选择最后一项”命令提示符”(commandprompt)，进入DOS窗口</li>
+<li>输入<code>D:/7057/sources/setup.exe</code>，开始安装</li>
+<li>选择安装语言、格式化C盘，就OK了</li>
+</ol>
+
+
+<h2>三、vista系统下全新安装windows7(实践证明XP用此种方法也更加方便)：</h2>
+
+<ol>
+<li>下载windows 7 7057ISO镜像(RC或RTM)，用虚拟光驱拷贝至非C盘(如D:/7057)</li>
+<li>复制D:/7057文件夹中的Boot、EFI、sources文件夹和bootmgr至C盘根目录下</li>
+<li>复制D:/7057/boot下Bootsect.exe至C盘根目录下
+. 部需取得管理员权限</li>
+<li>管理员身份运行cmd，输入c:/bootsect.exe(空格)/nt60 c:并回车(最好复制，中间有空格)</li>
+<li>重启系统自动进入安装界面，点左下角的修复计算机repair my computer)</li>
+<li>选择最后一项命令提示符，进入DOS窗口，输入D:/7057/sources/setup.exe进入安装界面</li>
+<li>选择安装语言、格式化C盘，就OK了</li>
+</ol>
+
+
+<p>不过，这四种方法还都不是最最简单的办法，最最简单的办法是什么?直接在xp下用虚拟光驱装，打开安装程序，选择较大的一个硬盘分区，确定，重启后 就直接是win7的安装界面，OK~
+其实有刻录机的同学也不妨用硬盘来安装windows 7 ，不仅免掉了碟的开支，而且用硬盘安装也更加稳定不是~</p>
 </div>
 
 
@@ -163,22 +179,51 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/04/10/gvim--cai-dan-wu-fa-xian-shi--gtk-warning-invalid-input-string/" title="Previous Post: gvim 菜单无法显示( Gtk-WARNING **: Invalid input string)">&laquo; gvim 菜单无法显示( Gtk-WARNING **: Invalid input string)</a>
+        <a class="basic-alignment left" href="/blog/2011/04/10/gvim-open-file-as-tab-page/" title="Previous Post: gvim 用标签页打开文件(linux+windows)">&laquo; gvim 用标签页打开文件(linux+windows)</a>
       
       
-        <a class="basic-alignment right" href="/blog/2011/04/10/harddisk-install-ubuntu/" title="Next Post: ubuntu硬盘安装方法">ubuntu硬盘安装方法 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2011/04/10/iconv-command/" title="Next Post: iconv命令">iconv命令 &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
 
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -189,15 +234,11 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

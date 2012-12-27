@@ -90,71 +90,107 @@
   </header>
 
 
-<div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">const一词在字面上来源于常量constant，const对象在C/C++中是有不同解析的，如第二章所述，在C中常量表达式必须是编译期，运行期的不是常量表达式，因此C中的const不是常量表达式；但在C++中，由于去掉了编译期的限定，因此是常量表达式。</span>
-对于一个指向const对象的指针pointer to const T，由于把const视作常量表达式，常常存在如下两种观点：
-1。这是一个指向常量的指针，简称常量指针；
-2。这个指针指向的内容不可改变。
-这是比较粗糙的理解。虽然这个指针的类型是pointer to const T，但不代表它指向的对象真的是一个常量或者不可改变，例如：
-int i = 10;
-const int <em>p = &i;
+<div class="entry-content"><p>const一词在字面上来源于常量constant，const对象在C/C++中是有不同解析的，如第二章所述，在C中常量表达式必须是编译期，运行期的不是常量表达式，因此C中的const不是常量表达式；但在C++中，由于去掉了编译期的限定，因此是常量表达式。
+对于一个指向const对象的指针pointer to const T，由于把const视作常量表达式，常常存在如下两种观点：</p>
+
+<ol>
+<li>这是一个指向常量的指针，简称常量指针；</li>
+<li>这个指针指向的内容不可改变。</li>
+</ol>
+
+
+<p>这是比较粗糙的理解。虽然这个指针的类型是pointer to const T，但不代表它指向的对象真的是一个常量或者不可改变，例如：</p>
+
+<pre><code>int i = 10;
+const int *p = &amp;i;
 i = 20;
-p指向的对象i明显不是常量，虽然p指向i，但i的值依然可以改变。对于这个现象，C++标准有明确的论述：
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">7.1.5.1 The cv-qualifiers</strong>
-a pointer or reference to a cv-qualified type need not actually point or refer to a cv-qualified object, but it is treated as if it does;
-其中cv指的是const和volatile，const和volatile叫type qualifier，类型限定词。const T只是类型假定，并非指出该对象是什么，这个对象也许是const限定的，也许不是。既然上述两种看法都是不恰当的，pointer to const T又应如何看待呢？一种比较好的理解是，将其视作一条访问路径。对一个对象进行取值或者修改操作，可以有很多种方法，每种方法都相当于一条能够对对象进行访问的路径，例如：<!--more-->
-int i = 10, k;
-const int </em>p = &i;
-int <em>q = &i;
+</code></pre>
+
+<p>p指向的对象i明显不是常量，虽然p指向i，但i的值依然可以改变。对于这个现象，C++标准有明确的论述：<br/>
+7.1.5.1 The cv-qualifiers<br/>
+a pointer or reference to a cv-qualified type need not actually point or refer to a cv-qualified object, but it is treated as if it does;<br/>
+其中cv指的是const和volatile，const和volatile叫type qualifier，类型限定词。const T只是类型假定，并非指出该对象是什么，这个对象也许是const限定的，也许不是。既然上述两种看法都是不恰当的，pointer to const T又应如何看待呢？一种比较好的理解是，将其视作一条访问路径。对一个对象进行取值或者修改操作，可以有很多种方法，每种方法都相当于一条能够对对象进行访问的路径，例如：</p>
+
+<!--more-->
+
+
+<pre><code>int i = 10, k;
+const int *p = &amp;i;
+int *q = &amp;i;
 i = 20;
-</em>q = 30;
-k = <em>p;
-通过</em>q、<em>p和标识符i都能访问i所代表的整数对象，它们可以视作三条路径，i和</em>q能够修改该整数对象的值，这两条路径是可写可读的；但<em>p不能写，因为p指向的对象被假定为const，从p的角度看来，</em>p是只读的，不能通过p修改它指向的对象。因此，一个pointer to const T指针的确切意义，不是指向常量或者指向的对象不可改变，而是指不能通过这个指针去修改其指向的对象，无论这个对象是否const，它只指出一条到该对象的只读路径，但存在其它路径可以修改该对象。这种理解，在标准中是有根据的：
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">7.1.5.1 The cv-qualifiers</strong>
-a const-qualified access path cannot be used to modify an object even if the object referenced is a non-const object and can be modified through some other access path.
-上述条款对访问路径进行了一个清晰的描述。
-一个pointer to T类型的指针，可以赋值给一个pointer to const T类型的指针，这是众所周知的语法规则。笔者曾经一度认为，两者之所以可以赋值，是基于指针的相容性原理，以为两者是相容的，后来翻阅了C/C++的标准，才认识到这种解释其实是错误的，从相容性原理来说，两者恰恰是不相容的。C标准关于指针的相容性是这样规定的：
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">6.7.5.1 Pointer declarators</strong>
-For two pointer types to be compatible, both shall be identically qualified and both shall be pointers to compatible types.
-两个相容的指针，既要有同一的限定修饰词，所指向的类型也要相容的。而两个相容的类型要符合如下规定：
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">6.2.7 Compatible type and composite type</strong>
-Two types have compatible type if their types are the same.
-两个相同的类型才具有相容性，那么cont T和T是否两种相同的类型呢？再看如下条款：
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">6.2.5 Types</strong>
-The qualified or unqualified versions of a type are distinct types that belong to the same type category and have the same representation and alignment requirements.
-一个类型的限定和非限定版本是同一种类类型的具有同一表示范围及对齐需求的不同类型。这就是说，const T和T不是相同的类型，两者不相容，于是，虽然pointer to const T与pointer to T具有同一的限定修饰（都没有限定词），但所指向的对象类型不是相容的类型，因此pointer to const T与pointer to T是不相容的指针类型。
-既然两者不相容，又是什么原因导致它们可以赋值呢？再查阅C标准关于赋值运算符的规定，发现有这么个条款：
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">6.5.16.1 Simple assignment</strong>
-Constraints
-One of the following shall hold:
-………
-— both operands are pointers to qualified or unqualified versions of compatible types,
-and the type pointed to by the left has all the qualifiers of the type pointed to by the
-right;
-噢，其实原因在这里！左操作数所指向的类型要包含右操作数所指向类型的所有限定词。pointer to const T比pointer to T多一个const，因此可以将pointer to T赋值给pointer to const T，但反过来不行。通俗一点说，就是左操作数要比右操作数更严格。C++中的规定与C有点不同，C++标准去掉了这一条款，代之以more cv-qualified的概念，一个pointer to cv1 T的指针，要转换为一个pointer to cv2 T的指针，条件是cv2比cv1要更cv限定化。
-要注意的一点是，这条赋值运算符的规则只适用于pointer to qualified or unqualified type，不能延伸到pointer to pointer to qualified or unqualified type及更高级别的指针类型，例如：
-int i = 10;
-const int <em>p = &i; /</em> A <em>/
-int </em>q = &i;
-const int <strong>p1 = &q; /<em> B </em>/
-A合法，但B不合法。虽然p1与&amp;q都是unqualified的，但p1指向的对象类型为pointer to const int，&amp;q指向的类型为pointer to int，如前所述，两者是不相容类型，不符合两操作数必须指向相容类型的规定，因此赋值非法。
-根据上述规则，一个pointer to const T不能赋予pointer to T，但是，一个const pointer却能赋予non-const pointer，例如：
-int i;
-int * const p = &i;
-int <em>q;
-q = p; /</em> A <em>/
-A合法，这种情况并不属于赋值运算符的规则之内，它遵循的是另一个条款：左值转换。一个被限定修饰的左值，在进行左值转换之后，右值具有左值的非限定修饰类型：
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">6.3.2 Other operands
-6.3.2.1 Lvalues, arrays, and function designators</strong>
-Except when it is the operand of the sizeof operator, the unary &amp; operator, the ++ operator, the — operator, or the left operand of the . operator or an assignment operator, an lvalue that does not have array type is converted to the value stored in the designated object (and is no longer an lvalue). If the lvalue has qualified type, the value has the unqualified version of the type of the lvalue; otherwise, the value has the type of the lvalue.
-p的值具有p的非限定修饰类型int</em>，与q类型相容，因此赋值合法。对于C++，基本上与C相同，但有一个例外，就是右值类对象，由于右值类对象仍然是一个对象，C++规定右值类对象具有与左值相同的限定修饰词。
-指针与const的结合能够产生一些比较复杂的声明，例如：
-const int * const </strong><em> const ** const p;
-这是一个较为复杂的指针声明符与const限定修饰词的组合，声明符部分嵌套了六次，中间还带有两个const，如何辨认哪一级是const，哪一级不是呢？一旦明白了其中的原理，其实是非常简单的。第一和最后一个const大家都已经很熟悉的了。对于藏在一堆</em>号中的const，有一个非常简单的原则：const与左边最后一个声明说明符之间有多少个<em>号，那么就是多少级指针是const的。例如从右数起第二个const，它与int之间有4个</em>号，那么p的四级部分就是const的，下面的赋值表达式是非法的：
-<strong>p = (int <em>const</em></strong>)10;
-但下面的赋值是允许的：
-<strong><em>p=(int</em>const</strong>)10;
-从左边数起第二个const，它与int之间有1个<em>，那么p的一级部分是const的，也就是</em><strong><em><em>p = (int</em>const</em></strong>const*)10;是非法的。
- </p>
+*q = 30;
+k = *p;
+</code></pre>
+
+<p>通过<em>q、</em>p和标识符i都能访问i所代表的整数对象，它们可以视作三条路径，i和<em>q能够修改该整数对象的值，这两条路径是可写可读的；但</em>p不能写，因为p指向的对象被假定为const，从p的角度看来，*p是只读的，不能通过p修改它指向的对象。因此，一个pointer to const T指针的确切意义，不是指向常量或者指向的对象不可改变，而是指不能通过这个指针去修改其指向的对象，无论这个对象是否const，它只指出一条到该对象的只读路径，但存在其它路径可以修改该对象。这种理解，在标准中是有根据的：</p>
+
+<p>7.1.5.1 The cv-qualifiers<br/>
+a const-qualified access path cannot be used to modify an object even if the object referenced is a non-const object and can be modified through some other access path.<br/>
+上述条款对访问路径进行了一个清晰的描述。</p>
+
+<p>一个pointer to T类型的指针，可以赋值给一个pointer to const T类型的指针，这是众所周知的语法规则。笔者曾经一度认为，两者之所以可以赋值，是基于指针的相容性原理，以为两者是相容的，后来翻阅了C/C++的标准，才认识到这种解释其实是错误的，从相容性原理来说，两者恰恰是不相容的。C标准关于指针的相容性是这样规定的：<br/>
+6.7.5.1 Pointer declarators<br/>
+For two pointer types to be compatible, both shall be identically qualified and both shall be pointers to compatible types.<br/>
+两个相容的指针，既要有同一的限定修饰词，所指向的类型也要相容的。而两个相容的类型要符合如下规定：<br/>
+6.2.7 Compatible type and composite type<br/>
+Two types have compatible type if their types are the same.</p>
+
+<p>两个相同的类型才具有相容性，那么cont T和T是否两种相同的类型呢？再看如下条款：<br/>
+6.2.5 Types<br/>
+The qualified or unqualified versions of a type are distinct types that belong to the same type category and have the same representation and alignment requirements.</p>
+
+<p>一个类型的限定和非限定版本是同一种类类型的具有同一表示范围及对齐需求的不同类型。这就是说，const T和T不是相同的类型，两者不相容，于是，虽然pointer to const T与pointer to T具有同一的限定修饰（都没有限定词），但所指向的对象类型不是相容的类型，因此pointer to const T与pointer to T是不相容的指针类型。</p>
+
+<p>既然两者不相容，又是什么原因导致它们可以赋值呢？再查阅C标准关于赋值运算符的规定，发现有这么个条款：<br/>
+6.5.16.1 Simple assignment<br/>
+Constraints<br/>
+One of the following shall hold:<br/>
+………<br/>
+— both operands are pointers to qualified or unqualified versions of compatible types,<br/>
+and the type pointed to by the left has all the qualifiers of the type pointed to by the right;</p>
+
+<p>噢，其实原因在这里！<br/>
+左操作数所指向的类型要包含右操作数所指向类型的所有限定词。pointer to const T比pointer to T多一个const，因此可以将pointer to T赋值给pointer to const T，但反过来不行。通俗一点说，就是左操作数要比右操作数更严格。C++中的规定与C有点不同，C++标准去掉了这一条款，代之以more cv-qualified的概念，一个pointer to cv1 T的指针，要转换为一个pointer to cv2 T的指针，条件是cv2比cv1要更cv限定化。</p>
+
+<p>要注意的一点是，这条赋值运算符的规则只适用于pointer to qualified or unqualified type，不能延伸到pointer to pointer to qualified or unqualified type及更高级别的指针类型，例如：</p>
+
+<pre><code>int i = 10;
+const int *p = &amp;i; /* A */
+int *q = &amp;i;
+const int **p1 = &amp;q; /* B */
+</code></pre>
+
+<p>A合法，但B不合法。虽然p1与&amp;q都是unqualified的，但p1指向的对象类型为pointer to const int，&amp;q指向的类型为pointer to int，如前所述，两者是不相容类型，不符合两操作数必须指向相容类型的规定，因此赋值非法。</p>
+
+<p>根据上述规则，一个pointer to const T不能赋予pointer to T，但是，一个const pointer却能赋予non-const pointer，例如：</p>
+
+<pre><code>int i;
+int * const p = &amp;i;
+int *q;
+q = p; /* A */
+</code></pre>
+
+<p>A合法，这种情况并不属于赋值运算符的规则之内，它遵循的是另一个条款：左值转换。一个被限定修饰的左值，在进行左值转换之后，右值具有左值的非限定修饰类型：<br/>
+6.3.2 Other operands<br/>
+6.3.2.1 Lvalues, arrays, and function designators<br/>
+Except when it is the operand of the sizeof operator, the unary &amp; operator, the ++ operator, the — operator, or the left operand of the . operator or an assignment operator, an lvalue that does not have array type is converted to the value stored in the designated object (and is no longer an lvalue). If the lvalue has qualified type, the value has the unqualified version of the type of the lvalue; otherwise, the value has the type of the lvalue.<br/>
+p的值具有p的非限定修饰类型int*，与q类型相容，因此赋值合法。对于C++，基本上与C相同，但有一个例外，就是右值类对象，由于右值类对象仍然是一个对象，C++规定右值类对象具有与左值相同的限定修饰词。
+指针与const的结合能够产生一些比较复杂的声明，例如：</p>
+
+<pre><code>const int * const *** const ** const p;
+</code></pre>
+
+<p>这是一个较为复杂的指针声明符与const限定修饰词的组合，声明符部分嵌套了六次，中间还带有两个const，如何辨认哪一级是const，哪一级不是呢？一旦明白了其中的原理，其实是非常简单的。第一和最后一个const大家都已经很熟悉的了。对于藏在一堆*号中的const，有一个非常简单的原则：const与左边最后一个声明说明符之间有多少个*号，那么就是多少级指针是const的。例如从右数起第二个const，它与int之间有4个*号，那么p的四级部分就是const的，下面的赋值表达式是非法的：</p>
+
+<pre><code>**p = (int *const***)10;
+</code></pre>
+
+<p>但下面的赋值是允许的：</p>
+
+<pre><code>***p=(int*const**)10;
+</code></pre>
+
+<p>从左边数起第二个const，它与int之间有1个*，那么p的一级部分是const的，也就是<code>*****p = (int*const***const*)10;</code>是非法的。</p>
 </div>
 
 
@@ -207,13 +243,42 @@ const int * const </strong><em> const ** const p;
   </footer>
 </article>
 
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -224,15 +289,11 @@ const int * const </strong><em> const ** const p;
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

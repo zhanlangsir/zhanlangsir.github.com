@@ -9,7 +9,7 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="  每个 fusion源发布的稳定 RPM 软件包都配有一个 GPG 签名。默认情况下，yum 和图形更新工具验证这些签名并拒绝安装任何没有签名或者签名损坏的软件包。您总是应该在安装软件包之前验证其签名。这些签名可确保您要安装的软件包出自fusion仓库，且没有被提供该软件包的网页或者镜像更换（ &hellip;">
+  <meta name="description" content="每个 fusion源发布的稳定 RPM 软件包都配有一个 GPG 签名。默认情况下，yum 和图形更新工具验证这些签名并拒绝安装任何没有签名或者签名损坏的软件包。您总是应该在安装软件包之前验证其签名。这些签名可确保您要安装的软件包出自fusion仓库，且没有被提供该软件包的网页或者镜像更换（ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,55 +90,31 @@
   </header>
 
 
-<div class="entry-content"><p> </p>
+<div class="entry-content"><p>每个 fusion源发布的稳定 RPM 软件包都配有一个 GPG 签名。默认情况下，yum 和图形更新工具验证这些签名并拒绝安装任何没有签名或者签名损坏的软件包。您总是应该在安装软件包之前验证其签名。这些签名可确保您要安装的软件包出自fusion仓库，且没有被提供该软件包的网页或者镜像更换（无意的或者恶意的）。</p>
 
-<h3 style="font-family: Cantarell, 'Droid Sans', Verdana, sans-serif; margin-top: 0px; margin-right: 0px; margin-bottom: 0.3em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; vertical-align: baseline; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: transparent; line-height: 1.2em; color: #3c6eb4; text-transform: uppercase; padding: 0px; border: 0px initial initial;"><span style="color: #333333; font-size: 13px; line-height: 19px; font-weight: normal; text-transform: none;">每个 fusion源发布的稳定 RPM 软件包都配有一个 GPG 签名。默认情况下，yum 和图形更新工具验证这些签名并拒绝安装任何没有签名或者签名损坏的软件包。您总是应该在安装软件包之前验证其签名。这些签名可确保您要安装的软件包出自fusion仓库，且没有被提供该软件包的网页或者镜像更换（无意的或者恶意的）。</span></h3>
-
-
-<p><span style="color: #333333; font-size: 13px; line-height: 19px; font-weight: normal; text-transform: none;">
-</span>
-而我们安装fusion源的时候，默认是没有添加gpg密钥的，所以安装软件的时候会出现想
-获取 GPG 密钥失败：[Errno 14] Could not open/read file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-15-x86_64
-<span style="font-size: small;"><span style="border-collapse: collapse; line-height: 22px;">这种错误，那么怎么解决呢？</span></span>
-<span style="font-size: small;"><span style="border-collapse: collapse; line-height: 22px;"><!--more--></span></span>
-<span style="font-size: small;"><span style="border-collapse: collapse; line-height: 22px;">答案当然是导入密钥了～</span></span>
+<p>而我们安装fusion源的时候，默认是没有添加gpg密钥的，所以安装软件的时候会出现像<br/>
+<code>获取 GPG 密钥失败：[Errno 14] Could not open/read file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-15-x86_64</code><br/>
+这种错误，那么怎么解决呢？答案当然是导入密钥了～
  </p>
 
-<p>打开fusion源官网上的密钥页面：<a href="http://rpmfusion.org/keys">http://rpmfusion.org/keys</a></p>
-
-<p> </p>
-
-<h3 style="font-family: sans-serif; font-weight: normal; margin-top: 1em; margin-right: 0px; margin-bottom: 0.25em; margin-left: 0px; color: #77aacc; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: #eeeeee; line-height: 1;">RPM Fusion free for Fedora 8, 9 and 10</h3>
+<!--more-->
 
 
-<p><span style="color: #006699;">Download</span>; <span style="color: #4455bb;">key in pgp.mit.edu</span>; fingerprint:<span id="line-18" class="anchor"> </span></p>
+<p>打开fusion源官网上的密钥页面：<a href="http://rpmfusion.org/keys" title="rpmfusion">rpmfusion.org</a></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>pub   1024D/49C8885A 2008-07-12
-</span><span class='line'>      Key fingerprint = 870F EA14 0067 8204 7151  BA87 8550 99B2 49C8 885A
-</span><span class='line'>uid                  RPM Fusion repository (Fedora - free) &lt;rpmfusion-buildsys@lists.rpmfusion.org>
-</span><span class='line'>sub   2048g/A2F04C4B 2008-07-12</span></code></pre></td></tr></table></div></figure>
+<pre><code>pub   1024D/49C8885A 2008-07-12
+      Key fingerprint = 870F EA14 0067 8204 7151  BA87 8550 99B2 49C8 885A
+uid                  RPM Fusion repository (Fedora - free) &lt;rpmfusion-buildsys@lists.rpmfusion.org&gt;
+sub   2048g/A2F04C4B 2008-07-12
+</code></pre>
 
+<p>第一行就是密钥对应的系统的版本,你用的是什么版本的系统就选择对于的密钥，然后点击download下载密钥,</p>
 
-<p> 
-第一行就是密钥对应的系统的版本,你用的是什么版本的系统就选择对于的密钥，然后点击download下载密钥,</p>
-
-<p>因为小狼的是fedora15,所有下载后的文件是</p>
-
-<p>RPM-GPG-KEY-rpmfusion-free-fedora-15</p>
-
-<p>这样的，然后打开终端</p>
-
-<p>su获取root权限，再输入以下命令:</p>
-
-<p>rpm &#8211;import &#8217; /home/XXX/RPM-GPG-KEY-rpmfusion-free-fedora-15&#8217;</p>
-
-<p>后面的目录换成你下载的密钥文件的绝对路径，也可以把文件直接托进终端，系统会自动填写文件的地址的</p>
-
-<p>回车执行，再试一下安装软件～是不是已经解决了呢？</p>
+<p>因为小狼的是fedora15,所有下载后的文件是<code>RPM-GPG-KEY-rpmfusion-free-fedora-15</code>这样的，然后打开终端<br/>
+su获取root权限，再输入以下命令:<br/>
+<code>rpm --import ' /home/XXX/RPM-GPG-KEY-rpmfusion-free-fedora-15'</code><br/>
+后面的目录换成你下载的密钥文件的绝对路径，也可以把文件直接托进终端，系统会自动填写文件的地址的<br/>
+回车执行，再试一下安装软件～是不是已经解决了呢？</p>
 </div>
 
 
@@ -182,7 +158,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/05/22/fedora-sheng-ji-hou-shan-chu-jiu-ban-ben-de-qi-dong-cai-dan-he-nei-he/" title="Previous Post: fedora升级后删除旧版本的启动菜单和内核">&laquo; fedora升级后删除旧版本的启动菜单和内核</a>
+        <a class="basic-alignment left" href="/blog/2011/05/22/delete-old-kernel-after-update-fedora/" title="Previous Post: fedora升级后删除旧内核">&laquo; fedora升级后删除旧内核</a>
       
       
         <a class="basic-alignment right" href="/blog/2011/05/24/install-mp3-decoder-in-fedora15/" title="Next Post: fedora15下安装mp3解码器">fedora15下安装mp3解码器 &raquo;</a>
@@ -191,13 +167,42 @@
   </footer>
 </article>
 
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -208,15 +213,11 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

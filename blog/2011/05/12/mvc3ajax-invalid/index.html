@@ -9,7 +9,7 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="今天心情灰常不错，所以小狼又在努力的学习中。。。 看到这个例子的时候：http://msdn.microsoft.com/zh-cn/library/dd381533(v=VS.100).aspx 小狼完全是按他的步骤来做的，不同的是教程中使用的是mvc2,而我用的是mvc3,结果@Ajax. &hellip;">
+  <meta name="description" content="今天看到这个例子的时候：例子 我完全是按他的步骤来做的，不同的是教程中使用的是mvc2,而我用的是mvc3,结果@Ajax.ActionLink()的结果和普通的@Html.ActionLink()得到的结果完全一样，并没有体现出Ajax的效果，不应该是这样啊，具体情况看下面： 这里是输入页面： &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,58 +90,49 @@
   </header>
 
 
-<div class="entry-content"><p>今天心情灰常不错，所以小狼又在努力的学习中。。。</p>
+<div class="entry-content"><p>今天看到这个例子的时候：<a href="http://msdn.microsoft.com/zh-cn/library/dd381533(v=VS.100).aspx" title="msdn example">例子</a></p>
 
-<p>看到这个例子的时候：<a href="http://msdn.microsoft.com/zh-cn/library/dd381533(v=VS.100).aspx">http://msdn.microsoft.com/zh-cn/library/dd381533(v=VS.100).aspx</a></p>
+<p>我完全是按他的步骤来做的，不同的是教程中使用的是mvc2,而我用的是mvc3,结果@Ajax.ActionLink()的结果和普通的@Html.ActionLink()得到的结果完全一样，并没有体现出Ajax的效果，不应该是这样啊，具体情况看下面：</p>
 
-<p>小狼完全是按他的步骤来做的，不同的是教程中使用的是mvc2,而我用的是mvc3,结果@Ajax.ActionLink()的结果和普通的@Html.ActionLink()得到的结果完全一样，并没有体现出Ajax的效果，不应该是这样啊，具体情况看下面：</p>
-
-<p>这里是输入页面：</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/05/mvcajax1_thumb.png"><img class="alignnone size-thumbnail wp-image-1468" title="mvcajax1_thumb" src="http://www.aitilife.com/images/uploads/2011/05/mvcajax1_thumb-150x150.png" alt="" width="150" height="150"></a></p>
-
-<p>点击Submit按钮提交信息的时候，正常的情况应该是下图所示：</p>
-
-<p>单单替换了上图中的Nothing Entered文本，而Page Rendered: 13:29:42是没有变化的。</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/05/mvcajax2_thumb.png"><img class="alignnone size-thumbnail wp-image-1469" title="mvcajax2_thumb" src="http://www.aitilife.com/images/uploads/2011/05/mvcajax2_thumb-150x150.png" alt="" width="150" height="150"></a></p>
+<p>这里是输入页面：<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/mvcajax1.png" title="mvc ajax1" alt="mvcajax1" /><br/>
+点击Submit按钮提交信息的时候，正常的情况应该单单替换了上图中的Nothing Entered文本，而Page Rendered: 13:29:42是没有变化的。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/mvcajax2.png" title="mvc ajax2" alt="mvcajax2" /></p>
 
 <!--more-->
 
 
-<p>但是结果却是在新的页面显示了结果，很明显没有使用到Ajax的效果。</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2011/05/mvcajax3_thumb.png"><img class="alignnone size-thumbnail wp-image-1470" title="mvcajax3_thumb" src="http://www.aitilife.com/images/uploads/2011/05/mvcajax3_thumb-150x102.png" alt="" width="150" height="102"></a></p>
-
-<p>为什么会这样呢？google了一下，发现有类似的问题,但是他的原因是没有引用MicrosoftAjax<em>.js(</em>表示任意字符，即MicrosoftAjax开头的js文件),而我已经添加了这两个文件的引用.</p>
+<p>但是结果却是在新的页面显示了结果，很明显没有使用到Ajax的效果。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/mvcajax3.png" title="mvc ajax3" alt="mvcajax3" /><br/>
+为什么会这样呢？google了一下，发现有类似的问题,但是他的原因是没有引用MicrosoftAjax<em>.js(</em>表示任意字符，即MicrosoftAjax开头的js文件),而我已经添加了这两个文件的引用.</p>
 
 <p>为了找出问题，小狼只好再新建了mvc2的项目，再按照和mvc3完全一样的步骤修改代码，完了运行一下…</p>
 
 <p>神了个奇，mvc2项目就完全正常，那么问题出现在那呢？</p>
 
-<p>在对比了引用的装配件，javascript脚本,web.config配置后，发现问题在于mvc3的web.config配置文件中。</p>
+<p>在对比了引用的装配件，javascript脚本,web.config配置后，发现问题在于mvc3的web.config配置文件中。
+多了</p>
 
-<p>多了</p>
+<pre><code>&lt;appSettings&gt;
+&lt;add key="webpages:Version" value="1.0.0.0"/&gt;
+&lt;add key="ClientValidationEnabled" value="true"/&gt;
+&lt;add key="UnobtrusiveJavaScriptEnabled" value="true"/&gt;
+&lt;/appSettings&gt;
+</code></pre>
 
-<p><appSettings>
-<add key="webpages:Version" value="1.0.0.0"/>
-<add key="ClientValidationEnabled" value="true"/>
-<add key="UnobtrusiveJavaScriptEnabled" value="true"/>
-</appSettings></p>
+<p>把<code>&lt;add key="UnobtrusiveJavaScriptEnabled" value="true"/&gt;</code>删掉后，发现mvc3的项目也能正常出现ajax效果。<br/>
+但是新的问题又来了。<code>&lt;add key="UnobtrusiveJavaScriptEnabled" value="true"/&gt;</code>这句是激活Unobtrusive客户端验证必须的，难道不可以共存，这不应该啊。</p>
 
-<p>把<add key="UnobtrusiveJavaScriptEnabled" value="true"/>删掉后，发现mvc3的项目也能正常出现ajax效果。</p>
+<p>知道了问题发生在那之后就好办了。Google了一下，终于得到最终的解释：<br/>
+和mvc1和mvc2不一样，在mvc3中使用jquery作为默认javascript框架,所以html helper都是基于jquery框架的,所以MicrosoftAjax*脚本已经不再使用了，所以引用了MicrosoftAjax.js没有起作用。</p>
 
-<p>但是新的问题又来了。<add key="UnobtrusiveJavaScriptEnabled" value="true"/>这句是激活Unobtrusive客户端验证必须的，难道不可以共存，这不应该啊。</p>
+<p><strong>总结一下:</strong></p>
 
-<p>知道了问题发生在那之后就好办了。Google了一下，终于得到最终的解释：</p>
+<ul>
+<li>最终解决办法就是在site.master(ASPX引擎)或者_Layout.cshtml(RAZOR引擎)中添加jquery.unobtrusive-ajax.min.js或者jquery.unobtrusive-ajax.js的引用，而不是MicrosoftAjax*.js引用。</li>
+<li>搜索引擎是最好的老师，几乎所以问题都可以在网上搜到，当然google和baidu搜出来的内容质量则大大不一样~</li>
+</ul>
 
-<p>和mvc1和mvc2不一样，在mvc3中使用jquery作为默认javascript框架,所以html helper都是基于jquery框架的,所以MicrosoftAjax*脚本已经不再使用了，所以引用了MicrosoftAjax.js没有起作用。</p>
-
-<p>总结一下:</p>
-
-<p>1.最终解决办法就是在site.master(ASPX引擎)或者_Layout.cshtml(RAZOR引擎)中添加jquery.unobtrusive-ajax.min.js或者jquery.unobtrusive-ajax.js的引用，而不是MicrosoftAjax*.js引用。</p>
-
-<p>2.搜索引擎是最好的老师，几乎所以问题都可以在网上搜到，当然google和baidu搜出来的内容质量则大大不一样~</p>
 </div>
 
 
@@ -188,19 +179,48 @@
         <a class="basic-alignment left" href="/blog/2011/05/11/mvc3-submit-the-new-form-did-not-respond/" title="Previous Post: MVC3提交新建表单后没反应">&laquo; MVC3提交新建表单后没反应</a>
       
       
-        <a class="basic-alignment right" href="/blog/2011/05/13/cong-ke-hu-duan-jian-ce-dao-you-qian-zai-wei-xian-de-request-form-zhi-an-quan-jie-jue-ban-fa/" title="Next Post: 从客户端检测到有潜在危险的Request.Form值安全解决办法（转）">从客户端检测到有潜在危险的Request.Form值安全解决办法（转） &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2011/05/14/gravatar-comprehensive-analysis/" title="Next Post: Gravatar全面解析">Gravatar全面解析 &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
 
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -211,15 +231,11 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: DotNet | 挨踢人生]]></title>
   <link href="http://zhanlangsir.github.com/blog/categories/dotnet/atom.xml" rel="self"/>
   <link href="http://zhanlangsir.github.com/"/>
-  <updated>2012-12-25T13:51:06+08:00</updated>
+  <updated>2012-12-28T00:52:17+08:00</updated>
   <id>http://zhanlangsir.github.com/</id>
   <author>
     <name><![CDATA[zhanlang]]></name>
@@ -42,1090 +42,126 @@ descriptor.AddValueChanged(this, new EventHandler(TextChanged));</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[MEF编程手册二：定义组合部件(Composable Parts)和契约(Contracts)]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/08/09/define-composable-partand-contracts/"/>
-    <updated>2011-08-09T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/08/09/define-composable-partand-contracts</id>
-    <content type="html"><![CDATA[<div id="WizHtmlContentId">
-<!--WizHtmlContentBegin-->
-<div><strong>组合部件(Composable Parts)</strong></div>
-<div>在MEF中，一个组合部件就是一个组合单元。组合部件导出其他组合部件可能需要的服务，或者从其他组合部件导入服务，在MEF编程模型中，组件部件使用System.ComponentMode.Composition.Import和System.ComponentMode.Composition.Export来声明导入和导出服务。一个组合部件至少应该包含一个导出服务。组合部件都会明确添加或者通过目录添加到容器中。MEF内建的默认目录通过存在的导出属性标识组合部件。</div>
-<div></div>
-<div><strong>契约(Contracts)</strong></div>
-<div>组合部件不会直接依赖其他的组合部件，作为代替，他们依赖契约，契约是一个字符串标识符。每个导出服务有一个契约，每一个导入服务声明它需要的契约。如果需要传递一个类型，也会使用完全限定名。</div>
-<div>注意：</div>
-<div>默认情况下，一个类型应该被传递给一个契约(Export(typeof(Exporter))]，而不是一个字符串。虽然契约可以是任意的字符串，这会引起混乱。例如“Sender”可能会和其他库中的Sender实现发生冲突。由于这种原因，如果你需要指定一个字符串契约，建议你在契约字符串桑添加一个限定命名空间，可以包含你的公司名、域名，例如“Aitilife.Exports.Sender"。</div>
-<div> <!--more-->
-</div>
-<div>以下代码片段中，所有的导出契约都是一样的。</div>
-<div>
+    <title type="html"><![CDATA[windows wpf版gmbox]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/07/11/gmbox-for-windows/"/>
+    <updated>2011-07-11T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/07/11/gmbox-for-windows</id>
+    <content type="html"><![CDATA[<p>学wpf也有一个星期了，个人认为学新东西都得一边学一边实际才能更快的掌握新技能~而刚好不久之前看到过一个跨平台的音乐下载器项目gmbox,可以下载和收听google music的音乐~灰常好的一个项目，所以就产生了做一个wpf版gmbox的念头,刚好也可以巩固一下学到的知识~</p>
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>namespace MEFSample 
-</span><span class='line'>{
-</span><span class='line'>  [Export]
-</span><span class='line'>  public class Exporter {...}
-</span><span class='line'>
-</span><span class='line'>  [Export(typeof(Exporter))]
-</span><span class='line'>  public class Exporter1 {...}
-</span><span class='line'>
-</span><span class='line'>  [Export("MEFSample.Exporter")]
-</span><span class='line'>  public class Exporter2 {...}
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>做了几天，完成了一下简单的功能~</p>
 
-</div>
-<div><strong>接口/抽象契约</strong></div>
-<div>一种常见的模式是在组合部件中导出接口或者抽象类型的契约，而不是导出一个具体的类型。这允许导入者和具体的导出者完全解耦，它只知道接口的内容，而并不了解具体导出者的细节，这样可以导致分离的关注点从而实现解耦。例如以下的例子中有两个Sender实现都导出IMessageSender.其中Notifier类导入IMessageSender的集合并调用他的Send()方法。新的message senders就可以很轻松的添加到这个系统中，而如果你是导出了一个具体的类，例如EmailSender,那么当你要导出TCPSender时，就不得不修改导出和导入契约。而导出一个高层的接口或者抽象契约，就可以很有效的解决这个问题。</div>
-<div>
+<p>这是打开时的节目，小狼的界面设计并不牛叉。。。所以界面就先只能是这样了，不过在播放器大部分功能都完成的时候会进行界面调整的。</p>
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>namespace MEFSample 
-</span><span class='line'>{
-</span><span class='line'>  [Export]
-</span><span class='line'>  public class Exporter {...}
-</span><span class='line'>
-</span><span class='line'>  [Export(typeof(Exporter))]
-</span><span class='line'>  public class Exporter1 {...}
-</span><span class='line'>
-</span><span class='line'>  [Export("MEFSample.Exporter")]
-</span><span class='line'>  public class Exporter2 {...}
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>左上角有一个选项菜单，可以配置歌曲的下载路径</p>
 
-</div>
-<div><strong>契约装配件</strong></div>
-<div>一个常见的模式是在用MEF创建可扩展的应用时，部署一个契约装配件。一个契约装配件是一个简单的装配件，它包含了定义好的契约类型，扩展开发者可以使用这些协议来扩展你的应用。一般情况下，这些契约可以定义为接口，也可能是抽象类。此外，契约装配件可能还会包含导入者会使用到的容器元数据视图接口，以及任何自定义的MEF导出属性。</div>
-<!--WizHtmlContentEnd-->
-</div>
+<p>歌词显示，位置有点偏左，迟点进行调整，歌词是自动下载的。<!--more--></p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[wpf揭秘pdf+源代码下载]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/07/21/wpf-demystify-download/"/>
-    <updated>2011-07-21T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/07/21/wpf-demystify-download</id>
-    <content type="html"><![CDATA[<p>内容简介：
-《WPF揭秘》是针对那些对用户界面开发感兴趣的软件开发人员编写的WindowsPresentationFoundation(WPF)是.NETFramework3.0的关键组件，是支持下一代视窗应用程序表现层编程的平台，也是微软新发布的Vista操作系统的三大核心开发库之一，主要负责图形显示。</p>
+<p>还是歌词。。。左边的是播放列表</p>
 
-<p>目录：
-第一部分　背景
-　　第1章　为什么创造WPF　2
-　　1.1　回顾过去　2
-　　1.2　步入WPF　3
-　　1.3　作为.NET Framework的组成部分　7
-　　1.3.1　为托管代码而设计　8
-　　1.3.2　强调声明式描述　8
-　　1.4　小结　9<!--more-->
-　　第2章　XAML揭秘　10
-　　2.1　XAML定义　11
-　　2.2　元素和特性　11
-　　2.3　命名空间　12
-　　2.4　属性元素　14
-　　2.5　类型转换器　15
-　　2.6　标记扩展　16
-　　2.7　对象元素的子元素　18
-　　2.7.1　内容属性　18
-　　2.7.2　集合项　19
-　　2.7.3　更多类型转换　20
-　　2.8　编译：将XAML与过程式代码混合使用　22
-　　2.8.1　在运行时加载和解析XAML　22
-　　2.8.2　编译XAML　24
-　　2.8.3　XAML关键字　28
-　　2.9　小结　29
-　　2.9.1　抱怨1：XML太过冗长不便于输入　30
-　　2.9.2　抱怨2：基于XML的系统性能差　30
-　　第3章　WPF的重要新概念　31
-　　3.1　逻辑树与可视树　31
-　　3.2　依赖属性　35
-　　3.2.1　依赖属性的实现　36
-　　3.2.2　变更通知　38
-　　3.2.3　属性值继承　39
-　　3.2.4　对多个提供程序的支持　41
-　　3.2.5　附加属性　43
-　　3.3　路由事件　46
-　　3.3.1　路由事件的实现　46
-　　3.3.2　路由策略和事件处理程序　48
-　　3.3.3　路由事件实践　48
-　　3.3.4　附加事件　51
-　　3.4　命令　53
-　　3.4.1　内建命令　54
-　　3.4.2　使用输入手势执行命令　57
-　　3.4.3　带有内建命令绑定的控件　58
-　　3.5　漫游类层次　59
-　　3.6　小结　60
-　　第二部分　构建WPF应用程序
-　　第4章　WPF控件　62
-　　第5章　尺寸缩放、定位与变换元素　94
-　　第6章　使用面板做布局　108
-　　第7章　构建并部署应用程序　142
-　　第三部分　为专业开发人员设计的功能
-　　第四部分　通过富媒体使程序领先于时代
-　　第五部分　高级主题
-　　第六部分　附录
-　　附录　有用的工具　484</p>
+<p>5种播放模式~</p>
 
-<p><a title="wpf揭秘pdf和源码下载" href="http://www.gokuai.com/f/tOtu1C28196645q3">下载地址</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MEF编程手册一：在应用中寄宿MEF]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/07/18/hosting-mef-in-application/"/>
-    <updated>2011-07-18T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/07/18/hosting-mef-in-application</id>
-    <content type="html"><![CDATA[<div>在应用中寄宿MEF涉及到创建一个CompositionContainer的实例，添加Composable Part到容器中,包含应用程序宿主然后组合在一起。</div>
+<p>不想要的歌曲可以移除</p>
 
+<p>在线搜索歌曲，双击可以加到播放列表并开始播放</p>
 
-<div>在应用中寄宿MEF涉及到以下步骤：</div>
+<p>右键搜索结果列表可以进行下载，默认下载路径是C:UsersPublicMusicGmBoxDownload，下载之前最好在左上角的菜单那里设置一下下载路径，设置后会可以保存。</p>
 
+<p>因为现在只做出了一个大概的模型，代码也还很混乱，所以源码先不公开了，迟点会共享的~</p>
 
-<div>1.创建一个宿主类。在下面的例子中，我们会使用一个console程序，所以宿主会是Program类。</div>
+<p>还有一点，wpf版仅支持win7系统~用xp的童鞋就不好意思啦~</p>
 
-
-<div>2.添加System.ComponentModel.Composition装配件的引用</div>
-
-
-<div>3.添加using语句：using System.ComponentModel.Composition</div>
-
-
-<div>4.添加Compose()方法来创建容器的实例然后组合宿主应用</div>
-
-
-<div>5.添加Run()方法来调用Compose()</div>
-
-
-<div>6.在Main()方法中实例化宿主类</div>
-
-
-<div>注意：</div>
-
-
-<div>对于ASP.NET或者WPF应用程序，宿主类是在运行时实例化的，所以第6步不是必须的</div>
-
-
-<div>以下代码片段指示代码的大概:</div>
-
-
-<div>
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
-</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
-</span><span class='line'>  using System.Reflection;
-</span><span class='line'>  using System;
-</span><span class='line'>
-</span><span class='line'>  public class Program
-</span><span class='line'>  {
-</span><span class='line'>    public static void Main(string[] args)
-</span><span class='line'>    {
-</span><span class='line'>      Program p = new Program();
-</span><span class='line'>      p.Run();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    public void Run()
-</span><span class='line'>    {
-</span><span class='line'>      Compose();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    private void Compose()
-</span><span class='line'>    {
-</span><span class='line'>      var container = new CompositionContainer();
-</span><span class='line'>      container.ComposeParts(this);
-</span><span class='line'>    }
-</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-</div>
-
-
-<div>
-<!--more-->7.定义一个或者多个宿主将会导入的出口(exports)，在下面的代码中，我们定义一个IMessageSender接口和一个EmailSender Composable Part，EmailSender Composable Part导出一个IMessageSender,IMessageSender通过[System.ComponentModel.Composition.Export]属性声明它将会被导出。</div>
-
-
-<div>
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
-</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
-</span><span class='line'>  using System.Reflection;
-</span><span class='line'>  using System;
-</span><span class='line'>
-</span><span class='line'>  public class Program
-</span><span class='line'>  {
-</span><span class='line'>    public static void Main(string[] args)
-</span><span class='line'>    {
-</span><span class='line'>      Program p = new Program();
-</span><span class='line'>      p.Run();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    public void Run()
-</span><span class='line'>    {
-</span><span class='line'>      Compose();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    private void Compose()
-</span><span class='line'>    {
-</span><span class='line'>      var container = new CompositionContainer();
-</span><span class='line'>      container.ComposeParts(this);
-</span><span class='line'>    }
-</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-</div>
-
-
-<div>8.在宿主类中为每个入口添加属性，通过[System.ComponentModel.Composition.Import]属性装饰声明。例如</div>
-
-
-<div>
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
-</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
-</span><span class='line'>  using System.Reflection;
-</span><span class='line'>  using System;
-</span><span class='line'>
-</span><span class='line'>  public class Program
-</span><span class='line'>  {
-</span><span class='line'>    public static void Main(string[] args)
-</span><span class='line'>    {
-</span><span class='line'>      Program p = new Program();
-</span><span class='line'>      p.Run();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    public void Run()
-</span><span class='line'>    {
-</span><span class='line'>      Compose();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    private void Compose()
-</span><span class='line'>    {
-</span><span class='line'>      var container = new CompositionContainer();
-</span><span class='line'>      container.ComposeParts(this);
-</span><span class='line'>    }
-</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-</div>
-
-
-<div>9.添加组合部件到容器中，在MEF中，有几中方法可以完成这个任务，一种是直接添加存在的部件实例，而第二种方法是通过一个目录(这种方法更加常用，目录将会在后面的章节提到)</div>
-
-
-<div><strong>直接添加parts到容器中</strong></div>
-
-
-<div>在Compose()方法中手动添加每一个需要组合的部件，通过ComposeParts()扩展方法完成这个不知。在以下的例子中，EmailSender的实例将会和当前导入ImessageSender的宿主类一起添加到容器中</div>
-
-
-<div>
-<div>
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
-</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
-</span><span class='line'>  using System.Reflection;
-</span><span class='line'>  using System;
-</span><span class='line'>
-</span><span class='line'>  public class Program
-</span><span class='line'>  {
-</span><span class='line'>    public static void Main(string[] args)
-</span><span class='line'>    {
-</span><span class='line'>      Program p = new Program();
-</span><span class='line'>      p.Run();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    public void Run()
-</span><span class='line'>    {
-</span><span class='line'>      Compose();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    private void Compose()
-</span><span class='line'>    {
-</span><span class='line'>      var container = new CompositionContainer();
-</span><span class='line'>      container.ComposeParts(this);
-</span><span class='line'>    }
-</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-</div>
-</div>
-
-
-<div><strong>通过装配件目录添加parts</strong></div>
-
-
-<div>通过使用目录，容器自动创建parts而不必明确添加他们。为了完成这个步骤，在Compose()方法中创建一个目录,然后把它传递到容器的构造函数中</div>
-
-
-<div>
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
-</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
-</span><span class='line'>  using System.Reflection;
-</span><span class='line'>  using System;
-</span><span class='line'>
-</span><span class='line'>  public class Program
-</span><span class='line'>  {
-</span><span class='line'>    public static void Main(string[] args)
-</span><span class='line'>    {
-</span><span class='line'>      Program p = new Program();
-</span><span class='line'>      p.Run();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    public void Run()
-</span><span class='line'>    {
-</span><span class='line'>      Compose();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    private void Compose()
-</span><span class='line'>    {
-</span><span class='line'>      var container = new CompositionContainer();
-</span><span class='line'>      container.ComposeParts(this);
-</span><span class='line'>    }
-</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-</div>
-
-
-<div>做完以上所有步骤后，所有的代码应该像这样</div>
-
-
-<div>
-
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>using System.ComponentModel.Composition;
-</span><span class='line'>  using System.ComponentModel.Composition.Hosting;
-</span><span class='line'>  using System.Reflection;
-</span><span class='line'>  using System;
-</span><span class='line'>
-</span><span class='line'>  public class Program
-</span><span class='line'>  {
-</span><span class='line'>    public static void Main(string[] args)
-</span><span class='line'>    {
-</span><span class='line'>      Program p = new Program();
-</span><span class='line'>      p.Run();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    public void Run()
-</span><span class='line'>    {
-</span><span class='line'>      Compose();
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    private void Compose()
-</span><span class='line'>    {
-</span><span class='line'>      var container = new CompositionContainer();
-</span><span class='line'>      container.ComposeParts(this);
-</span><span class='line'>    }
-</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-</div>
-
-
-<p>当以上代码被编译和执行，应用程序将会和IMessageSender组合在一起.Send()方法会被调用然后输出"Message Sent"到console窗口中。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[【WPF】翻译：使用ViewModel模式来简化WPF的TreeView]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/07/15/using-viewmode-to-simplify-treeview/"/>
-    <updated>2011-07-15T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/07/15/using-viewmode-to-simplify-treeview</id>
-    <content type="html"><![CDATA[<div id="cnblogs_post_body">
-
-<strong>英文原文地址：</strong><a href="http://www.codeproject.com/KB/WPF/TreeViewWithViewModel.aspx">Simplifying the WPF TreeView by Using the ViewModel Pattern</a>
-
-<strong>作者：</strong>Josh Smith
-
-<strong>文中代码的下载地址：</strong><a href="http://www.codeproject.com/KB/WPF/TreeViewWithViewModel/TreeViewWithViewModelDemo.zip">http://www.codeproject.com/KB/WPF/TreeViewWithViewModel/TreeViewWithViewModelDemo.zip</a>
-
-好像需要登录才能下载，我放一个上来吧<a href="http://files.cnblogs.com/RMay/TreeViewWithViewModelDemo.zip">http://files.cnblogs.com/RMay/TreeViewWithViewModelDemo.zip</a>
-
-这里再加上一个：<a href="http://www.gokuai.com/f/7Cp19150tXw0jb7E">够快下载</a>
-
-<em><strong>译者按：</strong>WPF中对TreeView的操作同WinForm中有很大的不同。这篇文章讲述了如何用ViewModel模式来简化WPF的TreeView，个人感觉非常有价值，尤其是在WPF中思维模式跟以往有很大不同的情况下。希望能对大家有所帮助并且触类旁通。第一次做翻译，有错误的地方敬请谅解。</em>
-
- 
-<h1>介绍</h1>
-这篇文章探讨了如何通过使用ViewModel模式来更容易的使用WPF中的TreeView控件。在此过程中，我们会看到为何人们经常在使用WPF的TreeView时遇到困难，什么是ViewModel，以及两个实例程序，这两个程序展现了如何结合TreeView和ViewModel。其中一个实例展示了如何创建一个具有搜索功能的TreeView，另一个则说明了如何实现延迟加载（lazy-loading）。
-
- 
-<h1>TreeView的背景</h1>
-WPF中的TreeView控件背负了一个名不副实的坏名声。很多人尝试着使用它，却发现非常难用。其实问题在于人们经常试着按照Windows Forms的TreeView控件的使用方式来使用它。为了发挥（<em>原文是leverage，意为杠杆作用，不好翻译，呵呵</em>）WPF TreeView的丰富特性，你不能再使用跟Windows Forms一样的编程技术了。这也是WPF要求你为了更好恰当地使用它（<em>指WPF</em>）而转换思维方式的另一个例子。毕竟我们已经走到这一步了。（<em>原文是We aren't in Kansas anymore, Toto。来自电影《绿野仙踪》：Toto，I've got a feeling we're not in Kansas anymore</em>）
-
-在Windows Forms中，使用TreeView非常容易，因为它非常简单。这种简单建立在Windows Forms的TreeView完全不灵活的事实上，比如不提供UI的虚拟化（<em>UI virtualization</em>），不提供外观的个性化，同时由于它不支持数据绑定，你必须将数据存到它的节点中。WinForm的TreeView根本不够好（<em>原文是The WinForms TreeView is "good enough for government work"，"good enough for government work"是说不够好</em>）。
-
-对比之下，WPF的TreeView非常的灵活，天生支持UI虚拟化（比如，TreeViewItems是按需创建created on-demand），完全允许个性化外观，同时完全支持数据绑定。这些优秀的特性是需要代价的。他们让WPF的TreeView比WinForm的TreeView更加复杂。一旦你学会了如何正确地使用WPF的TreeView，这些复杂性将不在话下，同时发挥WPF TreeView的全部能力将变得非常容易。
-
-如果你对如何个性化WPF的TreeView感兴趣，可以查看<a href="http://www.codeproject.com/KB/WPF/CustomTreeViewLayout.aspx">这篇文章</a>和<a href="http://www.codeproject.com/KB/WPF/AdvancedCustomTreeViewLyt.aspx">这篇文章</a>。
-
-<!--more-->
-<h1>ViewModel的背景</h1>
-早在2005年，John Gossman写了一篇关于Model-View-ViewModel模式的博文，这种模式被他所在的微软的项目组用来创建Expression Blend（即'Sparkle'）。它跟Martin Fowler的Presentation Model非常相似，唯一不同的是，它填平了presentation model和使用了WPF的丰富的数据绑定的view之间的沟壑。在Dan Crevier发表了神作DataModel-View-ViewModel series博文系列之后，(D)MVVM模式开始变得流行起来。
-
-(Data)Model-View-ViewModel模式跟经典的Model-View-Presenter模式很相似，除了你需要一个为View量身定制的model，这个model就是ViewModel。ViewModel包含所有由UI特定的接口和属性，它们是轻松构建UI的必要元素。View绑定到ViewModel，然后执行一些命令在向它请求一个动作。而反过来，ViewModel跟Model通讯，告诉它更新来响应UI。
-
-这使得为应用构建UI非常的容易。往一个应用程序上贴一个界面越容易，外观设计师就越容易使用Blend来创建一个漂亮的界面。同时，当UI和功能越来越松耦合的时候，功能的可测试性就越来越强。为什么不想要一个漂亮的界面同时又有一套干净有效的单元测试呢？
-
- 
-<h1>究竟是什么让TreeView这么难用？</h1>
-如果你的使用方法正确的话，其实TreeView是很好用的。正确的使用方法，反过来说，是根本不要直接的使用它！一般地，你需要直接地对一个TreeView设置属性，不时地调用方法。这是无法逃避的，同时这么做也没什么错。不过，如果你发现你正深陷于对控件的调用（原文是the guts of the control，不好翻译），那也许你并没有采取最佳的方式。如果你的TreeView是数据绑定的，然后你发现你正试图通过程序来折腾这些项，那么你就是没有使用正确的方法。如果你发现监听ItemContainerGenerator的StatusChanged事件来访问TreeViewItem的子节点，那你简直就是脱轨了！相信我，根本没必要这么丑陋和困难。有更好的方法！
-
-按照WinForm TreeView的方式来使用WPF TreeView的根本问题在于，正如我前面提到的，它们是非常不同的控件。WPF的TreeView允许你通过数据绑定来生成它的Items。这意味着它会为你创建TreeViewItems。由于TreeViewItems是被控件创建的，而不是你，因此它不能保证当你需要时，某个数据项对应的TreeViewItem还存在。你必须问问TreeView的ItemContainerGenerator是否已经为你创建了TreeViewItem。如果没有，你必须监听它的StatusChanged事件，当它创建了自己的子元素之后通知你。
-
-有趣的不止这些！如果你想获得树中一个非常复杂，非常深的TreeViewItem，你必须问问他的父TreeViewItem，而不是TreeView控件，是否它的ItemContainerGenerator已经创建了该项。但是，你要怎样才能拿到它的父节点的引用当这个父节点还没有被创建呢？当父节点的父节点还没有被创建的时候又是怎样的呢？子子孙孙，无穷溃也。这是相当痛苦的。
-
-正如你所见的，WPF的TreeView是一个复杂的野兽。如果你试着用错误的方式来使用它，将不是那么容易的。幸运的是，如果你用正确的方式使用它，那就是小事一桩。那么，让我们来看看怎么样通过正确的方式来使用它……
-
- 
-<h1>ViewModel是解救的办法</h1>
-WPF是伟大的，因为它基本上要求你分离应用程序的数据和UI。前面击节中列出的问题都是应为违背了这个原则并且把UI当作数据存储的地方。 一旦你不再把TreeView当成一个存储数据的地方，而是看做一个展现数据的地方，那么一切都将水到渠成。这就是ViewModel这个想法的由来。
-
-比起写代码去折腾TreeView里面的项，更好的方法是写一个被TreeView绑定的ViewModel，然后写代码来操作你的ViewModel。这不仅仅能让你无视TreeView的复杂性，还能让你写出能够很容易进行单元测试的代码。要为那些紧密依赖于TreeView运行时行为的类写有意义的单元测试代码几乎是不可能的，但是要为那些对这些无关行为一无所知的类写单元测试代码却很容易。
-
- 
-
-现在，我们来看看如何实现这些概念。
-
-示例解决方案
-
-这篇文章附带了两个示例程序，能从页面顶部下载。该Solution包含了两个工程。BusinessLib类库工程包含了简单的描述地域的类，这些类被当作纯粹的数据传输对象。同时它还包含了一个Database类，这个类初始化数据，并且返回这些数据传输对象（译者：说白了就是模拟的数据源）。另外的一个工程，TreeViewWithViewModelDemo，包含一些示例程序。这些程序使用BusinessLib程序集中给出的数据对象，并且在放到TreeView中展示之前，把它们包装到一个ViewModel中去。
-
-下面是这个Solution的一个工程树截图：
-
-<img src="http://images.cnblogs.com/cnblogs_com/rmay/SolutionExplorer.png" alt="" width="397" height="679" border="0"><h1>Demo1 - 带文本搜索的Family Tree</h1>
-第一个示例程序中我们构建了一个展示Family Tree的TreeView。它在界面的底部提供了搜索的功能。截图如下：
-
-<img src="http://images.cnblogs.com/cnblogs_com/rmay/FamilyTree_screenshot.png" alt="" width="399" height="399" border="0">
-
-当用户输入一些关键字，敲回车，或者是点击了“Find”按钮之后，第一个匹配的项目将会被展示出来。继续搜索将在所有匹配项之间循环。所有的这些逻辑都在ViewModel中。在深入ViewModel的工作方式之前，我们先看看相关代码。下面是TextSearchDemoControl的后台代码。
-<div>public partial class TextSearchDemoControl : UserControl
-{
-readonly FamilyTreeViewModel _familyTree;public TextSearchDemoControl()
-{
-InitializeComponent();// Get raw family tree data from a database.
-Person rootPerson = Database.GetFamilyTree();// Create UI-friendly wrappers around the
-// raw data objects (i.e. the view-model).
-_familyTree = new FamilyTreeViewModel(rootPerson);
-
-// Let the UI bind to the view-model.
-base.DataContext = _familyTree;
-}
-
-void searchTextBox_KeyDown(object sender, KeyEventArgs e)
-{
-if (e.Key == Key.Enter)
-_familyTree.SearchCommand.Execute(null);
-}
-}
-
-</div>
-构造函数展示了我们如何把原始数据转换到ViewModel中，然后把它设为UserControl的DataContext。在BusinessLib程序集中定义的Person类，非常简单：
-<div>/// <summary>
-/// A simple data transfer object (DTO) that contains raw data about a person.
-/// </summary>
-public class Person
-{
-readonly List<Person> _children = new List<Person>();
-public IList<Person> Children
-{
-get { return _children; }
-}public string Name { get; set; }
-}</div>
- 
-<h1><strong>PersonViewModel</strong></h1>
-由于Person类是应用的数据访问层返回的东西，它绝对不适合直接被UI使用。每个Person对象最终被包装到一个PersonViewModel类的实例中，这样就让它拥有了额外的能力，比如被展开和选中。由此看出，FamilyTreeViewModel类，完成了把Person对象包装到PersonViewModel对象中的过程，下面是它的构造函数：
-<div>public FamilyTreeViewModel(Person rootPerson)
-{
-_rootPerson = new PersonViewModel(rootPerson);_firstGeneration = new ReadOnlyCollection<PersonViewModel>(
-new PersonViewModel[]
-{
-_rootPerson
-});_searchCommand = new SearchFamilyTreeCommand(this);
-}</div>
- 
-
-私有的PersonViewModel的构造函数通过递归的方式遍历Family Tree，把每一个Person包装到PersonViewModel中。下面是代码：
-
- 
-<div>public PersonViewModel(Person person)
-: this(person, null)
-{
-}private PersonViewModel(Person person, PersonViewModel parent)
-{
-_person = person;
-_parent = parent;_children = new ReadOnlyCollection<PersonViewModel>(
-(from child in _person.Children
-select new PersonViewModel(child, this))
-.ToList<PersonViewModel>());
-}</div>
- 
-
-PersonViewModel有两种成员：一种关联到展现，另外一种关联到Person的状态。展现相关的属性将会被TreeViewItem所绑定，而状态相关的属性绑定到TreeViewItem的内容。其中一个展现相关的属性IsSelected，如下：
-
- 
-<div>/// <summary>
-/// Gets/sets whether the TreeViewItem
-/// associated with this object is selected.
-/// </summary>
-public bool IsSelected
-{
-get { return _isSelected; }
-set
-{
-if (value != _isSelected)
-{
-_isSelected = value;
-this.OnPropertyChanged("IsSelected");
-}
-}
-}</div>
- 
-
-这个属性跟一个"person"没有任何关系，而是一个简单的用于同步View和ViewModel的状态标识。注意属性的setter调用了OnPropertyChanged方法，该方法会激发PropertyChanged事件。该事件是INotifyPropertyChanged接口的唯一成员。INotifyPropertyChanged是一个UI相关的接口，这就是为什么PersonViewModel类实现该接口，而Person类不实现。
-
-一个展现相关属性的更有趣的例子是PersonViewModel的IsExpaned属性。这个属性解决了怎么保证在必要的时候，跟某个数据对象对应的TreeViewItem的展开问题。记住，如果直接用TreeView来编程解决这些问题，可是痛苦不堪的。
-<div>/// <summary>
-/// Gets/sets whether the TreeViewItem
-/// associated with this object is expanded.
-/// </summary>
-public bool IsExpanded
-{
-get { return _isExpanded; }
-set
-{
-if (value != _isExpanded)
-{
-_isExpanded = value;
-this.OnPropertyChanged("IsExpanded");
-}// Expand all the way up to the root.
-if (_isExpanded && _parent != null)
-_parent.IsExpanded = true;
-}
-}</div>
- 
-
-正如我前面所提到的，PersonViewModel同时还有跟Person状态相关的属性，比如：
-<div>public string Name
-{
-get { return _person.Name; }
-}</div>
- 
-<h1><strong>界面部分</strong></h1>
-把一个TreeView绑定到PersonViewModel的代码是非常简洁的。注意TreeViewItem和PersonViewModel之间的联系依靠的是控件的ItemContainerStyle：
-<div><TreeView ItemsSource="{Binding FirstGeneration}">
-<TreeView.ItemContainerStyle>
-<!--
-This Style binds a TreeViewItem to a PersonViewModel.
--->
-<Style TargetType="{x:Type TreeViewItem}">
-<Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
-<Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-<Setter Property="FontWeight" Value="Normal" />
-<Style.Triggers>
-<Trigger Property="IsSelected" Value="True">
-<Setter Property="FontWeight" Value="Bold" />
-</Trigger>
-</Style.Triggers>
-</Style>
-</TreeView.ItemContainerStyle><TreeView.ItemTemplate>
-<HierarchicalDataTemplate ItemsSource="{Binding Children}">
-<TextBlock Text="{Binding Name}" />
-</HierarchicalDataTemplate>
-</TreeView.ItemTemplate>
-</TreeView></div>
- 
-
-界面上的另外一块是搜索区。这个区域提供了一个可供用户输入关键字的输入框，一个提供搜索的Find按钮。下面是xaml代码：
-<div><StackPanel
-HorizontalAlignment="Center"
-Margin="4"
-Orientation="Horizontal"
->
-<TextBlock Text="Search for:" />
-<TextBox
-x:Name="searchTextBox"
-KeyDown="searchTextBox_KeyDown"
-Margin="6,0"
-Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-Width="150"
-/>
-<Button
-Command="{Binding SearchCommand}"
-Content="_Find"
-Padding="8,0"
-/>
-</StackPanel></div>
- 
-
-现在，我们来看看FamilyTreeViewModel中对UI的支持。
-
- 
-
-<strong>FamilyTreeViewModel</strong>
-
-搜索功能封装在FamilyTreeViewModel类中。用于输入关键字的TextBox绑定到SearchText属性，该属性的声明如下：
-<div>/// <summary>
-/// Gets/sets a fragment of the name to search for.
-/// </summary>
-public string SearchText
-{
-get { return _searchText; }
-set
-{
-if (value == _searchText)
-return;_searchText = value;_matchingPeopleEnumerator = null;
-}
-}</div>
- 
-
-当用户点击Find按钮的时候，FamilyTreeViewModel的SearchCommand被执行。该命令类被包含在FamilyTreeViewModel中，不过它的属性是public的方式暴露给View的。
-<div>/// <summary>
-/// Returns the command used to execute a search in the family tree.
-/// </summary>
-public ICommand SearchCommand
-{
-get { return _searchCommand; }
-}private class SearchFamilyTreeCommand : ICommand
-{
-readonly FamilyTreeViewModel _familyTree;public SearchFamilyTreeCommand(FamilyTreeViewModel familyTree)
-{
-_familyTree = familyTree;
-}public bool CanExecute(object parameter)
-{
-return true;
-}
-
-event EventHandler ICommand.CanExecuteChanged
-{
-// I intentionally left these empty because
-// this command never raises the event, and
-// not using the WeakEvent pattern here can
-// cause memory leaks. WeakEvent pattern is
-// not simple to implement, so why bother.
-add { }
-remove { }
-}
-
-public void Execute(object parameter)
-{
-_familyTree.PerformSearch();
-}
-}
-
-</div>
-如果你熟悉WPF技术和理论，你也许会吃惊为什么我没有使用RoutedCommand。通常我比较喜欢用RoutedComand，好处多多，不过在这里，直接实现一个ICommand接口更加清晰和简单。注意，请仔细阅读CanExecuteChanged声明前的注释。
-
- 
-
-搜索部分的逻辑完全不依赖TreeView或者TreeViewItem。它只是简单的遍历ViewModel对象，然后设置ViewModel的属性。试着直接用TreeView的API来写这段代码将难得多并且漏洞百出。以下是我的搜索逻辑：
-<div>IEnumerator<PersonViewModel> _matchingPeopleEnumerator;
-string _searchText = String.Empty;void PerformSearch()
-{
-if (_matchingPeopleEnumerator == null || !_matchingPeopleEnumerator.MoveNext())
-this.VerifyMatchingPeopleEnumerator();var person = _matchingPeopleEnumerator.Current;if (person == null)
-return;
-
-// Ensure that this person is in view.
-if (person.Parent != null)
-person.Parent.IsExpanded = true;
-
-person.IsSelected = true;
-}
-
-void VerifyMatchingPeopleEnumerator()
-{
-var matches = this.FindMatches(_searchText, _rootPerson);
-_matchingPeopleEnumerator = matches.GetEnumerator();
-
-if (!_matchingPeopleEnumerator.MoveNext())
-{
-MessageBox.Show(
-"No matching names were found.",
-"Try Again",
-MessageBoxButton.OK,
-MessageBoxImage.Information
-);
-}
-}
-
-IEnumerable<PersonViewModel> FindMatches(string searchText, PersonViewModel person)
-{
-if (person.NameContainsText(searchText))
-yield return person;
-
-foreach (PersonViewModel child in person.Children)
-foreach (PersonViewModel match in this.FindMatches(searchText, child))
-yield return match;
-}
-
-</div>
- 
-<h1>Demo2 - 按需加载的Geographic Breakdown</h1>
-下一个示例构建了一个包含一个国家不同地域信息的TreeView。它处理了三种不同类型的对象：Region，State和City。每种类型都有对应的展现类定义，TreeViewItem绑定到这些类的实例。
-
- 
-
-所有这些展现相关的类都继承自TreeViewItemViewModel，该类提供了和前一个Demo中PersonViewModel相同的跟展现相关的功能。同时，在这个Demo中的项的都是延迟加载的，这意味着程序不会去获取每个项的子项，把他们加到视图中，只有当用户想要查看时才这么做。截图如下：
-
-<img src="http://images.cnblogs.com/cnblogs_com/rmay/LoadOnDemand_screenshot.png" alt="" width="399" height="399" border="0">
-
-正如我上面提到的，有三种独立的数据类定义，并且每个数据类定义都有相关的展现类定义。所有的这些展现类都从TreeViewItemViewModel继承而来，如下面的接口所描述的：
-<div>interface ITreeViewItemViewModel : INotifyPropertyChanged
-{
-ObservableCollection<TreeViewItemViewModel> Children { get; }
-bool HasDummyChild { get; }
-bool IsExpanded { get; set; }
-bool IsSelected { get; set; }
-TreeViewItemViewModel Parent { get; }
-}</div>
- 
-
-LoadOnDemandDemoControl的后台代码如下所示：
-<div>public partial class LoadOnDemandDemoControl : UserControl
-{
-public LoadOnDemandDemoControl()
-{
-InitializeComponent();Region[] regions = Database.GetRegions();
-CountryViewModel viewModel = new CountryViewModel(regions);
-base.DataContext = viewModel;
-}
-}</div>
- 
-
-构造函数简单的从BusinessLib程序集中加载一些数据对象，创建对界面友好（UI-friendly）的包装器，然后让ViewMode绑定到这些包装器。View的DataContext设为如下的类型的实例：
-<div>/// <summary>
-/// The ViewModel for the LoadOnDemand demo. This simply
-/// exposes a read-only collection of regions.
-/// </summary>
-public class CountryViewModel
-{
-readonly ReadOnlyCollection<RegionViewModel> _regions;public CountryViewModel(Region[] regions)
-{
-_regions = new ReadOnlyCollection<RegionViewModel>(
-(from region in regions
-select new RegionViewModel(region))
-.ToList());
-}public ReadOnlyCollection<RegionViewModel> Regions
-{
-get { return _regions; }
-}
-}</div>
- 
-
-TreeViewItemViewModel中的代码比较有趣。它几乎就是上一个Demo中PersonViewModel的复制，只是多了一个有趣的特性。TreeViewItemViewModel内建对子项按需加载的功能。这个逻辑写在该类的构造函数和IsExpanded属性的Setter中。该逻辑如下：
-<div>protected TreeViewItemViewModel(TreeViewItemViewModel parent, bool lazyLoadChildren)
-{
-_parent = parent;_children = new ObservableCollection<TreeViewItemViewModel>();if (lazyLoadChildren)
-_children.Add(DummyChild);
-}/// <summary>
-/// Gets/sets whether the TreeViewItem
-/// associated with this object is expanded.
-/// </summary>
-public bool IsExpanded
-{
-get { return _isExpanded; }
-set
-{
-if (value != _isExpanded)
-{
-_isExpanded = value;
-this.OnPropertyChanged("IsExpanded");
-}
-
-// Expand all the way up to the root.
-if (_isExpanded && _parent != null)
-_parent.IsExpanded = true;
-
-// Lazy load the child items, if necessary.
-if (this.HasDummyChild)
-{
-this.Children.Remove(DummyChild);
-this.LoadChildren();
-}
-}
-}
-
-/// <summary>
-/// Returns true if this object's Children have not yet been populated.
-/// </summary>
-public bool HasDummyChild
-{
-get { return this.Children.Count == 1 && this.Children[0] == DummyChild; }
-}
-
-/// <summary>
-/// Invoked when the child items need to be loaded on demand.
-/// Subclasses can override this to populate the Children collection.
-/// </summary>
-protected virtual void LoadChildren()
-{
-}
-
-</div>
-真正加载子项的工作留给子类去实现。它们重载LoadChildren方法来提供一个跟类型相关的加载子项的实现。比如下面的RegionViewModel类，它重载了该方法来加载State对象并且创建StateViewModel对象。
-<div>public class RegionViewModel : TreeViewItemViewModel
-{
-readonly Region _region;public RegionViewModel(Region region)
-: base(null, true)
-{
-_region = region;
-}public string RegionName
-{
-get { return _region.RegionName; }
-}protected override void LoadChildren()
-{
-foreach (State state in Database.GetStates(_region))
-base.Children.Add(new StateViewModel(state, this));
-}
-}
-
-</div>
-界面部分只包含一个TreeView，XAML如下：
-<div><TreeView ItemsSource="{Binding Regions}">
-<TreeView.ItemContainerStyle>
-<!--
-This Style binds a TreeViewItem to a TreeViewItemViewModel.
--->
-<Style TargetType="{x:Type TreeViewItem}">
-<Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
-<Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-<Setter Property="FontWeight" Value="Normal" />
-<Style.Triggers>
-<Trigger Property="IsSelected" Value="True">
-<Setter Property="FontWeight" Value="Bold" />
-</Trigger>
-</Style.Triggers>
-</Style>
-</TreeView.ItemContainerStyle><TreeView.Resources>
-<HierarchicalDataTemplate
-DataType="{x:Type local:RegionViewModel}"
-ItemsSource="{Binding Children}"
->
-<StackPanel Orientation="Horizontal">
-<Image Width="16" Height="16"
-Margin="3,0" Source="Images"Region.png" />
-<TextBlock Text="{Binding RegionName}" />
-</StackPanel>
-</HierarchicalDataTemplate><HierarchicalDataTemplate
-DataType="{x:Type local:StateViewModel}"
-ItemsSource="{Binding Children}"
->
-<StackPanel Orientation="Horizontal">
-<Image Width="16" Height="16"
-Margin="3,0" Source="Images"State.png" />
-<TextBlock Text="{Binding StateName}" />
-</StackPanel>
-</HierarchicalDataTemplate><DataTemplate DataType="{x:Type local:CityViewModel}">
-<StackPanel Orientation="Horizontal">
-<Image Width="16" Height="16"
-Margin="3,0" Source="Images"City.png" />
-<TextBlock Text="{Binding CityName}" />
-</StackPanel>
-</DataTemplate>
-</TreeView.Resources>
-</TreeView>
-
-</div>
- 
-<h1>结论</h1>
-如果你曾经跟WPF的TreeView较过劲儿，也许这篇文章给你指明一个使用该控件的别的方法。一旦你开始按部就班，而不是对着干（<em>going down with the flow, not swim upstream</em>），WPF会让你的生活非常好过。最难的是让你放弃你曾经苦学而来的知识，而适应处理同样的问题时迥异的方法。
-
- 
-<h1>特别鸣谢</h1>
-我想感谢<a href="http://sachabarber.net/">Sacha Barber</a> 给我鼓励让我写这篇文章。在我开发示例程序的时候，他给予了我无价的回馈和请求。如果不是为了他，我想我永远都不会写这篇文章。
-
- 
-<h1>关于作者</h1>
-Josh creates software. C# and XAML are his preferred modes of expression.
-He works at Infragistics as an Experience Design Application Engineer, helping to make the .NET desktop world a better place.
-He also plays the music of J.S. Bach on the piano.
-Most of all, he loves being with his wonderful girlfriend.
-Download his WPF.JoshSmith library <a href="http://www.codeproject.com/useritems/WPFJoshSmith.asp" rel="nofollow">here</a>[<a title="New Window" href="http://www.codeproject.com/useritems/WPFJoshSmith.asp" rel="nofollow" target="_blank">^</a>]
-You can check out his WPF blog <a href="http://joshsmithonwpf.wordpress.com/" rel="nofollow">here</a>[<a title="New Window" href="http://joshsmithonwpf.wordpress.com/" rel="nofollow" target="_blank">^</a>].
-You can take his guided tour of WPF <a href="http://joshsmithonwpf.wordpress.com/a-guided-tour-of-wpf/" rel="nofollow">here</a>[<a title="New Window" href="http://joshsmithonwpf.wordpress.com/a-guided-tour-of-wpf/" rel="nofollow" target="_blank">^</a>].
-You can check out a powerful debugger visualizer he worked on called Mole for Visual Studio <a href="http://moleproject.com/" rel="nofollow">here</a>[<a title="New Window" href="http://moleproject.com/" rel="nofollow" target="_blank">^</a>].
-His Microsoft MVP profile can be viewed <a href="https://mvp.support.microsoft.com/profile=5F7EC527-FEBC-4A5D-A11F-EEF73467D3D5" rel="nofollow">here</a>[<a title="New Window" href="https://mvp.support.microsoft.com/profile=5F7EC527-FEBC-4A5D-A11F-EEF73467D3D5" rel="nofollow" target="_blank">^</a>].
-<table><tbody>
-<tr id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_jobTitleRow">
-<td nowrap>Occupation:</td>
-<td width="100%">Software Developer (Senior)</td>
-</tr>
-<tr id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_companyRow">
-<td>Company:</td>
-<td width="100%">Infragistics, Inc.</td>
-</tr>
-<tr id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_locationRow">
-<td>Location:</td>
-<td width="100%">
-<img src="http://www.codeproject.com/script/Geo/Images/US.gif" alt="United States" width="16" height="11"> United States</td>
-</tr>
-</tbody></table>
-</div>
-
-
-<div id="MySignature">欢迎访问棒棒牛论坛 http://www.bbniu.com/forum</div>
-
+<p>最后，灰常感谢gmbox的作者能够开源.</p>
 
 <p> </p>
 
-<p>转自：<a href="http://www.cnblogs.com/RMay/archive/2008/08/14/1268028.html">http://www.cnblogs.com/RMay/archive/2008/08/14/1268028.html</a></p>
+<p><strong>python+gtk版gmbox项目地址:</strong></p>
+
+<p><a href="http://code.google.com/p/gmbox/">http://code.google.com/p/gmbox/</a></p>
+
+<p>希望各位大牛能一起完善他。</p>
+
+<p><strong>wpf版gmbox下载地址:</strong>
+<a title="dbank下载" href="http://dl.dbank.com/c0iuu5pkfg" target="_blank">Dbank下载</a>
+<a title="min下载" href="http://min.us/mbykyJE" target="_blank">min下载</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/07/05/wpf-thread-model/"/>
+    <updated>2011-07-05T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/07/05/wpf-thread-model</id>
+    <content type="html"><![CDATA[<p>很好的学习资料，写的简浅易懂，喜欢的同学可以看看</p>
+
+<p><a title="WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型(上)" href="http://www.cnblogs.com/Nullnoid/archive/2008/08/03/1259012.html" target="_blank">WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型(上)</a></p>
+
+<p><a title="WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型下(下)" href="http://www.cnblogs.com/Nullnoid/archive/2008/08/06/1259429.html%20" target="_blank">WPF学习与分享之二：DISPATCHEROBJECT与WPF线程模型(下)</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MVC导航属性无法显示]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/05/14/mvc-dao-hang-shu-xing-wu-fa-xian-shi/"/>
+    <updated>2011-05-14T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/05/14/mvc-dao-hang-shu-xing-wu-fa-xian-shi</id>
+    <content type="html"><![CDATA[<p>在model的一对多映射中,发现导航属性无法正常获取，通过下断点查看,存的时候确实有存进去,而且对应的数据库中也已经出现导航属性对应的model的数据,但是在读取该导航属性的时候，却发现结果为null,即没有正确映射到model上。后来再看了一遍教程的说明,发现少了virtual属性,以致</p>
+
+<p>Entity Framework没有使用到延迟加载特性，故没有正确加载导航属性,加上virtual修饰符即可。</p>
+
+<p>如果不知小狼在说什么的直接无视。。。。。</p>
+
+<p>迟点会写一篇延迟加载的文章滴~</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MVC3ajax无效的问题]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/05/12/mvc3ajax-invalid/"/>
+    <updated>2011-05-12T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/05/12/mvc3ajax-invalid</id>
+    <content type="html"><![CDATA[<p>今天看到这个例子的时候：<a href="http://msdn.microsoft.com/zh-cn/library/dd381533(v=VS.100).aspx" title="msdn example">例子</a></p>
+
+<p>我完全是按他的步骤来做的，不同的是教程中使用的是mvc2,而我用的是mvc3,结果@Ajax.ActionLink()的结果和普通的@Html.ActionLink()得到的结果完全一样，并没有体现出Ajax的效果，不应该是这样啊，具体情况看下面：</p>
+
+<p>这里是输入页面：<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/mvcajax1.png" title="mvc ajax1" alt="mvcajax1" /><br/>
+点击Submit按钮提交信息的时候，正常的情况应该单单替换了上图中的Nothing Entered文本，而Page Rendered: 13:29:42是没有变化的。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/mvcajax2.png" title="mvc ajax2" alt="mvcajax2" /></p>
+
+<!--more-->
+
+
+<p>但是结果却是在新的页面显示了结果，很明显没有使用到Ajax的效果。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/mvcajax3.png" title="mvc ajax3" alt="mvcajax3" /><br/>
+为什么会这样呢？google了一下，发现有类似的问题,但是他的原因是没有引用MicrosoftAjax<em>.js(</em>表示任意字符，即MicrosoftAjax开头的js文件),而我已经添加了这两个文件的引用.</p>
+
+<p>为了找出问题，小狼只好再新建了mvc2的项目，再按照和mvc3完全一样的步骤修改代码，完了运行一下…</p>
+
+<p>神了个奇，mvc2项目就完全正常，那么问题出现在那呢？</p>
+
+<p>在对比了引用的装配件，javascript脚本,web.config配置后，发现问题在于mvc3的web.config配置文件中。
+多了</p>
+
+<pre><code>&lt;appSettings&gt;
+&lt;add key="webpages:Version" value="1.0.0.0"/&gt;
+&lt;add key="ClientValidationEnabled" value="true"/&gt;
+&lt;add key="UnobtrusiveJavaScriptEnabled" value="true"/&gt;
+&lt;/appSettings&gt;
+</code></pre>
+
+<p>把<code>&lt;add key="UnobtrusiveJavaScriptEnabled" value="true"/&gt;</code>删掉后，发现mvc3的项目也能正常出现ajax效果。<br/>
+但是新的问题又来了。<code>&lt;add key="UnobtrusiveJavaScriptEnabled" value="true"/&gt;</code>这句是激活Unobtrusive客户端验证必须的，难道不可以共存，这不应该啊。</p>
+
+<p>知道了问题发生在那之后就好办了。Google了一下，终于得到最终的解释：<br/>
+和mvc1和mvc2不一样，在mvc3中使用jquery作为默认javascript框架,所以html helper都是基于jquery框架的,所以MicrosoftAjax*脚本已经不再使用了，所以引用了MicrosoftAjax.js没有起作用。</p>
+
+<p><strong>总结一下:</strong></p>
+
+<ul>
+<li>最终解决办法就是在site.master(ASPX引擎)或者_Layout.cshtml(RAZOR引擎)中添加jquery.unobtrusive-ajax.min.js或者jquery.unobtrusive-ajax.js的引用，而不是MicrosoftAjax*.js引用。</li>
+<li>搜索引擎是最好的老师，几乎所以问题都可以在网上搜到，当然google和baidu搜出来的内容质量则大大不一样~</li>
+</ul>
+
 ]]></content>
   </entry>
   

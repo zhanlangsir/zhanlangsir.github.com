@@ -90,26 +90,15 @@
   </header>
 
 
-<div class="entry-content"><div>在使用qtreview搭配自定义模型的时候，发现修改了模型中某项的内容时，只有鼠标处于该qtreview中，它才会刷新内容。只要鼠标在qtreeview外面时，它就维持原样~</div>
+<div class="entry-content"><p>在使用qtreview搭配自定义模型的时候，发现修改了模型中某项的内容时，只有鼠标处于该qtreview中，它才会刷新内容。只要鼠标在qtreeview外面时，它就维持原样~</p>
 
+<p>经过一番摸索，发现只要对qtreeview调用</p>
 
-<div>经过一番摸索，发现只要对qtreeview调用</div>
+<pre><code>setUpdatedEnable(false);
+setUpdateEnable(true);
+</code></pre>
 
-
-<div>
-<div>setUpdatedEnable(<span style="color: #0000ff;"><strong>false</strong></span>);
-setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</div>
-</div>
-
-
-<div>连续两次调用后，qtreeview就会进行刷新了~</div>
-
-
-<div></div>
-
-
-<div></div>
-
+<p>连续两次调用后，qtreeview就会进行刷新了~</p>
 </div>
 
 
@@ -153,7 +142,7 @@ setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</di
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/02/24/my-view-ofqt-coordinate-system/" title="Previous Post: qt坐标系统见解">&laquo; qt坐标系统见解</a>
+        <a class="basic-alignment left" href="/blog/2012/02/24/my-view-of-qt-coordinate-system/" title="Previous Post: qt坐标系统见解">&laquo; qt坐标系统见解</a>
       
       
         <a class="basic-alignment right" href="/blog/2012/03/31/qtqq/" title="Next Post: qtqq">qtqq &raquo;</a>
@@ -162,13 +151,42 @@ setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</di
   </footer>
 </article>
 
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -179,15 +197,11 @@ setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</di
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

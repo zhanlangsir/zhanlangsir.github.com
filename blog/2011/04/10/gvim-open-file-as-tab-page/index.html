@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>gvim 用标签页打开文件(linux+windows) - 挨踢人生</title>
+  <meta name="author" content="zhanlang">
+
+  
+  <meta name="description" content="linux下: 对你想打开的类型右健，属性->打开方式->添加->使用自定义命令，然后输入以下命令:gvim  -p –remote-tab-silent 就OK 了。 windows下: 我们在windows中使用vim时，经常会通过右键菜单选择“Edit with Vim”来打开文件。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/10/gvim-open-file-as-tab-page/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="挨踢人生" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">挨踢人生</a></h1>
+  
+    <h2>做一个有思想的人</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhanlangsir.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Gvim 用标签页打开文件(linux+windows)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3>linux下:</h3>
+
+<p>对你想打开的类型右健，属性->打开方式->添加->使用自定义命令，然后输入以下命令:<code>gvim  -p –remote-tab-silent</code> 就OK 了。</p>
+
+<h3>windows下:</h3>
+
+<p>我们在windows中使用vim时，经常会通过右键菜单选择“Edit with Vim”来打开文件。但这种方式打开的文件，会在当前窗口中打开，而不是像Ultra Edit那样在一个新的标签页中打开<br/>
+VIM 7.0开始已经支持标签页了，怎样在打开文件时新建一个标签呢？在http://www.vim.org/有好几个Tip是与此有关的，下面介绍的两种方法，是我所尝试过的最简单有效的办法。它们分别是vim tips #1314和#1440，链接见文末的参考文档。</p>
+
+<p>还有一种方法，在cmd中逐句输入</p>
+
+<pre><code>ftype code=”C:Program FilesVimvim72gvim.exe” –remote-tab-silent “%1″
+assoc .c=code
+assoc .h=code
+</code></pre>
+
+<p>code只是一个代名词，指代他后面所指的程序。这里就是gvim（路径修改成自己的安装路径）,下面两句assoc….表示给.c和.h后缀的文件指代打开的软件，这里是code，就是gvim<br/>
+如果是c++.可以再加一句</p>
+
+<pre><code>ftype code=”C:Program FilesVimvim72gvim.exe” –remote-tab-silent “%1″
+assoc .c=code
+assoc .h=code
+</code></pre>
+
+<p>然后试着双击一下上面提到的三种后缀的文件，看有没有成功，没有的话在上面提及的三种后缀的文件上右键->属性，更改打开方式为gvim.</span>
+然后再双击一下。看是不是已经成功啦~</p>
+
+<!--more-->
+
+
+<h2>vim tip中介绍的方法</h2>
+
+<p>[方法一]<br/>
+首先介绍比较简单的方法(VIM Tip #1440):</p>
+
+<ol>
+<li>打开&#8221;开始菜单->运行&#8221;,输入&#8221;sendto&#8221;，然后选择确定，这会打开一个快捷方式文件夹</li>
+<li>右键在此文件夹中的空白位置单击，选择“新建à快捷方式”，增加一个快捷方式</li>
+<li>在&#8221;项目位置&#8221;一栏中输入下面的内容：<br/>
+<code>"C:\\Program Files\\Vim\\\vim72\\gvim.exe” -p –remote-tab-silent “%*"</code></li>
+<li>输入快捷方式的名字为&#8221;Gvim&#8221;</li>
+</ol>
+
+
+<p>现在，当你在文件浏览器中右键单击想打开的文件后，选择“发送到àgVim”，就会在gVim中新开一个标签页，打开这个文件，是不是很方便？</p>
+
+<p>[方法二]<br/>
+下面介绍方法二(VIM Tip #1314)，和方法一相比稍麻烦一点。
+如果你已经安装了VIM 7.2，并在安装过程中选择了&#8221;安装右键菜单&#8221;,那么你需要在注册表删除<code>HKCR*shellexContextMenuHandlersgvim</code>主键，听起来很麻烦？<br/>
+没关系，我们有简单的方法，不需要手动到注册表里删除，只需要卸载VIM 7.2，在卸载的过程中选择删除右键菜单，这样右键菜单就被删除。然后再重新安装VIM 7.2，在安装的过程中，不要再安装右键菜单。<br/>
+完成这一步之后，把下面的内容保存到一个文件中，取名为vim.reg；或者下载我的<a href="http://easwy.com/blog/uploads/vim/vim.reg" title="vim.reg">vim.reg</a>：</p>
+
+<pre><code>Windows Registry Editor Version 5.00
+[HKEY_CLASSES_ROOT*ShellEdit with Vim]
+@="Edit with &amp;Vim"
+[HKEY_CLASSES_ROOT*ShellEdit with Vimcommand]
+@=""C:Program FilesVimvim72gvim.exe" -p –remote-tab-silent "%1" "%*""&lt;/span&gt;
+</code></pre>
+
+<p><strong><em>注意</em></strong>,要把文件中的vim路径替换成你自己的。例如，我用的是vim 7.2，所以路径是vim 7.2的路径.<br/>
+接下来用鼠标双击vim.reg文件，把上述内容导入到注册表中.</p>
+
+<p>OK，现在你用鼠标右标想打开的文件，看到&#8221;<strong>Edit with Vim</strong>&#8220;项了吗？选中此项，就会在一个新的标签页中打开该文件了。<br/>
+这种方法虽然比方法一麻烦了一点，不过&#8221;<strong>Edit with Vim</strong>&#8220;在右键菜单里排在&#8221;<strong>发送到</strong>&#8220;之前，对一个每天数十次上百次使用的功能来说，这一点&#8221;偷懒&#8221;能省不少事呢！</p>
+
+<p>Enjoy it!</p>
+
+<h3>参考文档:</h3>
+
+<ol>
+<li><a href="http://vim.sourceforge.net/tips/tip.php?tip_id=1314&amp;rating=helpful" title="vim tip 1314">tip1314</a></li>
+<li><a href="http://vim.sourceforge.net/tips/tip.php?tip_id=1440&amp;rating=life_changing" title="vim tip 1440">tip1440</a></li>
+</ol>
+
+
+<p>转载自<a href="http://easwy.com/blog/" title="易水博客">易水博客</a>
+ </p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhanlang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/vim/'>Vim</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/10/gvim-has-no-gui-after-complier/" title="Previous Post: 编译时打开了--enable-gui=gnome2选项，却没有gvim">&laquo; 编译时打开了--enable-gui=gnome2选项，却没有gvim</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/10/hard-disk-install-win7/" title="Next Post: Windows 7硬盘安装方法">Windows 7硬盘安装方法 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/qtqq-1223/">Qtqq 12/23</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/zhanlangsir">@zhanlangsir</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zhanlangsir',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhanlang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

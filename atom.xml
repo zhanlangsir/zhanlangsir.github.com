@@ -4,7 +4,7 @@
   <title><![CDATA[挨踢人生]]></title>
   <link href="http://zhanlangsir.github.com/atom.xml" rel="self"/>
   <link href="http://zhanlangsir.github.com/"/>
-  <updated>2012-12-25T13:51:06+08:00</updated>
+  <updated>2012-12-28T00:52:17+08:00</updated>
   <id>http://zhanlangsir.github.com/</id>
   <author>
     <name><![CDATA[zhanlang]]></name>
@@ -14,139 +14,109 @@
 
   
   <entry>
+    <title type="html"><![CDATA[mutt消息状态标志]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2012/12/26/mutt-message-status-flags/"/>
+    <updated>2012-12-26T21:10:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2012/12/26/mutt-message-status-flags</id>
+    <content type="html"><![CDATA[<p>D 消息将要被删除(被标记为删除 )<br/>
+d 消息有附件被标记为删除<br/>
+K 包含PGP公共密钥<br/>
+N 新消息<br/>
+O 老消息<br/>
+P 消息经过PGP加密<br/>
+r 消息已经被回复
+S 消息用PGP签名,并且签名已经验证成功<br/>
+s 消息用PGP签名<br/>
+! 消息被标记(message is flagged)<br/>
+* 消息已打上标签(message is tagged)</p>
+
+<!--more-->
+
+
+<p>上述状态标记有的可以通过下面的命令打开和关闭<br/>
+set-flag(default w)<br/>
+clear-flag(default W)</p>
+
+<p>此外,下面这些标记反映了消息发送目标的一些情况,他们可以通过<strong>$to_chars</strong>变量来自定义<br/>
++ 消息是发给你的,并且只有一个你一个接收人<br/>
+T 消息是发给你的,但是你只是其中一个,这是一个群体邮件<br/>
+C 消息被抄送给你,你不是唯一被抄送的人<br/>
+F 消息是你发出的<br/>
+L 消息是发到一个你订阅的邮件列表的</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Qtqq v0.7.0-beta]]></title>
     <link href="http://zhanlangsir.github.com/blog/2012/12/23/qtqq-v070-beta/"/>
     <updated>2012-12-23T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2012/12/23/qtqq-v070-beta</id>
-    <content type="html"><![CDATA[<p><strong>8/13 更新:</strong></p>
+    <content type="html"><![CDATA[<h2>8/13 更新:</h2>
 
 <p>版本:v0.7.0-beta</p>
 
-<p><strong>新特性:</strong></p>
+<h2>新特性:</h2>
 
 <ul>
 <li>托盘图标根据最后一个发送消息人的头像显示</li>
-    <li>主界面可以查找好友，支持拼音首字母和汉字方式，比如张三,可以输入ZS或者张三查找</li>
-    <li>添加notify支持</li>
-    <li>托盘图标显示登陆人q号和登陆状态tip(可以无视&#8230;.)</li>
-    <li>路径支持中文,ctrl+alt+Z连续两次可激活主窗口.点击群聊天窗口的名字链接可打开好友聊天窗口!</li>
-    <li>单机托盘最小化，回复主界面</li>
-    <li>登陆界面回车登陆</li>
+<li>主界面可以查找好友，支持拼音首字母和汉字方式，比如张三,可以输入ZS或者张三查找</li>
+<li>添加notify支持</li>
+<li>托盘图标显示登陆人q号和登陆状态tip(可以无视&#8230;.)</li>
+<li>路径支持中文,ctrl+alt+Z连续两次可激活主窗口.点击群聊天窗口的名字链接可打开好友聊天窗口!</li>
+<li>单机托盘最小化，回复主界面</li>
+<li>登陆界面回车登陆</li>
 </ul>
 
 
-<p><strong><!--more-->修复bug列表:</strong></p>
+<!--more-->
+
+
+<h2>修复bug列表:</h2>
 
 <ul>
 <li>修复其他系统登陆后崩溃问题</li>
-    <li>修复打开聊天记录偶尔会卡死bug,修复群成员数量减少bug</li>
-    <li>修复启动时偶尔崩溃bug</li>
+<li>修复打开聊天记录偶尔会卡死bug,修复群成员数量减少bug</li>
+<li>修复启动时偶尔崩溃bug</li>
 </ul>
 
 
-<p><strong>其他修改:</strong></p>
+<h2>其他修改:</h2>
 
 <ul>
 <li>修改图片,配置文件存储路径</li>
 </ul>
 
 
-<div></div>
+<h2>安装方法:</h2>
 
+<pre><code>ppa:
+sudo add-apt-repository ppa:qtqq/qtqq-stable
+sudo apt-get update
+sudo apt-get install qtqq
+</code></pre>
 
-<div></div>
+<h3>手动编译:</h3>
 
+<pre><code>git clone https://github.com/zhanlangsir/Qtqq.git qtqq
+cd qtqq
+mkdir release
+cd release
+cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)
+make
+sudo make install
+</code></pre>
 
-<div><strong>安装方法:</strong></div>
+<h3>fedora需要准备的环境:</h3>
 
+<p>需要安装git cmake qt-devel libnotify-devel gtk2-devel gcc gcc-c++ qtwebkit-devel, yum install即可.</p>
 
-<div>ppa:</div>
+<h3>ubuntu需要准备的环境:</h3>
 
+<p>需要安装git cmake g++ qt4-dev-tools libgtk2.0-dev libnotify-dev
+<strong>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</strong>
+还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki" title="qtqq wiki">qtqq wiki</a></p>
 
-<div>sudo add-apt-repository ppa:qtqq/qtqq-stable</div>
-
-
-<div>sudo apt-get update</div>
-
-
-<div>sudo apt-get install qtqq</div>
-
-
-<div></div>
-
-
-<div>手动编译:</div>
-
-
-<div>git clone https://github.com/zhanlangsir/Qtqq.git qtqq</div>
-
-
-<div></div>
-
-
-<div>cd qtqq</div>
-
-
-<div>mkdir release</div>
-
-
-<div>cd release</div>
-
-
-<div>cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)</div>
-
-
-<div>make</div>
-
-
-<div>sudo make install</div>
-
-
-<div></div>
-
-
-<div></div>
-
-
-<div>fedora需要准备的环境:</div>
-
-
-<div></div>
-
-
-<div>需要安装git cmake qt-devel libnotify-devel gtk2-devel gcc gcc-c++ qtwebkit-devel, yum install即可.</div>
-
-
-<div></div>
-
-
-<div>ubuntu需要准备的环境:</div>
-
-
-<div></div>
-
-
-<div>需要安装git cmake g++ qt4-dev-tools libgtk2.0-dev libnotify-dev</div>
-
-
-<div></div>
-
-
-<div>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</div>
-
-
-<div></div>
-
-
-<div>还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki">https://github.com/zhanlangsir/Qtqq/wiki</a>
-</div>
-
-
-<div></div>
-
-
-<div>这些不全是qtqq依赖的，有的是编译环境,qtqq现在依赖的是qt4,gtk,libnofity.现在没有很好的方法去实现托盘图标,qt自带的在ubuntu下无法正常使用，所以暂时只能用gtk代替。</div>
-
+<p>这些不全是qtqq依赖的，有的是编译环境,qtqq现在依赖的是qt4,gtk,libnofity.现在没有很好的方法去实现托盘图标,qt自带的在ubuntu下无法正常使用，所以暂时只能用gtk代替。</p>
 ]]></content>
   </entry>
   
@@ -155,162 +125,113 @@
     <link href="http://zhanlangsir.github.com/blog/2012/12/23/qtqq-1223/"/>
     <updated>2012-12-23T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2012/12/23/qtqq-1223</id>
-    <content type="html"><![CDATA[<p>12/23更新:</p>
+    <content type="html"><![CDATA[<h2>12/23更新:</h2>
 
 <p>版本:v0.8.0-alpha</p>
 
-<p><strong>新特性:</strong></p>
+<h2>新特性:</h2>
 
-<p>1.聊天窗口使用tab页</p>
-
-<p><strong>其他修改：</strong></p>
-
-<p>1.关闭气泡消息提示</p>
-
-<p>2.新消息提醒改为托盘图标菜单</p>
-
-<p>3.搜索结果显示方式改变</p>
-
-<p>关于qtqq v0.8.0-alpha功能的说明可以看这里:</p>
-
-<p><a href="http://www.aitilife.com/2012/12/23/about-qtqq0-8-0-alpha">关于qtqq0-8-0-alpha</a></p>
-
-<div></div>
+<ul>
+<li>聊天窗口使用tab页</li>
+</ul>
 
 
-<div><strong>安装方法:</strong></div>
+<h2>其他修改：</h2>
+
+<ul>
+<li>关闭气泡消息提示</li>
+<li>新消息提醒改为托盘图标菜单</li>
+<li>搜索结果显示方式改变</li>
+</ul>
 
 
-<div>ppa没人维护了，有熟悉的童鞋可以接手</div>
+<p>关于qtqq v0.8.0-alpha功能的说明可以看这里:<a href="http://zhanlangsir.github.com/blog/2012/12/23/about-qtqqv080-alpha" title="关于qtqq v0.8.0-alpha">关于qtqq v0.8.0-alpha</a></p>
+
+<!--more-->
 
 
-<p>ppa:
+<h2>安装方法:</h2>
+
+<p>ppa<strong>没人维护</strong>了，有熟悉的童鞋可以接手</p>
+
+<pre><code>ppa:
 sudo add-apt-repository ppa:qtqq/qtqq-stable
-sudo apt-get update</p>
+sudo apt-get update
+sudo apt-get install qtqq
+</code></pre>
 
-<div>sudo apt-get install qtqq</div>
+<p> 
+<strong>手动编译:</strong></p>
 
+<pre><code>git clone https://github.com/zhanlangsir/Qtqq.git qtqq
+cd qtqq
+git checkout qtqq-dev
+mkdir release
+cd release
+cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)
+make
+sudo make install
+</code></pre>
 
-<p> </p>
+<p><strong>fedora需要准备的环境:</strong><br/>
+  需要安装git cmake qt-devel  gcc gcc-c++ qtwebkit-devel, yum install即可.</p>
 
-<div>手动编译:</div>
-
-
-<div>git clone https://github.com/zhanlangsir/Qtqq.git qtqq</div>
-
-
-<div></div>
-
-
-<div>cd qtqq</div>
-
-
-<div>git checkout qtqq-dev</div>
-
-
-<div>mkdir release</div>
-
-
-<div>cd release</div>
-
-
-<div>cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)</div>
-
-
-<div>make</div>
-
-
-<div>sudo make install</div>
-
-
-<p> <div>fedora需要准备的环境:</div></p>
-
-<div></div>
-
-
-<div>需要安装git cmake qt-devel  gcc gcc-c++ qtwebkit-devel, yum install即可.</div>
-
-
-<div></div>
-
-
-<div></div>
-
-
-<p> <div>ubuntu需要准备的环境:</div></p>
-
-<div></div>
-
-
-<div>需要安装git cmake g++ qt4-dev-tools</div>
-
-
-<div></div>
-
-
-<div>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</div>
-
-
-<div></div>
-
-
-<div>还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki">https://github.com/zhanlangsir/Qtqq/wiki</a>
-</div>
-
+<p><strong>ubuntu需要准备的环境:</strong><br/>
+需要安装git cmake g++ qt4-dev-tools<br/>
+<strong>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</strong><br/>
+还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki" title="qtqq wiki">qtqq wiki</a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[关于qtqq0.8.0-alpha]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2012/12/23/about-qtqq0-8-0-alpha/"/>
+    <link href="http://zhanlangsir.github.com/blog/2012/12/23/about-qtqqv080-alpha/"/>
     <updated>2012-12-23T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2012/12/23/about-qtqq0-8-0-alpha</id>
-    <content type="html"><![CDATA[<h3>功能修改：</h3>
+    <id>http://zhanlangsir.github.com/blog/2012/12/23/about-qtqqv080-alpha</id>
+    <content type="html"><![CDATA[<h2>功能修改：</h2>
+
+<p>0.8版本中把聊天窗口整合到了一个tab页中<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/tab.png" title="tab page" alt="tab" /></p>
+
+<!--more-->
 
 
-<p>0.8版本中把聊天窗口整合到了一个tab页中</p>
+<p>原来的弹出窗口的消息通知方式改为了加到托盘菜单中，因为在ubuntu中为了实现原来的效果必须引入gtk的托盘图标来实现，导致托盘菜单的风格跟其他部分不一样，而且在kde中表现也不怎么样，所以改为下面这种方式<br/>
+另外原来的气泡消息提示也暂时移除了，因为在有的桌面环境上会一直弹出，把其他程序都挡住了，很烦人，原本是通过libnotify来实现气泡提示，现在打算有空的时候自己实现一个qt版本的，可以更好的控制提示方式，时间等等。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/menu.png" title="qtqq menu" alt="menu" /></p>
 
-<p><img class="alignnone size-medium wp-image-1675" alt="tab" src="http://www.aitilife.com/images/uploads/2012/12/tab1-300x267.png" width="300" height="267"><!--more-->原来的弹出窗口的消息通知方式改为了加到托盘菜单中，因为在ubuntu中为了实现原来的效果必须引入gtk的托盘图标来实现，导致托盘菜单的风格跟其他部分不一样，而且在kde中表现也不怎么样，所以改为下马这种方式，另外原来的气泡消息提示也暂时移除了，因为在有的桌面环境上会一直弹出，把其他程序都挡住了，很烦人，原本是通过libnotify来实现气泡提示，现在打算有空的时候自己实现一个qt版本的，可以更好的控制提示方式，时间等等。</p>
-
-<p><a style="color: #0f3647;" href="http://www.aitilife.com/2012/12/23/qtqq0-8-0-alpha/menu" rel="attachment wp-att-1673"><img class="alignnone size-medium wp-image-1673" alt="menu" src="http://www.aitilife.com/images/uploads/2012/12/menu-300x180.png" width="300" height="180"></a></p>
-
-<p>然后好友搜索结果显示方式也改了，原本是弹出筛选下拉框，现在是直接在好友列表中进行筛选，所以搜索完后，你要把搜索内容清除掉。</p>
-
-<p><img class="alignnone size-medium wp-image-1676" alt="search" src="http://www.aitilife.com/images/uploads/2012/12/search-147x300.png" width="147" height="300"></p>
+<p>然后好友搜索结果显示方式也改了，原本是弹出筛选下拉框，现在是直接在好友列表中进行筛选，所以搜索完后，你要把搜索内容清除掉。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/search.png" title="qtqq serach result" alt="search" /></p>
 
 <p>其他还有一些小的修改，比如现在打开的对话框的头像会正确显示好友状态，好友申请对话框正确显示申请者名称和头像等等。</p>
 
-<h3>关于版本号:</h3>
+<h2>关于版本号:</h2>
 
+<p>有关注到qtqq的同学可能会发现版本号一直是在<strong>跳跃</strong>的,比如从0.5.0-alpha跳到0.6.0-alpha,然后又从0.6.0-beta跳到0.7.0-beta。</p>
 
-<p>有关注到qtqq的同学可能会发现版本号一直是在跳跃的,比如从0.5.0-alpha跳到0.6.0-alpha,然后又从0.6.0-beta跳到0.7.0-beta。</p>
+<p><strong>首先对版本号进行一下说明:</strong></p>
 
-<p>首先对版本号进行一下说明:</p>
+<ul>
+<li>alpha版本是刚完成了新功能，我只在本机上进行了一些简单的测试，没有发现问题就发布了</li>
+<li>beta是在我的机子上运行了比较长的时间而没有发生什么大问题的时候发布</li>
+<li>最终的版本就是进入了一个比较稳定的状态</li>
+</ul>
 
-<p>1.alpha版本是刚完成了新功能，我只在本机上进行了一些简单的测试，没有发现问题就发布了</p>
-
-<p>2.beta是在我的机子上运行了比较长的时间而没有发生什么大问题的时候发布</p>
-
-<p>3.最终的版本就是进入了一个比较稳定的状态</p>
 
 <p>之所以会出现版本跳跃就是因为我本身不是一个专业的测试人员，也没有太多的时间花在测试上，所以没办法每次发布都保证程序的稳定。而有时候刚发布一个版本，接下来的时间比较空闲，就继续下一个功能的开发，所以就会出现alpha到alpha的跳跃。而前一个版本的一些后来发现的bug,会在这个版本中进行修改，所以前一个版本的beta和realease版本就不会再出现了～</p>
 
-<h3>关于开发人员:</h3>
-
+<h2>关于开发人员:</h2>
 
 <p>是的，现在还是只有我一个人在开发，之所以不征集人手进行开发是因为qtqq实际上可以说是我的一个实验的程序，当我的水平在变化时，qtqq的架构也会随之被我修改，而我现在也没办法去把他的整体架构决定下来，所以每隔几个版本，代码上都会出现比较大的改变，这点非常不利于多人开发。所以我一直没有发表任何征集人手的帖子，当然，如果你对qtqq的代码有兴趣，你可以fork一份下来做修改，之后再push回我的repo中。</p>
 
-<p>最后说一下这几个月的经历和之后对qtqq的可能更新情况</p>
-
-<p>9月份开始就已经是大四了，要出去找工作，找工作的时间大概花了1个多月，要跑到另外一个城市去，长途奔波，非常蛋疼- -，所幸最后有了结果，1个多月的奔波没有白费。之后回来还要复习考试，考完试还要打几个星期的war3&#8230;.所以qtqq有大概4个月没有更新，这次更新虽然功能上的变动不大，但是代码上的改动非常大，也是花了比较多的时间。</p>
+<p><em>最后说一下这几个月的经历和之后对qtqq的可能更新情况</em><br/>
+9月份开始就已经是大四了，要出去找工作，找工作的时间大概花了1个多月，要跑到另外一个城市去，长途奔波，非常蛋疼- -，所幸最后有了结果，1个多月的奔波没有白费。之后回来还要复习考试，考完试还要打几个星期的war3&#8230;.所以qtqq有大概4个月没有更新，这次更新虽然功能上的变动不大，但是代码上的改动非常大，也是花了比较多的时间。</p>
 
 <p>后面的话，更新肯定是不会像一开始那样一个月几更了，因为找到的工作跟qt和ui方面的开发的关系并不大，所以现在会花比较多的时间在工作上面了，但是还是会继续更新的。</p>
 
 <p>另外，在几个月都没有任何更新的情况下，还是有些童鞋提交了一些bug和功能上的建议，这还是让我非常意外和开心的～</p>
 
-<p>最后，安全度过世界末日.It&#8217;s awesome!</p>
-
-<p>但是4级貌似又挂了&#8230;心情无比沉重啊。</p>
+<p>最后，安全度过世界末日.It&#8217;s awesome!但是4级貌似又挂了&#8230;心情无比沉重啊。</p>
 ]]></content>
   </entry>
   
@@ -319,155 +240,165 @@ sudo apt-get update</p>
     <link href="http://zhanlangsir.github.com/blog/2012/09/20/typecho-rewrite-rule/"/>
     <updated>2012-09-20T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2012/09/20/typecho-rewrite-rule</id>
-    <content type="html"><![CDATA[<p>后台永久链接配置:
-是否使用地址重写功能：启用
-自定义文章路径： 个性化定义 /{year}/{month}/{day}/{slug}
-独立页面后缀名： html</p>
+    <content type="html"><![CDATA[<h3>后台永久链接配置:</h3>
 
-<p>这个文件你可以到sae后台的appconfig中填写
-appconfig规则:</p>
+<p>是否使用地址重写功能：<em>启用</em><br/>
+自定义文章路径： 个性化定义 <code>/{year}/{month}/{day}/{slug}</code><br/>
+独立页面后缀名： <em>html</em></p>
 
-<p>name: your app name</p>
+<p>你可以到sae后台的appconfig中填写appconfig规则:</p>
 
-<p>version: 1</p>
+<pre><code>name: your app name
+version: 1
+cron:
+handle:
+- rewrite: if( in_header["Host"] == "aitiblog.sinaapp.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"
+- rewrite: if( in_header["Host"] == "1.aitiblog.sinaapp.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"
+- rewrite: if( in_header["Host"] == "aitilife.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"
+- rewrite: if( in_header["Host"] == "aitilife.com" &amp;&amp; path ~"(.*)" ) goto "http://www.aitilife.com$1?%{QUERY_STRING}"
+</code></pre>
 
-<p>cron:</p>
-
-<p>handle:<!--more--></p>
-
-<ul>
-<li><p>rewrite: if( in_header[&#8220;Host&#8221;] == &#8220;aitiblog.sinaapp.com&#8221; &amp;&amp; path ~&#8221;(.*)&#8221; ) goto &#8220;http://www.aitilife.com$1?%{QUERY_STRING}&#8221;</p></li>
-<li><p>rewrite: if( in_header[&#8220;Host&#8221;] == &#8220;1.aitiblog.sinaapp.com&#8221; &amp;&amp; path ~&#8221;(.*)&#8221; ) goto &#8220;http://www.aitilife.com$1?%{QUERY_STRING}&#8221;</p></li>
-<li><p>rewrite: if( in_header[&#8220;Host&#8221;] == &#8220;aitilife.com&#8221; &amp;&amp; path ~&#8221;(.*)&#8221; ) goto &#8220;http://www.aitilife.com$1?%{QUERY_STRING}&#8221;</p></li>
-<li><p>rewrite: if( in_header[&#8220;Host&#8221;] == &#8220;aitilife.com&#8221; &amp;&amp; path ~&#8221;(.*)&#8221; ) goto &#8220;http://www.aitilife.com$1?%{QUERY_STRING}&#8221;</p></li>
-</ul>
-
-
-<p>第一二个rewrite把sina的域名重定向到www开头的独立域名。
-第三个rewrite把独立顶级域名重定向到www开头的独立域名。
+<p>第一二个rewrite把sina的域名重定向到www开头的独立域名。<br/>
+第三个rewrite把独立顶级域名重定向到www开头的独立域名。<br/>
 最后一个rewrite到正确的地址。</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[sae wordpress 转 typecho]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2012/09/20/sae-wordpress--zhuan--typecho/"/>
+    <link href="http://zhanlangsir.github.com/blog/2012/09/20/sae-wordpress-zhuan-typecho/"/>
     <updated>2012-09-20T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2012/09/20/sae-wordpress&#8211;zhuan&#8211;typecho</id>
-    <content type="html"><![CDATA[<p>wordpress用久了就感觉不新鲜了。。并且随着wordpress的不断更新，它也变的越来越庞大(我不说痈肿)&#8230;太多东西是我不需要的，后来无意中发现了typecho这个博客程序,它最大的特点就是简洁，轻便，所以就打算把博客转为typecho试试水先。</p>
+    <id>http://zhanlangsir.github.com/blog/2012/09/20/sae-wordpress-zhuan-typecho</id>
+    <content type="html"><![CDATA[<p>wordpress用久了就感觉不新鲜了。。<br/>
+并且随着wordpress的不断更新，它也变的越来越庞大(我不说痈肿)&#8230;太多东西是我不需要的，后来无意中发现了typecho这个博客程序,它最大的特点就是简洁，轻便，所以就打算把博客转为typecho试试水先。</p>
 
-<p>这篇文章适用范围是：
-1.sae上的wordpress应用数据转移到另外一个sae typecho应用上，而不是原地把wordpress程序直接转换为typecho，如果你原来的wordpress程序不是在sae上的话，那就可以跳过了，因为你可以直接使用插件把数据转过来。
-所以不符合你的需求的同学可以不用往下看了~当然你如果对我的折腾过程有兴趣也可以继续。。</p>
+<p><strong><em>这篇文章适用范围是：</em></strong><br/>
+sae上的wordpress应用数据转移到另外一个sae typecho应用上，而不是原地把wordpress程序直接转换为typecho，如果你原来的wordpress程序不是在sae上的话，那就可以跳过了，因为你可以直接使用插件把数据转过来。</p>
 
-<p>因为sae上是无法得到数据库用户名和密码的，所以没办法通过插件进行数据转换，那就只能手动折腾了。
-经过测试，发现直接在sae mysql上导出的数据是不完整的，必须通过Deferred Jobs才能导出完整的数据。
-Deferred Jobs在sae应用管理后台的服务管理一栏中，先从Deferred Jobs中把数据库中的数据导出来，如果数据大于4M，再通过Deferred Jobs把数据导入你的typecho应用中,导入方法可以从文档中找到.
+<p>所以<em>不符合</em>你的需求的同学可以不用往下看了~当然你如果对我的折腾过程有兴趣也可以继续。。</p>
+
+<p>因为sae上是无法得到数据库用户名和密码的，所以没办法通过插件进行数据转换，那就只能手动折腾了.<br/>
+经过测试，发现直接在sae mysql上导出的数据是不完整的，必须通过<strong>Deferred Jobs</strong>才能导出完整的数据。<br/>
+Deferred Jobs在sae应用管理后台的服务管理一栏中，先从Deferred Jobs中把数据库中的数据导出来，如果数据大于4M，再通过Deferred Jobs把数据导入你的typecho应用中,导入方法可以从文档中找到.<br/>
 导入完成后，你的typecho数据库中会有typecho<em>和wp</em>前缀的n张表,然后进入typecho数据库中，把typecho_comments ，typecho_contents， typecho_metas表中的唯一条数据删除(新装的typecho中会有一篇文章和一条评论).然后数据转换正式开始。</p>
 
 <!--more-->
 
 
-<p>1.转换评论，在PHPMyAdmin中点击sql一栏，输入下面的sql语句然后点执行,把wordpress中的评论转换过来
-[sql]insert into typecho_comments (coid, cid,created, author, authorId, ownerId, mail, url, ip, agent, text, type, status, parent)
-select
-wp_comments.comment_ID,
-wp_comments.comment_post_ID,
-unix_timestamp(wp_comments.comment_date_gmt),
-wp_comments.comment_author,
-wp_comments.user_id,
-1,
-wp_comments.comment_author_email,
-wp_comments.comment_author_url,
-wp_comments.comment_author_IP,
-wp_comments.comment_agent,
-wp_comments.comment_content,
-wp_comments.comment_type,
-wp_comments.comment_approved,
-wp_comments.comment_parent
-from wp_comments[/sql]</p>
+<ol>
+<li><p>转换评论,在PHPMyAdmin中点击sql一栏,输入下面的sql语句然后点执行,把wordpress中的评论转换过来</p>
 
-<p>上面的语句执行完后再输入下面语句把wp的评论类型转换过来
-[sql]update typecho_comments set type = &#8216;comment&#8217; where isnull(type) or length(trim(type))&lt;1; //把评论类型为空的评论的类型设置为&#8217;comment&#8217;[/sql]</p>
+<pre><code> insert into typecho_comments (coid, cid,created, author, authorId, ownerId, mail, url, ip, agent, text, type, status, parent)
+ select
+ wp_comments.comment_ID,
+ wp_comments.comment_post_ID,
+ unix_timestamp(wp_comments.comment_date_gmt),
+ wp_comments.comment_author,
+ wp_comments.user_id,
+ 1,
+ wp_comments.comment_author_email,
+ wp_comments.comment_author_url,
+ wp_comments.comment_author_IP,
+ wp_comments.comment_agent,
+ wp_comments.comment_content,
+ wp_comments.comment_type,
+ wp_comments.comment_approved,
+ wp_comments.comment_parent
+ from wp_comments
+</code></pre>
 
-<p>然后把垃圾评论和回收站中的评论删掉再设置好评论的状态
-[sql]delete from typecho_comments where status = &#8216;spam&#8217;; //删除垃圾评论
-delete from typecho_comments where status = &#8216;trash&#8217;; //删除回收站中的评论</p>
+ 上面的语句执行完后再输入下面语句把wp的评论类型转换过来
 
-<p>update typecho_comments set status = &#8216;approved&#8217; where status = &#8216;1&#8217;; //设置wp中的批准的评论的状态为1
-update typecho_comments set status = &#8216;waiting&#8217; where status = &#8216;0&#8217;; //设置wp中的等待审核的评论的状态为0[/sql]</p>
+<pre><code> update typecho_comments set type = 'comment' where isnull(type) or length(trim(type))&amp;lt;1; //把评论类型为空的评论的类型设置为'comment'
+</code></pre>
 
-<p>现在你打开typecho博客，已经可以看到就算一篇文章的没有，但是却有一堆的评论。。。
-2.分类，tag转换,先把默认分类删掉(可以进博客后台删,也可以从数据库的typecho_metas中删)，删完分别输入下面的语句
-[sql]//转换tag
-insert into typecho_metas (mid, name, slug, type, description, count)
-select
-term_taxonomy_id,
-name,
-slug,
-&#8216;tag&#8217;,
-description,
-count
-from wp_term_taxonomy
-join wp_terms
-on wp_terms.term_id = wp_term_taxonomy.term_id
-where taxonomy = &#8216;post_tag&#8217;;</p>
+ 然后把垃圾评论和回收站中的评论删掉再设置好评论的状态
 
-<p>//转换分类
-insert into typecho_metas (mid, name, slug, type, description, count)
-select
-term_taxonomy_id,
-name,
-slug,
-&#8216;category&#8217;,
-description,
-count
-from wp_term_taxonomy
-join wp_terms
-on wp_terms.term_id = wp_term_taxonomy.term_id
-where taxonomy = &#8216;category&#8217;
-[/sql]</p>
+<pre><code> delete from typecho_comments where status = 'spam'; //删除垃圾评论
+ delete from typecho_comments where status = 'trash'; //删除回收站中的评论
 
-<p>3.转换分类,tag，文章关系表
-[sql]insert into typecho_relationships (cid, mid)
-SELECT
-object_id,
-wp_term_relationships.term_taxonomy_id
-FROM
-wp_term_relationships
-join wp_term_taxonomy
-on wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id[/sql]</p>
+ update typecho_comments set status = 'approved' where status = '1'; //设置wp中的批准的评论的状态为1
+ update typecho_comments set status = 'waiting' where status = '0'; //设置wp中的等待审核的评论的状态为0[/sql]
+</code></pre>
 
-<p>4.转换文章表,typecho中使用slug作为文章链接,这里是把woredpress中的post_name子段转换为slug, 而wordpress的post_name子段允许重复,typecho的slug是不允许重复的，所以可能会转换失败，官方的转换插件中是把post_name和ID连接起来作为slug的，但是这样的结果就是你的文章的链接后面会加入一串无意义的数字，所以如果你文章中post_name重复的次数不多的话，建议你先手动把重复的修改一下，然后再继续下面的转换，如果重复的太多，而你又可以接收your_post_url12345,这样的链接的画，你可以把下面语句中的第6行从post_name改为CONCAT(post_name, ID),就可以了。
-[sql]insert into typecho_contents (cid,title,slug,created,modified, <code>text</code>, <code>order</code>,authorId,template,type,status,password,commentsNum,allowComment,allowFeed,allowPing)
-select
-ID,
-post_title,
-post_name,
-unix_timestamp(post_date_gmt),
-unix_timestamp(post_modified_gmt),
-post_content,
-menu_order,
-post_author,
-NULL,
-post_type,
-post_status,
-post_password,
-comment_count,
-comment_status,
-&#8216;1&#8217;,
-ping_status
-from wp_posts
-where post_type = &#8216;post&#8217; or post_type = &#8216;page&#8217;[/sql]</p>
+<p> 现在你打开typecho博客，已经可以看到就算一篇文章的没有，但是却有一堆的评论。。。</p></li>
+<li><p>转换分类,tag,先把默认分类删掉(可以进博客后台删,也可以从数据库的typecho_metas中删)，删完分别输入下面的语句</p>
 
-<p>然后删除回收站中和自动保存的文章
-[sql]delete from <code>typecho_contents</code> WHERE status = &#8216;trash&#8217; //删除回收站中文章
-delete from <code>typecho_contents</code> WHERE status = &#8216;auto-draft&#8217; //删除自动保存文章
-update typecho_contents set allowComment = &#8216;1&#8217; //打开文章评论
-update typecho_contents set allowPing = &#8216;1&#8217; //打开文章pingback[/sql]</p>
+<pre><code> //转换tag
+ insert into typecho_metas (mid, name, slug, type, description, count)
+ select
+ term_taxonomy_id,
+ name,
+ slug,
+ 'tag',
+ description,
+ count
+ from wp_term_taxonomy
+ join wp_terms
+ on wp_terms.term_id = wp_term_taxonomy.term_id
+ where taxonomy = 'post_tag';
 
-<p>转换到此结束。
-最后如果你有绑定独立域名的话，到mysql的typecho_options表中把siteUrl子段改为你的独立域名即可~</p>
+ //转换分类
+ insert into typecho_metas (mid, name, slug, type, description, count)
+ select
+ term_taxonomy_id,
+ name,
+ slug,
+ 'category',
+ description,
+ count
+ from wp_term_taxonomy
+ join wp_terms
+ on wp_terms.term_id = wp_term_taxonomy.term_id
+ where taxonomy = 'category'
+</code></pre></li>
+<li><p>转换分类,tag，文章关系表</p>
+
+<pre><code> insert into typecho_relationships (cid, mid)
+ SELECT
+ object_id,
+ wp_term_relationships.term_taxonomy_id
+ FROM
+ wp_term_relationships
+ join wp_term_taxonomy
+ on wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id
+</code></pre></li>
+<li><p>转换文章表,typecho中使用slug作为文章链接,这里是把woredpress中的post_name子段转换为slug, 而wordpress的post_name子段允许重复,typecho的slug是不允许重复的，所以可能会转换失败，官方的转换插件中是把post_name和ID连接起来作为slug的，但是这样的结果就是你的文章的链接后面会加入一串无意义的数字，所以如果你文章中post_name重复的次数不多的话，建议你先手动把重复的修改一下，然后再继续下面的转换，如果重复的太多，而你又可以接收your_post_url12345,这样的链接的画，你可以把下面语句中的第6行从post_name改为CONCAT(post_name, ID),就可以了。</p>
+
+<pre><code> insert into typecho_contents (cid,title,slug,created,modified, `text`, `order`,authorId,template,type,status,password,commentsNum,allowComment,allowFeed,allowPing)
+ select
+ ID,
+ post_title,
+ post_name,
+ unix_timestamp(post_date_gmt),
+ unix_timestamp(post_modified_gmt),
+ post_content,
+ menu_order,
+ post_author,
+ NULL,
+ post_type,
+ post_status,
+ post_password,
+ comment_count,
+ comment_status,
+ '1',
+ ping_status
+ from wp_posts
+ where post_type = 'post' or post_type = 'page'
+</code></pre>
+
+ 然后删除回收站中和自动保存的文章
+
+<pre><code> delete from `typecho_contents` WHERE status = 'trash' //删除回收站中文章
+ delete from `typecho_contents` WHERE status = 'auto-draft' //删除自动保存文章
+ update typecho_contents set allowComment = '1' //打开文章评论
+ update typecho_contents set allowPing = '1' //打开文章pingback
+</code></pre></li>
+</ol>
+
+
+<p>转换到此结束。<br/>
+最后如果你有<strong>绑定独立域名</strong>的话，到mysql的typecho_options表中把siteUrl子段改为你的独立域名即可~</p>
 ]]></content>
   </entry>
   
@@ -504,34 +435,18 @@ update typecho_contents set allowPing = &#8216;1&#8217; //打开文章pingback[/
     <link href="http://zhanlangsir.github.com/blog/2012/09/20/cmake-install-library-targets-given-no-destination-error/"/>
     <updated>2012-09-20T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2012/09/20/cmake-install-library-targets-given-no-destination-error</id>
-    <content type="html"><![CDATA[<p>在linux下没问题的cmake文件到了win下却出现&#8221;install Library TARGETS given no DESTINATION&#8221;错误，这不科学啊。又翻了一遍发现win下包括cygwin都属于dll平台，</p>
+    <content type="html"><![CDATA[<p>在linux下没问题的cmake文件到了win下却出现<strong>&#8220;install Library TARGETS given no DESTINATION&#8221;</strong>错误，这不科学啊。又翻了一遍发现win下包括cygwin都属于dll平台，</p>
 
-<p>动态库文件应该属于RUNTIME目标,所以把install中的Library改为RUNTIME就OK了。
-add_library(libname
+<p>动态库文件应该属于<strong>RUNTIME</strong>目标,所以把install中的Library改为RUNTIME就OK了。</p>
+
+<pre><code>add_library(libname
 SHARED
 files
 )
 install(TARGETS libname RUNTIME DESTINATION ${libdir})
-参考：
-<a title="LIBRARY_OUTPUT_DIRECTORY" href="http://www.cmake.org/cmake/help/v2.8.8/cmake.html#prop_tgt:LIBRARY_OUTPUT_DIRECTORY">LIBRARY_OUTPUT_DIRECTORY</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[首页]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2012/09/18/shou-ye/"/>
-    <updated>2012-09-18T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2012/09/18/shou-ye</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[1625]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2012/09/18/1625/"/>
-    <updated>2012-09-18T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2012/09/18/1625</id>
-    <content type="html"><![CDATA[
+</code></pre>
+
+<p>参考：<a href="http://www.cmake.org/cmake/help/v2.8.8/cmake.html#prop_tgt:LIBRARY_OUTPUT_DIRECTORY" title="cmake: LIBRARY_OUTPUT_DIRECTORY">cmake: LIBRARY_OUTPUT_DIRECTORY</a></p>
 ]]></content>
   </entry>
   
@@ -542,58 +457,39 @@ install(TARGETS libname RUNTIME DESTINATION ${libdir})
     <id>http://zhanlangsir.github.com/blog/2012/07/28/vim-auto-pairs-plugin</id>
     <content type="html"><![CDATA[<p>vs装了va之后,输入{,[这些符号时，都会自动完成配对的},],虽然工作量非常小，但是实际使用起来的时候还是赶紧方便了不少，因为不需要输入{,然后输入},最后再定位到{}之间。在vim下，auto pairs这一插件正好提供了这个功能。</p>
 
-<p>插件主页：<a href="http://www.vim.org/scripts/script.php?script_id=3599">http://www.vim.org/scripts/script.php?script_id=3599</a></p>
-
-<p>他功能有：</p>
-
-<p>1.补全对称的 {, [, &#8216;, &#8220;等符号</p>
-
-<p> </p>
-
-<p>2.自动补空格，当输入{时，你会得到{|},这样的符号，中间的|代表光标所在位置（下同，|都代表光标所在位置，不再提醒）,</p>
-
-<p>然后按空格的时候，会自动在光标两边各加入一个空格，结果就是{ | },而不是{ |}.</p>
-
-<p> </p>
+<p>插件主页：<a href="http://www.vim.org/scripts/script.php?script_id=3599" title="vim plugin: auto pair">auto-pair</a></p>
 
 <!--more-->
 
 
-<p>3.自动插入新行，输入{|}时，按回车，会自动插入新行，结果会是这样</p>
+<p><strong><em>他的功能有：</em></strong></p>
 
-<p>{</p>
+<ol>
+<li>补全对称的 {, [, &#8216;, &#8220;等符号</li>
+<li>自动补空格，当输入{时，你会得到{|},这样的符号<br/>
+中间的|代表光标所在位置(下同,|都代表光标所在位置，不再提醒)<br/>
+然后按空格的时候，会自动在光标两边各加入一个空格，结果就是{ | },而不是{ |}.</li>
+<li>自动插入新行，输入{|}时，按回车，会自动插入新行，结果会是这样
 
-<p>|</p>
+<pre><code> {
+     |
+ }
+</code></pre>
 
-<p>}</p>
+<p> 新行是带正确缩进的。</p></li>
+<li>输入时跳过&#8217;,},]等符号，例如:
+在{ | }这种情况下，你输入}的时候，会跳过后面的那个},而不是输入多一个}</li>
+<li>定位},],例如在
 
-<p>新行是带正确缩进的。</p>
+<pre><code> {
+     |
+ }
+</code></pre>
 
-<p> </p>
+<p>或者 [ | ]这种情况下,输入}或],会跳到匹配的}或]符号后面。</p></li>
+<li>快速包装一个单词，如果你已经输入了一个单词word，现在想在外面加入一层括号,就可以在word前先输入一个括号,结果是这样(|)word,然后按alt+e,那么结果就是(word).</li>
+</ol>
 
-<p>4.输入时跳过&#8217;,},]等符号，例如:</p>
-
-<p>在</p>
-
-<p>{ |}这种情况下，你输入}的时候，会跳过后面的那个},而不是输入多一个}</p>
-
-<p> </p>
-
-<p>5.定位},],例如在</p>
-
-<p>{</p>
-
-<p>|</p>
-
-<p>}</p>
-
-<p>或者</p>
-
-<p>[ | ]这种情况下,输入}或],会跳到匹配的}或]符号后面。</p>
-
-<p> </p>
-
-<p>6.快速包装一个单词，如果你已经输入了一个单词word，现在想在外面加入一层括号,就可以在word前先输入一个括号,结果是这样(|)word,然后按alt+e,那么结果就是(word).</p>
 
 <p>这写都是比较常用的功能，其他更详细的介绍可以查看help。</p>
 ]]></content>
@@ -608,15 +504,20 @@ install(TARGETS libname RUNTIME DESTINATION ${libdir})
 
 <p>在ubuntu下交换这两个键灰常方便，赞一个。</p>
 
-<p>1.点击右上角的<span style="color: #ff0000;">最右边的图标</span>，然后选择<span style="color: #ff0000;">键盘</span>一项</p>
+<ol>
+<li>点击右上角的<strong>最右边的图标</strong>,然后选择<strong>键盘</strong>一项</li>
+<li>点击下方的<strong>布局设置</strong></li>
+<li>点击右下角的<strong>选项</strong></li>
+<li>选择Ctrl键位置选项卡中的交换ctrl和大写锁定</li>
+</ol>
 
-<p>2.点击下方的<span style="color: #ff0000;">布局设置</span></p>
-
-<p>3.点击右下角的<span style="color: #ff0000;">选项</span></p>
-
-<p>4.选择Ctrl键位置选项卡中的交换ctrl和大写锁定</p>
 
 <p>刚换过来还不是很习惯，切换输入法的时候老是会按ctrl，结果变成了大写锁定，看来还要点时间去适应啊。</p>
+
+<hr />
+
+<p>后记:<br/>
+好吧,我还是乖乖用回了vim,emacs的按键太让人蛋疼了- -!</p>
 ]]></content>
   </entry>
   
@@ -625,21 +526,22 @@ install(TARGETS libname RUNTIME DESTINATION ${libdir})
     <link href="http://zhanlangsir.github.com/blog/2012/04/10/update-qabstractitemview/"/>
     <updated>2012-04-10T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2012/04/10/update-qabstractitemview</id>
-    <content type="html"><![CDATA[<p>之前遇到了<a href="http://www.aitilife.com/2012/03/17/updateqtreeview/">QTreeView的刷新问题</a>，使用了一个很笨的办法，</p>
+    <content type="html"><![CDATA[<p>之前遇到了<a href="http://zhanlangsir.github.com/blog/2012/03/17/update-qtreeview/" title="QTreeView的刷新问题">QTreeView的刷新问题</a>,使用了一个很笨的办法.</p>
 
-<p>实际上只要在更新调用相应的beginInsertRows,beginInsertColumns等方法就可以了。
-void QAbstractItemModel::beginInsertRows ( const QModelIndex &amp; parent, int first, int last );</p>
+<p>实际上只要在更新调用相应的beginInsertRows,beginInsertColumns等方法就可以了.</p>
 
-<p>void QAbstractItemModel::endInsertRows () ;</p>
+<pre><code>void QAbstractItemModel::beginInsertRows( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endInsertRows();
 
-<p>void QAbstractItemModel::beginInsertColumns ( const QModelIndex &amp; parent, int first, int last );
-void QAbstractItemModel::endInsertColumns ();</p>
+void QAbstractItemModel::beginInsertColumns( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endInsertColumns();
 
-<p>void QAbstractItemModel::beginRemoveColumns ( const QModelIndex &amp; parent, int first, int last );
-void QAbstractItemModel::endRemoveColumns ();</p>
+void QAbstractItemModel::beginRemoveColumns( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endRemoveColumns();
 
-<p>void QAbstractItemModel::beginRemoveRows ( const QModelIndex &amp; parent, int first, int last );
-void QAbstractItemModel::endRemoveRows ();</p>
+void QAbstractItemModel::beginRemoveRows( const QModelIndex &amp; parent, int first, int last );
+void QAbstractItemModel::endRemoveRows();
+</code></pre>
 ]]></content>
   </entry>
   
@@ -648,17 +550,27 @@ void QAbstractItemModel::endRemoveRows ();</p>
     <link href="http://zhanlangsir.github.com/blog/2012/04/06/fedora16-install-font/"/>
     <updated>2012-04-06T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2012/04/06/fedora16-install-font</id>
-    <content type="html"><![CDATA[<p>1.将windows字体拷贝到/usr/share/fonts/truetype下面，文件夹名字可以随便起
-cp /media/c/WINDOWS/Fonts/* /usr/share/fonts/truetype/
-默认字体权限应该是755，如果不是的话，手动更改下
-chmod 755 *
-2.在/usr/share/fonts/truetype下面运行
-mkfontscale
-mkfontdir
-3.运行fc-cache -fv，刷新字体缓存。
-现在就一切ok了</p>
+    <content type="html"><![CDATA[<ol>
+<li>先<code>su</code>获取root权限</li>
+<li>将windows字体拷贝到<code>/usr/share/fonts/truetype</code>下面,文件夹名字可以随便起
 
-<p>当然，前提是先su获取root权限～</p>
+<pre><code> cp /media/c/WINDOWS/Fonts/* /usr/share/fonts/truetype/
+</code></pre>
+
+ 默认字体权限应该是755,如果不是的话,手动更改下
+
+<pre><code> chmod 755 *
+</code></pre></li>
+<li>在<code>/usr/share/fonts/truetype</code>下面运行
+
+<pre><code> mkfontscale
+ mkfontdir
+</code></pre></li>
+<li>运行<code>fc-cache -fv</code>,刷新字体缓存。</li>
+</ol>
+
+
+<p>现在就一切ok了</p>
 ]]></content>
   </entry>
   
@@ -667,32 +579,40 @@ mkfontdir
     <link href="http://zhanlangsir.github.com/blog/2012/03/31/qtqq/"/>
     <updated>2012-03-31T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2012/03/31/qtqq</id>
-    <content type="html"><![CDATA[<div>3/31 更新:
-v0.2.0-alpha 比上一版本多了获取好友，群，群成员头像功能。多了最近列表,其他还有很多小改动，修复一些bug!优化了界面！合并Mazenvoy提供的托盘代码。再次更新：
-v0.1.2 修复好友,群列表无法显示bug!修改聊天窗口字体大小颜色，调整聊天窗口布局,修正群聊天打开前几条消息显示号码而不是q名的问题! 感谢sallking抽时间测试。
+    <content type="html"><![CDATA[<h2>3/31 更新:</h2>
 
-&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+<p>版本:<strong>v0.2.0-alpha</strong>
+功变:</p>
 
-学习过程中做的～本机测试没问题。
-目前可以好友，群聊天。发送接受表情，发送接受图片。
+<ul>
+<li>比上一版本多了获取好友，群，群成员头像功能</li>
+<li>多了最近列表</li>
+<li>其他小改动</li>
+<li>修复一些bug</li>
+<li>优化了界面</li>
+<li>合并Mazenvoy提供的托盘代码</li>
+</ul>
 
-下载地址：
-<a href="https://github.com/zhanlangsir/Qtqq/downloads">https://github.com/zhanlangsir/Qtqq/downloads</a>
-<div>附件:</div>
-<div><a id="" href="http://forum.ubuntu.org.cn/download/file.php?id=153851&mode=view/login.png"><img title="Click to enlarge" src="http://forum.ubuntu.org.cn/download/file.php?id=153851&t=1" alt="login.png"><!--more--></a></div>
-<div></div>
-<div>
-<a id="" href="http://forum.ubuntu.org.cn/download/file.php?id=153852&mode=view/%E4%B8%BB%E9%9D%A2%E6%9D%BF.png"><img title="Click to enlarge" src="http://forum.ubuntu.org.cn/download/file.php?id=153852&t=1" alt="主面板.png"></a>
 
-</div>
-<div><a id="" href="http://forum.ubuntu.org.cn/download/file.php?id=153850&mode=view/liaotian.png"><img title="Click to enlarge" src="http://forum.ubuntu.org.cn/download/file.php?id=153850&t=1" alt="liaotian.png"></a></div>
-更新过了~修复了接受图片的bug!
-代码也在github.大部分代码和qq服务器的腾讯有关~不了解协议的话可能很难看懂。不过可以用wireshark或者windows下的fiddler抓包去分析。
+<!--more-->
 
-另外这是学习过程中做的，代码结构可能不够清晰。希望有大牛能够指点一下。。。。
 
-</div>
+<hr />
 
+<p>学习过程中做的～本机测试没问题。
+目前可以好友，群聊天。发送接受表情，发送接受图片。</p>
+
+<p>下载地址：<a href="https://github.com/zhanlangsir/Qtqq/downloads" title="qtqq下载地址">qtqq下载地址</a></p>
+
+<p><img src="http://forum.ubuntu.org.cn/download/file.php?id=153851&amp;mode=view/login.png" title="qtqq登录窗口" alt="登录窗口" /></p>
+
+<p><img src="http://forum.ubuntu.org.cn/download/file.php?id=153852&amp;mode=view/%E4%B8%BB%E9%9D%A2%E6%9D%BF.png" title="qtqq主界面" alt="主窗口" /></p>
+
+<p><img src="http://forum.ubuntu.org.cn/download/file.php?id=153850&amp;mode=view/liaotian.png" title="qtqq聊天窗口" alt="聊天窗口" /></p>
+
+<p>代码托管在<a href="https://github.com/zhanlangsir/Qtqq" title="qtqq github地址">github</a>.大部分代码和qq服务器的腾讯有关~不了解协议的话可能很难看懂。不过可以用wireshark或者windows下的fiddler抓包去分析。</p>
+
+<p>另外这是学习过程中做的，代码结构可能不够清晰。希望有大牛能够指点一下。。。。</p>
 ]]></content>
   </entry>
   
@@ -701,232 +621,150 @@ v0.1.2 修复好友,群列表无法显示bug!修改聊天窗口字体大小颜�
     <link href="http://zhanlangsir.github.com/blog/2012/03/17/update-qtreeview/"/>
     <updated>2012-03-17T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2012/03/17/update-qtreeview</id>
-    <content type="html"><![CDATA[<div>在使用qtreview搭配自定义模型的时候，发现修改了模型中某项的内容时，只有鼠标处于该qtreview中，它才会刷新内容。只要鼠标在qtreeview外面时，它就维持原样~</div>
+    <content type="html"><![CDATA[<p>在使用qtreview搭配自定义模型的时候，发现修改了模型中某项的内容时，只有鼠标处于该qtreview中，它才会刷新内容。只要鼠标在qtreeview外面时，它就维持原样~</p>
 
+<p>经过一番摸索，发现只要对qtreeview调用</p>
 
-<div>经过一番摸索，发现只要对qtreeview调用</div>
+<pre><code>setUpdatedEnable(false);
+setUpdateEnable(true);
+</code></pre>
 
-
-<div>
-<div>setUpdatedEnable(<span style="color: #0000ff;"><strong>false</strong></span>);
-setUpdateEnable(<span style="color: #0000ff;"><strong>true</strong></span>);</div>
-</div>
-
-
-<div>连续两次调用后，qtreeview就会进行刷新了~</div>
-
-
-<div></div>
-
-
-<div></div>
-
+<p>连续两次调用后，qtreeview就会进行刷新了~</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[qt坐标系统见解]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2012/02/24/my-view-ofqt-coordinate-system/"/>
+    <link href="http://zhanlangsir.github.com/blog/2012/02/24/my-view-of-qt-coordinate-system/"/>
     <updated>2012-02-24T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2012/02/24/my-view-ofqt-coordinate-system</id>
+    <id>http://zhanlangsir.github.com/blog/2012/02/24/my-view-of-qt-coordinate-system</id>
     <content type="html"><![CDATA[<p>看到Graphics View Framework的时候，被窗口，视口，场景坐标系，对象坐标系，世界坐标系，逻辑坐标，物理坐标等等概念彻底搞懵了。到底他们之间是什么关系呢？是怎样映射的呢？到现在小狼还没有搞懂，不过经过不断试验，有了一点点自己的理解。</p>
 
-<p><strong><span style="color: #ff0000;">QPainter的各种draw方法是基于窗口坐标系的。</span></strong></p>
+<p><strong><em>QPainter的各种draw方法是基于窗口坐标系的。</em></strong></p>
 
 <p>窗口坐标为逻辑坐标，是基于视口坐标系的;视口坐标为物理坐标，是基于绘图设备坐标系的。没有做过改动的情况下，他们是一样的，都是以绘图设备(paint device,qwidget,qpixmap等都为绘图设备)大小为大小，左上角为原点(0,0)。</p>
 
 <!--more-->
 
 
-<h2><strong>窗口：</strong></h2>
+<h3>窗口：</h3>
 
+<p>窗口代表视口的区域，<strong>他始终以视口坐标为最终目标进行映射</strong>(这句话的意思到下面讲视口的时候会再讲)，他的大小和逻辑位置可以通过<code>QPainter::setWindow()</code>设置，但是无论大小和逻辑位置设置为什么数值，他始终代表着整个视口。</p>
 
-<p>窗口代表视口的区域，<strong><span style="color: #008000;">他始终以视口坐标为最终目标进行映射</span></strong>(这句话的意思到下面讲视口的时候会再讲)，他的大小和逻辑位置可以通过QPainter::setWindow()设置，但是无论大小和逻辑位置设置为什么数值，他始终代表着整个视口。</p>
+<p>例如你有一个实际大小为200x200像素的窗口,那么原始状态之下窗口大小也是200x200，视口大小也是200x200，,在0,0位置画一个大小为100x100的矩形的时候，他会占视口左上角的4分之一。<br/>
+<code>painter.drawRect(0,0,100,100);</code><br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/1.png" title="100x100" alt="100x100" /></p>
 
-<p>例如你有一个实际大小为200x200像素的窗口,那么原始状态之下窗口大小也是200x200，视口大小也是200x200，,在0,0位置画一个大小为100x100的矩形的时候，他会占视口左上角的4分之一。</p>
+<p>如果这时候我们通过QPainter::setWindow修改了窗口位置和大小,例如<code>setWindow(-50,-50,100,100)</code></p>
 
-<p>painter.drawRect(0,0,100,100);</p>
+<p>函数原型：<br/>
+void QPainter::setWindow(int x, int y, int width, int height)</p>
 
-<p><a href="http://www.aitilife.com/images/uploads/2012/02/1.gif"><img class="alignnone size-full wp-image-1437" title="1" src="http://www.aitilife.com/images/uploads/2012/02/1.gif" alt=""></a></p>
+<p>参数：
+x:窗口左上角x坐标<br/>
+y:窗口左上角y坐标<br/>
+width:窗口长度<br/>
+height:窗口高度</p>
 
-<p>如果这时候我们通过QPainter::setWindow修改了窗口位置和大小,例如setWindow(-50,-50,100,100)</p>
-
-<p>函数原型：</p>
-
-<p>void QPainter::setWindow ( int x, int y, int width, int height )</p>
-
-<p>参数：</p>
-
-<p>x:窗口左上角x坐标</p>
-
-<p>y:窗口左上角y坐标</p>
-
-<p>width:窗口长度</p>
-
-<p>height:窗口高度</p>
-
-<p>窗口代表的还是整个视口，但是映射的数值有所不同，这时候窗口的逻辑坐标(-50,-50)成为了视口坐标的(0,0)，而窗口的逻辑大小成为了100x100的单位长度(这里用单位长度是因为窗口大小的长度并不固定，受视口大小影响)，因为用100个单位长度代表原本物理大小的200像素，所以，每一个单位长度就是实际的2像素。因为QPainter是以窗口坐标为基础的，所以这时候画一个位置为(-50,-50),大小为 50,50的矩形。</p>
-
-<p>painter.drawRect(-50,-50,50,50);</p>
-
-<p>矩形还是占窗口的左上角的4分之一(下图左),而</p>
-
-<p>painter.drawRect(0,0,50,50);</p>
-
-<p>矩形占窗口右下角的4分之一。</p>
-
-<p><a href="http://www.aitilife.com/images/uploads/2012/02/2.gif"><img class="alignnone size-full wp-image-1431" title="2" src="http://www.aitilife.com/images/uploads/2012/02/2.gif" alt=""></a></p>
+<p>窗口代表的还是整个视口，但是映射的数值有所不同，这时候窗口的逻辑坐标(-50,-50)成为了视口坐标的(0,0)，而窗口的逻辑大小成为了100x100的单位长度(这里用单位长度是因为窗口大小的长度并不固定，受视口大小影响)，因为用100个单位长度代表原本物理大小的200像素，所以，每一个单位长度就是实际的2像素。因为QPainter是以窗口坐标为基础的，所以这时候画一个位置为(-50,-50),大小为 50,50的矩形。<br/>
+<code>painter.drawRect(-50,-50,50,50);</code><br/>
+矩形还是占窗口的左上角的4分之一(下图左),而<br/>
+<code>painter.drawRect(0,0,50,50);</code><br/>
+矩形占窗口右下角的4分之一。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/2.png" title="50x50" alt="50x50" /></p>
 
 <p>而视口对应的则是物理坐标,没有改动的情况下，视口大小与绘图区大小一样，上面的例子中，视口的属性一直没有改变过，所以视口的左上角还是在绘图区的物理位置(0,0),在窗口坐标的(-50,-50)。大小为物理大小的</p>
 
 <p>200x200像素，而为窗口坐标系下的100x100单位长度。</p>
 
-<p> </p>
+<h3>视口：</h3>
 
-<h2><strong>视口：</strong></h2>
+<p>现在我们看看设置视口对绘图的影响，为了简单起见，先把上面的<code>setWindow()</code>一句注释掉，即现在窗口，视口是一样的。</p>
 
+<p>现在来改变视口的属性，先用<code>painter.setViewPort(0,0,100,100);</code><br/>
+<em>函数原型：</em><br/>
+<code>void QPainter::setViewport ( int x, int y, int width, int height )</code></p>
 
-<p>现在我们看看设置视口对绘图的影响，为了简单起见，先把上面的setWindow()一句注释掉，即现在窗口，视口是一样的。</p>
-
-<p>现在来改变视口的属性，先用</p>
-
-<p>painter.setViewPort(0,0,100,100);</p>
-
-<p>函数原型：</p>
-
-<p>void QPainter::setViewport ( int x, int y, int width, int height )</p>
-
-<p>参数:</p>
-
-<p>x:设置视口左上角x坐标</p>
-
-<p>y::设置视口左上角y坐标</p>
-
-<p>width:设置视口长度</p>
-
-<p>height:设置视口宽度</p>
+<p><em>参数:</em><br/>
+x:设置视口左上角x坐标<br/>
+y::设置视口左上角y坐标<br/>
+width:设置视口长度<br/>
+height:设置视口宽度</p>
 
 <p>所以上面语句的作业就是把视口的的原点位置设置为绘图设备(这里是QDialog)的原点,大小改变为100,100。</p>
 
-<p>那么现在是个什么情况呢？</p>
+<p><strong>那么现在是个什么情况呢？</strong><br/>
+现在我们把视口的坐标设置为绘图区的左上角(0,0)位置,大小设置为绘图区的一半，因为绘图区是(200x200)，而我们把视口设置为（100x100）。即现在实际的绘图区为绘图设备的左上角的4分之一。</p>
 
-<p>现在我们把视口的坐标设置为绘图区的左上角(0,0)位置,大小设置为绘图区的一半，因为绘图区是(200x200)，而我们把视口设置为（100x100）。即现在实际的绘图区为绘图设备的左上角的4分之一。</p>
-
-<p>那么这时候我们再用</p>
-
-<p>painter.drawRect(0,0,100,100);画一个矩形，实际显示是怎么样的呢？看下图：</p>
-
-<p><img class="alignnone size-full wp-image-1432" style="line-height: 19px;" title="3" src="http://www.aitilife.com/images/uploads/2012/02/3.gif" alt=""></p>
+<p>那么这时候我们再用<br/>
+<code>painter.drawRect(0,0,100,100);</code>画一个矩形，实际显示是怎么样的呢？看下图：
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/3.png" title="100x100" alt="100x100" /></p>
 
 <p>绘制出来的是dialog的16分之一了，为什么会这样呢？</p>
 
-<p>前面我们讲过<strong>窗口坐标始终以视口坐标为最终目标进行映射，</strong></p>
-
-<p>而原来没有经过修改的窗口的属性为以左上角为原点，大小为200x200单位长度，我们修改视口大小为100x100像素后，窗口的200单位长度就映射到100像素的视口长度上,即每一单位长度为0.5像素，所以绘制出来的结果就是100x0.5=50像素，所以长和高都是dialog的4分之一，面积就是16分之一了。</p>
+<p>前面我们讲过<strong><em>窗口坐标始终以视口坐标为最终目标进行映射</em></strong>,而原来没有经过修改的窗口的属性为以左上角为原点，大小为200x200单位长度，我们修改视口大小为100x100像素后，窗口的200单位长度就映射到100像素的视口长度上,即每一单位长度为0.5像素，所以绘制出来的结果就是100x0.5=50像素，所以长和高都是dialog的4分之一，面积就是16分之一了。</p>
 
 <p>这时候如果我们拖动dialog边界改变dialog的大小会怎么样呢？小狼原本的想法是画出来的矩形应该还是占总大小的16分之一，实际上这是错的。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>void Lang::paintEvent(QPaintEvent *)
-</span><span class='line'>{
-</span><span class='line'>    QPainter painter(this);
-</span><span class='line'>
-</span><span class='line'>    qDebug()&lt;&lt;"after drag:"&lt;&lt;endl;
-</span><span class='line'>    qDebug()&lt;&lt;painter.viewport().width();
-</span><span class='line'>    qDebug()&lt;&lt;painter.viewport().height();
-</span><span class='line'>    painter.setViewport(0, 0, 100 ,100 );
-</span><span class='line'>    //painter.setWindow(-50,-50,100,100);
-</span><span class='line'>    painter.drawRect(0,0, 100, 100);
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+<pre><code>void Lang::paintEvent(QPaintEvent *)
+{
+    QPainter painter(this);
 
+    qDebug()&lt;&lt;"after drag:"&lt;&lt;endl;
+    qDebug()&lt;&lt;painter.viewport().width();
+    qDebug()&lt;&lt;painter.viewport().height();
+    painter.setViewport(0, 0, 100 ,100 );
+    //painter.setWindow(-50,-50,100,100);
+    painter.drawRect(0,0, 100, 100);
+}
+</code></pre>
 
-<p>先通过painter.viewport().width()和heigth()获取当前实际视口大小(paintEvent之前，视口会被重置为绘图设备实际大小)。如下图，当我们把dialog拖动为400x400大小时，矩形框变得更小了。<img class="alignnone size-full wp-image-1433" title="4" src="http://www.aitilife.com/images/uploads/2012/02/4.gif" alt=""></p>
+<p>先通过painter.viewport().width()和heigth()获取当前实际视口大小(paintEvent之前，视口会被重置为绘图设备实际大小)。如下图，当我们把dialog拖动为400x400大小时，矩形框变得更小了。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/4.png" title="400x400" alt="400x400" /></p>
 
-<p>其实这很简单。因为在paintEvent之前窗口值也会重置为dialog(绘图设备)大小，所以这时候窗口大小为400x400单位长度,而视口我们还是再设定为100x100像素，所以这时候窗口大小的一单位长度为实际的100/400=0.25像素，所以画一个100x100单位长度的矩形时，实际大小时25x25像素，所以变得更小。</p>
+<p>其实这很简单。因为在paintEvent之前窗口值也会重置为dialog(绘图设备)大小，所以这时候窗口大小为400x400单位长度,而视口我们还是再设定为100x100像素，所以这时候窗口大小的一单位长度为实际的100/400=0.25像素，所以画一个100x100单位长度的矩形时，实际大小时25x25像素，所以变得更小。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/5.png" alt="100x100" /><br/>
+上图中我是用qq的截图功能进行测量，qq截图会给出当前截取图形的大小，正是25x25（圈的时候有所偏差).</p>
 
-<p><img class="alignnone size-full wp-image-1434" title="5" src="http://www.aitilife.com/images/uploads/2012/02/5.gif" alt=""></p>
+<p>最后再来看一个窗口和视口一起设置的例子.
+void Lang::paintEvent(QPaintEvent *)</p>
 
-<p>上图中我是用qq的截图功能进行测量，qq截图会给出当前截取图形的大小，正是25x25（圈的时候有所偏差).</p>
+<pre><code>{
+    QPainter painter(this);
 
-<p> </p>
+    qDebug()&lt;&lt;"after drag:"&lt;&lt;endl;
+    qDebug()&lt;&lt;painter.viewport().width();
+    qDebug()&lt;&lt;painter.viewport().height();
+    painter.setViewport(0, 0, 100 ,100 );
+    //painter.setWindow(-50,-50,100,100);
+    painter.drawRect(0,0, 100, 100);
+}
+</code></pre>
 
-<p>最后再来看一个窗口和视口一起设置的例子.</p>
+<p>这里设置窗口坐标(-50,-50)映射为视口的原点,把窗口100x100单位长度映射为视口的100x100像素大小<br/>
+这时候窗口逻辑坐标-50,-50就是视口的坐标(0,0)，也就是绘图设备的50,50坐标，所以窗口坐标(0,0)位置即绘图设备坐标的(100,100)<br/>
+因为窗口坐标100单位长度映射到视口坐标的100像素，所以上图的<code>painter.drawRect(0,0, 50, 50);</code>一句绘制出了的结果就是在绘图设备的(100,100)位置绘制一个50x50像素的矩形。<br/>
+<img src="http://atimg-blogimg.stor.sinaapp.com/12/12/6.png" alt="6" /> <img src="http://atimg-blogimg.stor.sinaapp.com/12/12/7.png" alt="7" /></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>void Lang::paintEvent(QPaintEvent *)
-</span><span class='line'>{
-</span><span class='line'>    QPainter painter(this);
-</span><span class='line'>
-</span><span class='line'>    qDebug()&lt;&lt;"after drag:"&lt;&lt;endl;
-</span><span class='line'>    qDebug()&lt;&lt;painter.viewport().width();
-</span><span class='line'>    qDebug()&lt;&lt;painter.viewport().height();
-</span><span class='line'>    painter.setViewport(0, 0, 100 ,100 );
-</span><span class='line'>    //painter.setWindow(-50,-50,100,100);
-</span><span class='line'>    painter.drawRect(0,0, 100, 100);
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这里设置窗口坐标(-50,-50)映射为视口的原点,把窗口100x100单位长度映射为视口的100x100像素大小，
-这时候窗口逻辑坐标-50,-50就是视口的坐标(0,0)，也就是绘图设备的50,50坐标，所以窗口坐标(0,0)位置即绘图设备坐标的(100,100),
-因为窗口坐标100单位长度映射到视口坐标的100像素，所以上图的
-painter.drawRect(0,0, 50, 50);
-一句绘制出了的结果就是在绘图设备的(100,100)位置绘制一个50x50像素的矩形。
-<a href="http://www.aitilife.com/images/uploads/2012/02/6.gif"><img class="alignnone size-full wp-image-1435" title="6" src="http://www.aitilife.com/images/uploads/2012/02/6.gif" alt=""></a><a href="http://www.aitilife.com/images/uploads/2012/02/7.gif"><img class="alignnone size-full wp-image-1436" title="7" src="http://www.aitilife.com/images/uploads/2012/02/7.gif" alt=""></a></p>
-
-<h2><strong>总结：</strong></h2>
-
+<h3>总结：</h3>
 
 <p>要得到QPainter绘图的真正位置，要经过两步</p>
 
-<p>第一步：</p>
+<p><strong>第一步：</strong><br/>
+窗口坐标转换为视口坐标，转换公式为：<br/>
+<code>vp_width / win_width * (draw_x - win_x)</code><br/>
+其中vp_width为视口长度,win_width为窗口长度，draw_x为实际要绘制的x左上坐标,win_x为窗口的x左上坐标,y坐标同理</p>
 
-<p>窗口坐标转换为视口坐标，转换公式为：</p>
-
-<p>vp_width / win_width * (draw_x - win_x)</p>
-
-<p>其中vp_width为视口长度,win_width为窗口长度，draw_x为实际要绘制的x左上坐标,win_x为窗口的x左上坐标,y坐标同理</p>
-
-<p>窗口大小转换为视口大小，转换公式为：</p>
-
-<p>draw_width * vp_width / win_width</p>
-
-<p>draw_width为要绘制的窗口长度,vp_width为视口长度，win_width为窗口长度</p>
+<p>窗口大小转换为视口大小，转换公式为：<br/>
+<code>draw_width * vp_width / win_width</code><br/>
+draw_width为要绘制的窗口长度,vp_width为视口长度，win_width为窗口长度</p>
 
 <p>height同理</p>
 
-<p> </p>
-
-<p>第二步：</p>
-
-<p>视口坐标转换为绘图设备坐标，这一步就简单的进行相加就好了，</p>
-
-<p>实际坐标x=上一步转换来的视口坐标+vp_x</p>
-
-<p>vp_x为视口的左上x坐标</p>
-
-<p>实际坐标y同理</p>
-
-<p> </p>
+<p><strong>第二步：</strong><br/>
+视口坐标转换为绘图设备坐标，这一步就简单的进行相加就好了<br/>
+<code>实际坐标x=上一步转换来的视口坐标+vp_x</code><br/>
+vp_x为视口的左上x坐标,实际坐标y同理</p>
 
 <p>这里只介绍了视口和窗口坐标，其他的迟点有空再写了~</p>
 ]]></content>
@@ -946,42 +784,6 @@ painter.drawRect(0,0, 50, 50);
 <p>qt vs addin并不支持vs2010 express版，请注意了。</p>
 
 <p>安装方法就是一路next&#8230;.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Fedora16装wmware workstation8详细过程]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/11/25/install-wmware-on-fedora16/"/>
-    <updated>2011-11-25T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/11/25/install-wmware-on-fedora16</id>
-    <content type="html"><![CDATA[<p>因课程需要，要装虚拟机学习minux操作系统，所以小狼就装了wmware workstation8,但是装完之后却运行不了，说找不到kernel header，如果有安装到kernel header的话，在/usr/src目录下可以找到,没有的话就用下面的命令安装:
-su
-yum install kernel-devel
-装完后/usr/src/kernels目录下就多出了一个3.1.1-2&#8230;.i686文件夹，说明kernel header已经成功安装了，但是把虚拟机需要的kernel header定位到
-/usr/src/kernels/3.1.1-2.fc16.i686/include目录后，发现还是不行
-用
-uname -r名令看了一下当前内核版本</p>
-
-<p>[root@XXXX Downloads]# uname -r
-3.1.0-7.fc16.i686</p>
-
-<p>发现是3.1.0的，原来是版本不对，升级一下内核版本就好了，升级内核命令(同时升级所有能升级的东西)
-su
-yum update</p>
-
-<p>然后重启，登录的时候选择3.1.1-2版本的内核。</p>
-
-<p>重启后，再运行vmware的时候，确实没有再说找不到kernel-header了，但是要编译kernel供vmware使用，在点同意编译和输入root用户密码后，界面闪了一下，吓了小狼一跳，然后。。。。就木有然后了。。</p>
-
-<p>其实装很多大型的软件都有这种情况，比如IBM的Rational software architect,是因为没有root权限，无法对需要的文件进行访问。所以用root身份去运行就好了。具体步骤如下：</p>
-
-<p>su</p>
-
-<p>/usr/bin/wmware</p>
-
-<p>然后等待编译，编译完成之后就可以看到熟系的wmware界面出现了</p>
-
-<p>而升级内核后引导菜单会多出几项选择，去掉旧内核版本菜单的方法可以看这里：<a href="http://hi.baidu.com/knityster/blog/item/9cc58f0e8ca61ec67acbe12e.html">http://hi.baidu.com/knityster/blog/item/9cc58f0e8ca61ec67acbe12e.html</a></p>
 ]]></content>
   </entry>
   
@@ -1009,40 +811,89 @@ yum update</p>
     <link href="http://zhanlangsir.github.com/blog/2011/11/12/uicc-exe-not-internal-error-when-complier-wtl/"/>
     <updated>2011-11-12T00:00:00+08:00</updated>
     <id>http://zhanlangsir.github.com/blog/2011/11/12/uicc-exe-not-internal-error-when-complier-wtl</id>
-    <content type="html"><![CDATA[<p>使用wtl编译时出现一些警告：</p>
-
-<p><span style="color: #ff0000;">warning MSB8004: Intermediate 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。</span></p>
-
-<p><span style="color: #ff0000;">warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。</span></p>
+    <content type="html"><![CDATA[<p>使用wtl编译时出现一些警告：<br/>
+warning MSB8004: Intermediate 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。<br/>
+warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。</p>
 
 <p>其实这个警告没什么关系，要去掉只须在项目属性的常规设置中为两个目录添加一个斜杠结尾就OK了。</p>
 
-<p>添加Ribbon特性的时候出现以下错误：</p>
+<p>添加Ribbon特性的时候出现以下错误：<br/>
+&#8216;uicc.exe&#8217; 不是内部或外部命令，也不是可运行的程序</p>
 
-<p><span style="color: #ff0000;">&#8216;uicc.exe&#8217; 不是内部或外部命令，也不是可运行的程序</span></p>
+<p>原因是没有这个工具，可以到以下地址下载最新的window sdk,安装之后就可以了<br/>
+<a href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=18950" title="windows sdk download path">window sdk下载地址</a></p>
 
-<p>原因是没有这个工具，可以到以下地址下载最新的window sdk。安装之后就可以了</p>
+<!--more-->
 
-<p><a href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=18950">http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=18950</a></p>
 
-<p>上面的链接有三个版本的sdk
-GRMSDK_EN_DVD.iso
-GRMSDKIAI_EN_DVD.iso
-GRMSDKX_EN_DVD.iso
-其中第一个是x86体系的，第二个是amd64体系，最后一个则是Itanium体系的，自己选择下那个。</p>
+<p>上面的链接有三个版本的sdk</p>
+
+<ul>
+<li>GRMSDK_EN_DVD.iso</li>
+<li>GRMSDKIAI_EN_DVD.iso</li>
+<li>GRMSDKX_EN_DVD.iso<br/>
+其中第一个是x86体系的，第二个是amd64体系，最后一个则是Itanium体系的，自己选择下那个。</li>
+</ul>
+
 
 <p>安装完毕就可以在C:Program FilesMicrosoft SDKsWindowsv7.1Bin 这个目录下看到有uicc这个工具了。</p>
 
-<p>但是到这里还是不能成功编译的，因为这个目录还没有添加到Path环境变量中，所以还是无法找到uicc工具，所以还要把uicc工具所在目录添加到Path环境变量中。具体步骤如下：
-1.右键我的电脑(或者计算机)->属性->高级系统设置->环境变量，在系统变量中找到Path,拖到最后，在最后一项后加个&#8221;<span style="color: #ff0000;">;</span>&#8220;号，然后把uicc所在目录添加到后面。</p>
+<p>但是到这里还是不能成功编译的，因为这个目录还没有添加到Path环境变量中，所以还是无法找到uicc工具，所以还要把uicc工具所在目录添加到Path环境变量中。具体步骤如下：<br/>
+右键我的电脑(或者计算机)->属性->高级系统设置->环境变量，在系统变量中找到Path,拖到最后，在最后一项后加个<strong><em>;</em></strong>号，然后把uicc所在目录添加到后面。</p>
 
 <p>重启一下vs，重新编译</p>
 
-<p>PS:</p>
+<p><strong>PS:</strong><br/>
+如果安装sdk时出现错误，可以看一下这里的解决办法，希望能帮到各位：<a href="http://zhanlangsir.github.com/blog/2011/11/12/error-of-install-windows-sdk" title="error when install windows sdk">windows sdk安装错误</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[安装windows sdk时的错误]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/11/12/error-of-install-windows-sdk/"/>
+    <updated>2011-11-12T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/11/12/error-of-install-windows-sdk</id>
+    <content type="html"><![CDATA[<p>安装Microsoft Windows SDK 7.1的时候出现了一下错误：<br/>
+<strong><em>Microsoft Windows SDK for Windows 7 product has reported the following error: Please refer to SamplesSetupHTMLConfigDetails.htm document for further information.</em></strong></p>
 
-<p>如果安装sdk时出现错误，可以看一下这里的解决办法，希望能帮到各位：</p>
+<p>解决办法很简单：<br/>
+一般把Visual C++ compiler勾掉就可以了~<br/>
+如果不行的话，就一个一个安装，先勾第一个选项，装完，再勾第二个，这样。<br/>
+或者打开iso目录，把setup文件夹里的各个文件夹里的安装包安装一遍。。。。。</p>
 
-<p><a href="http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/">http://www.aitilife.com/2011/11/12/error-of-install-windows-sdk/</a></p>
+<p>装完sdk7.1后，记得装<strong>KB2519277</strong></p>
+
+<p>下载地址和说明请看这里，小狼就不翻译了~<br/>
+<a href="http://support.microsoft.com/kb/2519277" title="kb2519277">kb2519277</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[各种密钥-序列号]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2011/10/25/key-and-serial-number/"/>
+    <updated>2011-10-25T00:00:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2011/10/25/key-and-serial-number</id>
+    <content type="html"><![CDATA[<p><strong><em>SQLServer2008:</em></strong></p>
+
+<pre><code>Developer: PTTFM-X467G-P7RH2-3Q6CG-4DMYB
+Enterprise: JD8Y6-HQG69-P9H84-XDTPG-34MBB
+</code></pre>
+
+<p><strong><em>Vs2010:</em></strong></p>
+
+<pre><code>YCFHQ-9DWCY-DKV88-T2TMH-G7BHP
+</code></pre>
+
+<p><strong><em>Blend:</em></strong></p>
+
+<pre><code>6WDDQ-K7D4F-GQGF4-2VYBJ-8K6MB
+</code></pre>
+
+<p><strong><em>PhotoShop Cs5:</em></strong></p>
+
+<pre><code>1330-1343-1830-9875-8192-3098
+1330-1650-7442-9032-3879-0986
+</code></pre>
 ]]></content>
   </entry>
   

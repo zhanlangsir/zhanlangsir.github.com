@@ -9,7 +9,9 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="Qtqq 12/23 Dec 23rd, 2012 12/23更新: 版本:v0.8.0-alpha 新特性: 1.聊天窗口使用tab页 其他修改： 1.关闭气泡消息提示 2.新消息提醒改为托盘图标菜单 3.搜索结果显示方式改变 关于qtqq v0.8.0-alpha功能的说明可以看这里: &hellip;">
+  <meta name="description" content="Qtqq 12/23 Dec 23rd, 2012 12/23更新: 版本:v0.8.0-alpha 新特性: 聊天窗口使用tab页 其他修改： 关闭气泡消息提示
+新消息提醒改为托盘图标菜单
+搜索结果显示方式改变 关于qtqq v0.8.0-alpha功能的说明可以看这里:关于qtqq v0.8 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,108 +84,61 @@
 <time datetime="2012-12-23T00:00:00+08:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2012</time></p>
   </header>
   
-  <p>12/23更新:</p>
+  <h2>12/23更新:</h2>
 
 <p>版本:v0.8.0-alpha</p>
 
-<p><strong>新特性:</strong></p>
+<h2>新特性:</h2>
 
-<p>1.聊天窗口使用tab页</p>
-
-<p><strong>其他修改：</strong></p>
-
-<p>1.关闭气泡消息提示</p>
-
-<p>2.新消息提醒改为托盘图标菜单</p>
-
-<p>3.搜索结果显示方式改变</p>
-
-<p>关于qtqq v0.8.0-alpha功能的说明可以看这里:</p>
-
-<p><a href="http://www.aitilife.com/2012/12/23/about-qtqq0-8-0-alpha">关于qtqq0-8-0-alpha</a></p>
-
-<div></div>
+<ul>
+<li>聊天窗口使用tab页</li>
+</ul>
 
 
-<div><strong>安装方法:</strong></div>
+<h2>其他修改：</h2>
+
+<ul>
+<li>关闭气泡消息提示</li>
+<li>新消息提醒改为托盘图标菜单</li>
+<li>搜索结果显示方式改变</li>
+</ul>
 
 
-<div>ppa没人维护了，有熟悉的童鞋可以接手</div>
+<p>关于qtqq v0.8.0-alpha功能的说明可以看这里:<a href="/blog/2012/12/23/about-qtqqv080-alpha" title="关于qtqq v0.8.0-alpha">关于qtqq v0.8.0-alpha</a></p>
+
+<!--more-->
 
 
-<p>ppa:
+<h2>安装方法:</h2>
+
+<p>ppa<strong>没人维护</strong>了，有熟悉的童鞋可以接手</p>
+
+<pre><code>ppa:
 sudo add-apt-repository ppa:qtqq/qtqq-stable
-sudo apt-get update</p>
+sudo apt-get update
+sudo apt-get install qtqq
+</code></pre>
 
-<div>sudo apt-get install qtqq</div>
+<p> 
+<strong>手动编译:</strong></p>
 
+<pre><code>git clone https://github.com/zhanlangsir/Qtqq.git qtqq
+cd qtqq
+git checkout qtqq-dev
+mkdir release
+cd release
+cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)
+make
+sudo make install
+</code></pre>
 
-<p> </p>
+<p><strong>fedora需要准备的环境:</strong><br/>
+  需要安装git cmake qt-devel  gcc gcc-c++ qtwebkit-devel, yum install即可.</p>
 
-<div>手动编译:</div>
-
-
-<div>git clone https://github.com/zhanlangsir/Qtqq.git qtqq</div>
-
-
-<div></div>
-
-
-<div>cd qtqq</div>
-
-
-<div>git checkout qtqq-dev</div>
-
-
-<div>mkdir release</div>
-
-
-<div>cd release</div>
-
-
-<div>cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)</div>
-
-
-<div>make</div>
-
-
-<div>sudo make install</div>
-
-
-<p> <div>fedora需要准备的环境:</div></p>
-
-<div></div>
-
-
-<div>需要安装git cmake qt-devel  gcc gcc-c++ qtwebkit-devel, yum install即可.</div>
-
-
-<div></div>
-
-
-<div></div>
-
-
-<p> <div>ubuntu需要准备的环境:</div></p>
-
-<div></div>
-
-
-<div>需要安装git cmake g++ qt4-dev-tools</div>
-
-
-<div></div>
-
-
-<div>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</div>
-
-
-<div></div>
-
-
-<div>还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki">https://github.com/zhanlangsir/Qtqq/wiki</a>
-</div>
-
+<p><strong>ubuntu需要准备的环境:</strong><br/>
+需要安装git cmake g++ qt4-dev-tools<br/>
+<strong>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</strong><br/>
+还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki" title="qtqq wiki">qtqq wiki</a></p>
 
   
     <footer>
@@ -204,6 +159,12 @@ sudo apt-get update</p>
 <time datetime="2012-12-23T00:00:00+08:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2012</time>
         
 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/qt/'>Qt</a>
+  
+</span>
+
 
       </p>
       
@@ -223,8 +184,18 @@ sudo apt-get update</p>
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -235,15 +206,11 @@ sudo apt-get update</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

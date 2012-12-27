@@ -9,8 +9,9 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="找了个程序员做老公，所以认识了很多程序员。以前就没对程序员有过不好的看法，现在则更不会。发现csdn上老有悲观的论调，说程序员找不到老婆。今天我就以一个程序员妻子的身份，来写写找程序员做老公的好处。希望能给各位mm有借鉴，找程序gg做男朋友。
-一、找程序员不用担心外遇。程序员是对着电脑工作， &hellip;">
+  <meta name="description" content="好的代码风格规范是衡量一个优秀的程序员必要条件，如果代码有比较好的风格规范，那么阅读者能够一目了然，反之，则需要花费大量的时间去读懂代码。
+所以，相当程序员的童鞋就有必要养成良好的代码风格习惯，这样才能在以后的团队项目开发中发挥更大的作用。
+下面是Google使用的C++代码规范， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +72,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/10/zhao-cheng-xu-yuan-zuo-lao-gong-de-shi-da-hao-chu/">找程序员做老公的十大好处</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/10/google-cpp-code-style/">Google C++ 代码风格规范</a></h1>
     
     
       <p class="meta">
@@ -94,47 +95,11 @@
   </header>
 
 
-  <div class="entry-content"><p>找了个程序员做老公，所以认识了很多程序员。以前就没对程序员有过不好的看法，现在则更不会。发现csdn上老有悲观的论调，说程序员找不到老婆。今天我就以一个程序员妻子的身份，来写写找程序员做老公的好处。希望能给各位mm有借鉴，找程序gg做男朋友。
-一、找程序员不用担心外遇。程序员是对着电脑工作，周围同事大部分是男生。他的生活中基本接触不到mm，所以不会有办公室恋情的发生，也就不会有外遇问题发生。而且面对的诱惑少，不像销售啊等职位，需要和外人打交道，而且应酬多，所面对的诱惑多，外遇出轨问题容易发生。剪剪常常加班到半夜，我是非常放心的，唯一担心的就是他的身体是否吃得消。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/04/10/zhao-cheng-xu-yuan-zuo-lao-gong-de-shi-da-hao-chu/">Read on &rarr;</a>
-    </footer>
-  
+  <div class="entry-content"><p>好的代码风格规范是衡量一个优秀的程序员必要条件，如果代码有比较好的风格规范，那么阅读者能够一目了然，反之，则需要花费大量的时间去读懂代码。<br/>
+所以，相当程序员的童鞋就有必要养成良好的代码风格习惯，这样才能在以后的团队项目开发中发挥更大的作用。<br/>
+下面是Google使用的C++代码规范，童鞋们可以参考一下，但是也不必全部照做，因为代码风格并没有一个统一的标准。例如微软也有自己的一套标准，所以应该是饱着“取其精华,弃其糟粕”的心态去学习~</p>
 
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/10/zen-yang-you-cheng-xu-yuan-jin-sheng-wei-jing-li/">怎样由程序员晋升为经理</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一新程序员问技术经理：“你是怎样由程序员晋升为经理的？”经理说：“我毕业后第一份工作也是和你一样做程序员，天天加班.，不断学习..”“哦…原来如此”新程序员似乎懂了。经理补上一句“你懂个屁，我这样加班6年还是老样子，后来跟老板娘混上了，她说程序员就是体能好…</p>
+<p><a href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">googloe c++ code style</a></p>
 </div>
   
   
@@ -147,7 +112,52 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/10/zai-xian-c-bian-yi-qi/">在线c++编译器</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/10/gcc-useage-detail-2/">GCC使用详解(2)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>代码优化</h2>
+
+<p>代码优化指的是编译器通过分析源代码,找出其中尚未达到最优的部分,然后对其重新进行组合,目的是改善程序的执行性能。GCC提供的代码优化功能非常强 大,它通过编译选项-On来控制优化代码的生成,其中n是一个代表优化级别的整数。对于不同版本的GCC来讲,n的取值范围及其对应的优化效果可能并不完 全相同,比较典型的范围是从0变化到2或3。</p>
+
+<p>编译时使用选项-O可以告诉GCC同时减小代码的长度和执行时间,其效果等价于-O1。在这一级别上能够进行的优化类型虽然取决于目标处理器,但一般都会 包括线程跳转（Thread Jump）和延迟退栈（Deferred Stack Pops）两种优化。选项-O2告诉GCC除了完成所有-O1级别的优化之外,同时还要进行一些额外的调整工作,如处理器指令调度等。选项-O3则除了完 成所有-O2级别的优化之外,还包括循环展开和其它一些与处理器特性相关的优化工作。通常来说,数字越大优化的等级越高,同时也就意味着程序的运行速度越 快。许多Linux程序员都喜欢使用-O2选项,因为它在优化长度、编译时间和代码大小之间,取得了一个比较理想的平衡点。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/gcc-useage-detail-2/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/gcc-useage-detail-1/">GCC使用详解(1)</a></h1>
     
     
       <p class="meta">
@@ -171,57 +181,22 @@
 
 
   <div class="entry-content"><p> 
-如果你在网吧或者一个没有C++编译器的地方，正好想试验一下你的代码，那么可以试试在线C++编译器。
-第一个要推荐的是dinkumware用于测试C++代码的地方：
-<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.dinkumware.com/exam/default.aspx">http://www.dinkumware.com/exam/default.aspx</a>
-它提供了多种编译器的选择，不过貌似不能提供编译结果的下载。
-第二个是Test Drive Comeau C++ Online
-<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://www.comeaucomputing.com/tryitout/">http://www.comeaucomputing.com/tryitout/</a>
-据说是他们自己开发的编译器。</p>
+在为Linux开发应用程序时,绝大多数情况下使用的都是C语言,因此几乎每一位Linux程序员面临的首要问题都是如何灵活运用C编译器。目前Linux下最常用的C语言编译器是GCC（GNU Compiler Collection）,它是GNU项目中符合ANSI C标准的编译系统,能够编译用C、C++和Object C等语言编写的程序。GCC不仅功能非常强大,结构也异常灵活。最值得称道的一点就是它可以通过不同的前端模块来支持各种语言,如Java、Fortran、Pascal、Modula-3和Ada等。</p>
 
-<p> </p>
+<p>开放、自由和灵活是Linux的魅力所在,而这一点在GCC上的体现就是程序员通过它能够更好地控制整个编译过程。在使用GCC编译程序时,编译过程可以被细分为四个阶段：<br/>
+预处理（Pre-Processing）<br/>
+编译（Compiling）<br/>
+汇编（Assembling）<br/>
+链接（Linking）[more]<br/>
+Linux程序员可以根据自己的需要让GCC在编译的任何阶段结束,以便检查或使用编译器在该阶段的输出信息,或者对最后生成的二进制文件进行控制,以便通过加入不同数量和种类的调试代码来为今后的调试做好准备。和其它常用的编译器一样,GCC也提供了灵活而强大的代码优化功能,利用它可以生成执行效率更高的代码。</p>
+
+<p>GCC提供了30多条警告信息和三个警告级别,使用它们有助于增强程序的稳定性和可移植性。此外,GCC还对标准的C和C++语言进行了大量的扩展,提高程序的执行效率,有助于编译器进行代码优化,能够减轻编程的工作量。</p>
+
 </div>
   
   
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/10/zai-ni-de-wang-zhan-shang-diao-yong-google-picasa-wang-luo-xiang-ce-de-tu-pian/">在你的网站上调用Google Picasa网络相册的图片</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Google Picasa网络相册是一个很好的公工具。它是免费的，相册容量是1024M（1G），并且相册容量也会一直增长的。与其他的网络相册不同，Google Picasa网络相册里的图片支持外部网页的调用。更强大的是，它还有<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">linux</span></span>的版本！！！！
-而现在Jesse Berman先生又开发了一个令人十分激动的应用，他用了很简短的代码就实现了极为强大的功能-在外部网页（是在一张网页里）全部显示Google Picasa 相册里的图片。
-下面具体介绍一下外部网页调用用Google Picasa网络相册的图片的方法：</div>
-  
-  
     <footer>
-      <a rel="full-article" href="/blog/2011/04/10/zai-ni-de-wang-zhan-shang-diao-yong-google-picasa-wang-luo-xiang-ce-de-tu-pian/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2011/04/10/gcc-useage-detail-1/">Read on &rarr;</a>
     </footer>
   
 
@@ -233,7 +208,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/10/yong-vim-xie-java-cheng-xu/">用vim写java程序</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/10/cpp-xml-library/">c++XML库</a></h1>
     
     
       <p class="meta">
@@ -256,53 +231,18 @@
   </header>
 
 
-  <div class="entry-content"><p>目前，<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">linux</span></span>下最强大最好用的IDE就是Eclipse，而最强大的编辑器又是Vim了，可不可以让这两个东西合二为一呢。没有问题，开源社区的创造力永远不会让你低估。
-在Vim中拥有Eclipse的功能，在Eclipse里有Vim的功能，那么<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">eclim</span>是你的选择了。
-<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://eclim.org/" target="_blank">http://eclim.org/</a> 相关的<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://eclim.org/translations/zh_TW/vim/cheatsheet.html#translations-zh-tw-vim-cheatsheet" target="_blank">中文文档</a>。使用eclim，你可以在vim中有Eclipse的功能，也可以在Eclipse中嵌入Vim编辑器。很酷。
-还有一个工具是Vrapper，这个工具是在Eclipse中使用Vim，你只需要在Eclipse的工具栏上点一下那个gvim的按钮就可以了。
-<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://vrapper.sourceforge.net/home/" target="_blank">http://vrapper.sourceforge.net/home/</a></p>
+  <div class="entry-content"><p>在C++中，库的地位是非常高的，各种各样的库极大的扩展了C++的功能，一个设计的好的库，让你对C++的使用更加得心应手，现在我们介绍的就是xml操作的库~请看接下来的介绍！</p>
+
+<p>C++各大有名库的介绍——XML</p>
+
+<ol>
+<li><p><a href="http://xml.apache.org/xerces-c/">Xerces</a><br/>
+Xerces-C++ 是一个非常健壮的XML解析器，它提供了验证，以及SAX和DOM API。XML验证在文档类型定义(Document Type Definition，DTD)方面有很好的支持，并且在2001年12月增加了支持W3C XMLSchema 的基本完整的开放标准。
 </div>
   
   
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/10/yi-ming-zui-niu-de-cheng-xu-yuan-de-zi-shu-%EF%BC%88-bao-xiao-%EF%BC%89/">一名最牛的程序员的自述（爆笑）</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>我是一名程序员。三年前，当我在麻绳理工学院读博士的时候，一家公司聘请我完成一个项目。当我完成学业离开美国以后，该公司需要对程序进行修改，于是聘请了一名程序员来完成这项工作。
-谦虚的说(我一向很谦虚的)：想要理解我编的程序，不是一般人能做到的。在我的程序中，使用了大量的独特算法，富有个性的变量、函数的命名方式，同时，我没有时间给程序作注释！
-这名程序员在耗费了60余磅体重(三个月没有吃东西，一吃就吐)，14英寸身高(在计算机屏幕前弓着背坐了三个月)后，终于……(尽管他的绰号叫“开心的汤姆”)死掉了。据现场的目击者介绍，在他生命的最后一刻，跪倒在电脑台前，双手高举过头顶，然后，趴倒在地上，抬起头，表情安详的对着屏幕说：“英雄!I服了YOU!</div>
-  
-  
     <footer>
-      <a rel="full-article" href="/blog/2011/04/10/yi-ming-zui-niu-de-cheng-xu-yuan-de-zi-shu-%EF%BC%88-bao-xiao-%EF%BC%89/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2011/04/10/cpp-xml-library/">Read on &rarr;</a>
     </footer>
   
 
@@ -314,7 +254,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/10/write-wordpress-use-windows-live-writer/">用Windows Live Writer写Wordpress</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-two/">数组与指针的艺术-第二章</a></h1>
     
     
       <p class="meta">
@@ -337,22 +277,24 @@
   </header>
 
 
-  <div class="entry-content"><p> 
-用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Wordpress" href="http://www.aitilife.com/category/anything-about-wordpress">WordPress</a>自带的编辑器有很多缺点，比如速度很慢，修改的时候会自动产生很多个副本，占用很大的数据库空间，发布的图片需要一张一张上传等等，而使用<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Windows" href="http://www.aitilife.com/category/operating-system/windows">Windows</a> Live Writer这些问题就解决了，
-这里就跟大家分享一下Windows Live Writer写Wordpress博客的设置方法和一些Wordpress自带编辑器没有的一些功能。
-Windows Live Writer下载地址:<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://explore.live.com/windows-live-writer?os=other">猛击这里进入下载页面</a></p>
+  <div class="entry-content"><p> </p>
 
-<h3 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 23px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">设置方法：</h3>
+<h2>数组名是一个指针常量吗？</h2>
 
+<p>数组名是一个指针常量这种观点来源于数组名在表达式计算中与指针的结果等效性。例如下面的代码：</p>
 
-<h4 style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 0.5em; margin-left: 0px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 21px; color: #333333; line-height: 1.1em; font-weight: bold; padding: 0px; border: 0px initial initial;">WordPress设置：</h4>
+<pre><code>int a[10], *p = a, *q;
+q = a + 1;
+q = p + 1;
+</code></pre>
 
+<p>在效果上看，a + 1与 p + 1是相同的，这很容易给人一种a就是p的假象，但，这仅仅是假象。鉴于指针常量包含了指针和常量两类概念，我们可以把这个问题分开两部分进行讨论。</p>
 
-<p>在Wordpress后台，选择“设置”中的“撰写”，激活“远程发布”中的“XML-RPC”（启用 WordPress，Movable Type，MetaWeblog和Blogger 的 XML-RPC发布协议。）</div>
+</div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2011/04/10/write-wordpress-use-windows-live-writer/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-two/">Read on &rarr;</a>
     </footer>
   
 
@@ -364,7 +306,7 @@ Windows Live Writer下载地址:<a style="outline-width: 0px; outline-style: ini
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/10/wordpress-zhong-de-__-han-shu-he-_e-han-shu-de-zuo-yong-he-qu-bie/">WordPress中的__()函数和_e()函数的作用和区别</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-three/">数组与指针的艺术-第三章</a></h1>
     
     
       <p class="meta">
@@ -387,141 +329,232 @@ Windows Live Writer下载地址:<a style="outline-width: 0px; outline-style: ini
   </header>
 
 
-  <div class="entry-content"><p><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">先看看官方文档的说明：</strong>
-用最简单的话来说，这两个函数负责”输出”用户的命令。这两个函数是PHP术语echo的缩写，echo用以显示文本信息。在<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">WordPress</span></span>中，<strong>()函数和</strong>e()函数被用来识别php文件中被标示的、需要被翻译成其它语言或本地化的字符串。</p>
+  <div class="entry-content"><p>C/C++的数组不同于VB等语言的数组，是有层次的，这个层次指的不是维度，而是象俄罗斯有名的套娃一样，一维套一维，亦即数组的嵌套，数组的元素也是数组，VB等语言的数组与之相比更像一个平面。</p>
 
-<ul style="margin-top: 0.5em; margin-right: 0px; margin-bottom: 1.5em; margin-left: 1.5em; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 20px; outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; border: 0px initial initial;">
-<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">__()</li>
-<li style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">_e()</li>
-</ul>
+<p>数组嵌套这个现象从其它语言的角度来看有点奇特，但其实原因也很简单。C/C++的对象模型并不视数组为某种数值的简单集合，而是对象的聚集，每个元素都是一个对象。元素为整数对象，就是整数数组，为浮点数对象，就是浮点数数组。然而，数组本身也是一种对象，因此一个数组也能作为另一个数组的元素。当某个一维数组以一维数组作为元素时，这个一维数组每个元素都具有数组类型，这个一维数组其实是二维数组，同理，一个以二维数组作为元素的一维数组其实是三维数组。因此，使用C/C++数组的时候应该用数组嵌套的观点去看待。有人据此认为，C/C++的数组不是真正的数组，还有的认为C/C++没有多维数组，这些观点都有失偏颇，与其它语言的数组相比，两者只是同一事物的不同实例，是实现方法的不同，而本质是一样的，C/C++的数组嵌套可视为对数组概念的发展。</p>
 
+<p>现在来看看数组的定义：</p>
 
-<p>这两个函数都接收字符串作为参数。例如：<br><strong>(“Translate Me”)<br>_e(“Translate Me”)<br>两个函数间的唯一功能性区别在于：</strong>e()函数回应返回的字符串，而<strong>()函数只是返回字符串，如果需要为函数提供字符串，可使用</strong>()函数。而如果希望将字符串作为XHTML的一部分输出，则需要使用<strong>e()函数。[more]
-有一个工具可以遍历所有php文件，抽取<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"></strong>()</strong>与<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><em>e()</strong>函数标示的所有字符串。
-参见：<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="I18n for WordPress Developers" href="http://codex.wordpress.org/I18n_for_WordPress_Developers">I18n for WordPress Developers</a>
- 
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">解释：</strong>
-有的童鞋会疑惑什么是回应返回的字符串，其实就是</em>e()其实并不返回字符串,它负责的是输出参数字符串;
-而 <strong>()则会把字符返回给调用方
-下面 来看一下例子:
-&lt;?php $test=_e(‘a ‘); $test1=</strong>(‘b ‘); echo ‘echo ‘.$test; echo ‘echo ‘.$test1; ?>
-结果是这样的:
-a echo echo b
-首先<em>e(‘a’),把a输出了,而__(‘b’)没有把参数字符串输出,然后到echo ‘echo ‘.$test;可以看到这条语句输出的是echo；变量$test并没有被赋值,也就是说</em>e(‘a’)仅仅输出了a，并没有把他作为返回值返回;最后一步：echo ‘echo ‘.$test1; 输出的是echo b,很明显,$test1被赋值为b,也就是说<strong>(‘b’),没有在函数内输出b，但是他把b作为返回值返回了。
-所以 如果需要为函数提供字符串，就使用</strong>()函数，他会把参数字符串返回给目标函数。而如果希望将字符串作为XHTML的一部分输出，则需要使用__e()函。<br>另外，顺便提一下这两个函数的第二个参数,在default主题中，我们可以看见这两个函数都会有’kubrick’这第二个参数，这是干什么的呢，它是作为一个命名空间存在的，一般这个值取的是主题名，表示这些代翻译的字符串都是在 ‘kubrick’这个命名空间里的！</p>
 </div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/10/wordpress-rewrite/">WordPress的Rewrite问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><span style="font-size: 14px; text-align: justify;">昨天配置完php的环境,今天当然是要动手本地整一下</span><span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">wordpress</span></span><span style="font-size: 14px; text-align: justify;">啦,所以老是睡懒觉的小狼今天早早就起了床,着手把aitilife整站转移到本机上进行调试,一切有条有理的进行。但是…在本地导入数据库,修改网站url,转移主题和插件，什么都完成后,事情的高潮来了…</span>
-本地的<span style="color: #787878;"><span style="outline-style: initial; outline-color: initial;">wordpress</span></span>表面,后台看起来一切正常,但是一点击任何文章的链接或者分类目录,标签之类的就出事了,提示说无法找到这个网页。小狼就纳闷了,这是肿么回事呢？数据库方面没有任何问题啊,难道环境搭建错了?也不应该啊,昨天已经测试好的了。
-(注：点击查看<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="环境搭建" href="http://www.aitilife.com/?tag=/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA" target="_blank">环境搭建</a>相关文章)
-百思不得其解的时候，突然很嗨地发现IIS还没有装上urlrewrite，而站点的url都是经过优化的,所以会出现这样的问题,发现问题之后,马上就要消灭他。过程如下：
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">1</strong>.下载iis的url rewrite module，32位下第一个,64位下第二个
-<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://go.microsoft.com/?linkid=9722533">Download the x86 version of the URL Rewrite module</a>
-<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" href="http://go.microsoft.com/?linkid=9722532">Download the x64 version of the URL Rewrite module</a>
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">2</strong>.下完后,开始->运行->服务,打开服务列表,找到[more]
-<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="Windows" href="http://www.aitilife.com/category/operating-system/windows">Windows</a> Process Activation Service</span>和<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">World Wide Web Publishing Service</span>
-右键点击它们，停止掉，然后开始安装url rewrite module
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">3</strong>.安装完重启后,打开iis管理器,找到你的网站,这时候中间哪会多出一个url rewrite出来，双击他,进入url rewrite页面,点右上的<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">Add Rule(s)…</span>
-然后选择Blank rule,确定,然后会出现规则填写页面:
-<a href="http://www.aitilife.com/images/uploads/2011/04/rewrite.png"><img class="alignnone size-medium wp-image-1556" title="rewrite" src="http://www.aitilife.com/images/uploads/2011/04/rewrite-300x142.png" alt="" width="300" height="142"></a>
-name一栏随便写，最好写点有意义的,例如Main Rule。
-然后Pattern一栏也随便写,因为这里写的是网站根目录的，而我们需要的是根目录下的wordpress博客的 ,其他情况就别乱写了
-拉到下面的Rewrite URL，也可以随便写，写完就点右边的应用.关掉IIS管理器.
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;"><span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">注意:</span></strong>文章后面有web.config文件下载,如果是下载了web.config的话,直接复制到你的wordpress博客根目录下就可以了,那第四步就可以直接跳过！
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">4</strong>.进入你的网站根目录,看看是不是多了一个web.config文件,把他复制到你的wordpress博客的根目录下,然后添加下面的规则到 <tt style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">system.webServer</tt>节点，现在先不用管这些是什么意思,有空的话小狼会写一篇文章详细介绍rewrite规则的编写的!
-<rewrite>
-<rules>
-<rule name=”Main Rule” stopProcessing=”true”>
-<match url=”.*” />
-<conditions logicalGrouping=”MatchAll”>
-<add input=”{REQUEST_FILENAME}” matchType=”IsFile” negate=”true” />
-<add input=”{REQUEST_FILENAME}” matchType=”IsDirectory” negate=”true” />
-</conditions>
-<action type=”Rewrite” url=”index.php/{R:0}” />
-</rule>
-</rules>
-</rewrite>
-最后的结果应该像这样的:
-<a href="http://www.aitilife.com/images/uploads/2011/04/webconfig.png"><img class="alignnone size-medium wp-image-1557" title="webconfig" src="http://www.aitilife.com/images/uploads/2011/04/webconfig-300x145.png" alt="" width="300" height="145"></a>
-好了,再打开你的本地wordpress博客看看,现在是不是全部正常了。
-web.config下载地址:<a style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; text-decoration: none; color: #787878; padding: 0px; margin: 0px; border: 0px initial initial;" title="web.config下载地址" href="http://www.gokuai.com/f/T06l8q8B1b686X51" target="_blank">http://www.gokuai.com/f/T06l8q8B1b686X51</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/10/wordpress-error/">要执行请求的操作，WordPress 需要访问您网页服务器的权限。 请输入您的 FTP 登录XXXX完美解决方法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p> 
-今天在<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">ubuntu</span></span>上搭建了lamp环境,想本地调试一下<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">wordpress</span></span>,本来一切都非常顺利，但是到了安装插件的时候却提示
-<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">要执行请求的操作，<span style="color: #787878;"><span style="border-style: initial; border-color: initial; outline-style: initial; outline-color: initial;">WordPress</span></span> 需要访问您网页服务器的权限。 请输入您的 FTP 登录凭据以继续。 如果您忘记了您的登录凭据（如用户名、密码），请联系您的网站托管商。</span>
-这是肿么回事啊？难道是我的环境问题，还是别的问题呢？经过一段时间的测试终于确定，这是本地权限的问题，因为apache2的运行用户是www-data，而不是你的当前用户。意思就是就算你拥有网站根目录的全部权限也是不行的，因为在wordpress中新上传的插件的权限都是www-data用户的，而不是你的，然后你需要解压这个插件压缩包来进行安装，但是你却没有它的使用权限，所以出现”<span style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; color: #ff0000; padding: 0px; margin: 0px; border: 0px initial initial;">WordPress 需要访问您网页服务器的权限</span>“问题。
-说了这么多，怎么解决呢？很简单:</div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2011/04/10/wordpress-error/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-three/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-ten/">数组与指针的艺术-第十章(完)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>当写下这个题目的时候，笔者心里其实非常犯难。因为从本质上来说，本章想阐述的内容与题目所宣示的概念，其实是不一样的。在编程中，我们常常要处理一段长度未知的数据，而且，运行过程中长度可能会发生变化，现行的C/C++标准没有提供在栈段和数据段内存中的实现，只提供堆中的实现，例如可以象下面代码那样在堆中分配一段内存，以处理一组长度不确定的整数：</p>
+
+<pre><code>int *p = ( int* )malloc( n * sizeof( int ) );
+</code></pre>
+
+<p>现在我们常常将这段堆内存称为&#8221;动态数组&#8221;。这正确吗？</p>
+
+<p>数组是一个高层概念，是C/C++对象模型及类型系统的重要组成。一个对象欲成为一个数组，引用此对象的表达式或标识符必须具有高层的数组类型，但这段内存没有任何数组类型的引用，只有一个指向它的指针，因此，这段内存不是C/C++高层语义上的数组。虽然p可以使用下标运算符访问内存块中的数据，但其实只不过得益于下标运算符的指针性质（如第四章所述）而已。一个真正的动态数组，不仅长度在运行期内可变，还需要具备数组类型的抽象，这要求语言规则的支持，这些条件是p所不具备的。但是，真正的动态数组的实现也不容易，往往受到效率等多重因素的制约，即使实现了也可能需要付出很大的代价，得不偿失，正因如此，C/C++标准都没有提供对动态数组的支持。不过，这段堆内存被称为“动态数组”多年来已经习惯成自然了，笔者没有为其重新命名的技术能力和资历，也就只有随波逐流，暂且也称之为动态数组吧，重要的是明白两者本质的不同。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-ten/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-six/">数组与指针的艺术-第六章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>const一词在字面上来源于常量constant，const对象在C/C++中是有不同解析的，如第二章所述，在C中常量表达式必须是编译期，运行期的不是常量表达式，因此C中的const不是常量表达式；但在C++中，由于去掉了编译期的限定，因此是常量表达式。
+对于一个指向const对象的指针pointer to const T，由于把const视作常量表达式，常常存在如下两种观点：</p>
+
+<ol>
+<li>这是一个指向常量的指针，简称常量指针；</li>
+<li>这个指针指向的内容不可改变。</li>
+</ol>
+
+
+<p>这是比较粗糙的理解。虽然这个指针的类型是pointer to const T，但不代表它指向的对象真的是一个常量或者不可改变，例如：</p>
+
+<pre><code>int i = 10;
+const int *p = &amp;i;
+i = 20;
+</code></pre>
+
+<p>p指向的对象i明显不是常量，虽然p指向i，但i的值依然可以改变。对于这个现象，C++标准有明确的论述：<br/>
+7.1.5.1 The cv-qualifiers<br/>
+a pointer or reference to a cv-qualified type need not actually point or refer to a cv-qualified object, but it is treated as if it does;<br/>
+其中cv指的是const和volatile，const和volatile叫type qualifier，类型限定词。const T只是类型假定，并非指出该对象是什么，这个对象也许是const限定的，也许不是。既然上述两种看法都是不恰当的，pointer to const T又应如何看待呢？一种比较好的理解是，将其视作一条访问路径。对一个对象进行取值或者修改操作，可以有很多种方法，每种方法都相当于一条能够对对象进行访问的路径，例如：</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-six/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-seven/">数组与指针的艺术-第七章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>首先看看如下一个声明：</p>
+
+<pre><code>int* ( *( *fun )( int* ) )[10];
+</code></pre>
+
+<p>这是一个会让初学者感到头晕目眩、感到恐惧的函数指针声明。在熟练掌握C/C++的声明语法之前，不学习一定的规则，想理解好这类复杂声明是比较困难的。</p>
+
+<p>C/C++所有复杂的声明结构，都是由各种声明嵌套构成的。如何解读复杂指针声明？右左法则是一个很著名、很有效的方法。不过，右左法则其实并不是C/C++标准里面的内容，它是从C/C++标准的声明规定中归纳出来的方法。C/C++标准的声明规则，是用来解决如何创建声明的，而右左法则是用来解决如何辩识一个声明的，从嵌套的角度看，两者可以说是一个相反的过程。右左法则的英文原文是这样说的：</p>
+
+<blockquote><p>The right-left rule: Start reading the declaration from the innermost parentheses, go right, and then go left. When you encounter parentheses, the direction should be reversed. Once everything in the parentheses has been parsed, jump out of it. Continue till the whole declaration has been parsed.</p></blockquote>
+
+<p>这段英文的翻译如下：<br/>
+右左法则：首先从最里面的圆括号看起，然后往右看，再往左看。每当遇到圆括号时，就应该掉转阅读方向。一旦解析完圆括号里面所有的东西，就跳出圆括号。重复这个过程直到整个声明解析完毕。</p>
+
+<p>笔者要对这个法则进行一个小小的修正，应该是从未定义的标识符开始阅读，而不是从括号读起，之所以是未定义的标识符，是因为一个声明里面可能有多个标识符，但未定义的标识符只会有一个。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-seven/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-one/">数组与指针的艺术-第一章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> </p>
+
+<h2>数组与指针概念剖析</h2>
+
+<p>数组与指针生来就是双胞胎，多数人就是从数组的学习开始指针的旅程的。在学习的过程中，很自然就会经常听到或见到关于数组与指针的各种各样的看法，下面我节选一些在各种论坛和文章里经常见到的文字：<br/>
+“一维数组是一级指针”<br/>
+“二维数组是二级指针”<br/>
+“数组名是一个常量指针”<br/>
+“数组名是一个指针常量”<br/>
+……………………</p>
+
+<p>这些文字看起来非常熟悉吧？类似的文字还有许多。不过非常遗憾，这些文字都是错误的，实际上数组名永远都不是指针！这个结论也许会让你震惊，但它的确是事实。但是，在论述这个问题之前，首先需要解决两个问题：什么是指针？什么是数组？这是本章的主要内容，数组名是否指针这个问题留在第二章进行讨论。看到这里，也许有人心里就会嘀咕了，这么简单的问题还需要说吗？int *p, a[10];不就是指针和数组吗？但是，笔者在过往的讨论过程中，还真的发现有不少人对这两个概念远非清晰，这会妨碍对后面内容的理解，所以还是有必要先讨论一下。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-one/">Read on &rarr;</a>
     </footer>
   
 
@@ -541,8 +574,18 @@ web.config下载地址:<a style="outline-width: 0px; outline-style: initial; out
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -553,15 +596,11 @@ web.config下载地址:<a style="outline-width: 0px; outline-style: initial; out
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

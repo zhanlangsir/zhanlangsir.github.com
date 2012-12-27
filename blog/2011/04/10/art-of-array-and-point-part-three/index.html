@@ -9,8 +9,7 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="C/C++的数组不同于VB等语言的数组，是有层次的，这个层次指的不是维度，而是象俄罗斯有名的套娃一样，一维套一维，亦即数组的嵌套，数组的元素也是数组，VB等语言的数组与之相比更像一个平面。
-数组嵌套这个现象从其它语言的角度来看有点奇特，但其实原因也很简单。C/C++ &hellip;">
+  <meta name="description" content="C/C++的数组不同于VB等语言的数组，是有层次的，这个层次指的不是维度，而是象俄罗斯有名的套娃一样，一维套一维，亦即数组的嵌套，数组的元素也是数组，VB等语言的数组与之相比更像一个平面。 数组嵌套这个现象从其它语言的角度来看有点奇特，但其实原因也很简单。C/C++ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,30 +90,41 @@
   </header>
 
 
-<div class="entry-content"><p><span class="Apple-style-span" style="font-size: 14px;">C/C++的数组不同于VB等语言的数组，是有层次的，这个层次指的不是维度，而是象俄罗斯有名的套娃一样，一维套一维，亦即数组的嵌套，数组的元素也是数组，VB等语言的数组与之相比更像一个平面。</span>
-数组嵌套这个现象从其它语言的角度来看有点奇特，但其实原因也很简单。C/C++的对象模型并不视数组为某种数值的简单集合，而是对象的聚集，每个元素都是一个对象。元素为整数对象，就是整数数组，为浮点数对象，就是浮点数数组。然而，数组本身也是一种对象，因此一个数组也能作为另一个数组的元素。当某个一维数组以一维数组作为元素时，这个一维数组每个元素都具有数组类型，这个一维数组其实是二维数组，同理，一个以二维数组作为元素的一维数组其实是三维数组。因此，使用C/C++数组的时候应该用数组嵌套的观点去看待。有人据此认为，C/C++的数组不是真正的数组，还有的认为C/C++没有多维数组，这些观点都有失偏颇，与其它语言的数组相比，两者只是同一事物的不同实例，是实现方法的不同，而本质是一样的，C/C++的数组嵌套可视为对数组概念的发展。
-现在来看看数组的定义：<!--more-->
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">6.5.4</strong><strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">.2 Array declarators</strong>
-<strong style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">Semantics</strong>
-If, in the declaration “T Dl.” Dl has the form
-D [ constant expression<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">opt</em> ]
-这个定义非常简单，其中T代表元素类型，D代表标识符，constant expression必须为大于0的常量表达式，<em style="outline-width: 0px; outline-style: initial; outline-color: initial; font-size: 14px; padding: 0px; margin: 0px; border: 0px initial initial;">opt</em>表示可选，即[]中的内容可以为空，当[]为空时叫不完整类型，表示这个数组对象的长度未知，不完整数组类型可以在程序的某个地方补充完整。细心的人马上就会发现，从形式上看，怎么只有一维数组的定义？这个形式如何定义多维数组？刚才说过，C/C++的数组是数组的嵌套，因此多维数组的定义也反映了这个本质。多维数组的定义是通过嵌套的一维数组定义构造的。对于一维数组：
-T D[M]
-当元素为一维数组T[N]时，元素的类型也为数组类型，用T[N]代替T，则为：
-T[N] D[M]
-这个语法结构不符合C/C++数组定义的语法形式，将[N]移动到[M]后，就是正式的二维数组的定义了：
-T D[M][N]
-其中D[0]—D[M-1]都是一维数组，具有数组类型T[N]。各种维度的多维数组可以用同样的嵌套方法构造出来。
-一个一维数组T[M]，经过数组到指针的转换后，类型转换为T<em>，二维数组T[M][N]转换为指针后，类型转换为T ( * )[N]，有些初学者对T( * )[N]这种形式较难理解，怎么多了一维，形式就有这么大的差别呢，其实原理还是跟嵌套有关，二维数组为一维数组的嵌套，元素为数组类型，因此用T[N]代替T，则二维数组转换之后的指针类型为T[N] </em>，将[N]移动到<em>的右边，就是T</em>[N]，由于[]的优先级比<em>高，因此需要加括号，就成为T( * )[N]了，否则就不是指针类型，而成了指针数组类型了。
-围绕数组名，存在一些有趣的表达式，下面的内容通过讨论这些表达式中较为重要的几个，来加深对数组的理解。对于二维数组：
-T a[M][N]
-a：
-表达式中的a的类型转换为T ( * )[N]，代表数组的首地址；
-&amp;a：是一个指向二维数组对象的指针，类型为T ( * )[M][N]。在C标准出现之前，一些早期的实现并不允许&amp;a，因为这些编译器认为此时的a转换为一个右值，而&amp;运算符要求一个左值，因此非法。C标准委员会鉴于对象的概念已经得到了扩展，而且允许&amp;a并没有害处，因此把&amp;运算符作为一个例外写进了数组到指针的转换条款中。这种情况下的a代表数组对象，&amp;a表示对数组对象取地址，因此&amp;a的结果跟a是相同的，但类型不同。
-笔者曾经见过某些观点认为，&amp;a才是数组的首地址，不是a。这个观点初看起来似乎很有道理，一个数组对象的引用，不正是首地址吗？但实际上这种论述是不符合标准的，数组到指针的转换条款规定，当产生一个points to the initial element of the array object的时候，其前提是由array of type到pointer to type的转换，但&amp;a的类型属于pointer to array of type，不是pointer to type，因此真正代表数组首地址的是a本身，不是&amp;a。
-&amp;a[0][0]：这是数组首元素的地址。&amp;a[0][0]常常被误解为数组a的首地址，其实a[0][0]只不过由于位置特殊，其地址值才与a相同，&amp;a[0][0]是一个T类型对象的引用，不是一个数组对象的引用，而且其类型不是由array of type转换得来的，因此其意义不是数组首地址。
-a【i】（其中 i >= 0 &amp;&amp; i &lt; M）：从数组嵌套的观点来看，a是一个一维数组，元素的类型为数组类型，因此a【i】的类型为T[N]，在表达式中转换为T</em>，是第i个一维数组的首地址。a + 1：a隐式转换为指针类型T( * )[N]然后加1，请记住指针加法是以指针指向对象的大小为步长的，因此a + 1将跨过N * sizeof( T )个字节。&amp;a + 1：与a + 1同理，&amp;a类型为T( * )[M][N]，因此&amp;a + 1的步长为M * N * sizeof( T )。
- </p>
+<div class="entry-content"><p>C/C++的数组不同于VB等语言的数组，是有层次的，这个层次指的不是维度，而是象俄罗斯有名的套娃一样，一维套一维，亦即数组的嵌套，数组的元素也是数组，VB等语言的数组与之相比更像一个平面。</p>
+
+<p>数组嵌套这个现象从其它语言的角度来看有点奇特，但其实原因也很简单。C/C++的对象模型并不视数组为某种数值的简单集合，而是对象的聚集，每个元素都是一个对象。元素为整数对象，就是整数数组，为浮点数对象，就是浮点数数组。然而，数组本身也是一种对象，因此一个数组也能作为另一个数组的元素。当某个一维数组以一维数组作为元素时，这个一维数组每个元素都具有数组类型，这个一维数组其实是二维数组，同理，一个以二维数组作为元素的一维数组其实是三维数组。因此，使用C/C++数组的时候应该用数组嵌套的观点去看待。有人据此认为，C/C++的数组不是真正的数组，还有的认为C/C++没有多维数组，这些观点都有失偏颇，与其它语言的数组相比，两者只是同一事物的不同实例，是实现方法的不同，而本质是一样的，C/C++的数组嵌套可视为对数组概念的发展。</p>
+
+<p>现在来看看数组的定义：</p>
+
+<!--more-->
+
+
+<p>6.5.4.2 Array declarators<br/>
+Semantics<br/>
+If, in the declaration “T Dl.” Dl has the form<br/>
+D [ constant expressionopt ]<br/>
+这个定义非常简单，其中T代表元素类型，D代表标识符，constant expression必须为大于0的常量表达式，opt表示可选，即[]中的内容可以为空，当[]为空时叫不完整类型，表示这个数组对象的长度未知，不完整数组类型可以在程序的某个地方补充完整。细心的人马上就会发现，从形式上看，怎么只有一维数组的定义？这个形式如何定义多维数组？刚才说过，C/C++的数组是数组的嵌套，因此多维数组的定义也反映了这个本质。多维数组的定义是通过嵌套的一维数组定义构造的。对于一维数组：<br/>
+T D[M]</p>
+
+<p>当元素为一维数组T[N]时，元素的类型也为数组类型，用T[N]代替T，则为：<br/>
+T[N] D[M]</p>
+
+<p>这个语法结构不符合C/C++数组定义的语法形式，将[N]移动到[M]后，就是正式的二维数组的定义了：
+T D[M][N]<br/>
+其中D[0]—D[M-1]都是一维数组，具有数组类型T[N]。各种维度的多维数组可以用同样的嵌套方法构造出来。</p>
+
+<p>一个一维数组T[M]，经过数组到指针的转换后，类型转换为T*，二维数组T[M][N]转换为指针后，类型转换为T ( * )[N]，有些初学者对T( * )[N]这种形式较难理解，怎么多了一维，形式就有这么大的差别呢，其实原理还是跟嵌套有关，二维数组为一维数组的嵌套，元素为数组类型，因此用T[N]代替T，则二维数组转换之后的指针类型为T[N] *，将[N]移动到<em>的右边，就是T</em>[N]，由于[]的优先级比*高，因此需要加括号，就成为T( * )[N]了，否则就不是指针类型，而成了指针数组类型了。</p>
+
+<p>围绕数组名，存在一些有趣的表达式，下面的内容通过讨论这些表达式中较为重要的几个，来加深对数组的理解。对于二维数组：
+T a[M][N]</p>
+
+<p>a：表达式中的a的类型转换为T ( * )[N]，代表数组的首地址；<br/>
+&amp;a：是一个指向二维数组对象的指针，类型为T ( * )[M][N]。在C标准出现之前，一些早期的实现并不允许&amp;a，因为这些编译器认为此时的a转换为一个右值，而&amp;运算符要求一个左值，因此非法。C标准委员会鉴于对象的概念已经得到了扩展，而且允许&amp;a并没有害处，因此把&amp;运算符作为一个例外写进了数组到指针的转换条款中。这种情况下的a代表数组对象，&amp;a表示对数组对象取地址，因此&amp;a的结果跟a是相同的，但类型不同。</p>
+
+<p>笔者曾经见过某些观点认为，&amp;a才是数组的首地址，不是a。<br/>
+这个观点初看起来似乎很有道理，一个数组对象的引用，不正是首地址吗？但实际上这种论述是不符合标准的，数组到指针的转换条款规定，当产生一个points to the initial element of the array object的时候，其前提是由array of type到pointer to type的转换，但&amp;a的类型属于pointer to array of type，不是pointer to type，因此真正代表数组首地址的是a本身，不是&amp;a。<br/>
+&amp;a[0][0]：这是数组首元素的地址。&amp;a[0][0]常常被误解为数组a的首地址，其实a[0][0]只不过由于位置特殊，其地址值才与a相同，&amp;a[0][0]是一个T类型对象的引用，不是一个数组对象的引用，而且其类型不是由array of type转换得来的，因此其意义不是数组首地址。<br/>
+a<a href="%E5%85%B6%E4%B8%AD%20i%20>=%200%20&amp;&amp;%20i%20&lt;%20M&#8221;>i</a>：从数组嵌套的观点来看，a是一个一维数组，元素的类型为数组类型，因此a【i】的类型为T[N]，在表达式中转换为T*，是第i个一维数组的首地址。a + 1：a隐式转换为指针类型T( * )[N]然后加1，请记住指针加法是以指针指向对象的大小为步长的，因此a + 1将跨过N * sizeof( T )个字节。&amp;a + 1：与a + 1同理，&amp;a类型为T( * )[M][N]，因此&amp;a + 1的步长为M * N * sizeof( T )。</p>
 </div>
 
 
@@ -167,13 +177,42 @@ a【i】（其中 i >= 0 &amp;&amp; i &lt; M）：从数组嵌套的观点来看
   </footer>
 </article>
 
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
+
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -184,15 +223,11 @@ a【i】（其中 i >= 0 &amp;&amp; i &lt; M）：从数组嵌套的观点来看
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

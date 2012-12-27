@@ -90,35 +90,50 @@
   </header>
 
 
-<div class="entry-content"><p>平时调试php程序或者试用一下php的网站程序什么的都需要一个快速,方便的环境,每次都直接在远程虚拟主机上弄的话，就太麻烦了，也会把虚拟主机弄的一团糟，而手动本地搭建php环境需要安装mysql,php,apache2等等东西，有的童鞋可能嫌太麻烦了，所以下面介绍7款本地phhp环境搭建工具,可以快速搭建好本地php环境！
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://www.apachefriends.org/zh_cn/xampp.html">1. XAMPP</a></strong>
-XAMPP是一款比较强大的本地测试平台，它集成了必须的三个功能，还带有 FileZilla，软件带有一个控制面板，在里面可以把Apache、MySql和FileZilla三者注册为系统服务或者卸载服务，有服务启动的控 制按钮，而且在窗口下部还能看到服务的运行信息。虽说面板是英文的，但清楚易懂。注册为系统服务有个好处就是开机能够自动运行，但是会消耗一定的系统资 源，怎么取舍用户自己来定。安装成功，服务也启动成功后，就可以把浏览器打开输入http://localhost/，试试是否成功。在XAMPP的网页 选项里，有中文支持。[more]
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://www.wampserver.com/en/">2. Wamp Server</a></strong>
-它的官方网站没有中文，但是程序支持中文。启动安装程序后，它会提示你请先卸载旧版，不支持 覆盖式的升级，然后一路NEXT就能安装成功。它在任务托盘里有个图标，如果服务启动异常，它就是红色的；如果部分异常，它就变成黄色；如果是一切正常， 那么它就变成了白色。这些不同的颜色警示，你很容易判断当前你的localhost能不能打开。它还能切换在线和离线状态，选项中的文语言项中也有简体中 文可选，很不错。
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://vertrigo.sourceforge.net/">3. Vertrigo Server<!--more--></a></strong>
-这是一个轻量级的WAMP环境，但是你下载它的时候，迅雷自带的安全组件居然说它带有病毒。 经过我的扫描（ESS3.0）和使用来看，这完全是个误报，所以大家可以放心使用。安装一路NEXT就行，其中PhpMyAdmin中居然还有原始密码， 是vertrigo，感觉在本地测试的话，这种默认没有必要。它带有一个简单的控制面板，运行状态也一目了然。
-在它的localhost页面中带有常用链接，很方便。
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://phpnow.org/">4. PHPNow</a></strong>
-PHPNow真的很简单，简单到安装程序就是用RAR做的一个自解压程序。自释放后快捷方式 也没有，你必须自己找到那个文件存放的文件夹，然后运行Init.cmd这个程序来初始化。初始化过程中提示设置密码，因为是在CMD命令行中，只设计了 一次密码输入，没有密码确认项，所以请设置的时候千万小心，不要忘了。它也把式Apache和MySql注册为服务，开机自启动。
-在程序文件夹中，它也带有控制面板，只不过是CMD的，但很好用。
-卸载就更容易了，在软件自带的控制面板中卸载服务，然后关把整个文件夹删掉就行。这么方便，图简便的可以试试。
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://download.pchome.net/development/sever/php/detail-40373.html">5. PHPStudy</a></strong>
+<div class="entry-content"><p>平时调试php程序或者试用一下php的网站程序什么的都需要一个快速,方便的环境,每次都直接在远程虚拟主机上弄的话，就太麻烦了，也会把虚拟主机弄的一团糟，而手动本地搭建php环境需要安装mysql,php,apache2等等东西，有的童鞋可能嫌太麻烦了，所以下面介绍7款本地phhp环境搭建工具,可以快速搭建好本地php环境！</p>
+
+<ol>
+<li><a href="http://www.apachefriends.org/zh_cn/xampp.html" title="XAMPP">XAMPP</a><br/>
+XAMPP是一款比较强大的本地测试平台，它集成了必须的三个功能，还带有 FileZilla.<br/>
+软件带有一个控制面板，在里面可以把Apache、MySql和FileZilla三者注册为系统服务或者卸载服务，有服务启动的控制按钮，而且在窗口下部还能看到服务的运行信息。虽说面板是英文的，但清楚易懂<br/>
+注册为系统服务有个好处就是开机能够自动运行,但是会消耗一定的系统资源,怎么取舍用户自己来定<br/>
+安装成功,服务也启动成功后,就可以把浏览器打开输入http://localhost/,试试是否成功.在XAMPP的网页选项里,有中文支持
+<!--more--></li>
+<li><a href="http://www.wampserver.com/en/" title="Wamp Server">Wamp Server</a><br/>
+它的官方网站没有中文,但是程序支持中文.启动安装程序后,它会提示你请先卸载旧版.不支持覆盖式的升级,然后一路NEXT就能安装成功。<br/>
+它在任务托盘里有个图标,如果服务启动异常,它就是红色的;如果部分异常,它就变成黄色:如果是一切正常,那么它就变成了白色,这些不同的颜色警示,你很容易判断当前你的localhost能不能打开.<br/>
+它还能切换在线和离线状态，选项中的文语言项中也有简体中 文可选，很不错。</li>
+<li><a href="http://vertrigo.sourceforge.net/" title="Vertrigo Server">Vertrigo Server</a><br/>
+这是一个轻量级的WAMP环境，但是你下载它的时候，迅雷自带的安全组件居然说它带有病毒。 经过我的扫描（ESS3.0）和使用来看，这完全是个误报，所以大家可以放心使用。安装一路NEXT就行，其中PhpMyAdmin中居然还有原始密码， 是vertrigo，感觉在本地测试的话，这种默认没有必要。它带有一个简单的控制面板，运行状态也一目了然<br/>
+在它的localhost页面中带有常用链接，很方便</li>
+<li><a href="http://phpnow.org/" title="PHPNow">PHPNow</a><br/>
+PHPNow真的很简单，简单到安装程序就是用RAR做的一个自解压程序。自释放后快捷方式也没有，你必须自己找到那个文件存放的文件夹，然后运行Init.cmd这个程序来初始化。初始化过程中提示设置密码，因为是在CMD命令行中，只设计了一次密码输入，没有密码确认项，所以请设置的时候千万小心，不要忘了。它也把式Apache和MySql注册为服务，开机自启动<br/>
+在程序文件夹中，它也带有控制面板，只不过是CMD的，但很好用<br/>
+卸载就更容易了，在软件自带的控制面板中卸载服务，然后关把整个文件夹删掉就行。这么方便，图简便的可以试试</li>
+<li><a href="http://download.pchome.net/development/sever/php/detail-40373.html" title="PHPStudy">PHPStudy</a><br/>
 PHPStudy不一样，它含有IIS+PHP和Apache+PHP，软件推荐设置是后者。在任务托盘里也有图标，可以打开面板来看服务运行状态，也很简洁。
-打开localhost，出现的是标准的PHP信息界面。
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://www.appservnetwork.com/">6. AppServ</a></strong>
-程序安装过程中它提示你可以改变默认的80端口为服务端口，这样可以避免端口共享产生的冲 突。可有密码设置提示，但是做得比PHPNow好多了，软件还可以设置字符集，默认为UTF-8。虽然软件没有控制面板，但一切操作都在开始菜单中加入了 快捷方式，使用当然很方便。软件还带有MySql命令行终端。
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;"><a style="margin-top: 0px; margin-right: 2px; margin-bottom: 0px; margin-left: 2px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-style: initial; border-color: initial; font-family: Arial, Helvetica, Verdana, sans-serif; text-decoration: none; color: #4499aa; border-bottom-style: solid; border-bottom-color: #e7e7e7; padding: 0px;" href="http://www.easyphp.org/">7. EasyPHP</a></strong>
-软件如其名，真的很EASY！安装一路NEXT，但是不会把Apache和MySql加载为服务，所以每次使用都要手工来启动。软件也带简单的控制面板，其他的没什么要说的了。
-注：以上介绍原文出自linxo.cn，不过该网站已不在，就不列出原文地址了。</p>
+打开localhost，出现的是标准的PHP信息界面。</li>
+<li><a href="http://www.appservnetwork.com/" title="AppServ">AppServ</a><br/>
+程序安装过程中它提示你可以改变默认的80端口为服务端口，这样可以避免端口共享产生的冲 突。可有密码设置提示，但是做得比PHPNow好多了，软件还可以设置字符集，默认为UTF-8<br/>
+虽然软件没有控制面板，但一切操作都在开始菜单中加入了快捷方式，使用当然很方便<br/>
+软件还带有MySql命令行终端</li>
+<li><a href="http://www.easyphp.org/" title="EasyPHP">EasyPHP</a><br/>
+软件如其名，真的很EASY！安装一路NEXT，但是不会把Apache和MySql加载为服务，所以每次使用都要手工来启动。软件也带简单的控制面板，其他的没什么要说的了。</li>
+</ol>
 
-<h2 style="margin-top: 10px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: Arial, Helvetica, Verdana, sans-serif; font-size: 16px; font-weight: bold; color: #222222; line-height: 19px; padding: 0px; border: 0px initial initial;">常见的两个问题</h2>
 
+<p>注：以上介绍原文出自linxo.cn，不过该网站已不在，就不列出原文地址了。</p>
 
-<p>其实我只使用过XAMPP和EasyPHP，但一般都大同小异，最常碰到的两个问题就是由于端口问题无法启动Apache，和无法在本地实现Rewrite。
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;">1. 由于端口问题无法启动Apache</strong>
-如果是由于端口问题无法启动Apache, 那就关闭其它程序，一个一个的试，确定是哪个占用了80端口，最常见的就是迅雷。
-<strong style="font-family: Arial, Helvetica, Verdana, sans-serif; font-weight: bold; padding: 0px; margin: 0px; border: 0px initial initial;">2. 本地开启Rewrite模块</strong>
-其它是否适用我不知道。XAMPP和EasyPHP, 找到httpd.conf这个文件，打开编辑，把所有的AllowOverride None换成AllowOverride All， 再把#LoadModule rewrite_module modules/mod_rewrite.so前面的”#”号去掉即可。</p>
+<p><strong>常见的两个问题</strong><br/>
+其实我只使用过XAMPP和EasyPHP，但一般都大同小异，最常碰到的两个问题就是由于端口问题无法启动Apache，和无法在本地实现Rewrite。</p>
+
+<ol>
+<li>由于端口问题无法启动Apache<br/>
+如果是由于端口问题无法启动Apache, 那就关闭其它程序，一个一个的试，确定是哪个占用了80端口，最常见的就是迅雷。</li>
+<li>本地开启Rewrite模块<br/>
+其它是否适用我不知道。XAMPP和EasyPHP, 找到httpd.conf这个文件，打开编辑，把所有的AllowOverride None换成AllowOverride All， 再把#LoadModule rewrite_module modules/mod_rewrite.so前面的”#”号去掉即可。</li>
+</ol>
+
 </div>
 
 
@@ -165,19 +180,48 @@ PHPStudy不一样，它含有IIS+PHP和Apache+PHP，软件推荐设置是后者�
         <a class="basic-alignment left" href="/blog/2011/04/13/ru-he-kuai-su-gei-tu-pian-tian-jia-shui-yin/" title="Previous Post: 如何快速给图片添加水印">&laquo; 如何快速给图片添加水印</a>
       
       
-        <a class="basic-alignment right" href="/blog/2011/04/13/vim-zhu-ti-bao/" title="Next Post: vim主题包">vim主题包 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2011/04/19/gvim-theme-generation-online/" title="Next Post: gvim主题在线生成">gvim主题在线生成 &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
 
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -188,15 +232,11 @@ PHPStudy不一样，它含有IIS+PHP和Apache+PHP，软件推荐设置是后者�
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>

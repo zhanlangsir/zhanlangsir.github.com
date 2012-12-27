@@ -9,7 +9,11 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="8/13 更新: 版本:v0.7.0-beta 新特性: 托盘图标根据最后一个发送消息人的头像显示 主界面可以查找好友，支持拼音首字母和汉字方式，比如张三,可以输入ZS或者张三查找 添加notify支持 托盘图标显示登陆人q号和登陆状态tip(可以无视&#8230;.) 路径支持中文,ctrl+ &hellip;">
+  <meta name="description" content="8/13 更新: 版本:v0.7.0-beta 新特性: 托盘图标根据最后一个发送消息人的头像显示
+主界面可以查找好友，支持拼音首字母和汉字方式，比如张三,可以输入ZS或者张三查找
+添加notify支持
+托盘图标显示登陆人q号和登陆状态tip(可以无视&#8230;.)
+路径支持中文,ctrl+ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,135 +94,72 @@
   </header>
 
 
-<div class="entry-content"><p><strong>8/13 更新:</strong></p>
+<div class="entry-content"><h2>8/13 更新:</h2>
 
 <p>版本:v0.7.0-beta</p>
 
-<p><strong>新特性:</strong></p>
+<h2>新特性:</h2>
 
 <ul>
 <li>托盘图标根据最后一个发送消息人的头像显示</li>
-    <li>主界面可以查找好友，支持拼音首字母和汉字方式，比如张三,可以输入ZS或者张三查找</li>
-    <li>添加notify支持</li>
-    <li>托盘图标显示登陆人q号和登陆状态tip(可以无视&#8230;.)</li>
-    <li>路径支持中文,ctrl+alt+Z连续两次可激活主窗口.点击群聊天窗口的名字链接可打开好友聊天窗口!</li>
-    <li>单机托盘最小化，回复主界面</li>
-    <li>登陆界面回车登陆</li>
+<li>主界面可以查找好友，支持拼音首字母和汉字方式，比如张三,可以输入ZS或者张三查找</li>
+<li>添加notify支持</li>
+<li>托盘图标显示登陆人q号和登陆状态tip(可以无视&#8230;.)</li>
+<li>路径支持中文,ctrl+alt+Z连续两次可激活主窗口.点击群聊天窗口的名字链接可打开好友聊天窗口!</li>
+<li>单机托盘最小化，回复主界面</li>
+<li>登陆界面回车登陆</li>
 </ul>
 
 
-<p><strong><!--more-->修复bug列表:</strong></p>
+<!--more-->
+
+
+<h2>修复bug列表:</h2>
 
 <ul>
 <li>修复其他系统登陆后崩溃问题</li>
-    <li>修复打开聊天记录偶尔会卡死bug,修复群成员数量减少bug</li>
-    <li>修复启动时偶尔崩溃bug</li>
+<li>修复打开聊天记录偶尔会卡死bug,修复群成员数量减少bug</li>
+<li>修复启动时偶尔崩溃bug</li>
 </ul>
 
 
-<p><strong>其他修改:</strong></p>
+<h2>其他修改:</h2>
 
 <ul>
 <li>修改图片,配置文件存储路径</li>
 </ul>
 
 
-<div></div>
+<h2>安装方法:</h2>
 
+<pre><code>ppa:
+sudo add-apt-repository ppa:qtqq/qtqq-stable
+sudo apt-get update
+sudo apt-get install qtqq
+</code></pre>
 
-<div></div>
+<h3>手动编译:</h3>
 
+<pre><code>git clone https://github.com/zhanlangsir/Qtqq.git qtqq
+cd qtqq
+mkdir release
+cd release
+cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)
+make
+sudo make install
+</code></pre>
 
-<div><strong>安装方法:</strong></div>
+<h3>fedora需要准备的环境:</h3>
 
+<p>需要安装git cmake qt-devel libnotify-devel gtk2-devel gcc gcc-c++ qtwebkit-devel, yum install即可.</p>
 
-<div>ppa:</div>
+<h3>ubuntu需要准备的环境:</h3>
 
+<p>需要安装git cmake g++ qt4-dev-tools libgtk2.0-dev libnotify-dev
+<strong>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</strong>
+还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki" title="qtqq wiki">qtqq wiki</a></p>
 
-<div>sudo add-apt-repository ppa:qtqq/qtqq-stable</div>
-
-
-<div>sudo apt-get update</div>
-
-
-<div>sudo apt-get install qtqq</div>
-
-
-<div></div>
-
-
-<div>手动编译:</div>
-
-
-<div>git clone https://github.com/zhanlangsir/Qtqq.git qtqq</div>
-
-
-<div></div>
-
-
-<div>cd qtqq</div>
-
-
-<div>mkdir release</div>
-
-
-<div>cd release</div>
-
-
-<div>cmake -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr  .. (后面有两点,表示的是qtqq代码的根目录)</div>
-
-
-<div>make</div>
-
-
-<div>sudo make install</div>
-
-
-<div></div>
-
-
-<div></div>
-
-
-<div>fedora需要准备的环境:</div>
-
-
-<div></div>
-
-
-<div>需要安装git cmake qt-devel libnotify-devel gtk2-devel gcc gcc-c++ qtwebkit-devel, yum install即可.</div>
-
-
-<div></div>
-
-
-<div>ubuntu需要准备的环境:</div>
-
-
-<div></div>
-
-
-<div>需要安装git cmake g++ qt4-dev-tools libgtk2.0-dev libnotify-dev</div>
-
-
-<div></div>
-
-
-<div>另外fedora64位需要把/usr/lib下的so文件手动移动到/usr/lib64</div>
-
-
-<div></div>
-
-
-<div>还有其他安装事项请查看根目录下的INSTALL文件或者<a href="https://github.com/zhanlangsir/Qtqq/wiki">https://github.com/zhanlangsir/Qtqq/wiki</a>
-</div>
-
-
-<div></div>
-
-
-<div>这些不全是qtqq依赖的，有的是编译环境,qtqq现在依赖的是qt4,gtk,libnofity.现在没有很好的方法去实现托盘图标,qt自带的在ubuntu下无法正常使用，所以暂时只能用gtk代替。</div>
-
+<p>这些不全是qtqq依赖的，有的是编译环境,qtqq现在依赖的是qt4,gtk,libnofity.现在没有很好的方法去实现托盘图标,qt自带的在ubuntu下无法正常使用，所以暂时只能用gtk代替。</p>
 </div>
 
 
@@ -265,17 +206,48 @@
         <a class="basic-alignment left" href="/blog/2012/12/23/qtqq-1223/" title="Previous Post: Qtqq 12/23">&laquo; Qtqq 12/23</a>
       
       
+        <a class="basic-alignment right" href="/blog/2012/12/26/mutt-message-status-flags/" title="Next Post: mutt消息状态标志">mutt消息状态标志 &raquo;</a>
+      
     </p>
   </footer>
 </article>
+
+  <section id="comment">
+    <h1>评论</h1>
+	<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aitilife"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+  </section>
 
 </div>
 
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    Liquid error: incompatible encoding regexp match (ASCII-8BIT regexp with UTF-8 string)
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/23/qtqq-v070-beta/">Qtqq v0.7.0-beta</a>
@@ -286,15 +258,11 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/23/about-qtqq0-8-0-alpha/">关于qtqq0.8.0-alpha</a>
+        <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
       <li class="post">
         <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/20/sae-wordpress--zhuan--typecho/">sae wordpress 转 typecho</a>
       </li>
     
   </ul>
