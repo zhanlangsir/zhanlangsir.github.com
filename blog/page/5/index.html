@@ -9,8 +9,7 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="本系列文章，是原来我在CSDN的Easwy专栏撰写的&#8221;使用VIM开发软件项目&#8221;系列.
-Easwy的博客搬家以后，就把CSDN上的文章全部移到此处。 写本系列文章的最初想法，是介绍如何用vi/vim开发软件。但纵观整个系列，讲述的其实和软件开发关系并不大， &hellip;">
+  <meta name="description" content="身为一名程序员一定知道vim和emacs这两个神级编辑器,他们并没有vs,vc的继承ide功能,却还是很多高级程序员的首选工具,因为它们的按键方案的高速,快捷.其实vs也有不少类似的功能,只是很多程序员没有细心的去发掘这些功能而已,如果熟练地掌握vs的各种小技巧,效率还是很可观的额~ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +64,52 @@ Easwy的博客搬家以后，就把CSDN上的文章全部移到此处。 写本�
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/vs2008-tip/">Visual Studio 2008小技巧-快速提高工作效率</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>身为一名程序员一定知道vim和emacs这两个神级编辑器,他们并没有vs,vc的继承ide功能,却还是很多高级程序员的首选工具,因为它们的按键方案的高速,快捷.其实vs也有不少类似的功能,只是很多程序员没有细心的去发掘这些功能而已,如果熟练地掌握vs的各种小技巧,效率还是很可观的额~</p>
+
+<ol>
+<li><p>回到上一个光标位置<br/>
+使用组合键<code>Ctrl + -</code>键表示Navigate BackWard, 使用组合键1Ctrl + Shift + -`键表示 Forward.</p></li>
+<li><p>删除多余的using指令，并且排序<br/>
+当我们新一个类的时候，Visual Studio 会将常用的命名空间using在类的头部。但是在我们写完一个类的时候，有些using是多余的，删除多余的using，再排一下序，可以使代码看起来更清晰。Visual Studio 2008 已经为我们做好了这一切。在代码编辑区点击右键，可以看到”组织 using”菜单，这就是我们需要的了。
+ </div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/vs2008-tip/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -480,54 +525,6 @@ set encoding=prc
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/10/pkg-config/">Makefile好助手：pkg-config</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p> 
-你在Unix下开发过软件吗?<br/>
-写完一个程序，编译运行完全正常，在你本机上工作得好好的，你放到源代码管理系统中。然后，告诉你的同事说，你可以取下来用了。这时，你长长的出了一口气，几天的工作没有白费，多么清新的空气啊，你开始飘飘然了。<br/>
-&#8220;Hi，怎么编译不过去?&#8221;你还沉浸在那种美妙的感觉之中，双臂充满着力量，似乎没有什么问题能难倒你的。正在此时，那个笨蛋已经冲着你嚷开了。<br/>
-&#8220;不会吧，我这边好好的!&#8221;表面上你说得很客气，其实，你心里已经骂开了，真笨，不知道脑子干嘛用的。也许，你想的没错，上次，他犯了一个简单的错误，不是你一去就解决了吗。<br/>
-他喊三次之后，你不得不放下你手上的工作，刚才那种美妙的感觉已经消失得无影无踪了，要不是你把情绪控制得很好，一肚子气就要撒在他身上了。你走到他的电脑前，键入make，优雅的按下回车。怎么可能出错呢？你信心十足。然而，屏幕上的结果多少有点让人脸红，该死的，libxxx.so怎么会让不到呢？<br/>
-你在/usr目录中查找libxxx.so，一切都逃不过你的眼睛。奇怪，libxxx.so怎么在/usr/local/lib下，不是应该在/usr/lib下的吗？这你可不能怪别人，别人想安装在哪里都行，下次还可能安装到/lib目录下呢。<br/>
-以上的场景并非虚构，我都经历过好几次，明明在本机上好好的，在别人的机器上连编译都过不去。可能两人的操作系统一模一样，需要的库都安装上，只是由于个人喜好不同，安装在不同的目录而已。遇到这种情况，每次都技巧性的绕过去了，用的补丁型的方法，心里老惦记其它地方能不能工作。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/04/10/pkg-config/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -541,25 +538,18 @@ set encoding=prc
 <aside class="sidebar">
   
     <section>
-  <h1>Categories</h1>
-  <ul id="categories">
-    <li class='category'><a href='/blog/categories/dotnet/'>DotNet (6)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>Linux (13)</a></li>
-<li class='category'><a href='/blog/categories/qt/'>Qt (8)</a></li>
-<li class='category'><a href='/blog/categories/vim/'>Vim (12)</a></li>
-<li class='category'><a href='/blog/categories/windows/'>Windows (5)</a></li>
-<li class='category'><a href='/blog/categories/c-c-/'>c/c++ (16)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (1)</a></li>
-<li class='category'><a href='/blog/categories/php/'>php (6)</a></li>
-<li class='category'><a href='/blog/categories/其他/'>其他 (5)</a></li>
-<li class='category'><a href='/blog/categories/网页设计/'>网页设计 (3)</a></li>
-<li class='category'><a href='/blog/categories/软件工具/'>软件工具 (2)</a></li>
-
+  <h1>分类目录</h1>
+  <ul id="category-list">
+    <li><a href='/blog/categories/c-c-'>c/c++ (16)</a></li><li><a href='/blog/categories/dotnet'>DotNet (6)</a></li><li><a href='/blog/categories/linux'>linux (1)</a></li><li><a href='/blog/categories/linux'>Linux (13)</a></li><li><a href='/blog/categories/php'>php (6)</a></li><li><a href='/blog/categories/qt'>Qt (8)</a></li><li><a href='/blog/categories/vim'>Vim (12)</a></li><li><a href='/blog/categories/windows'>Windows (5)</a></li><li><a href='/blog/categories/其他'>其他 (5)</a></li><li><a href='/blog/categories/瞎折腾'>瞎折腾 (1)</a></li><li><a href='/blog/categories/网页设计'>网页设计 (3)</a></li><li><a href='/blog/categories/软件工具'>软件工具 (2)</a></li>
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/28/octopress-add-categorylist-and-tagcloud/">给octopress添加Category和TagCloud</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
@@ -577,11 +567,11 @@ set encoding=prc
         <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
   </ul>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/c-c-' style='font-size: 160.0%'>c/c++(16)</a> <a href='/blog/categories/dotnet' style='font-size: 122.5%'>DotNet(6)</a> <a href='/blog/categories/linux' style='font-size: 103.75%'>linux(1)</a> <a href='/blog/categories/linux' style='font-size: 148.75%'>Linux(13)</a> <a href='/blog/categories/php' style='font-size: 122.5%'>php(6)</a> <a href='/blog/categories/qt' style='font-size: 130.0%'>Qt(8)</a> <a href='/blog/categories/vim' style='font-size: 145.0%'>Vim(12)</a> <a href='/blog/categories/windows' style='font-size: 118.75%'>Windows(5)</a> <a href='/blog/categories/其他' style='font-size: 118.75%'>其他(5)</a> <a href='/blog/categories/瞎折腾' style='font-size: 103.75%'>瞎折腾(1)</a> <a href='/blog/categories/网页设计' style='font-size: 111.25%'>网页设计(3)</a> <a href='/blog/categories/软件工具' style='font-size: 107.5%'>软件工具(2)</a> </span>
 </section>
 
 <section>

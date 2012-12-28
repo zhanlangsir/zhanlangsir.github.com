@@ -9,7 +9,7 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="今天看到这个例子的时候：例子 我完全是按他的步骤来做的，不同的是教程中使用的是mvc2,而我用的是mvc3,结果@Ajax.ActionLink()的结果和普通的@Html.ActionLink()得到的结果完全一样，并没有体现出Ajax的效果，不应该是这样啊，具体情况看下面： 这里是输入页面： &hellip;">
+  <meta name="description" content="今天写一些博客的代码时候想调用像Wordpress一样的头像,而wordpress的头像是基于gravatar的，所以就到官网看了一下API和说明，成功调用了gravatar，现在就把过程记录下来，方便用户或者站长或者XXX等有需要的童鞋使用吧~ 1.什么是Gravatar? Gravatar &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +64,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/14/gravatar-comprehensive-analysis/">Gravatar全面解析</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-14T00:00:00+08:00" pubdate data-updated="true">May 14<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天写一些博客的代码时候想调用像Wordpress一样的头像,而wordpress的头像是基于gravatar的，所以就到官网看了一下API和说明，成功调用了gravatar，现在就把过程记录下来，方便用户或者站长或者XXX等有需要的童鞋使用吧~</p>
+
+<h2>1.什么是Gravatar?</h2>
+
+<p>Gravatar 的概念首先是在国外的独立WordPress 博客中雄起的，当你到任何一个支持 Gravatar 的网站留言时，提供你的 Email 地址即可为你显示出匹配的头像。当然，这个头像，是需要你事先到 Gravatar 的网站注册并上传的，否则，在这个网站上，就只会显示成一个默认的头像。另外注册与使用 Gravatar 均是完全免费的，而站长可以通过调用Gravatar的API实现根据浏览者的邮箱调用gravatar上的头像，而无需本地存储对应头像。</p>
+
+<h2>2.网站的浏览者如何设置一个通用的头像?(当然，需要浏览的网站支持gravatar)</h2>
+
+<p>这个问题已经有很多网站介绍过，这里就不赘述，想了解<a href="http://www.fanshuwo.com.cn/post/Gravatar.html" title="set avatar">设置gravatar头像</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/05/14/gravatar-comprehensive-analysis/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -495,52 +544,6 @@ XAMPP是一款比较强大的本地测试平台，它集成了必须的三个功
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/10/vs2008-tip/">Visual Studio 2008小技巧-快速提高工作效率</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>身为一名程序员一定知道vim和emacs这两个神级编辑器,他们并没有vs,vc的继承ide功能,却还是很多高级程序员的首选工具,因为它们的按键方案的高速,快捷.其实vs也有不少类似的功能,只是很多程序员没有细心的去发掘这些功能而已,如果熟练地掌握vs的各种小技巧,效率还是很可观的额~</p>
-
-<ol>
-<li><p>回到上一个光标位置<br/>
-使用组合键<code>Ctrl + -</code>键表示Navigate BackWard, 使用组合键1Ctrl + Shift + -`键表示 Forward.</p></li>
-<li><p>删除多余的using指令，并且排序<br/>
-当我们新一个类的时候，Visual Studio 会将常用的命名空间using在类的头部。但是在我们写完一个类的时候，有些using是多余的，删除多余的using，再排一下序，可以使代码看起来更清晰。Visual Studio 2008 已经为我们做好了这一切。在代码编辑区点击右键，可以看到”组织 using”菜单，这就是我们需要的了。
- </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2011/04/10/vs2008-tip/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -554,25 +557,18 @@ XAMPP是一款比较强大的本地测试平台，它集成了必须的三个功
 <aside class="sidebar">
   
     <section>
-  <h1>Categories</h1>
-  <ul id="categories">
-    <li class='category'><a href='/blog/categories/dotnet/'>DotNet (6)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>Linux (13)</a></li>
-<li class='category'><a href='/blog/categories/qt/'>Qt (8)</a></li>
-<li class='category'><a href='/blog/categories/vim/'>Vim (12)</a></li>
-<li class='category'><a href='/blog/categories/windows/'>Windows (5)</a></li>
-<li class='category'><a href='/blog/categories/c-c-/'>c/c++ (16)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (1)</a></li>
-<li class='category'><a href='/blog/categories/php/'>php (6)</a></li>
-<li class='category'><a href='/blog/categories/其他/'>其他 (5)</a></li>
-<li class='category'><a href='/blog/categories/网页设计/'>网页设计 (3)</a></li>
-<li class='category'><a href='/blog/categories/软件工具/'>软件工具 (2)</a></li>
-
+  <h1>分类目录</h1>
+  <ul id="category-list">
+    <li><a href='/blog/categories/c-c-'>c/c++ (16)</a></li><li><a href='/blog/categories/dotnet'>DotNet (6)</a></li><li><a href='/blog/categories/linux'>linux (1)</a></li><li><a href='/blog/categories/linux'>Linux (13)</a></li><li><a href='/blog/categories/php'>php (6)</a></li><li><a href='/blog/categories/qt'>Qt (8)</a></li><li><a href='/blog/categories/vim'>Vim (12)</a></li><li><a href='/blog/categories/windows'>Windows (5)</a></li><li><a href='/blog/categories/其他'>其他 (5)</a></li><li><a href='/blog/categories/瞎折腾'>瞎折腾 (1)</a></li><li><a href='/blog/categories/网页设计'>网页设计 (3)</a></li><li><a href='/blog/categories/软件工具'>软件工具 (2)</a></li>
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/28/octopress-add-categorylist-and-tagcloud/">给octopress添加Category和TagCloud</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
@@ -590,11 +586,11 @@ XAMPP是一款比较强大的本地测试平台，它集成了必须的三个功
         <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
   </ul>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/c-c-' style='font-size: 160.0%'>c/c++(16)</a> <a href='/blog/categories/dotnet' style='font-size: 122.5%'>DotNet(6)</a> <a href='/blog/categories/linux' style='font-size: 103.75%'>linux(1)</a> <a href='/blog/categories/linux' style='font-size: 148.75%'>Linux(13)</a> <a href='/blog/categories/php' style='font-size: 122.5%'>php(6)</a> <a href='/blog/categories/qt' style='font-size: 130.0%'>Qt(8)</a> <a href='/blog/categories/vim' style='font-size: 145.0%'>Vim(12)</a> <a href='/blog/categories/windows' style='font-size: 118.75%'>Windows(5)</a> <a href='/blog/categories/其他' style='font-size: 118.75%'>其他(5)</a> <a href='/blog/categories/瞎折腾' style='font-size: 103.75%'>瞎折腾(1)</a> <a href='/blog/categories/网页设计' style='font-size: 111.25%'>网页设计(3)</a> <a href='/blog/categories/软件工具' style='font-size: 107.5%'>软件工具(2)</a> </span>
 </section>
 
 <section>

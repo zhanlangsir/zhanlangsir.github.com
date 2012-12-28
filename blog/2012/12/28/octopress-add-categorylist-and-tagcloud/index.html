@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>phpMyAdmin:无法在发生错误时创建会话,请检查PHP或网站服务器日志XX 解决办法 - 挨踢人生</title>
+  <title>给octopress添加Category和TagCloud - 挨踢人生</title>
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="打开我的电脑——系统安装盘(不错的话一般都是C盘)——打开WINDOWS文件夹——找到Temp目录
-右击打开属性，点到安全选项，如果没有你可以先按一下alt，然后就会出现工具栏,在窗口的上边点开 工具——文件夹选项——查看——将“使用单文件共享(推荐)”钱的勾去掉就有了
-说简单点就是： &hellip;">
+  <meta name="description" content="插件地址 按照项目说明放好plugin和asides文件,重新生成即可 做记录用!
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2011/04/10/phpmyadmin-can-not-create-session/">
+  <link rel="canonical" href="http://zhanlangsir.github.com/blog/2012/12/28/octopress-add-categorylist-and-tagcloud/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -69,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">phpMyAdmin:无法在发生错误时创建会话,请检查PHP或网站服务器日志XX 解决办法</h1>
+      <h1 class="entry-title">给octopress添加Category和TagCloud</h1>
     
     
       <p class="meta">
@@ -85,23 +84,18 @@
   
 
 
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+<time datetime="2012-12-28T10:32:00+08:00" pubdate data-updated="true">Dec 28<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><ol>
-<li>打开我的电脑——系统安装盘(不错的话一般都是C盘)——打开WINDOWS文件夹——找到Temp目录<br/>
-右击打开属性，点到安全选项，如果没有你可以先按一下alt，然后就会出现工具栏,在窗口的上边点开 工具——文件夹选项——查看——将“使用单文件共享(推荐)”钱的勾去掉就有了</li>
-<li>说简单点就是：WIN下系统文件夹windows里面就有一个TEMP的临时文件夹，只需将此文件夹USER用户权限设置为完全控制就能解决。假如还是有这个错误，原来的那个文件夹带它里边的东西都删除</li>
-<li>另外还有一种方法：在c盘windows目录下 php.ini<br/>
-比如你可以找到这一行session.save_path = &#8220;某个路径&#8221;<br/>
-改为<code>session.save_path = "D:\\webserverphpsession"</code><br/>
-然后要建立这个目录<code>D:\\webserverphpsession</code></li>
-</ol>
+<div class="entry-content"><p><a href="https://github.com/tokkonopapa/octopress-tagcloud">插件地址</a></p>
 
+<p>按照项目说明放好plugin和asides文件,重新生成即可</p>
+
+<p>做记录用!</p>
 </div>
 
 
@@ -124,12 +118,12 @@
   
 
 
-<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+<time datetime="2012-12-28T10:32:00+08:00" pubdate data-updated="true">Dec 28<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/php/'>php</a>
+    <a class='category' href='/blog/categories/瞎折腾/'>瞎折腾</a>
   
 </span>
 
@@ -145,10 +139,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/04/10/php-failed-to-open-stream/" title="Previous Post: php错误:failed to open stream: Permission denied in xxx on xxx">&laquo; php错误:failed to open stream: Permission denied in xxx on xxx</a>
+        <a class="basic-alignment left" href="/blog/2012/12/26/mutt-message-status-flags/" title="Previous Post: mutt消息状态标志">&laquo; mutt消息状态标志</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2011/04/10/pkg-config/" title="Next Post: Makefile好助手：pkg-config">Makefile好助手：pkg-config &raquo;</a>
       
     </p>
   </footer>

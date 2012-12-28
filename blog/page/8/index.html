@@ -9,7 +9,11 @@
   <meta name="author" content="zhanlang">
 
   
-  <meta name="description" content="C90及C++的数组对象定义是静态联编的，在编译期就必须给定对象的完整信息。但在程序设计过程中，我们常常遇到需要根据上下文环境来定义数组的情况，在运行期才能确知数组的长度。对于这种情况，C90及C++没有什么很好的办法去解决（STL的方法除外），只能在堆中创建一个内存映像与需求数组一样的替代品， &hellip;">
+  <meta name="description" content="  数组与指针概念剖析 数组与指针生来就是双胞胎，多数人就是从数组的学习开始指针的旅程的。在学习的过程中，很自然就会经常听到或见到关于数组与指针的各种各样的看法，下面我节选一些在各种论坛和文章里经常见到的文字：
+“一维数组是一级指针”
+“二维数组是二级指针”
+“数组名是一个常量指针”
+“ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +68,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/10/art-of-array-and-point-part-one/">数组与指针的艺术-第一章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> </p>
+
+<h2>数组与指针概念剖析</h2>
+
+<p>数组与指针生来就是双胞胎，多数人就是从数组的学习开始指针的旅程的。在学习的过程中，很自然就会经常听到或见到关于数组与指针的各种各样的看法，下面我节选一些在各种论坛和文章里经常见到的文字：<br/>
+“一维数组是一级指针”<br/>
+“二维数组是二级指针”<br/>
+“数组名是一个常量指针”<br/>
+“数组名是一个指针常量”<br/>
+……………………</p>
+
+<p>这些文字看起来非常熟悉吧？类似的文字还有许多。不过非常遗憾，这些文字都是错误的，实际上数组名永远都不是指针！这个结论也许会让你震惊，但它的确是事实。但是，在论述这个问题之前，首先需要解决两个问题：什么是指针？什么是数组？这是本章的主要内容，数组名是否指针这个问题留在第二章进行讨论。看到这里，也许有人心里就会嘀咕了，这么简单的问题还需要说吗？int *p, a[10];不就是指针和数组吗？但是，笔者在过往的讨论过程中，还真的发现有不少人对这两个概念远非清晰，这会妨碍对后面内容的理解，所以还是有必要先讨论一下。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/04/10/art-of-array-and-point-part-one/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -471,25 +527,18 @@ jQuery King 让你学习 jQuery 更容易、更有趣。</p></li>
 <aside class="sidebar">
   
     <section>
-  <h1>Categories</h1>
-  <ul id="categories">
-    <li class='category'><a href='/blog/categories/dotnet/'>DotNet (6)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>Linux (13)</a></li>
-<li class='category'><a href='/blog/categories/qt/'>Qt (8)</a></li>
-<li class='category'><a href='/blog/categories/vim/'>Vim (12)</a></li>
-<li class='category'><a href='/blog/categories/windows/'>Windows (5)</a></li>
-<li class='category'><a href='/blog/categories/c-c-/'>c/c++ (16)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (1)</a></li>
-<li class='category'><a href='/blog/categories/php/'>php (6)</a></li>
-<li class='category'><a href='/blog/categories/其他/'>其他 (5)</a></li>
-<li class='category'><a href='/blog/categories/网页设计/'>网页设计 (3)</a></li>
-<li class='category'><a href='/blog/categories/软件工具/'>软件工具 (2)</a></li>
-
+  <h1>分类目录</h1>
+  <ul id="category-list">
+    <li><a href='/blog/categories/c-c-'>c/c++ (16)</a></li><li><a href='/blog/categories/dotnet'>DotNet (6)</a></li><li><a href='/blog/categories/linux'>linux (1)</a></li><li><a href='/blog/categories/linux'>Linux (13)</a></li><li><a href='/blog/categories/php'>php (6)</a></li><li><a href='/blog/categories/qt'>Qt (8)</a></li><li><a href='/blog/categories/vim'>Vim (12)</a></li><li><a href='/blog/categories/windows'>Windows (5)</a></li><li><a href='/blog/categories/其他'>其他 (5)</a></li><li><a href='/blog/categories/瞎折腾'>瞎折腾 (1)</a></li><li><a href='/blog/categories/网页设计'>网页设计 (3)</a></li><li><a href='/blog/categories/软件工具'>软件工具 (2)</a></li>
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/28/octopress-add-categorylist-and-tagcloud/">给octopress添加Category和TagCloud</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/26/mutt-message-status-flags/">mutt消息状态标志</a>
@@ -507,11 +556,11 @@ jQuery King 让你学习 jQuery 更容易、更有趣。</p></li>
         <a href="/blog/2012/12/23/about-qtqqv080-alpha/">关于qtqq0.8.0-alpha</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/09/20/typecho-rewrite-rule/">typecho rewrite 规则</a>
-      </li>
-    
   </ul>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/c-c-' style='font-size: 160.0%'>c/c++(16)</a> <a href='/blog/categories/dotnet' style='font-size: 122.5%'>DotNet(6)</a> <a href='/blog/categories/linux' style='font-size: 103.75%'>linux(1)</a> <a href='/blog/categories/linux' style='font-size: 148.75%'>Linux(13)</a> <a href='/blog/categories/php' style='font-size: 122.5%'>php(6)</a> <a href='/blog/categories/qt' style='font-size: 130.0%'>Qt(8)</a> <a href='/blog/categories/vim' style='font-size: 145.0%'>Vim(12)</a> <a href='/blog/categories/windows' style='font-size: 118.75%'>Windows(5)</a> <a href='/blog/categories/其他' style='font-size: 118.75%'>其他(5)</a> <a href='/blog/categories/瞎折腾' style='font-size: 103.75%'>瞎折腾(1)</a> <a href='/blog/categories/网页设计' style='font-size: 111.25%'>网页设计(3)</a> <a href='/blog/categories/软件工具' style='font-size: 107.5%'>软件工具(2)</a> </span>
 </section>
 
 <section>

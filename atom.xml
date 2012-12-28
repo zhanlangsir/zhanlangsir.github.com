@@ -4,7 +4,7 @@
   <title><![CDATA[挨踢人生]]></title>
   <link href="http://zhanlangsir.github.com/atom.xml" rel="self"/>
   <link href="http://zhanlangsir.github.com/"/>
-  <updated>2012-12-28T10:16:36+08:00</updated>
+  <updated>2012-12-28T10:40:20+08:00</updated>
   <id>http://zhanlangsir.github.com/</id>
   <author>
     <name><![CDATA[zhanlang]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[给octopress添加Category和TagCloud]]></title>
+    <link href="http://zhanlangsir.github.com/blog/2012/12/28/octopress-add-categorylist-and-tagcloud/"/>
+    <updated>2012-12-28T10:32:00+08:00</updated>
+    <id>http://zhanlangsir.github.com/blog/2012/12/28/octopress-add-categorylist-and-tagcloud</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/tokkonopapa/octopress-tagcloud">插件地址</a></p>
+
+<p>按照项目说明放好plugin和asides文件,重新生成即可</p>
+
+<p>做记录用!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[mutt消息状态标志]]></title>
@@ -865,35 +878,6 @@ warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜�
 
 <p>下载地址和说明请看这里，小狼就不翻译了~<br/>
 <a href="http://support.microsoft.com/kb/2519277" title="kb2519277">kb2519277</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[各种密钥-序列号]]></title>
-    <link href="http://zhanlangsir.github.com/blog/2011/10/25/key-and-serial-number/"/>
-    <updated>2011-10-25T00:00:00+08:00</updated>
-    <id>http://zhanlangsir.github.com/blog/2011/10/25/key-and-serial-number</id>
-    <content type="html"><![CDATA[<p><strong><em>SQLServer2008:</em></strong></p>
-
-<pre><code>Developer: PTTFM-X467G-P7RH2-3Q6CG-4DMYB
-Enterprise: JD8Y6-HQG69-P9H84-XDTPG-34MBB
-</code></pre>
-
-<p><strong><em>Vs2010:</em></strong></p>
-
-<pre><code>YCFHQ-9DWCY-DKV88-T2TMH-G7BHP
-</code></pre>
-
-<p><strong><em>Blend:</em></strong></p>
-
-<pre><code>6WDDQ-K7D4F-GQGF4-2VYBJ-8K6MB
-</code></pre>
-
-<p><strong><em>PhotoShop Cs5:</em></strong></p>
-
-<pre><code>1330-1343-1830-9875-8192-3098
-1330-1650-7442-9032-3879-0986
-</code></pre>
 ]]></content>
   </entry>
   
